@@ -23,5 +23,6 @@
 hs_err_pid*
 replay_pid*
 
-# ide settings
-.idea/
+# hidden folders (such as ide settings)
+.*
+!/.gitignore
