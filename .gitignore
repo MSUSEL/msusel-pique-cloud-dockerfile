@@ -30,3 +30,6 @@ replay_pid*
 # key files
 input/keys/github-token.txt
 input/keys/nvd-api-key.txt
+
+# don't push compiled targets
+target/*
