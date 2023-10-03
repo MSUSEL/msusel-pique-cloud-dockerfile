@@ -23,6 +23,10 @@
 hs_err_pid*
 replay_pid*
 
-# hidden folders (such as ide settings)
+# hidden folders (such as ide settings) but not gitignore
 .*
 !/.gitignore
+
+# key files
+input/keys/github-token.txt
+input/keys/nvd-api-key.txt
