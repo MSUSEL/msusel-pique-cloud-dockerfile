@@ -1,0 +1,6 @@
+tool/TrivyWrapper.class
+utilities/helperFunctions.class
+runnable/QualityModelDeriver.class
+runnable/Wrapper.class
+tool/GrypeWrapper.class
+runnable/SingleProjectEvaluator.class

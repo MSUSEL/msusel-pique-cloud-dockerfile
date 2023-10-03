@@ -1,0 +1,4 @@
+# this document details a list of the things I want in a final dockerfile.
+
+- Comes packaged with a nvd database dump, but provide the ability to download it again somehow....
+

@@ -92,7 +92,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>msusel-pique-cloud-dockerfile.runnable.Wrapper</mainClass>
+                                    <mainClass>runnable.Wrapper</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
@@ -111,7 +111,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>msusel-pique-cloud-dockerfile.runnable.Wrapper</mainClass>
+                            <mainClass>runnable.Wrapper</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

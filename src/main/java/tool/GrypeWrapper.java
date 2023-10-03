@@ -111,7 +111,7 @@ public class GrypeWrapper extends Tool implements ITool {
                     // unknown means we don't know the CWE for the CVE
                     // other means it is a CWE outside of our software development view
                     diag = diagnostics.get("CWE-other Grype Diagnostic");
-                    LOGGER.warn("CVE with CWE outside of CWE-699 found.");
+                    LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
                 }
                 Finding finding = new Finding("",0,0,severityList.get(i));
                 finding.setName(cveList.get(i));

@@ -34,7 +34,7 @@ public class Wrapper {
             parser.addArgument( "--file")
                     .dest("fileName")
                     .type(String.class)
-                    .help("path to cloud (?!?!) for evaluation (required if runType is evaluate)");
+                    .help("path to dockerfile for evaluation (required if runType is evaluate)");
             parser.addArgument("--version")
                     .action(Arguments.storeTrue())
                     .setDefault(false)
