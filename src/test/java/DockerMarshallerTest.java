@@ -5,6 +5,7 @@ import tool.DockerMarshaller;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class DockerMarshallerTest {
@@ -38,7 +39,7 @@ public class DockerMarshallerTest {
 
         //if a name and a tag is given, return only 1 image
         List<Image> images = dockerMarshaller.getDockerImage(imageName, imageTag);
-        assert(images.size() == 1);
+        assertEquals(images.size(), 1);
 
         //make sure the one image is correct
         System.out.println(images.get(0).toString());
