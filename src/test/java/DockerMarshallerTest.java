@@ -38,12 +38,13 @@ public class DockerMarshallerTest {
         String imageTag = "3.15";
 
         //if a name and a tag is given, return only 1 image
-        List<Image> images = dockerMarshaller.getDockerImage(imageName, imageTag);
-        assertEquals(images.size(), 1);
+        List<Image> oneImage = dockerMarshaller.getDockerImage(imageName, imageTag);
+        assertEquals(oneImage.size(), 1);
 
-        //make sure the one image is correct
-        System.out.println(images.get(0).toString());
-        //assert(images.get(0).);
+        //if only a name is given, return 2 images
+        List<Image> twoImages = dockerMarshaller.getDockerImage(imageName);
+        assertEquals(oneImage.size(), 2);
+
 
     }
 }

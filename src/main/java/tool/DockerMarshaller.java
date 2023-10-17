@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.imageio.stream.ImageInputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,18 +34,30 @@ public class DockerMarshaller {
         }
     }
 
+    public List<Image> getDockerImage(String imageName){
+        return getDockerImage(imageName, "");
+    }
+
     public List<Image> getDockerImage(String imageName, String imageTag){
         List<Image> images = null;
         try{
             List<SearchItem> results = client.searchImagesCmd(imageName + ":" + imageTag).exec();
-            images.addAll(results.stream().map(element->(Image) element).collect(Collectors.toList()));
+            //convert results from search command (In a SearchItem class)to an Image class
+            images = client.listImagesCmd().withReferenceFilter(imageName + ":" + imageTag).exec();
 
-
-            images = client.listImagesCmd().exec();
         }catch(Exception e){
-            LOGGER.error("Failed to retrive docker image with search");
+            LOGGER.error("Failed to retrieve docker image with search");
         }
         return images;
+    }
+
+    private List<Image> getImagesFromSearchItem(List<SearchItem> results){
+        List<Image> allImages = client.listImagesCmd().exec();
+        for (Image image: allImages) {
+            System.out.println(results.get(0).getName());
+        }
+        System.exit(0);
+        return null;
     }
 
 }
