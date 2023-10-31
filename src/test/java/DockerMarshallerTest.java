@@ -43,8 +43,7 @@ public class DockerMarshallerTest {
 
         //if only a name is given, return 2 images
         List<Image> twoImages = dockerMarshaller.getDockerImage(imageName);
-        assertEquals(oneImage.size(), 2);
-
+        assertEquals(twoImages.size(), 2);
 
     }
 }

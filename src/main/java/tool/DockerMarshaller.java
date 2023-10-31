@@ -34,16 +34,19 @@ public class DockerMarshaller {
         }
     }
 
-    public List<Image> getDockerImage(String imageName){
-        return getDockerImage(imageName, "");
+    public List<Image> getDockerImage(String imageName, String imageTag){
+        String searchQuery = imageName + ":" + imageTag;
+        return getDockerImage(searchQuery);
     }
 
-    public List<Image> getDockerImage(String imageName, String imageTag){
+    public List<Image> getDockerImage(String imageName){
         List<Image> images = null;
         try{
-            List<SearchItem> results = client.searchImagesCmd(imageName + ":" + imageTag).exec();
+            List<SearchItem> results = client.searchImagesCmd( imageName).exec();
+
             //convert results from search command (In a SearchItem class)to an Image class
-            images = client.listImagesCmd().withReferenceFilter(imageName + ":" + imageTag).exec();
+            images = client.listImagesCmd().withReferenceFilter( imageName).exec();
+            System.out.println("Search query: " +  imageName + " leads to size: " + images.size());
 
         }catch(Exception e){
             LOGGER.error("Failed to retrieve docker image with search");
