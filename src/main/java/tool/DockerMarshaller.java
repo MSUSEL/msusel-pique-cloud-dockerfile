@@ -2,15 +2,12 @@ package tool;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.model.Image;
-import com.github.dockerjava.api.model.SearchItem;
 import com.github.dockerjava.core.DockerClientBuilder;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.imageio.stream.ImageInputStream;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /***
  * class responsible for managing docker images so that other tools can run via targetting docker images
@@ -34,18 +31,30 @@ public class DockerMarshaller {
         }
     }
 
-    public List<Image> getDockerImage(String imageName, String imageTag){
+    /***
+     * returns a single docker image
+     * @param imageName name of image
+     * @param imageTag tag of image
+     * @return single docker Image object
+     */
+    public Image getDockerImageFromName(String imageName, String imageTag){
         String searchQuery = imageName + ":" + imageTag;
-        return getDockerImage(searchQuery);
+        List<Image> images = getDockerImagesFromName(searchQuery);
+        if (images.size() != 1){
+            System.out.println("");
+        }
+        return images.get(0);
     }
 
-    public List<Image> getDockerImage(String imageName){
+    /***
+     * returns a list of docker images under the common image name. Will return zero to many images
+     * @param imageName name of image
+     * @return List of docker Image objects
+     */
+    public List<Image> getDockerImagesFromName(String imageName){
         List<Image> images = null;
         try{
-            List<SearchItem> results = client.searchImagesCmd( imageName).exec();
-
-            //convert results from search command (In a SearchItem class)to an Image class
-            images = client.listImagesCmd().withReferenceFilter( imageName).exec();
+            images = client.listImagesCmd().withReferenceFilter(imageName).exec();
             System.out.println("Search query: " +  imageName + " leads to size: " + images.size());
 
         }catch(Exception e){
@@ -54,13 +63,19 @@ public class DockerMarshaller {
         return images;
     }
 
-    private List<Image> getImagesFromSearchItem(List<SearchItem> results){
-        List<Image> allImages = client.listImagesCmd().exec();
-        for (Image image: allImages) {
-            System.out.println(results.get(0).getName());
+    public Image getDockerImageFromRepoDigest(String sha256){
+        List<Image> images = null;
+        try{
+
+            images = client.listImagesCmd().exec();
+
+
+            System.out.println("Search query: " +  sha256 + " leads to size: " + images.size());
+
+        }catch(Exception e){
+            LOGGER.error("Failed to retrieve docker image with search");
         }
-        System.exit(0);
-        return null;
+        return images.get(0);
     }
 
 }
