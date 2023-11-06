@@ -29,21 +29,22 @@ public class GrypeWrapper extends Tool implements ITool {
 
     // Methods
     /**
-     * @param projectLocation The path to a binary file for the desired solution of project to
-     *             analyze
+     * @param projectLocation The name of the image to analyze, with format: "name:tag"
      * @return The path to the analysis results file
      */
     @Override
     public Path analyze(Path projectLocation) {
-        LOGGER.info(this.getName() + "  Analyzing "+ projectLocation.toString());
-        File tempResults = new File(System.getProperty("user.dir") + "/out/grype.json");
+        //workaround because grype targets images, which are loaded by docker
+        String imageName = projectLocation.toString();
+        LOGGER.info(this.getName() + "  Analyzing "+ imageName);
+        File tempResults = new File(System.getProperty("user.dir") + "/out/grype" + imageName + ".json");
         tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
         tempResults.getParentFile().mkdirs();
 
         String[] cmd = {"grype",
-                projectLocation.toAbsolutePath().toString(),
-                "--output", "sarif",
-                "--quiet",
+                imageName,
+                //"--scope", "all-layers",
+                "-o", "json",
                 "--file",tempResults.toPath().toAbsolutePath().toString()};
         LOGGER.info(Arrays.toString(cmd));
         try {

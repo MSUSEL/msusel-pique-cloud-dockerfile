@@ -1,0 +1,290 @@
+{
+ "matches": [
+  {
+   "vulnerability": {
+    "id": "CVE-2022-48174",
+    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-48174",
+    "namespace": "nvd:cpe",
+    "severity": "Critical",
+    "urls": [
+     "https://bugs.busybox.net/show_bug.cgi?id=15216"
+    ],
+    "description": "There is a stack overflow vulnerability in ash.c:6030 in busybox before 1.35. In the environment of Internet of Vehicles, this vulnerability can be executed from command to arbitrary code execution.",
+    "cvss": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "vendorMetadata": {}
+     }
+    ],
+    "fix": {
+     "versions": [],
+     "state": "unknown"
+    },
+    "advisories": []
+   },
+   "relatedVulnerabilities": [],
+   "matchDetails": [
+    {
+     "type": "cpe-match",
+     "matcher": "apk-matcher",
+     "searchedBy": {
+      "namespace": "nvd:cpe",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:1.34.1-r7:*:*:*:*:*:*:*"
+      ],
+      "Package": {
+       "name": "busybox",
+       "version": "1.34.1-r7"
+      }
+     },
+     "found": {
+      "vulnerabilityID": "CVE-2022-48174",
+      "versionConstraint": "< 1.35.0 (unknown)",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
+      ]
+     }
+    }
+   ],
+   "artifact": {
+    "id": "1a9066e6f96ca31c",
+    "name": "busybox",
+    "version": "1.34.1-r7",
+    "type": "apk",
+    "locations": [
+     {
+      "path": "/lib/apk/db/installed",
+      "layerID": "sha256:bc0a9d4e16d0b949d594bf5fc629d05200d5ddac339a899eac27190ebf12e569"
+     }
+    ],
+    "language": "",
+    "licenses": [
+     "GPL-2.0-only"
+    ],
+    "cpes": [
+     "cpe:2.3:a:busybox:busybox:1.34.1-r7:*:*:*:*:*:*:*"
+    ],
+    "purl": "pkg:apk/alpine/busybox@1.34.1-r7?arch=x86_64&distro=alpine-3.15.10",
+    "upstreams": [
+     {
+      "name": "busybox"
+     }
+    ]
+   }
+  },
+  {
+   "vulnerability": {
+    "id": "CVE-2022-48174",
+    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-48174",
+    "namespace": "nvd:cpe",
+    "severity": "Critical",
+    "urls": [
+     "https://bugs.busybox.net/show_bug.cgi?id=15216"
+    ],
+    "description": "There is a stack overflow vulnerability in ash.c:6030 in busybox before 1.35. In the environment of Internet of Vehicles, this vulnerability can be executed from command to arbitrary code execution.",
+    "cvss": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "vendorMetadata": {}
+     }
+    ],
+    "fix": {
+     "versions": [],
+     "state": "unknown"
+    },
+    "advisories": []
+   },
+   "relatedVulnerabilities": [],
+   "matchDetails": [
+    {
+     "type": "cpe-match",
+     "matcher": "apk-matcher",
+     "searchedBy": {
+      "namespace": "nvd:cpe",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:1.34.1-r7:*:*:*:*:*:*:*"
+      ],
+      "Package": {
+       "name": "busybox",
+       "version": "1.34.1-r7"
+      }
+     },
+     "found": {
+      "vulnerabilityID": "CVE-2022-48174",
+      "versionConstraint": "< 1.35.0 (unknown)",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
+      ]
+     }
+    }
+   ],
+   "artifact": {
+    "id": "07bd2a07891210e1",
+    "name": "ssl_client",
+    "version": "1.34.1-r7",
+    "type": "apk",
+    "locations": [
+     {
+      "path": "/lib/apk/db/installed",
+      "layerID": "sha256:bc0a9d4e16d0b949d594bf5fc629d05200d5ddac339a899eac27190ebf12e569"
+     }
+    ],
+    "language": "",
+    "licenses": [
+     "GPL-2.0-only"
+    ],
+    "cpes": [
+     "cpe:2.3:a:ssl-client:ssl-client:1.34.1-r7:*:*:*:*:*:*:*",
+     "cpe:2.3:a:ssl-client:ssl_client:1.34.1-r7:*:*:*:*:*:*:*",
+     "cpe:2.3:a:ssl_client:ssl-client:1.34.1-r7:*:*:*:*:*:*:*",
+     "cpe:2.3:a:ssl_client:ssl_client:1.34.1-r7:*:*:*:*:*:*:*",
+     "cpe:2.3:a:ssl:ssl-client:1.34.1-r7:*:*:*:*:*:*:*",
+     "cpe:2.3:a:ssl:ssl_client:1.34.1-r7:*:*:*:*:*:*:*"
+    ],
+    "purl": "pkg:apk/alpine/ssl_client@1.34.1-r7?arch=x86_64&upstream=busybox&distro=alpine-3.15.10",
+    "upstreams": [
+     {
+      "name": "busybox"
+     }
+    ]
+   }
+  }
+ ],
+ "source": {
+  "type": "image",
+  "target": {
+   "userInput": "alpine:3.15",
+   "imageID": "sha256:d51a1e6a80db9fe97902ac54d00023289daa33928936d8dacd6c9a01842dd054",
+   "manifestDigest": "sha256:25a08b122fb158ae08f962b4780453da4fbaf5ddc86f757b9f4c510b3a5f534a",
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "tags": [
+    "alpine:3.15"
+   ],
+   "imageSize": 5585548,
+   "layers": [
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:bc0a9d4e16d0b949d594bf5fc629d05200d5ddac339a899eac27190ebf12e569",
+     "size": 5585548
+    }
+   ],
+   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjoxNDcyLCJkaWdlc3QiOiJzaGEyNTY6ZDUxYTFlNmE4MGRiOWZlOTc5MDJhYzU0ZDAwMDIzMjg5ZGFhMzM5Mjg5MzZkOGRhY2Q2YzlhMDE4NDJkZDA1NCJ9LCJsYXllcnMiOlt7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjo1ODcwNTkyLCJkaWdlc3QiOiJzaGEyNTY6YmMwYTlkNGUxNmQwYjk0OWQ1OTRiZjVmYzYyOWQwNTIwMGQ1ZGRhYzMzOWE4OTllYWMyNzE5MGViZjEyZTU2OSJ9XX0=",
+   "config": "eyJhcmNoaXRlY3R1cmUiOiJhbWQ2NCIsImNvbmZpZyI6eyJIb3N0bmFtZSI6IiIsIkRvbWFpbm5hbWUiOiIiLCJVc2VyIjoiIiwiQXR0YWNoU3RkaW4iOmZhbHNlLCJBdHRhY2hTdGRvdXQiOmZhbHNlLCJBdHRhY2hTdGRlcnIiOmZhbHNlLCJUdHkiOmZhbHNlLCJPcGVuU3RkaW4iOmZhbHNlLCJTdGRpbk9uY2UiOmZhbHNlLCJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiQ21kIjpbIi9iaW4vc2giXSwiSW1hZ2UiOiJzaGEyNTY6ZDA4MmIwZDFjZDBmN2E3Y2I1NzI3NjkxZWU3MjAyYzc5MmVhZWFlZDc4YmRjODE3YjVjNzVmMTliNDI0NWIwYyIsIlZvbHVtZXMiOm51bGwsIldvcmtpbmdEaXIiOiIiLCJFbnRyeXBvaW50IjpudWxsLCJPbkJ1aWxkIjpudWxsLCJMYWJlbHMiOm51bGx9LCJjb250YWluZXIiOiI2MWM2OTM4ZWZmMDc1ZWVlNTE3Zjk4YWI4NjM3YzQ0MDRjNTJkNjg4NDNkOTI0NjZjOTQ5OGRjMTcxN2ZkZDFjIiwiY29udGFpbmVyX2NvbmZpZyI6eyJIb3N0bmFtZSI6IjYxYzY5MzhlZmYwNyIsIkRvbWFpbm5hbWUiOiIiLCJVc2VyIjoiIiwiQXR0YWNoU3RkaW4iOmZhbHNlLCJBdHRhY2hTdGRvdXQiOmZhbHNlLCJBdHRhY2hTdGRlcnIiOmZhbHNlLCJUdHkiOmZhbHNlLCJPcGVuU3RkaW4iOmZhbHNlLCJTdGRpbk9uY2UiOmZhbHNlLCJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiQ21kIjpbIi9iaW4vc2giLCItYyIsIiMobm9wKSAiLCJDTUQgW1wiL2Jpbi9zaFwiXSJdLCJJbWFnZSI6InNoYTI1NjpkMDgyYjBkMWNkMGY3YTdjYjU3Mjc2OTFlZTcyMDJjNzkyZWFlYWVkNzhiZGM4MTdiNWM3NWYxOWI0MjQ1YjBjIiwiVm9sdW1lcyI6bnVsbCwiV29ya2luZ0RpciI6IiIsIkVudHJ5cG9pbnQiOm51bGwsIk9uQnVpbGQiOm51bGwsIkxhYmVscyI6e319LCJjcmVhdGVkIjoiMjAyMy0wOC0wN1QxOToyMDozNy43OTgyMDk1NzRaIiwiZG9ja2VyX3ZlcnNpb24iOiIyMC4xMC4yMyIsImhpc3RvcnkiOlt7ImNyZWF0ZWQiOiIyMDIzLTA4LTA3VDE5OjIwOjM3LjY5ODgzMDYzOFoiLCJjcmVhdGVkX2J5IjoiL2Jpbi9zaCAtYyAjKG5vcCkgQUREIGZpbGU6NGZhYWUyOTdiNmNhYmE5MmUxNzkxYTVmZjY2N2JlMGZjYjRkZTZhNGRlMmRmMTU1Mzk1OTU3ZWY5ZDhhZDVlNSBpbiAvICJ9LHsiY3JlYXRlZCI6IjIwMjMtMDgtMDdUMTk6MjA6MzcuNzk4MjA5NTc0WiIsImNyZWF0ZWRfYnkiOiIvYmluL3NoIC1jICMobm9wKSAgQ01EIFtcIi9iaW4vc2hcIl0iLCJlbXB0eV9sYXllciI6dHJ1ZX1dLCJvcyI6ImxpbnV4Iiwicm9vdGZzIjp7InR5cGUiOiJsYXllcnMiLCJkaWZmX2lkcyI6WyJzaGEyNTY6YmMwYTlkNGUxNmQwYjk0OWQ1OTRiZjVmYzYyOWQwNTIwMGQ1ZGRhYzMzOWE4OTllYWMyNzE5MGViZjEyZTU2OSJdfX0=",
+   "repoDigests": [
+    "alpine@sha256:794bc829ea39d85926be70fedfc9fb17aa4244d82b2fbecb5634b03e5dd97aca"
+   ],
+   "architecture": "amd64",
+   "os": "linux"
+  }
+ },
+ "distro": {
+  "name": "alpine",
+  "version": "3.15.10",
+  "idLike": []
+ },
+ "descriptor": {
+  "name": "grype",
+  "version": "0.72.0",
+  "configuration": {
+   "output": [
+    "json"
+   ],
+   "file": "/home/derek/msusel/msusel-pique-cloud-dockerfile/out/grypealpine:3.15.json",
+   "distro": "",
+   "add-cpes-if-none": false,
+   "output-template-file": "",
+   "check-for-app-update": true,
+   "only-fixed": false,
+   "only-notfixed": false,
+   "ignore-wontfix": "",
+   "platform": "",
+   "search": {
+    "scope": "Squashed",
+    "unindexed-archives": false,
+    "indexed-archives": true
+   },
+   "ignore": null,
+   "exclude": [],
+   "db": {
+    "cache-dir": "/home/derek/.cache/grype/db",
+    "update-url": "https://toolbox-data.anchore.io/grype/databases/listing.json",
+    "ca-cert": "",
+    "auto-update": true,
+    "validate-by-hash-on-start": false,
+    "validate-age": true,
+    "max-allowed-built-age": 432000000000000
+   },
+   "externalSources": {
+    "enable": false,
+    "maven": {
+     "searchUpstreamBySha1": true,
+     "baseUrl": "https://search.maven.org/solrsearch/select"
+    }
+   },
+   "match": {
+    "java": {
+     "using-cpes": false
+    },
+    "dotnet": {
+     "using-cpes": false
+    },
+    "golang": {
+     "using-cpes": false,
+     "always-use-cpe-for-stdlib": true
+    },
+    "javascript": {
+     "using-cpes": false
+    },
+    "python": {
+     "using-cpes": false
+    },
+    "ruby": {
+     "using-cpes": false
+    },
+    "rust": {
+     "using-cpes": false
+    },
+    "stock": {
+     "using-cpes": true
+    }
+   },
+   "fail-on-severity": "",
+   "registry": {
+    "insecure-skip-tls-verify": false,
+    "insecure-use-http": false,
+    "auth": null,
+    "ca-cert": ""
+   },
+   "show-suppressed": false,
+   "by-cve": false,
+   "name": "",
+   "default-image-pull-source": "",
+   "vex-documents": [],
+   "vex-add": []
+  },
+  "db": {
+   "built": "2023-11-06T01:26:36Z",
+   "schemaVersion": 5,
+   "location": "/home/derek/.cache/grype/db/5",
+   "checksum": "sha256:b7290e3b9eae5d6522e7fa6c55dd23c31811323d799bd0e5497382bdd80f8c7a",
+   "error": null
+  },
+  "timestamp": "2023-11-06T10:12:54.991775865-07:00"
+ }
+}
