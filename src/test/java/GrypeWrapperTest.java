@@ -1,10 +1,13 @@
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import pique.model.Diagnostic;
 import pique.utility.PiqueProperties;
 import tool.GrypeWrapper;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Properties;
 
 public class GrypeWrapperTest {
@@ -26,9 +29,11 @@ public class GrypeWrapperTest {
     }
 
     @Test
-    public void assess(){
-        grypeWrapper.analyze(Paths.get("alpine:3.15"));
-        //System.out.println();
+    public void runGrype(){
+        Path alpine3_15_output = grypeWrapper.analyze(Paths.get("alpine:3.15"));
+        //maybe one or two test to see if grype ran correctly
+
+        Map<String, Diagnostic> results = grypeWrapper.parseAnalysis(alpine3_15_output);
     }
 
 }

@@ -37,13 +37,13 @@ public class GrypeWrapper extends Tool implements ITool {
         //workaround because grype targets images, which are loaded by docker
         String imageName = projectLocation.toString();
         LOGGER.info(this.getName() + "  Analyzing "+ imageName);
-        File tempResults = new File(System.getProperty("user.dir") + "/out/grype" + imageName + ".json");
+        File tempResults = new File(System.getProperty("user.dir") + "/out/grype-" + imageName + ".json");
         tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
         tempResults.getParentFile().mkdirs();
 
         String[] cmd = {"grype",
                 imageName,
-                //"--scope", "all-layers",
+                "--scope", "all-layers",
                 "-o", "json",
                 "--file",tempResults.toPath().toAbsolutePath().toString()};
         LOGGER.info(Arrays.toString(cmd));

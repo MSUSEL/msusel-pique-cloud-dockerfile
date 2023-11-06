@@ -205,7 +205,7 @@
    "output": [
     "json"
    ],
-   "file": "/home/derek/msusel/msusel-pique-cloud-dockerfile/out/grypealpine:3.15.json",
+   "file": "/home/derek/msusel/msusel-pique-cloud-dockerfile/out/grype-alpine:3.15.json",
    "distro": "",
    "add-cpes-if-none": false,
    "output-template-file": "",
@@ -215,7 +215,7 @@
    "ignore-wontfix": "",
    "platform": "",
    "search": {
-    "scope": "Squashed",
+    "scope": "all-layers",
     "unindexed-archives": false,
     "indexed-archives": true
    },
@@ -285,6 +285,6 @@
    "checksum": "sha256:b7290e3b9eae5d6522e7fa6c55dd23c31811323d799bd0e5497382bdd80f8c7a",
    "error": null
   },
-  "timestamp": "2023-11-06T10:12:54.991775865-07:00"
+  "timestamp": "2023-11-06T14:54:42.896045663-07:00"
  }
 }
