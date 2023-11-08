@@ -79,21 +79,22 @@ public class GrypeWrapper extends Tool implements ITool {
             LOGGER.info("No results to read from Grype.");
         }
 
-        ArrayList<String> cveList = new ArrayList<String>();
-        ArrayList<Integer> severityList = new ArrayList<Integer>();
+        ArrayList<String> cveList = new ArrayList<>();
+        ArrayList<Integer> severityList = new ArrayList<>();
 
         try {
             JSONObject jsonResults = new JSONObject(results);
-            JSONArray vulnerabilities = jsonResults.optJSONArray("runs").optJSONObject(0).optJSONObject("tool").optJSONObject("driver").optJSONArray("rules");
+            JSONArray matches = jsonResults.optJSONArray("matches");
 
             // if vulnerabilities is null we had no findings, thus return
-            if (vulnerabilities == null) {
+            if (matches == null) {
                 return diagnostics;
             }
 
-            for (int i = 0; i < vulnerabilities.length(); i++) {
-                JSONObject jsonFinding = (JSONObject) vulnerabilities.get(i);
+            for (int i = 0; i < matches.length(); i++) {
+                JSONObject jsonFinding = ((JSONObject) matches.get(i)).optJSONObject("vulnerability");
                 //Need to change this for this tool.
+                System.out.println(jsonFinding);
                 String findingName = jsonFinding.get("id").toString();
                 String findingSeverity = ((JSONObject) jsonFinding.get("properties")).get("security-severity").toString();
                 severityList.add(this.severityToInt(findingSeverity));
