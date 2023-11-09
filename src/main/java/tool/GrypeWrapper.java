@@ -94,9 +94,8 @@ public class GrypeWrapper extends Tool implements ITool {
             for (int i = 0; i < matches.length(); i++) {
                 JSONObject jsonFinding = ((JSONObject) matches.get(i)).optJSONObject("vulnerability");
                 //Need to change this for this tool.
-                System.out.println(jsonFinding);
                 String findingName = jsonFinding.get("id").toString();
-                String findingSeverity = ((JSONObject) jsonFinding.get("properties")).get("security-severity").toString();
+                String findingSeverity = jsonFinding.get("severity").toString();
                 severityList.add(this.severityToInt(findingSeverity));
                 cveList.add(findingName);
             }
@@ -105,14 +104,16 @@ public class GrypeWrapper extends Tool implements ITool {
             // in this for loop split them at the comma
             String[] findingNames = helperFunctions.getCWE(cveList, this.githubTokenPath);
             for (int i = 0; i < findingNames.length; i++) {
-                Diagnostic diag = diagnostics.get((findingNames[i]+" Grype Diagnostic"));
+                Diagnostic diag = diagnostics.get((findingNames[i] + " Diagnostic Grype"));
                 if (diag == null) {
+                    //TODO - what to do with findings that are not in the cwe 1000 view?
                     //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                     //We may want to treat this in another way.
                     // My (Eric) CVE to CWE script handles if cwe is unknown so different node for other.
                     // unknown means we don't know the CWE for the CVE
                     // other means it is a CWE outside of our software development view
-                    diag = diagnostics.get("CWE-other Grype Diagnostic");
+                    // diag = diagnostics.get("CWE-other Diagnostic Grype");
+                    System.out.println("CVE with CWE outside of CWE-1000 was found. Unsure how to proceed.");
                     LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
                 }
                 Finding finding = new Finding("",0,0,severityList.get(i));
