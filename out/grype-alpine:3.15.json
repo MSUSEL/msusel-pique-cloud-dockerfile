@@ -279,12 +279,12 @@
    "vex-add": []
   },
   "db": {
-   "built": "2023-11-08T01:25:04Z",
+   "built": "2023-11-10T01:25:14Z",
    "schemaVersion": 5,
    "location": "/home/derek/.cache/grype/db/5",
-   "checksum": "sha256:fac1eab15f700216ad46c9fdbc24dda0683b6efe5099eaa33e1a5f1c77b9ffca",
+   "checksum": "sha256:9877a2eac124b9d64a0d08a242e006764ed7d134e61c37bceb4281f468c090a6",
    "error": null
   },
-  "timestamp": "2023-11-08T16:07:49.814698259-07:00"
+  "timestamp": "2023-11-10T08:40:42.957504972-07:00"
  }
 }

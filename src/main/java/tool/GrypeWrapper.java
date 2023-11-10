@@ -23,7 +23,7 @@ public class GrypeWrapper extends Tool implements ITool {
     private String githubTokenPath;
 
     public GrypeWrapper(String githubTokenPath) {
-        super("grype", null);
+        super("Grype", null);
         this.githubTokenPath = githubTokenPath;
     }
 
@@ -104,6 +104,7 @@ public class GrypeWrapper extends Tool implements ITool {
             // in this for loop split them at the comma
             String[] findingNames = helperFunctions.getCWE(cveList, this.githubTokenPath);
             for (int i = 0; i < findingNames.length; i++) {
+                System.out.println(findingNames[i] + " Diagnostic Grype");
                 Diagnostic diag = diagnostics.get((findingNames[i] + " Diagnostic Grype"));
                 if (diag == null) {
                     //TODO - what to do with findings that are not in the cwe 1000 view?

@@ -94,7 +94,7 @@ public class DockerMarshallerTest {
         assertNotNull(oneImage);
         //if only a name is given, return number of images equal to the number of test versions in alpineTestVersions
         List<Image> twoImages = dockerMarshaller.getDockerImagesFromName(alpineTestName);
-        assertEquals(twoImages.size(), alpineTestVersions.length);
+        assertEquals(alpineTestVersions.length, twoImages.size());
 
     }
 
