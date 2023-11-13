@@ -49,8 +49,8 @@ public class QualityModelDeriver extends AQualityModelDeriver {
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
         ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"));
-        ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
-        Set<ITool> tools = Stream.of(gyrpeWrapper,trivyWrapper).collect(Collectors.toSet());
+        //TODO ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
+        Set<ITool> tools = Stream.of(gyrpeWrapper).collect(Collectors.toSet());
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
         qmDescription = pique.utility.TreeTrimmingUtility.trimQualityModelTree(qmDescription);
