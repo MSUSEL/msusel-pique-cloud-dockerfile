@@ -21,10 +21,17 @@ import java.util.Map;
 public class GrypeWrapper extends Tool implements ITool {
     private static final Logger LOGGER = LoggerFactory.getLogger(GrypeWrapper.class);
     private String githubTokenPath;
+    private String nvdAPIKeyPath;
 
     public GrypeWrapper(String githubTokenPath) {
         super("Grype", null);
         this.githubTokenPath = githubTokenPath;
+    }
+
+    public GrypeWrapper(String githubTokenPath, String nvdAPIKeyPath) {
+        super("Grype", null);
+        this.githubTokenPath = githubTokenPath;
+        this.nvdAPIKeyPath = nvdAPIKeyPath;
     }
 
     // Methods
@@ -102,24 +109,25 @@ public class GrypeWrapper extends Tool implements ITool {
 
             // TODO: change CVE_to_CWE script to return both the CVE and CWE, do this by printing CVE,CWE then
             // in this for loop split them at the comma
-            String[] findingNames = helperFunctions.getCWE(cveList, this.githubTokenPath);
+
+            System.out.println(cveList);
+            //String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubTokenPath);
+            String[] findingNames = helperFunctions.getCWEFromNVDAPIDirectly(cveList, this.githubTokenPath, this.nvdAPIKeyPath);
+
             for (int i = 0; i < findingNames.length; i++) {
                 System.out.println(findingNames[i] + " Diagnostic Grype");
                 Diagnostic diag = diagnostics.get((findingNames[i] + " Diagnostic Grype"));
-                if (diag == null) {
-                    //TODO - what to do with findings that are not in the cwe 1000 view?
+                if (diag != null) {
+                    Finding finding = new Finding("",0,0,severityList.get(i));
+                    finding.setName(cveList.get(i));
+                    diag.setChild(finding);
+                }else{
                     //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-                    //We may want to treat this in another way.
-                    // My (Eric) CVE to CWE script handles if cwe is unknown so different node for other.
-                    // unknown means we don't know the CWE for the CVE
-                    // other means it is a CWE outside of our software development view
-                    // diag = diagnostics.get("CWE-other Diagnostic Grype");
+                    // We may want to treat this in another way in the future, but im ignoring it for now.
                     System.out.println("CVE with CWE outside of CWE-1000 was found. Unsure how to proceed.");
                     LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
                 }
-                Finding finding = new Finding("",0,0,severityList.get(i));
-                finding.setName(cveList.get(i));
-                diag.setChild(finding);
+
             }
 
 

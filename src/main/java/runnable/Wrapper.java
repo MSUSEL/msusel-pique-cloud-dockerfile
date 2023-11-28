@@ -25,16 +25,16 @@ public class Wrapper {
         try {
             boolean helpFlag = check_help(args);
             ArgumentParser parser = ArgumentParsers.newFor("runnable.Wrapper").build()
-                    .defaultHelp(true).description("Entry point for PIQUE-CLOUD");
+                    .defaultHelp(true).description("Entry point for PIQUE-CLOUD-dockerfile analysis");
             parser.addArgument("--run")
                     .setDefault("evaluate")
                     .choices("derive", "evaluate")
                     .help("derive: derives a new quality model from the benchmark repository, using --file throws an IllegalArgumentException and print the stack trace" +
-                            "\n evaluate: evaluates cloud (?!?!) with derived quality model, --file must exist otherwise throw an IllegalArgumentException and print the stack trace");
+                            "\n evaluate: evaluates dockerfile with derived quality model, --file must exist otherwise throw an IllegalArgumentException and print the stack trace");
             parser.addArgument( "--file")
                     .dest("fileName")
                     .type(String.class)
-                    .help("path to dockerfile for evaluation (required if runType is evaluate)");
+                    .help("path to JSON of dockerfiles to evaluate (required if run argument is evaluate)");
             parser.addArgument("--version")
                     .action(Arguments.storeTrue())
                     .setDefault(false)
@@ -52,7 +52,7 @@ public class Wrapper {
                 namespace = parser.parseArgs(args);
             }
 
-            String runType = namespace.getString("runType");
+            String runType = namespace.getString("run");
             String fileName = namespace.getString("fileName");
             boolean printVersion = namespace.getBoolean("version");
             boolean downloadNVDFlag = namespace.getBoolean("downloadNVD");
@@ -87,13 +87,7 @@ public class Wrapper {
                 }
             }
             else if ("evaluate".equals(runType)) {
-                if (fileName == null) {
-                    new SingleProjectEvaluator();
-                }
-                else {
-                    // kick off evaluator
-                    new SingleProjectEvaluator(fileName);
-                }
+                new SingleProjectEvaluator(fileName);
             }
             else {
                 throw new IllegalArgumentException("Incorrect input parameters given. Use --help for more information");

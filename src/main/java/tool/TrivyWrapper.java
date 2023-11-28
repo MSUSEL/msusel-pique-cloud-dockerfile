@@ -125,7 +125,7 @@ package tool;
                      cveList.add(findingName);
                  }
 
-                 String[] findingNames = helperFunctions.getCWE(cveList, this.githubToken);
+                 String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubToken);
                   for (int i = 0; i < findingNames.length; i++) {
                      Diagnostic diag = diagnostics.get((findingNames[i]+" Trivy Diagnostic"));
                      if (diag == null) {

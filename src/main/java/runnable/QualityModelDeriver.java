@@ -23,6 +23,10 @@ public class QualityModelDeriver extends AQualityModelDeriver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(QualityModelDeriver.class);
 
+    public static void main(String[] args){
+        new QualityModelDeriver();
+    }
+
     public QualityModelDeriver(String propertiesPath){
         init(propertiesPath);
     }
@@ -48,12 +52,13 @@ public class QualityModelDeriver extends AQualityModelDeriver {
         String projectRootFlag = "";
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
-        ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"));
+        //ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"));
+        ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
         //TODO ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
         Set<ITool> tools = Stream.of(gyrpeWrapper).collect(Collectors.toSet());
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
-        qmDescription = pique.utility.TreeTrimmingUtility.trimQualityModelTree(qmDescription);
+        //qmDescription = pique.utility.TreeTrimmingUtility.trimQualityModelTree(qmDescription);
 
         QualityModel derivedQualityModel = deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
 

@@ -22,6 +22,9 @@
  */
 package utilities;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pique.model.Diagnostic;
@@ -31,15 +34,13 @@ import pique.model.QualityModelImport;
 import pique.utility.PiqueProperties;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -67,12 +68,74 @@ public class helperFunctions {
 		}
 	}
 
-	/**
+
+	/***
+	 *
+	 * @param projectsRepository
+	 *              import a path to a file that contains meta-data information about which image to download
+	 * @return
+	 *              awkward, but return a set of Paths, where each Path is a string of format "imageName:version"
+	 *              This is not a valid Path on disk, it is a workaround because of PIQUE core's heavy reliance
+	 *              on things existing on disk before analysis.
+	 */
+	public static Set<Path> getDockerImagesToAnalyze(Path projectsRepository){
+		Set<Path> images = new HashSet<>();
+		try {
+			JSONObject jsonResults = new JSONObject(readFileContent(projectsRepository));
+			JSONArray perProject = jsonResults.getJSONArray("images");
+
+			for (int i = 0; i < perProject.length(); i++){
+				JSONObject obj = perProject.getJSONObject(i);
+				//get versions
+				JSONArray jsonVersions = obj.getJSONArray("versions");
+				for (int j = 0; j < jsonVersions.length(); j++){
+					images.add(Paths.get(obj.getString("name") + ":" + jsonVersions.getString(j)));
+				}
+			}
+		}catch(IOException e){
+			LOGGER.info("No benchmark data to read in");
+
+		}catch (JSONException e) {
+			LOGGER.info("Improper JSON format for docker projects in file " + projectsRepository.toString());
+		}
+		return images;
+	}
+
+	public static String[] getCWEFromNVDAPIDirectly(ArrayList<String> cveList, String githubTokenPath, String nvdAPIKeyPath){
+		Properties prop = PiqueProperties.getProperties();
+		String pathToScript = prop.getProperty("cveTocwe.location");
+
+		// Convert each cveList to a comma-separated string
+		StringBuilder cveString = new StringBuilder();
+		for (String entry : cveList) {
+			if (cveString.length() > 0) {
+				cveString.append(",");
+			}
+			cveString.append(entry);
+		}
+		if (cveString.toString().isEmpty()) {
+			return new String[]{};
+		}
+		String[] cmd = {"python3", pathToScript, "--list", cveString.toString(), "--github_token", githubTokenPath, "--use_api", nvdAPIKeyPath};
+
+		System.out.println("executing command: " + Arrays.toString(cmd));
+		String cwe = "";
+		try {
+			cwe = getOutputFromProgram(cmd,LOGGER);
+		} catch (IOException e) {
+			System.err.println("Error running CVE_to_CWE.py");
+			e.printStackTrace();
+		}
+		return cwe.split("\n \n");
+
+	}
+
+													/**
 	 * Given a set of CVE names in a string separated by spaces, return the CWEs the CVEs are associated with
 	 * @param cveList An ArrayList<String> of one or more CVE names
 	 * @return An array of CWEs associated with the given CVEs
 	 */
-	public static String[] getCWE(ArrayList<String> cveList, String githubTokenPath) {
+	public static String[] getCWEFromNVDDatabaseDump(ArrayList<String> cveList, String githubTokenPath) {
 		Properties prop = PiqueProperties.getProperties();
 		String pathToScript = prop.getProperty("cveTocwe.location");
 		String pathToNVDDict = prop.getProperty("nvd-dictionary.location");
@@ -91,6 +154,7 @@ public class helperFunctions {
 		}
 		String[] cmd = {"python3", pathToScript, "--list", cveString.toString(), "--github_token", githubTokenPath, "--nvdDict", pathToNVDDict};
 
+		System.out.println("executing command: " + Arrays.toString(cmd));
 		String cwe = "";
 		try {
 			cwe = getOutputFromProgram(cmd,LOGGER);
