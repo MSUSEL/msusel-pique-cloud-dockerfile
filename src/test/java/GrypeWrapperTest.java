@@ -26,7 +26,7 @@ public class GrypeWrapperTest {
     public static void setup(){
         //load properties
         Properties prop = PiqueProperties.getProperties();
-        grypeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"));
+        grypeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
 
         //load docker marshaller
         DockerMarshallerTest.init();

@@ -19,7 +19,6 @@ public class ModelDeriveTest {
         // kick off model deriver
         QualityModelDeriver deriver = new QualityModelDeriver("src/test/resources/pique-test-properties.properties");
 
-
     }
 
     @Test
