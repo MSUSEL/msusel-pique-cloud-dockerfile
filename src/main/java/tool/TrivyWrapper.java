@@ -71,11 +71,11 @@ package tool;
              tempResults.getParentFile().mkdirs();
 
              String[] cmd = {"trivy",
-                     "sbom",
-                     "--format", "sarif",
-                     "--quiet",
+                     "image",
+                     "--format", "json",
+                     //"--quiet",
                      "--output",tempResults.toPath().toAbsolutePath().toString(),
-                     projectLocation.toAbsolutePath().toString()};
+                     projectLocation.toString()};
              LOGGER.info(Arrays.toString(cmd));
              try {
                  helperFunctions.getOutputFromProgram(cmd,LOGGER);
@@ -114,16 +114,42 @@ package tool;
 
              try {
                  JSONObject jsonResults = new JSONObject(results);
-                 JSONArray vulnerabilities = jsonResults.optJSONArray("runs").optJSONObject(0).optJSONObject("tool").optJSONObject("driver").optJSONArray("rules");
+                 //do cwe fields exist?
+                 JSONArray trivyResults = jsonResults.optJSONArray("Results");
 
-                 for (int i = 0; i < vulnerabilities.length(); i++) {
-                     JSONObject jsonFinding = (JSONObject) vulnerabilities.get(i);
-                     //Need to change this for this tool. (should stay the same now when using SARIF format)
-                     String findingName = jsonFinding.get("id").toString();
-                     String findingSeverity = ((JSONObject) jsonFinding.get("properties")).get("security-severity").toString();
-                     severityList.add(this.severityToInt(findingSeverity));
-                     cveList.add(findingName);
+                 // if the results field is null we had no findings, thus return
+                 if (trivyResults == null) {
+                     return diagnostics;
                  }
+
+                 for (int i = 0; i < trivyResults.length(); i++) {
+                     JSONArray jsonVulnerabilities = ((JSONObject) trivyResults.get(i)).optJSONArray("Vulnerabilities");
+                     for (int j = 0; j < jsonVulnerabilities.length(); j++){
+                         JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
+                         String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
+                         JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
+
+                         String[] associatedCWEs = new String[jsonWeaknesses.length()];
+                         if (jsonWeaknesses != null){
+                             for (int k = 0; k < jsonWeaknesses.length(); k++){
+                                 associatedCWEs[k] = jsonWeaknesses.get(k).toString();
+                             }
+                         }else {
+                             //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et
+                             LOGGER.info("found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
+                             System.out.println("found no CWEs for vulnerability: " + vulnerabilityID + ". This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
+                         }
+                         System.out.println(vulnerabilityID + " and associated CWEs: " + Arrays.toString(associatedCWEs));
+
+                         //regardless of cwes, continue with severity.
+                         String vulnerabilitySeverity = jsonFinding.getString("Severity");
+                         severityList.add(this.severityToInt(vulnerabilitySeverity));
+
+                     }
+
+                 }
+                 System.exit(0);
+
 
                  String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubToken);
                   for (int i = 0; i < findingNames.length; i++) {
@@ -144,7 +170,7 @@ package tool;
 
 
              } catch (JSONException e) {
-                 LOGGER.warn("Unable to read results form cve-bin-tool");
+                 LOGGER.warn("Unable to read results from Trivy JSON output");
              }
 
              return diagnostics;
