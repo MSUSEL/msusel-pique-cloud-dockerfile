@@ -86,6 +86,7 @@ public class GrypeWrapper extends Tool implements ITool {
             LOGGER.info("No results to read from Grype.");
         }
 
+        //TODO change these arraylists to the data structure Pairs. Later on when we initialize them as findings we key both arrays off one index
         ArrayList<String> cveList = new ArrayList<>();
         ArrayList<Integer> severityList = new ArrayList<>();
 
@@ -107,10 +108,6 @@ public class GrypeWrapper extends Tool implements ITool {
                 cveList.add(findingName);
             }
 
-            // TODO: change CVE_to_CWE script to return both the CVE and CWE, do this by printing CVE,CWE then
-            // in this for loop split them at the comma
-
-            System.out.println(cveList);
             //String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubTokenPath);
             String[] findingNames = helperFunctions.getCWEFromNVDAPIDirectly(cveList, this.githubTokenPath, this.nvdAPIKeyPath);
 
