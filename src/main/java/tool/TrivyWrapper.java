@@ -154,18 +154,16 @@ package tool;
                  String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubToken);
                   for (int i = 0; i < findingNames.length; i++) {
                      Diagnostic diag = diagnostics.get((findingNames[i]+" Trivy Diagnostic"));
-                     if (diag == null) {
+                     if (diag != null){
+                         Finding finding = new Finding("",0,0,severityList.get(i));
+                         finding.setName(cveList.get(i));
+                         diag.setChild(finding);
+                     } else {
                          //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-                         //We may want to treat this in another way.
-                         // My (Eric) CVE to CWE script handles if cwe is unknown so different node for other
-                         // unknown means we don't know the CWE for the CVE
-                         // other means it is a CWE outside of the software development view
-                         diag = diagnostics.get("CWE-other Trivy Diagnostic");
-                         LOGGER.warn("CVE with CWE outside of CWE-699 found.");
+                         // We may want to treat this in another way in the future, but im ignoring it for now.
+                         System.out.println("CVE with CWE outside of CWE-1000 was found. Ignoring this CVE.");
+                         LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
                      }
-                     Finding finding = new Finding("",0,0,0/*severityList.get(i)*/);
-                     finding.setName(cveList.get(i));
-                     diag.setChild(finding);
                  }
 
 
