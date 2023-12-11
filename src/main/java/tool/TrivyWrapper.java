@@ -50,11 +50,11 @@ package tool;
   */
  public class TrivyWrapper extends Tool implements ITool  {
      private static final Logger LOGGER = LoggerFactory.getLogger(TrivyWrapper.class);
-     private String githubToken;
+     private String githubTokenPath;
 
      public TrivyWrapper(String githubTokenPath) {
-         super("trivy", null);
-         this.githubToken = githubTokenPath;
+         super("Trivy", null);
+         this.githubTokenPath = githubTokenPath;
      }
 
      // Methods
@@ -65,10 +65,15 @@ package tool;
           */
          @Override
          public Path analyze(Path projectLocation) {
-             LOGGER.info(this.getName() + "  Analyzing "+ projectLocation.toString());
-             File tempResults = new File(System.getProperty("user.dir") + "/out/trivy.json");
+             String imageName = projectLocation.toString();
+             LOGGER.info(this.getName() + "  Analyzing "+ imageName);
+             File tempResults = new File(System.getProperty("user.dir") + "/out/trivy-" + imageName + ".json");
              tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
              tempResults.getParentFile().mkdirs();
+
+             //Unlike Grype, Trivy does not automatically download an image if it doesn't already exist.
+             //so, we need to download it.
+             DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
 
              String[] cmd = {"trivy",
                      "image",
@@ -109,9 +114,6 @@ package tool;
                  LOGGER.info("No results to read from Trivy.");
              }
 
-             ArrayList<String> cveList = new ArrayList<>();
-             ArrayList<Integer> severityList = new ArrayList<>();
-
              try {
                  JSONObject jsonResults = new JSONObject(results);
                  //do cwe fields exist?
@@ -124,48 +126,53 @@ package tool;
 
                  for (int i = 0; i < trivyResults.length(); i++) {
                      JSONArray jsonVulnerabilities = ((JSONObject) trivyResults.get(i)).optJSONArray("Vulnerabilities");
-                     for (int j = 0; j < jsonVulnerabilities.length(); j++){
-                         JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
-                         String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
-                         JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
+                     if (jsonVulnerabilities != null){
+                         //apparently is null when no vulnerabilities are found.
+                         for (int j = 0; j < jsonVulnerabilities.length(); j++) {
+                             JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
+                             String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
 
-                         String[] associatedCWEs = new String[jsonWeaknesses.length()];
-                         if (jsonWeaknesses != null){
-                             for (int k = 0; k < jsonWeaknesses.length(); k++){
-                                 associatedCWEs[k] = jsonWeaknesses.get(k).toString();
+                             ArrayList<String> associatedCWEs = new ArrayList<>();
+                             JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
+                             if (jsonWeaknesses == null) {
+                                 //try the cve-cwe script...
+                                 ArrayList<String> wrapper = new ArrayList<>();
+                                 wrapper.add(vulnerabilityID);
+                                 String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
+                                 if (cwes.length == 0) {
+                                     //NVD has none, we skip it
+                                     //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et
+                                     LOGGER.info("found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
+                                     System.out.println("found no CWEs for vulnerability: " + vulnerabilityID + ". This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
+
+                                 }else {
+                                     associatedCWEs.addAll(Arrays.asList(cwes));
+                                 }
+                             }else {
+                                 for (int k = 0; k < jsonWeaknesses.length(); k++) {
+                                     associatedCWEs.add(jsonWeaknesses.get(k).toString());
+                                 }
                              }
-                         }else {
-                             //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et
-                             LOGGER.info("found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
-                             System.out.println("found no CWEs for vulnerability: " + vulnerabilityID + ". This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
+                             //regardless of cwes, continue with severity.
+                             String vulnerabilitySeverity = jsonFinding.getString("Severity");
+                             int severity = this.severityToInt(vulnerabilitySeverity);
+
+                             for (int k = 0; k < associatedCWEs.size(); k++) {
+                                 Diagnostic diag = diagnostics.get((associatedCWEs.get(k) + " Diagnostic Trivy"));
+                                 if (diag != null) {
+                                     Finding finding = new Finding("", 0, 0, severity);
+                                     finding.setName(vulnerabilityID);
+                                     diag.setChild(finding);
+                                 } else {
+                                     //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
+                                     // We may want to treat this in another way in the future, but im ignoring it for now.
+                                     System.out.println("CVE with CWE outside of CWE-1000 was found. Ignoring this CVE.");
+                                     LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
+                                 }
+                             }
                          }
-                         System.out.println(vulnerabilityID + " and associated CWEs: " + Arrays.toString(associatedCWEs));
-
-                         //regardless of cwes, continue with severity.
-                         String vulnerabilitySeverity = jsonFinding.getString("Severity");
-                         severityList.add(this.severityToInt(vulnerabilitySeverity));
-
-                     }
-
-                 }
-                 System.exit(0);
-
-
-                 String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubToken);
-                  for (int i = 0; i < findingNames.length; i++) {
-                     Diagnostic diag = diagnostics.get((findingNames[i]+" Trivy Diagnostic"));
-                     if (diag != null){
-                         Finding finding = new Finding("",0,0,severityList.get(i));
-                         finding.setName(cveList.get(i));
-                         diag.setChild(finding);
-                     } else {
-                         //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-                         // We may want to treat this in another way in the future, but im ignoring it for now.
-                         System.out.println("CVE with CWE outside of CWE-1000 was found. Ignoring this CVE.");
-                         LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
                      }
                  }
-
 
              } catch (JSONException e) {
                  LOGGER.warn("Unable to read results from Trivy JSON output");

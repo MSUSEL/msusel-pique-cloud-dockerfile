@@ -130,7 +130,7 @@ public class helperFunctions {
 
 	}
 
-													/**
+	/**
 	 * Given a set of CVE names in a string separated by spaces, return the CWEs the CVEs are associated with
 	 * @param cveList An ArrayList<String> of one or more CVE names
 	 * @return An array of CWEs associated with the given CVEs
@@ -226,7 +226,6 @@ public class helperFunctions {
 	            while ((line = br.readLine()) != null) {
 	            	if(logger!=null) {
 	            		logger.debug(line);
-	            		System.out.println(line);
 	            	}
 	                output.append(line);
 	                output.append("\n");

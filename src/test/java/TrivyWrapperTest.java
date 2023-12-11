@@ -40,16 +40,16 @@ public class TrivyWrapperTest {
         Map<String, Diagnostic> results = trivyWrapper.parseAnalysis(alpine3_15_output);
 
 
-        Diagnostic d = results.get("CWE-787 Diagnostic Trivy");
+        Diagnostic d = results.get("CWE-754 Diagnostic Trivy");
         // one finding coming from alpine:3.15
         assertEquals(1, d.getChildren().keySet().size());
         // check that the finding matches with our expectations (name + critical severity + value)
-        Finding f = (Finding) d.getChild("CVE-2022-48174");
-        assertEquals(10, f.getSeverity());
-        assertEquals(new BigDecimal(10), f.getValue());
+        Finding f = (Finding) d.getChild("CVE-2023-5678");
+        assertEquals(7, f.getSeverity());
+        assertEquals(new BigDecimal(7), f.getValue());
 
         //check the value is being aggregated correctly to diagnostic value
-        assertEquals(new BigDecimal(10.0).stripTrailingZeros(), d.getValue().stripTrailingZeros());
+        assertEquals(new BigDecimal(7.0).stripTrailingZeros(), d.getValue().stripTrailingZeros());
 
     }
 }
