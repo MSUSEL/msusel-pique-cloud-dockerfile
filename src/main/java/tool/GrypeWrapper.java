@@ -13,7 +13,9 @@ import utilities.helperFunctions;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -44,7 +46,15 @@ public class GrypeWrapper extends Tool implements ITool {
         //workaround because grype targets images, which are loaded by docker
         String imageName = projectLocation.toString();
         LOGGER.info(this.getName() + "  Analyzing "+ imageName);
-        File tempResults = new File(System.getProperty("user.dir") + "/out/grype-" + imageName + ".json");
+        String imageNameForDirectory = imageName.split(":")[0];
+        String workingDirectoryPrefix = System.getProperty("user.dir") + "/out/" + imageNameForDirectory + "/";
+        try {
+            Files.createDirectories(Paths.get(workingDirectoryPrefix));
+        }catch(java.io.IOException e) {
+            LOGGER.debug("Error creating directory to save tool results");
+            System.out.println("Error creating directory to save tool results");
+        }
+        File tempResults = new File(workingDirectoryPrefix + "grype-" + imageName + ".json");
         tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
         tempResults.getParentFile().mkdirs();
 
@@ -123,8 +133,9 @@ public class GrypeWrapper extends Tool implements ITool {
                 }else{
                     //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                     // We may want to treat this in another way in the future, but im ignoring it for now.
-                    System.out.println("CVE with CWE outside of CWE-1000 was found. Unsure how to proceed.");
-                    LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
+                    System.out.println("Vulnerability " + cveList.get(i) + " with CWE: " + findingNames[i] + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                    LOGGER.warn("Vulnerability " + cveList.get(i) + " with CWE: " + findingNames[i] + "  outside of CWE-1000 was found. Ignoring this CVE.");
+
                 }
 
             }
