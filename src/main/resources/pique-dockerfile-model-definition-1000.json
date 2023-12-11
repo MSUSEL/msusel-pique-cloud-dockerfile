@@ -9,7 +9,7 @@
   "factors": {
     "tqi": {
       "PIQUE Cloud-dockerfile quality model": {
-        "description": "Model description, replace with a description of your model"
+        "description": "PIQUE Cloud-dockerfile quality model"
       }
     },
     "quality_aspects": {

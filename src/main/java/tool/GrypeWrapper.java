@@ -61,6 +61,7 @@ public class GrypeWrapper extends Tool implements ITool {
             LOGGER.error(e.toString());
             e.printStackTrace();
         }
+        //clean up, delete imagename
 
         return tempResults.toPath();
     }
@@ -108,11 +109,12 @@ public class GrypeWrapper extends Tool implements ITool {
                 cveList.add(findingName);
             }
 
-            //String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubTokenPath);
-            String[] findingNames = helperFunctions.getCWEFromNVDAPIDirectly(cveList, this.githubTokenPath, this.nvdAPIKeyPath);
+            // use nvd dump or not. NVD dump avoids timeout issues with NVD but DB dump load takes a while too....
+            // Trying the raw NVD DB dump for now, might change later
+            String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubTokenPath);
+            //String[] findingNames = helperFunctions.getCWEFromNVDAPIDirectly(cveList, this.githubTokenPath, this.nvdAPIKeyPath);
 
             for (int i = 0; i < findingNames.length; i++) {
-                System.out.println(findingNames[i] + " Diagnostic Grype");
                 Diagnostic diag = diagnostics.get((findingNames[i] + " Diagnostic Grype"));
                 if (diag != null) {
                     Finding finding = new Finding("",0,0,severityList.get(i));

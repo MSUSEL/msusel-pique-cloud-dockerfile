@@ -25,7 +25,6 @@ public class DockerMarshallerTest {
     public static void init() {
         //initialize dockerMarshaller
         dockerMarshaller = new DockerMarshaller();
-        dockerMarshaller.initiateDockerClient();
     }
 
     @BeforeClass

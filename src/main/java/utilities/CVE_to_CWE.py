@@ -149,6 +149,9 @@ def main():
             nvd_dict = json.load(json_file)
         result = get_cwe_for_cves(cves, github_token, nvd_dict)
 
+
+    # LOLOL super bad tech debt, some of the worst I have seen. If you remove this, the program fails.
+    # The java end of things parses this content from stdout. It is a workaround to having the python side of things return a list.
     for c in result:
         print(c)
         print(" ")

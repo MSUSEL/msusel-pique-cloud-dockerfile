@@ -12,6 +12,7 @@ import pique.evaluation.BenchmarkMeasureEvaluator;
 import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.QualityModel;
+import tool.DockerMarshaller;
 import utilities.helperFunctions;
 
 import java.io.FileReader;
@@ -87,6 +88,9 @@ public class CloudBenchmarker extends AbstractBenchmarker implements IBenchmarke
             // Print information
             System.out.println("\n\tFinished analyzing project " + project.getName());
             System.out.println("\t" + counter + " of " + totalProjects + " analyzed.\n");
+
+            System.out.println("Removing image: " + dockerImage + " from filesystem");
+            DockerMarshaller.deleteDockerImageAfterProcessing(imageName);
         }
         return projects;
     }

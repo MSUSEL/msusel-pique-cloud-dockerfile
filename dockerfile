@@ -48,11 +48,10 @@ RUN mvn install -Dmaven.test.skip
 # python dependency installs
 RUN pip install argparse requests #json
 
+WORKDIR "/home"
+RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
-# local copy until we publicize it on github
-COPY . "/home/msusel-pique-cloud-dockerfile/"
-#RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
-RUN mvn package -Dmaven.test.skipgit
+RUN mvn package -Dmaven.test.skip
 
 #create input directory
 #RUN mkdir "/input"
