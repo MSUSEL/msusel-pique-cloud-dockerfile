@@ -35,17 +35,19 @@ package tool;
 
  import java.io.File;
  import java.io.IOException;
+ import java.nio.file.Files;
  import java.nio.file.Path;
+ import java.nio.file.Paths;
  import java.util.ArrayList;
  import java.util.Arrays;
  import java.util.Map;
 
  /**
-  * CODE TAKEN FROM PIQUE-BIN-DOCKER AND MODIFIED FOR PIQUE-SBOM-CONTENT.
+  * CODE TAKEN FROM PIQUE-BIN-DOCKER AND MODIFIED FOR PIQUE-SBOM-CONTENT and PIQUE-CLOUD-DOCKERFILE.
   * This tool wrapper will run and analyze the output of the tool.
   * When parsing the output of the tool, a command line call to run a Python script is made. This script is responsible for translating from
   * CVE number to the CWE it is categorized as by the NVD.
-  * @author Eric O'Donoghue
+  * @author Derek Reimanis
   *
   */
  public class TrivyWrapper extends Tool implements ITool  {
@@ -59,15 +61,22 @@ package tool;
 
      // Methods
          /**
-          * @param projectLocation The path to a binary file for the desired solution of project to
-          *             analyze
+          * @param projectLocation The path to a binary file for the desired solution of project to analyze
           * @return The path to the analysis results file
           */
          @Override
          public Path analyze(Path projectLocation) {
              String imageName = projectLocation.toString();
              LOGGER.info(this.getName() + "  Analyzing "+ imageName);
-             File tempResults = new File(System.getProperty("user.dir") + "/out/trivy-" + imageName + ".json");
+             String imageNameForDirectory = imageName.split(":")[0];
+             String workingDirectoryPrefix = System.getProperty("user.dir") + "/out/" + imageNameForDirectory + "/";
+             try {
+                 Files.createDirectories(Paths.get(workingDirectoryPrefix));
+             }catch(java.io.IOException e) {
+                 LOGGER.debug("Error creating directory to save tool results");
+                 System.out.println("Error creating directory to save tool results");
+             }
+             File tempResults = new File(workingDirectoryPrefix + "trivy-" + imageName + ".json");
              tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
              tempResults.getParentFile().mkdirs();
 
@@ -78,7 +87,7 @@ package tool;
              String[] cmd = {"trivy",
                      "image",
                      "--format", "json",
-                     //"--quiet",
+                     "--quiet",
                      "--output",tempResults.toPath().toAbsolutePath().toString(),
                      projectLocation.toString()};
              LOGGER.info(Arrays.toString(cmd));
@@ -166,8 +175,8 @@ package tool;
                                  } else {
                                      //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                                      // We may want to treat this in another way in the future, but im ignoring it for now.
-                                     System.out.println("CVE with CWE outside of CWE-1000 was found. Ignoring this CVE.");
-                                     LOGGER.warn("CVE with CWE outside of CWE-1000 found.");
+                                     System.out.println("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                                     LOGGER.warn("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
                                  }
                              }
                          }
