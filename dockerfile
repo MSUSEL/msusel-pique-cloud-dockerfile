@@ -54,18 +54,14 @@ WORKDIR "/home/msusel-pique-cloud-dockerfile"
 RUN mvn package -Dmaven.test.skip
 
 #create input directory
-#RUN mkdir "/input"
+RUN mkdir "/input"
 
 # input for project files
-#VOLUME ["/input"]
+VOLUME ["/input"]
 
-# create output directory
-#RUN mkdir "/output"
 # output for model
-#VOLUME ["/output"]
+VOLUME ["/output"]
 
-#RUN chmod -R +x /input
-#RUN chmod -R +x /output
 
 ##### secret sauce
-#ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-0.0.1-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0.0-jar-with-dependencies.jar"]
