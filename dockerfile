@@ -48,7 +48,7 @@ RUN mvn install -Dmaven.test.skip
 # python dependency installs
 RUN pip install argparse requests #json
 
-ARG CACHEBUST=2
+ARG CACHEBUST=3
 
 WORKDIR "/home"
 RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
