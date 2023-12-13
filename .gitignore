@@ -36,3 +36,6 @@ target/*
 
 # nvd database
 src/main/resources/nvd-dictionary.json
+
+# tool output files
+tool-out/*

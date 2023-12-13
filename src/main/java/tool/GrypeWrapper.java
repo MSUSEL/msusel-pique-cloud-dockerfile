@@ -47,7 +47,7 @@ public class GrypeWrapper extends Tool implements ITool {
         String imageName = projectLocation.toString();
         System.out.println("Analyzing "+ imageName + " with " + this.getName());
         String imageNameForDirectory = imageName.split(":")[0];
-        String workingDirectoryPrefix = System.getProperty("user.dir") + "/out/" + imageNameForDirectory + "/";
+        String workingDirectoryPrefix = System.getProperty("user.dir") + "/tool-out/" + imageNameForDirectory + "/";
         try {
             Files.createDirectories(Paths.get(workingDirectoryPrefix));
         }catch(java.io.IOException e) {
