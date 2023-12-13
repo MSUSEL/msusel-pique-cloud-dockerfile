@@ -47,6 +47,7 @@ def main():
         if f - s < 0.6:
             time.sleep(0.6 - (f - s))  # ensure we do not exceed rate limit
         n += 1
+        print("NVD has completed " + str(2000*n) + " downloads")
 
     json.dump(nvd_dictionary, open(downloadPath, 'w'))
     print("true")

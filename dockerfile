@@ -48,12 +48,14 @@ RUN mvn install -Dmaven.test.skip
 # python dependency installs
 RUN pip install argparse requests #json
 
+#ARG CACHEBUST=1
+
 WORKDIR "/home"
 RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
 RUN mvn package -Dmaven.test.skip
 
-#create input directory
+# create input directory
 RUN mkdir "/input"
 
 # input for project files
@@ -64,4 +66,4 @@ VOLUME ["/output"]
 
 
 ##### secret sauce
-ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0.0-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar", "--downloadNVD", "--run", "evaluate", "--file", "input/docker-image-target.json"]
