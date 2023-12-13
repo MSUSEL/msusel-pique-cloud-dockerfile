@@ -68,6 +68,7 @@ package tool;
          public Path analyze(Path projectLocation) {
              String imageName = projectLocation.toString();
              LOGGER.info(this.getName() + "  Analyzing "+ imageName);
+             System.out.println("Analyzing "+ imageName + " with " + this.getName());
              String imageNameForDirectory = imageName.split(":")[0];
              String workingDirectoryPrefix = System.getProperty("user.dir") + "/out/" + imageNameForDirectory + "/";
              try {
@@ -77,26 +78,29 @@ package tool;
                  System.out.println("Error creating directory to save tool results");
              }
              File tempResults = new File(workingDirectoryPrefix + "trivy-" + imageName + ".json");
-             tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
-             tempResults.getParentFile().mkdirs();
+             if (tempResults.exists()){
+                 LOGGER.info("Already ran Trivy on: " + imageName + ", results stored in: " + tempResults.toString());
+             }else {
+                 LOGGER.info("Have not run Trivy on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
+                 tempResults.getParentFile().mkdirs();
+                 //Unlike Grype, Trivy does not automatically download an image if it doesn't already exist.
+                 //so, we need to download it.
+                 DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
 
-             //Unlike Grype, Trivy does not automatically download an image if it doesn't already exist.
-             //so, we need to download it.
-             DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
-
-             String[] cmd = {"trivy",
-                     "image",
-                     "--format", "json",
-                     "--quiet",
-                     "--output",tempResults.toPath().toAbsolutePath().toString(),
-                     projectLocation.toString()};
-             LOGGER.info(Arrays.toString(cmd));
-             try {
-                 helperFunctions.getOutputFromProgram(cmd,LOGGER);
-             } catch (IOException  e) {
-                 LOGGER.error("Failed to run Trivy");
-                 LOGGER.error(e.toString());
-                 e.printStackTrace();
+                 String[] cmd = {"trivy",
+                         "image",
+                         "--format", "json",
+                         "--quiet",
+                         "--output", tempResults.toPath().toAbsolutePath().toString(),
+                         projectLocation.toString()};
+                 LOGGER.info(Arrays.toString(cmd));
+                 try {
+                     helperFunctions.getOutputFromProgram(cmd, LOGGER);
+                 } catch (IOException e) {
+                     LOGGER.error("Failed to run Trivy");
+                     LOGGER.error(e.toString());
+                     e.printStackTrace();
+                 }
              }
 
              return tempResults.toPath();
