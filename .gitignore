@@ -31,7 +31,7 @@ replay_pid*
 input/keys/github-token.txt
 input/keys/nvd-api-key.txt
 
-# don't push compiled targets
+# don't push compiled classes or compiled targets
 target/*
 
 # nvd database
