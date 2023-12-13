@@ -2,6 +2,7 @@ package tool;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.PullImageResultCallback;
+import com.github.dockerjava.api.exception.NotFoundException;
 import com.github.dockerjava.api.model.Image;
 import com.github.dockerjava.api.model.PullResponseItem;
 import com.github.dockerjava.core.DockerClientBuilder;
@@ -75,7 +76,11 @@ public class DockerMarshaller {
         if (client == null){
             initiateDockerClient();
         }
-        client.removeImageCmd(imageNameWithTag).withForce(true).exec();
+        try {
+            client.removeImageCmd(imageNameWithTag).withForce(true).exec();
+        }catch (NotFoundException e){
+            LOGGER.info("Image: " + imageNameWithTag + " does not exist on the filesystem, skipping removal and continuing.");
+        }
     }
 
     /***

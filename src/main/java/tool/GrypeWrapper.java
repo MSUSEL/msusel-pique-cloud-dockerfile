@@ -45,7 +45,7 @@ public class GrypeWrapper extends Tool implements ITool {
     public Path analyze(Path projectLocation) {
         //workaround because grype targets images, which are loaded by docker
         String imageName = projectLocation.toString();
-        LOGGER.info(this.getName() + "  Analyzing "+ imageName);
+        System.out.println("Analyzing "+ imageName + " with " + this.getName());
         String imageNameForDirectory = imageName.split(":")[0];
         String workingDirectoryPrefix = System.getProperty("user.dir") + "/out/" + imageNameForDirectory + "/";
         try {
@@ -55,23 +55,26 @@ public class GrypeWrapper extends Tool implements ITool {
             System.out.println("Error creating directory to save tool results");
         }
         File tempResults = new File(workingDirectoryPrefix + "grype-" + imageName + ".json");
-        tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
-        tempResults.getParentFile().mkdirs();
+        if (tempResults.exists()){
+            LOGGER.info("Already ran Grype on: " + imageName + ", results stored in: " + tempResults.toString());
+        }else {
+            LOGGER.info("Have not run Grype on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
+            tempResults.getParentFile().mkdirs();
 
-        String[] cmd = {"grype",
-                imageName,
-                "--scope", "all-layers",
-                "-o", "json",
-                "--file",tempResults.toPath().toAbsolutePath().toString()};
-        LOGGER.info(Arrays.toString(cmd));
-        try {
-            helperFunctions.getOutputFromProgram(cmd,LOGGER);
-        } catch (IOException e) {
-            LOGGER.error("Failed to run Grype");
-            LOGGER.error(e.toString());
-            e.printStackTrace();
+            String[] cmd = {"grype",
+                    imageName,
+                    "--scope", "all-layers",
+                    "-o", "json",
+                    "--file", tempResults.toPath().toAbsolutePath().toString()};
+            LOGGER.info(Arrays.toString(cmd));
+            try {
+                helperFunctions.getOutputFromProgram(cmd, LOGGER);
+            } catch (IOException e) {
+                LOGGER.error("Failed to run Grype");
+                LOGGER.error(e.toString());
+                e.printStackTrace();
+            }
         }
-        //clean up, delete imagename
 
         return tempResults.toPath();
     }
