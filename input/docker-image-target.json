@@ -1,10 +1,9 @@
 {
   "images": [ 
     {
-      "name": "alpine",
+      "name": "msusel/pique-cloud-dockerfile",
       "versions": [
-        "3.18",
-        "2.6"
+        "1.0"
       ]
     }
   ]
