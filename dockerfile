@@ -9,8 +9,11 @@ ARG TRIVY_VERSION=0.44.1
 
 RUN apk update && apk upgrade && apk add \
     # system level packages
-    curl dpkg git openjdk8 python3 py3-pip
-    # pique specific installs
+    curl dpkg git openjdk8 python3 py3-pip docker openrc
+
+# add user to docker group
+RUN addgroup root docker
+RUN rc-update add docker boot
 
 # move to home for a fresh start
 WORKDIR "/home"
@@ -48,6 +51,9 @@ RUN mvn install -Dmaven.test.skip
 # python dependency installs
 RUN pip install argparse requests #json
 
+
+ARG CACHEBREAKER=1
+
 WORKDIR "/home"
 RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
@@ -56,10 +62,10 @@ WORKDIR "/home/msusel-pique-cloud-dockerfile"
 #RUN mvn package -Dmaven.test.skip
 
 #figure out a better way to add jar targets without maven build
-ADD /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar
+ADD target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar
 
 #Figure out a better way to work with the NVD database
-ADD /home/msusel-pique-cloud-dockerfile/src/main/resources/nvd-dictionary.json src/main/resources/nvd-dictionary.json
+ADD src/main/resources/nvd-dictionary.json src/main/resources/nvd-dictionary.json
 
 # create input directory
 RUN mkdir "/input"
@@ -70,6 +76,5 @@ VOLUME ["/input"]
 # output for model
 VOLUME ["/output"]
 
-
 ##### secret sauce
-ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar", "--run", "evaluate", "--file", "input/docker-image-target.json"]
+#ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar", "--run", "evaluate", "--file", "input/docker-image-target.json"]
