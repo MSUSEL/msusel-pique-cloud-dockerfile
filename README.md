@@ -14,7 +14,7 @@ These tools and 3rd party libraries will be automatically pulled with the docker
 * [Maven](https://github.com/apache/maven) version 3.9.6
 * [PIQUE-core](https://github.com/MSUSEL/msusel-pique) version 0.9.3
 
-The dockerfile has been designed to easily adjust version information as new versions of dependencies are released. 
+The dockerfile has been designed to easily adjust version information as new versions are released. 
 
 ## Run environment
 #### Docker
@@ -22,7 +22,7 @@ docker engine 20.10.24 (not tested with versions 21+)
 
 The image for this project is hosted on dockerhub 
 [here](https://hub.docker.com/repository/docker/msusel/pique-cloud-dockerfile/general). Instructions to download 
-and run are supplied 
+and run are supplied [below](##Running)
 
 
 #### not Docker
@@ -41,6 +41,7 @@ are supplied on this repository.
 7. Move the files 'nvd-api-key.txt' and 'github-token.txt' to the 'keys' directory.
 8. Create a file named 'docker-image-target.json' and place it in the 'input' directory.
 9. Copy and paste the contents of the [targets file](input/docker-image-target.json) to 'docker-image-target.json'
+    1. Modify the file to target the docker images to be analyzed.
 10. The resulting directory structure should look like this:
 ```
 ├── $WORKDIR
