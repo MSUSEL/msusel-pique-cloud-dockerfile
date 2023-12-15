@@ -22,7 +22,7 @@ docker engine 20.10.24 (not tested with versions 21+)
 
 The image for this project is hosted on dockerhub 
 [here](https://hub.docker.com/repository/docker/msusel/pique-cloud-dockerfile/general). Instructions to download 
-and run are supplied [below](##Running)
+and run are supplied [below](https://github.com/MSUSEL/msusel-pique-cloud-dockerfile/tree/master#running)
 
 
 #### not Docker
