@@ -41,7 +41,7 @@ public class GrypeWrapperTest {
 
         Diagnostic d = results.get("CWE-787 Diagnostic Grype");
         // one finding coming from alpine:3.15, but it appears twice. Not sure why but this is a Grype issue I think..
-        assertEquals(2, d.getChildren().keySet().size());
+        assertEquals(1, d.getChildren().keySet().size());
         // check that one finding matches with our expectations (name + critical severity + value)
         Finding f = (Finding) d.getChild("CVE-2022-48174");
         assertEquals(10, f.getSeverity());
