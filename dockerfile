@@ -3,8 +3,8 @@ FROM alpine:3.18.5
 ## dependency and library versions
 ARG GRYPE_VERSION=0.72.0
 ARG MAVEN_VERSION=3.9.6
-ARG PIQUE_CORE_VERSION=0.9.3
-ARG PIQUE_DOCKERFILE_VERSION=0.9
+ARG PIQUE_CORE_VERSION=0.9.4
+ARG PIQUE_DOCKERFILE_VERSION=1.0.1
 ARG TRIVY_VERSION=0.44.1
 
 RUN apk update && apk upgrade && apk add \
@@ -59,7 +59,7 @@ WORKDIR "/home/msusel-pique-cloud-dockerfile"
 #RUN mvn package -Dmaven.test.skip
 
 #figure out a better way to add jar targets without maven build
-ADD target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar
+ADD "target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar" "target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar"
 
 #Figure out a better way to work with the NVD database
 ADD src/main/resources/nvd-dictionary.json src/main/resources/nvd-dictionary.json
@@ -74,4 +74,4 @@ VOLUME ["/input"]
 VOLUME ["/output"]
 
 ##### secret sauce
-ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-1.0-jar-with-dependencies.jar", "--run", "evaluate", "--file", "input/docker-image-target.json"]
+ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar", "--run", "evaluate", "--file", "input/docker-image-target.json"]

@@ -9,6 +9,7 @@ import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import pique.model.Finding;
+import pique.utility.PiqueProperties;
 import utilities.helperFunctions;
 
 import java.io.File;
@@ -47,12 +48,16 @@ public class GrypeWrapper extends Tool implements ITool {
         String imageName = projectLocation.toString();
         System.out.println("Analyzing "+ imageName + " with " + this.getName());
         String imageNameForDirectory = imageName.split(":")[0];
-        String workingDirectoryPrefix = System.getProperty("user.dir") + "/tool-out/" + imageNameForDirectory + "/";
+        //set up results dir
+        String workingDirectoryPrefix = "";
+
         try {
+            workingDirectoryPrefix = System.getProperty("user.dir") + "/tool-out/" + imageNameForDirectory + "/";
             Files.createDirectories(Paths.get(workingDirectoryPrefix));
         }catch(java.io.IOException e) {
-            LOGGER.debug("Error creating directory to save tool results");
-            System.out.println("Error creating directory to save tool results");
+            e.printStackTrace();
+            LOGGER.debug("Error creating directory to save Grype tool results");
+            System.out.println("Error creating directory to save Grype tool results");
         }
         File tempResults = new File(workingDirectoryPrefix + "grype-" + imageName + ".json");
         if (tempResults.exists()){
