@@ -2,7 +2,6 @@ package runnable;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
@@ -19,6 +18,7 @@ import utilities.helperFunctions;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -72,6 +72,13 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
 
         for (Path dockerfile : dockerfilesToAnalyze) {
             Path outputPath = runEvaluator(dockerfile, resultsDir, qmLocation, tools);
+            try {
+                //create output directory if not exist
+                Files.createDirectories(outputPath);
+            } catch (IOException e) {
+                System.out.println("Could not create output directory");
+                throw new RuntimeException(e);
+            }
             LOGGER.info("output: " + outputPath.getFileName());
             System.out.println("output: " + outputPath.getFileName());
             System.out.println("exporting compact: " + project.exportToJson(resultsDir, true));

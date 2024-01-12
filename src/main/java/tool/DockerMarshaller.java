@@ -55,15 +55,19 @@ public class DockerMarshaller {
             initiateDockerClient();
         }
         try {
-            System.out.println("Attempting to download image: " + imageNameWithTag);
-            client.pullImageCmd(imageNameWithTag.split(":")[0]).withTag(imageNameWithTag.split(":")[1]).exec(new PullImageResultCallback() {
-                @Override
-                public void onNext(PullResponseItem item) {
-                    super.onNext(item);
-                }
-            }).awaitCompletion(5, TimeUnit.MINUTES);
+            //see if image exists on local listing
+            if (getDockerImagesFromName(imageNameWithTag).isEmpty()){
+                //image did not exist on local machine
+                System.out.println("Attempting to download image: " + imageNameWithTag + " from DockerHub");
+                client.pullImageCmd(imageNameWithTag.split(":")[0]).withTag(imageNameWithTag.split(":")[1]).exec(new PullImageResultCallback() {
+                    @Override
+                    public void onNext(PullResponseItem item) {
+                        super.onNext(item);
+                    }
+                }).awaitCompletion(5, TimeUnit.MINUTES);
+            }
         }catch (InterruptedException interruptedException){
-            System.out.println("Timeout pulling docker images... Might be taking a long time to pull and install all the images.");
+            System.out.println("Timeout pulling docker images from DockerHub, with a 5 minute timeout. Perhaps DockerHub is down?");
         }
     }
 
@@ -88,11 +92,11 @@ public class DockerMarshaller {
      * @param imageName name of image
      * @return List of docker Image objects
      */
-    public List<Image> getDockerImagesFromName(String imageName){
+    public static List<Image> getDockerImagesFromName(String imageName){
         List<Image> images = null;
         try{
             images = client.listImagesCmd().withReferenceFilter(imageName).exec();
-            System.out.println("Search query: " +  imageName + " leads to size: " + images.size());
+            System.out.println("Search query: " +  imageName + " leads to: " + images.size() + " images already on filesystem");
 
         }catch(Exception e){
             LOGGER.error("Failed to retrieve docker image with search");
