@@ -72,7 +72,5 @@ VOLUME ["/input"]
 # output for model
 VOLUME ["/output"]
 
-#ENTRYPOINT ["java", "--version"]
-
 ##### secret sauce
 #ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
