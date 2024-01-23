@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Properties;
 
 public class GrypeWrapper extends Tool implements ITool {
     private static final Logger LOGGER = LoggerFactory.getLogger(GrypeWrapper.class);
@@ -52,7 +53,11 @@ public class GrypeWrapper extends Tool implements ITool {
         String workingDirectoryPrefix = "";
 
         try {
-            workingDirectoryPrefix = System.getProperty("user.dir") + "/tool-out/" + imageNameForDirectory + "/";
+            //read output dir from properties file. FIXME we need better properties import
+            Properties prop = PiqueProperties.getProperties("src/main/resources/pique-properties.properties");
+            Path resultsDir = Paths.get(prop.getProperty("results.directory"));
+
+            workingDirectoryPrefix = resultsDir + "/tool-out/" + imageNameForDirectory + "/";
             Files.createDirectories(Paths.get(workingDirectoryPrefix));
         }catch(java.io.IOException e) {
             e.printStackTrace();
@@ -63,7 +68,7 @@ public class GrypeWrapper extends Tool implements ITool {
         if (tempResults.exists()){
             LOGGER.info("Already ran Grype on: " + imageName + ", results stored in: " + tempResults.toString());
         }else {
-            LOGGER.info("Have not run Grype on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
+            LOGGER.info("Have not run Grype on: " + imageName + ", running now and storing in:" +  tempResults.toString());
             tempResults.getParentFile().mkdirs();
 
             String[] cmd = {"grype",

@@ -42,6 +42,7 @@ package tool;
  import java.util.ArrayList;
  import java.util.Arrays;
  import java.util.Map;
+ import java.util.Properties;
 
  /**
   * CODE TAKEN FROM PIQUE-BIN-DOCKER AND MODIFIED FOR PIQUE-SBOM-CONTENT and PIQUE-CLOUD-DOCKERFILE.
@@ -74,7 +75,11 @@ package tool;
              //set up results dir
              String workingDirectoryPrefix = "";
              try {
-                 workingDirectoryPrefix = System.getProperty("user.dir") + "/tool-out/" + imageNameForDirectory + "/";
+                 //read output dir from properties file. FIXME we need better properties import
+                 Properties prop = PiqueProperties.getProperties("src/main/resources/pique-properties.properties");
+                 Path resultsDir = Paths.get(prop.getProperty("results.directory"));
+
+                 workingDirectoryPrefix = resultsDir + "/tool-out/" + imageNameForDirectory + "/";
                  Files.createDirectories(Paths.get(workingDirectoryPrefix));
              }catch(java.io.IOException e) {
                  e.printStackTrace();
