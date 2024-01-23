@@ -3,9 +3,11 @@ FROM alpine:3.18.5
 ## dependency and library versions
 ARG GRYPE_VERSION=0.72.0
 ARG MAVEN_VERSION=3.9.6
-ARG PIQUE_CORE_VERSION=0.9.4
+ARG PIQUE_CORE_VERSION=v0.9.4_2
 ARG PIQUE_DOCKERFILE_VERSION=1.0.1
+# Trivy release without the 'v' because the release of trivy does not include the v on its download page
 ARG TRIVY_VERSION=0.44.1
+
 
 RUN apk update && apk upgrade && apk add \
     # system level packages
@@ -41,7 +43,7 @@ ENV PATH "/opt/apache-maven-"$MAVEN_VERSION"/bin:$PATH"
 WORKDIR "/home"
 RUN git clone https://github.com/MSUSEL/msusel-pique.git
 WORKDIR "/home/msusel-pique"
-RUN git checkout "tags/v"$PIQUE_CORE_VERSION
+RUN git checkout "tags/"$PIQUE_CORE_VERSION
 RUN mvn install -Dmaven.test.skip
 
 ##################################################
@@ -56,10 +58,7 @@ RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
 
 #skip this, takes 10 minutes and we are packing jar files in repo
-#RUN mvn package -Dmaven.test.skip
-
-#figure out a better way to add jar targets without maven build
-ADD "target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar" "target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar"
+RUN mvn package -Dmaven.test.skip
 
 #Figure out a better way to work with the NVD database
 ADD src/main/resources/nvd-dictionary.json src/main/resources/nvd-dictionary.json
@@ -73,5 +72,7 @@ VOLUME ["/input"]
 # output for model
 VOLUME ["/output"]
 
+#ENTRYPOINT ["java", "--version"]
+
 ##### secret sauce
-ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar", "--run", "evaluate", "--file", "input/docker-image-target.json"]
+#ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-"$PIQUE_DOCKERFILE_VERSION"-jar-with-dependencies.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
