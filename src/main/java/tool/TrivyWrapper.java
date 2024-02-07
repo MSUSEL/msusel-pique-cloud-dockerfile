@@ -73,6 +73,7 @@ package tool;
              System.out.println("Analyzing "+ imageName + " with " + this.getName());
              String imageNameForDirectory = imageName.split(":")[0];
              //set up results dir
+
              String workingDirectoryPrefix = "";
              try {
                  //read output dir from properties file. FIXME we need better properties import
