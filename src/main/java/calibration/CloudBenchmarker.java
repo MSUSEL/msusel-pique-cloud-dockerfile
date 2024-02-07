@@ -1,8 +1,5 @@
 package calibration;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
@@ -15,11 +12,8 @@ import pique.model.QualityModel;
 import tool.DockerMarshaller;
 import utilities.helperFunctions;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 /***
@@ -68,7 +62,7 @@ public class CloudBenchmarker extends AbstractBenchmarker implements IBenchmarke
             // TODO: temp fix
             // Set measures to not use a utility function during their node evaluation
             project.getQualityModel().getMeasures().values().forEach(measure -> {
-                measure.setEvaluatorObject(new BenchmarkMeasureEvaluator());
+                measure.setEval_strategy(new BenchmarkMeasureEvaluator());
             });
 
             // Run the static analysis tools process

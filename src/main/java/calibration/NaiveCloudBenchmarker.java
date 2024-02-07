@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NaiveCloudBenchmarker extends CloudBenchmarker implements IBenchmarker {
+public class NaiveCloudBenchmarker extends CloudBenchmarker{
 
     @Override
     public String getName() {
