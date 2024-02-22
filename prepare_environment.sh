@@ -9,18 +9,20 @@ INPUT_MESSAGE="########################################################\n#   INP
 
 # Dependency Checks
 function check_deps() {
+    DOCKER_CONFIG="$HOME/.docker/config.json"
+
     # Check that wget is installed
     printf "Checking dependencies...\n"
-    [ -x /usr/bin/wget ] || { printf "ERROR: wget is not installed. Please install wget on your system or perform manual installation of PIQUE-Cloud\n"; exit 1; }
+    [ -x /usr/bin/wget ] || { printf "ERROR: wget is not installed. Please install wget on your system or perform manual installation of PIQUE-Cloud\nexit 1\n"; exit 1; }
     printf "\twget is installed\n"
 
     # Check that docker is installed and user is logged in
-    ([ -f $HOME/.docker/config.json ] && [ $(grep -c '"auths" {}:' "$HOME/.docker/config.json") -eq 0 ]) \
-        || { printf "There may be an issue with your docker configuration or docker may not be installed.\n"; exit 1; }
+    ([ -f "$DOCKER_CONFIG" ] && [ $(grep -c '"auths" {}:' "$DOCKER_CONFIG") -eq 0 ]) \
+        || { printf "Please ensure that docker is installed, running, and configured with your username and login.\nexit 1\n"; exit 1; }
     printf "\tdocker is installed and you are logged in\n"
 
     # Check git is installed
-    git --version >/dev/null 2>&1 || { printf "git is not installed. Please install git to continue PIQUE-Cloud setup\n"; exit 1; }
+    git --version >/dev/null 2>&1 || { printf "git is not installed. Please install git on your system to continue PIQUE-Cloud setup\nexit 1\n"; exit 1; }
     printf "\tgit is installed\n"
     printf "Dependency check completed successfully\n\n"
 }
