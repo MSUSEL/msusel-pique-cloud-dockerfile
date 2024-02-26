@@ -13,12 +13,12 @@ check_deps() {
 
     # Check that wget is installed
     printf "Checking dependencies...\n"
-    [ -x /usr/bin/wget ] || { printf "\u001b[31mERROR: wget is not installed. Please install wget on your system or perform manual installation of PIQUE-Cloud\nexit 1\n\u001b[0m"; exit 1; }
+    [ -x "$(which wget)" ] || { printf "\u001b[31mERROR: wget is not installed. Please install wget on your system or perform manual installation of PIQUE-Cloud\nexit 1\n\u001b[0m"; exit 1; }
     printf "\twget is installed\n"
 
     # Check that docker is installed and user is logged in
-    ([ -f "$DOCKER_CONFIG" ] && [ $(grep -c '"auths" {}:' "$DOCKER_CONFIG") -eq 0 ]) \
-        || { printf "\u001b[31mPlease ensure that docker is installed, running, and configured with your username and login.\u001b[0m\nexit 1\n"; exit 1; }
+    # ([ -f "$DOCKER_CONFIG" ] && [ $(grep -c '"auths" {}:' "$DOCKER_CONFIG") -eq 0 ]) \
+    [ -x "$(which docker)" ] || { printf "\u001b[31mPlease ensure that docker is installed, running, and configured with your username and login.\u001b[0m\nexit 1\n"; exit 1; }
     printf "\tdocker is installed\n"
 
     # Check git is installed
