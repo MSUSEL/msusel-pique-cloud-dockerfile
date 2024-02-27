@@ -147,20 +147,31 @@ package tool;
                      return diagnostics;
                  }
 
+                 // Really this whole process is just associating tool output with a known
+                 // CWE in our model
                  for (int i = 0; i < trivyResults.length(); i++) {
                      JSONArray jsonVulnerabilities = ((JSONObject) trivyResults.get(i)).optJSONArray("Vulnerabilities");
                      if (jsonVulnerabilities != null){
                          //apparently is null when no vulnerabilities are found.
                          for (int j = 0; j < jsonVulnerabilities.length(); j++) {
+
+                             // grab the vulnerability from the json Trivy output and store it as
+                             // a jsonFinding object
                              JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
+
+                             // Get the vulnerability id and store as string
                              String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
 
                              ArrayList<String> associatedCWEs = new ArrayList<>();
+
+                             //optJSONArray is optional array associated with an index
+                             // If there is a CWE id, grab it
                              JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
                              if (jsonWeaknesses == null) {
                                  //try the cve-cwe script...
                                  ArrayList<String> wrapper = new ArrayList<>();
                                  wrapper.add(vulnerabilityID);
+                                 // Associate CVEs with appropriate CWEs - store as string array
                                  String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
                                  if (cwes.length == 0) {
                                      //NVD has none, we skip it
@@ -180,7 +191,14 @@ package tool;
                              String vulnerabilitySeverity = jsonFinding.getString("Severity");
                              int severity = this.severityToInt(vulnerabilitySeverity);
 
+                             // I'm confused here - it doesn't seem like we do anything with the
+                             // Diagnostic or the Finding that get created in this for loop
+                             //
                              for (int k = 0; k < associatedCWEs.size(); k++) {
+                                 // for each CWE, create finding. Start by getting each CWE from the list of associated CWEs
+                                 // then check the model to see if it has info on the CWE
+                                 // If it does, build a finding with appropriate information
+                                 // Add the finding as a child node of the Diagnostic in our map.
                                  Diagnostic diag = diagnostics.get((associatedCWEs.get(k) + " Diagnostic Trivy"));
                                  if (diag != null) {
                                      Finding finding = new Finding("", 0, 0, severity);
