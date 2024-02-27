@@ -50,8 +50,8 @@ get_authentication_keys() {
         printf "Please generate an API key with the National Vulnerability Database here:\u001b[36m https://nvd.nist.gov/developers/request-an-api-key\u001b[0m\n"; \
         printf "Be sure to save it somewhere secure. If you lose the key, you will need to generate a new one.\n\n"; \
         printf "Once you have retrieved your key, enter it here: "; \
-        read nvd_key; \
-        [ "$nvd_key" = "n" ] && exit 1 || echo "$nvd_key" > $NVD_KEY_PATH; }
+        read -r nvd_key; \
+        [ "$nvd_key" = "n" ] && exit 1 || echo "$nvd_key" > "$NVD_KEY_PATH"; }
     printf "\tNVD Key setup complete\n"
 
     # Future Work: Key validation
@@ -60,7 +60,7 @@ get_authentication_keys() {
         printf "history, type the letter 'n' in the prompt. The script will exit and you can manually generate WORKDIR/input/keys/github-token.txt Then, rerun this script.\u001b[0m\n"; \
         printf "Please generate a Github personal access token with ......permissions. More info:\u001b[36m https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens\u001b[0m\n\n"; \
         printf "Once you have generated or retrieved your token, paste it here: "; \
-        read github_key; \
+        read -r github_key; \
         [ "$github_key" = "n" ] && exit 1 || echo "$github_key" > "$GITHUB_TOKEN_PATH"; }
     printf "\tGithub token setup complete\n"
     printf "\u001b[32mAuthentication setup complete\u001b[0m\n\n"

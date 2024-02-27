@@ -100,6 +100,7 @@ public class GrypeWrapper extends Tool implements ITool {
         System.out.println(this.getName() + " Parsing Analysis...");
         LOGGER.debug(this.getName() + " Parsing Analysis...");
 
+        // Creates map between
         Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
         String results = "";
