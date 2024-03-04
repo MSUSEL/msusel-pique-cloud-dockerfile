@@ -36,7 +36,8 @@ are supplied on this repository.
     * Configure docker group (no sudo required) [Instructions here](https://docs.docker.com/engine/install/linux-postinstall/)
 2. \[Optional] With Docker engine installed, pull the latest version of this project:
 `docker pull msusel/pique-cloud-dockerfile:latest`
-3. Navigate to a working directory for this project. (Your working directory should not be in the same directory as this repository)
+3. Navigate to a working directory for this project. Note this script will create input and output directories relative to your working directory. It is not necessary
+to be in the same directory as the msusel-pique-cloud-dockerfile.
 
 #### Shell Script Setup for *NIX Operating Systems
 In a unix-like environment, running the prepare_environment [shell script](https://github.com/MSUSEL/msusel-pique-cloud-dockerfile/blob/master/prepare_environment)
@@ -51,7 +52,7 @@ with sudo. (Not recommended)_
 1. `./prepare_environment` will execute the script. Follow the prompts to set up your environment and run PIQUE against a sample target.
     *  You may need to make the script executable on your system running `chmod +x prepare_environment` to make the installation script executable on your system.
 2. Post-setup steps
-    * Instructions on configuring a custom target file
+    * To run static analysis tools on different or multiple targets, edit `WORKDIR/input/docker-image-target.json` to include the name of the DockerHub-hosted image(s) to be run.
 
 #### Manual Setup
 1. Create two directories, "input" and "output". Inside the "input directory", create another directory "keys"
