@@ -6,7 +6,9 @@
 
 WORKDIR="$PWD"
 INPUT_MESSAGE="##############################################\n#   INPUT NEEDED    \n##############################################"
-
+cat logos.txt | perl -pe 'select undef,undef,undef,.01555'
+echo " " | perl -pe 'select undef,undef,undef,1.00000'
+#cat logos.txt | pv --quiet  --rate-limit 1000
 # Dependency Checks
 check_deps() {
     # Check that wget is installed
