@@ -6,9 +6,15 @@
 
 WORKDIR="$PWD"
 INPUT_MESSAGE="##############################################\n#   INPUT NEEDED    \n##############################################"
-cat logos.txt | perl -pe 'select undef,undef,undef,.01555'
-echo " " | perl -pe 'select undef,undef,undef,1.00000'
-#cat logos.txt | pv --quiet  --rate-limit 1000
+
+printBanner() {
+    if [ -f msu_logo_ascii.txt ]
+    then
+        cat msu_logo_ascii.txt | perl -pe 'select undef,undef,undef,.01555'
+        echo " " | perl -pe 'select undef,undef,undef,0.50000'
+    fi
+}
+
 # Dependency Checks
 check_deps() {
     # Check that wget is installed
@@ -78,6 +84,7 @@ generate_sample_target() {
 }
 
 run() {
+    printBanner
     check_deps
     set_up_directories
     get_authentication_keys
