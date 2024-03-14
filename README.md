@@ -39,7 +39,7 @@ are supplied on this repository.
 3. Navigate to a working directory for this project. Note this script will create input and output directories relative to your working directory. It is not necessary
 to be in the same directory as the msusel-pique-cloud-dockerfile.
 
-#### Shell Script Setup for *NIX Operating Systems
+#### Shell Script Setup for Linux/MacOS
 In a unix-like environment, running the prepare_environment [shell script](https://github.com/MSUSEL/msusel-pique-cloud-dockerfile/blob/master/prepare_environment)
 will automatically check dependencies, guide the user through setting up necessary keys, pull the appropriate docker image and run PIQUE against a sample target file.
 
