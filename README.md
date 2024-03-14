@@ -40,8 +40,18 @@ are supplied on this repository.
 to be in the same directory as the msusel-pique-cloud-dockerfile.
 
 #### Shell Script Setup for Linux/MacOS
+You can obtain the shell script by cloning this repository
+
+or with the following command
+
+```wget https://raw.githubusercontent.com/MSUSEL/msusel-pique-cloud-dockerfile/master/prepare_environment```
+
+
 In a unix-like environment, running the prepare_environment [shell script](https://github.com/MSUSEL/msusel-pique-cloud-dockerfile/blob/master/prepare_environment)
 will automatically check dependencies, guide the user through setting up necessary keys, pull the appropriate docker image and run PIQUE against a sample target file.
+
+This script can be run at any time during the setup process and multiple times if necessary. It will attempt to detect changes you've made and start from the correct point
+in the setup process. Feel free to exit the script at any time and rerun as needed.
 
 ---
 _**Note:** docker, by default, is configured to run as root. If you have not followed the instructions above to create a root-privileged docker group, then you will have to run prepare_environment
