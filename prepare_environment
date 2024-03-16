@@ -1,14 +1,63 @@
 #!/bin/sh
 
+
+# Copyright 2024 Montana State University Software Engineering and Cybersecurity Laboratory
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the “Software”),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the Software
+# is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+
 ########################################################################
 # Prepares Environment For PIQUE-Cloud and runs PIQUE on sample targets
 ########################################################################
 
 WORKDIR="$PWD"
 INPUT_MESSAGE="##############################################\n#   INPUT NEEDED    \n##############################################"
-cat logos.txt | perl -pe 'select undef,undef,undef,.01555'
-echo " " | perl -pe 'select undef,undef,undef,1.00000'
-#cat logos.txt | pv --quiet  --rate-limit 1000
+PROGNAME="
+
+               ██████╗ ██╗ ██████╗ ██╗   ██╗███████╗
+               ██╔══██╗██║██╔═══██╗██║   ██║██╔════╝
+               ██████╔╝██║██║   ██║██║   ██║█████╗
+               ██╔═══╝ ██║██║▄▄ ██║██║   ██║██╔══╝
+               ██║     ██║╚██████╔╝╚██████╔╝███████╗
+               ╚═╝     ╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝
+
+                     ██████╗██╗      ██████╗ ██╗   ██╗██████╗
+                    ██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗
+                    ██║     ██║     ██║   ██║██║   ██║██║  ██║
+                    ██║     ██║     ██║   ██║██║   ██║██║  ██║
+                    ╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝
+                     ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝
+
+ ------------------------------------------------------------------------
+
+"
+printBanner() {
+    COLUMNS=$(tput cols)
+    # shellcheck disable=SC2002
+    if [ -f msu_logo_ascii.txt ] && [ -x /bin/perl ] && [ "$COLUMNS" -gt 100 ]; then
+      cat msu_logo_ascii.txt | perl -pe 'select undef,undef,undef,.01555'
+      printf "$PROGNAME" | perl -pe 'select undef,undef,undef,.01555'
+      echo " " | perl -pe 'select undef,undef,undef,0.20000'
+    else
+        printf "$PROGNAME"
+    fi
+}
+
 # Dependency Checks
 check_deps() {
     # Check that wget is installed
@@ -73,18 +122,19 @@ generate_sample_target() {
     # TARGET="https://raw.githubusercontent.com/MSUSEL/msusel-pique-cloud-dockerfile/master/input/docker-image-target.json"
 
     [ -f "$WORKDIR/input/docker-image-target.json" ] || { printf "Getting a sample target file from PIQUE-Cloud\n"; \
-        wget $WGET_OPTS $TARGET; \
+        wget "$WGET_OPTS" $TARGET; \
         printf "\u001b[32mSample target file created\u001b[0m\n"; }
     printf "\u001b[32mTarget file configured\u001b[0m\n\n"
 }
 
 run() {
+    printBanner
     check_deps
     set_up_directories
     get_authentication_keys
     generate_sample_target
 
-    docker run -it --rm -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $WORKDIR/input:/input -v $WORKDIR/output:/output msusel/pique-cloud-dockerfile:latest
+    docker run -it --rm -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "$WORKDIR"/input:/input -v "$WORKDIR"/output:/output msusel/pique-cloud-dockerfile:latest
 }
 run
 
