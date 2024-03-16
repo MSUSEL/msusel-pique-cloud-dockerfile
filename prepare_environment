@@ -118,7 +118,7 @@ get_authentication_keys() {
 generate_sample_target() {
     printf "Checking if target file exists...\n"
     WGET_OPTS="-O $WORKDIR/input/docker-image-target.json"
-    TARGET="https://github.com/MSUSEL/msusel-pique-cloud-dockerfile/blob/ryan-startup-cleanup/input/docker-image-target.json"
+    TARGET="https://github.com/MSUSEL/msusel-pique-cloud-dockerfile/blob/master/input/docker-image-target.json"
     # TARGET="https://raw.githubusercontent.com/MSUSEL/msusel-pique-cloud-dockerfile/master/input/docker-image-target.json"
 
     [ -f "$WORKDIR/input/docker-image-target.json" ] || { printf "Getting a sample target file from PIQUE-Cloud\n"; \
