@@ -50,6 +50,30 @@ public class DockerMarshaller {
         return images.get(0);
     }
 
+    public static void downloadDockerImageFromAzureContainerRegistry(String imageNameWithTag){
+        if (client == null){
+            initiateDockerClient();
+        }
+        try {
+            //see if image exists on local listing
+            if (getDockerImagesFromName(imageNameWithTag).isEmpty()){
+                //image did not exist on local machine
+                System.out.println("Image: " + imageNameWithTag + " not found locally.");
+                LOGGER.info("Image: " + imageNameWithTag + " not found locally.");
+                System.out.println("Attempting to download image: " + imageNameWithTag + " from Azure Container Registry");
+                LOGGER.info("Attempting to download image: " + imageNameWithTag + " from Azure Container Registry");
+                client.pullImageCmd(imageNameWithTag.split(":")[0]).withTag(imageNameWithTag.split(":")[1]).withRegistry("azure").exec(new PullImageResultCallback() {
+                    @Override
+                    public void onNext(PullResponseItem item) {
+                        super.onNext(item);
+                    }
+                }).awaitCompletion(5, TimeUnit.MINUTES);
+            }
+        }catch (InterruptedException interruptedException){
+            System.out.println("Timeout pulling docker images from DockerHub, with a 5 minute timeout. Perhaps DockerHub is down?");
+        }
+    }
+
     public static void downloadDockerImageFromDockerHub(String imageNameWithTag){
         if (client == null){
             initiateDockerClient();

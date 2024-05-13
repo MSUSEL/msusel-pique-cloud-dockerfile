@@ -78,6 +78,15 @@ public class DockerMarshallerTest {
         }
     }
 
+    //pull image from Azure container registry
+    @Test
+    public void pullImageFromACR(){
+        init();
+        String imageNameWithTag = "crprojectstoanalyze.azurecr.io/pique-cloud-dockerfile:1.0.3";
+        dockerMarshaller.downloadDockerImageFromAzureContainerRegistry(imageNameWithTag);
+
+    }
+
     @Test
     public void testImages(){
         //simple test to make sure the docker marshaller is initiated correctly and returns some images.
