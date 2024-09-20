@@ -1,9 +1,9 @@
 {
   "images": [ 
     {
-      "name": "crprojectstoanalyze.azurecr.io/pique-cloud-dockerfile",
+      "name": "alpine",
       "versions": [
-        "1.0.3"
+        "3.19.0"
       ]
     }
   ]
