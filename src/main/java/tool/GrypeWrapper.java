@@ -138,10 +138,6 @@ public class GrypeWrapper extends Tool implements ITool {
                 findingNames.addAll(cwes);
             }
 
-            //FIXME ----- OLD, deprecated and moving to data util
-            // String[] findingNames = helperFunctions.getCWEFromNVDDatabaseDump(cveList, this.githubTokenPath);
-            //String[] findingNames = helperFunctions.getCWEFromNVDAPIDirectly(cveList, this.githubTokenPath, this.nvdAPIKeyPath);
-
             for (int i = 0; i < findingNames.size(); i++) {
                 Diagnostic diag = diagnostics.get((findingNames.get(i) + " Diagnostic Grype"));
                 if (diag != null) {
