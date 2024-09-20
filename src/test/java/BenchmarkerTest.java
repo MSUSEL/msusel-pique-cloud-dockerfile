@@ -7,7 +7,10 @@ import pique.evaluation.Project;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.utility.PiqueProperties;
+import presentation.PiqueData;
+import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
+import tool.TrivyWrapper;
 import utilities.helperFunctions;
 
 import java.math.BigDecimal;
@@ -52,15 +55,15 @@ public class BenchmarkerTest {
     @Test
     public void testDeriveThresholds(){
 
-
-
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 
 
-        ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
-        //TODO ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
+        PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+
+        ITool gyrpeWrapper = new GrypeWrapper(piqueData);
+        //TODO ITool trivyWrapper = new TrivyWrapper(piqueData);
         Set<ITool> tools = Stream.of(gyrpeWrapper).collect(Collectors.toSet());
 
 

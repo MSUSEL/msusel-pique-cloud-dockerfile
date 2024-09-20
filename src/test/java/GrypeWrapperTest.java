@@ -4,6 +4,8 @@ import org.junit.Test;
 import pique.model.Diagnostic;
 import pique.model.Finding;
 import pique.utility.PiqueProperties;
+import presentation.PiqueData;
+import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
 
 import java.math.BigDecimal;
@@ -18,6 +20,9 @@ public class GrypeWrapperTest {
 
     private static GrypeWrapper grypeWrapper;
 
+
+    private static PiqueData piqueData;
+
     public GrypeWrapperTest(){
 
     }
@@ -26,7 +31,11 @@ public class GrypeWrapperTest {
     public static void setup(){
         //load properties
         Properties prop = PiqueProperties.getProperties();
-        grypeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
+
+        System.out.println(prop.getProperty("database-credentials"));
+        piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+
+        grypeWrapper = new GrypeWrapper(piqueData);
 
         //load docker marshaller
         DockerMarshallerTest.init();

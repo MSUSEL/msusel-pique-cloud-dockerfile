@@ -11,6 +11,8 @@ import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.runnable.ASingleProjectEvaluator;
 import pique.utility.PiqueProperties;
+import presentation.PiqueData;
+import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
 import utilities.helperFunctions;
@@ -65,8 +67,10 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
 
         Path qmLocation = Paths.get(prop.getProperty("derived.qm"));
 
-        ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
-        ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
+        PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+
+        ITool gyrpeWrapper = new GrypeWrapper(piqueData);
+        ITool trivyWrapper = new TrivyWrapper(piqueData);
         Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper).collect(Collectors.toSet());
 
         for (Path dockerfile : dockerfilesToAnalyze) {

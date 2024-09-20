@@ -32,6 +32,7 @@ package tool;
  import pique.model.Diagnostic;
  import pique.model.Finding;
  import pique.utility.PiqueProperties;
+ import presentation.PiqueData;
  import utilities.helperFunctions;
 
  import java.io.File;
@@ -54,11 +55,11 @@ package tool;
   */
  public class TrivyWrapper extends Tool implements ITool  {
      private static final Logger LOGGER = LoggerFactory.getLogger(TrivyWrapper.class);
-     private String githubTokenPath;
+     private PiqueData piqueData;
 
-     public TrivyWrapper(String githubTokenPath) {
+     public TrivyWrapper(PiqueData piqueData) {
          super("Trivy", null);
-         this.githubTokenPath = githubTokenPath;
+         this.piqueData = piqueData;
      }
 
      // Methods
@@ -164,7 +165,7 @@ package tool;
 
                                  String[] cwes = new String[7];
 
-                                 //FIXME --  deprecated, changing 
+                                 //FIXME --  deprecated, changing
                                  //String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
 
 
