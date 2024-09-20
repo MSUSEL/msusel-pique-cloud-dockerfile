@@ -161,7 +161,13 @@ package tool;
                                  //try the cve-cwe script...
                                  ArrayList<String> wrapper = new ArrayList<>();
                                  wrapper.add(vulnerabilityID);
-                                 String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
+
+                                 String[] cwes = new String[7];
+
+                                 //FIXME --  deprecated, changing 
+                                 //String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
+
+
                                  if (cwes.length == 0) {
                                      //NVD has none, we skip it
                                      //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et

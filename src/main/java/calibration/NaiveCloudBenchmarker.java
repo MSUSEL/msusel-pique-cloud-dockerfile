@@ -20,10 +20,8 @@ public class NaiveCloudBenchmarker extends CloudBenchmarker{
         // Identify the lowest and highest of each measure value
         Map<String, BigDecimal[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
-            BigDecimal[] temp = new BigDecimal[2];
-            temp[0] = Collections.min(measureValues);
-            temp[1] = Collections.max(measureValues);
-            measureThresholds.putIfAbsent(measureName, temp);
+            BigDecimal[] measureValuesArray = new BigDecimal[measureValues.size()];
+            measureThresholds.putIfAbsent(measureName, measureValues.toArray(measureValuesArray));
         });
 
         return measureThresholds;
