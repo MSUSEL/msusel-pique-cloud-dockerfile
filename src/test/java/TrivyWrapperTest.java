@@ -3,6 +3,8 @@ import org.junit.Test;
 import pique.model.Diagnostic;
 import pique.model.Finding;
 import pique.utility.PiqueProperties;
+import presentation.PiqueData;
+import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
 
@@ -18,6 +20,8 @@ public class TrivyWrapperTest {
 
     private static TrivyWrapper trivyWrapper;
 
+    private static PiqueData piqueData;
+
     public TrivyWrapperTest(){
 
     }
@@ -26,7 +30,8 @@ public class TrivyWrapperTest {
     public static void setup(){
         //load properties
         Properties prop = PiqueProperties.getProperties();
-        trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));//, prop.getProperty("nvd-api-key-path"));
+        piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+        trivyWrapper = new TrivyWrapper(piqueData);//, prop.getProperty("nvd-api-key-path"));
 
         //load docker marshaller
         DockerMarshallerTest.init();

@@ -39,10 +39,6 @@ public class Wrapper {
                     .action(Arguments.storeTrue())
                     .setDefault(false)
                     .help("print version information and terminate program");
-            parser.addArgument("--downloadNVD")
-                    .action(Arguments.storeTrue())
-                    .setDefault(false)
-                    .help("Download the latest version of the NVD database");
 
             Namespace namespace = null;
             if (helpFlag) {
@@ -55,26 +51,12 @@ public class Wrapper {
             String runType = namespace.getString("run");
             String fileName = namespace.getString("fileName");
             boolean printVersion = namespace.getBoolean("version");
-            boolean downloadNVDFlag = namespace.getBoolean("downloadNVD");
             Properties prop = PiqueProperties.getProperties();
 
             if (printVersion) {
                 Path version = Paths.get(prop.getProperty("version"));
                 System.out.println("PIQUE-CLOUD version " + version);
                 System.exit(0);
-            }
-
-            if (downloadNVDFlag) {
-                System.out.println("Starting NVD download");
-                helperFunctions.downloadNVD();
-                System.exit(0);
-            }
-
-            String nvdDictionaryPath = Paths.get(prop.getProperty("nvd-dictionary.location")).toString();
-            File f = new File(nvdDictionaryPath);
-            if (!f.isFile()) {
-                System.out.println("Error: the National Vulnerability Database must be downloaded before deriving or evaluating. Use --help for more information.");
-                System.exit(1);
             }
 
             if ("derive".equals(runType)) {
