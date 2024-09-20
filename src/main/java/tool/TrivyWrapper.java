@@ -22,6 +22,7 @@
  */
 package tool;
 
+ import exceptions.DataAccessException;
  import org.json.JSONArray;
  import org.json.JSONException;
  import org.json.JSONObject;
@@ -37,6 +38,7 @@ package tool;
 
  import java.io.File;
  import java.io.IOException;
+ import java.lang.reflect.Array;
  import java.nio.file.Files;
  import java.nio.file.Path;
  import java.nio.file.Paths;
@@ -56,6 +58,7 @@ package tool;
  public class TrivyWrapper extends Tool implements ITool  {
      private static final Logger LOGGER = LoggerFactory.getLogger(TrivyWrapper.class);
      private PiqueData piqueData;
+
 
      public TrivyWrapper(PiqueData piqueData) {
          super("Trivy", null);
@@ -148,6 +151,8 @@ package tool;
                      return diagnostics;
                  }
 
+
+
                  for (int i = 0; i < trivyResults.length(); i++) {
                      JSONArray jsonVulnerabilities = ((JSONObject) trivyResults.get(i)).optJSONArray("Vulnerabilities");
                      if (jsonVulnerabilities != null){
@@ -159,24 +164,25 @@ package tool;
                              ArrayList<String> associatedCWEs = new ArrayList<>();
                              JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
                              if (jsonWeaknesses == null) {
-                                 //try the cve-cwe script...
-                                 ArrayList<String> wrapper = new ArrayList<>();
-                                 wrapper.add(vulnerabilityID);
+                                 //try pique data and the NVD, because the default is just aqua's vuln database
 
-                                 String[] cwes = new String[7];
+                                 ArrayList<String> cwes = new ArrayList<>();
+                                 //FIXME--- remove try catch block after checked exceptions changes
+                                 try {
+                                     //do we have a cwe for this cve?
+                                     cwes.addAll(piqueData.getCweName(vulnerabilityID));
+                                 }catch (DataAccessException e){
+                                     e.printStackTrace();
+                                 }
 
-                                 //FIXME --  deprecated, changing
-                                 //String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
-
-
-                                 if (cwes.length == 0) {
+                                 if (cwes.size() == 0) {
                                      //NVD has none, we skip it
                                      //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et
                                      LOGGER.info("found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
                                      System.out.println("found no CWEs for vulnerability: " + vulnerabilityID + ". This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
 
                                  }else {
-                                     associatedCWEs.addAll(Arrays.asList(cwes));
+                                     associatedCWEs.addAll(cwes);
                                  }
                              }else {
                                  for (int k = 0; k < jsonWeaknesses.length(); k++) {
