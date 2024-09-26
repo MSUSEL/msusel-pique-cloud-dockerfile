@@ -74,7 +74,8 @@ package tool;
          public Path analyze(Path projectLocation) {
              String imageName = projectLocation.toString();
              LOGGER.info(this.getName() + "  Analyzing "+ imageName);
-             System.out.println("Analyzing "+ imageName + " with " + this.getName());
+             System.out.println("Executing SAT " + this.getName() + " on image: " + imageName);
+             LOGGER.debug("Executing SAT " + this.getName() + " on image: " + imageName);
              String imageNameForDirectory = imageName.split(":")[0];
              //set up results dir
 
@@ -128,8 +129,8 @@ package tool;
           */
          @Override
          public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-             System.out.println(this.getName() + " Parsing Analysis...");
-             LOGGER.debug(this.getName() + " Parsing Analysis...");
+             System.out.println("Parsing output from SAT " + this.getName());
+             LOGGER.debug("Parsing output from SAT " + this.getName());
 
              Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 

@@ -10,6 +10,7 @@ import pique.runnable.AQualityModelDeriver;
 import pique.utility.PiqueProperties;
 import presentation.PiqueData;
 import presentation.PiqueDataFactory;
+import tool.DiveWrapper;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
 
@@ -58,7 +59,8 @@ public class QualityModelDeriver extends AQualityModelDeriver {
 
         ITool gyrpeWrapper = new GrypeWrapper(piqueData);
         ITool trivyWrapper = new TrivyWrapper(piqueData);
-        Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper).collect(Collectors.toSet());
+        ITool diveWrapper = new DiveWrapper();
+        Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper, diveWrapper).collect(Collectors.toSet());
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
         //qmDescription = pique.utility.TreeTrimmingUtility.trimQualityModelTree(qmDescription);

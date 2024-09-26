@@ -47,6 +47,16 @@
       }
     },
     "product_factors": {
+      "Space Usage": {
+        "name": "Usage of space in this image",
+        "description": "The usage of space in this image, including wasted space (bytes), image efficiency, and size on disk (bytes)",
+        "eval_strategy": "pique.evaluation.DefaultProductFactorEvaluator",
+        "children": {
+          "Inefficient Bytes": {},
+          "Efficiency Score": {},
+          "Size in Bytes": {}
+        }
+      },
       "Pillar CWE-284": {
         "name": "Improper Access Control",
         "description": "The product does not restrict or incorrectly restricts access to a resource from an unauthorized actor.",
@@ -303,6 +313,30 @@
     }
   },
   "measures": {
+    "Inefficient Bytes": {
+      "name": "Inefficient Bytes in image",
+      "positive": "false",
+      "description": "A score of inefficient bytes in an image",
+      "children": {
+        "Inefficient Bytes Diagnostic Dive": {}
+      }
+    },
+    "Efficiency Score": {
+      "name": "Efficiency Score",
+      "positive": "true",
+      "description": "A score of the percentage of non-wasted bytes in an image to the image's overall size in bytes. Interpretation of this Measure is as a score of scores.",
+      "children": {
+        "Image Efficiency Score Diagnostic Dive": {}
+      }
+    },
+    "Size in Bytes": {
+      "name": "Size in Bytes",
+      "positive": "true",
+      "description": "A score of the size in bytes of this image",
+      "children": {
+        "Size in Bytes Diagnostic Dive": {}
+      }
+    },
     "CWE-5": {
       "name": "J2EE Misconfiguration: Data Transmission Without Encryption",
       "positive": "false",
@@ -10705,6 +10739,18 @@
     }
   },
   "diagnostics": {
+    "Inefficient Bytes Diagnostic Dive": {
+      "toolName": "Dive",
+      "description": "Wasted space this image contains. The concept of wasted space includes duplicating files across layers, moving files across layers, or not fully removing files and/or configurations"
+    },
+    "Image Efficiency Score Diagnostic Dive": {
+      "toolName": "Dive",
+      "description": "A score that features the ratio of non-wasted size in bytes (calculated via the difference of the overally image size in bytes subtract the value of the inefficient bytes metric) to overall image size in bytes"
+    },
+    "Size in Bytes Diagnostic Dive": {
+      "toolName": "Dive",
+      "description": "A score that features the size in bytes of a single image (includes all layers in that image)"
+    },
     "CWE-5 Diagnostic Grype": {
       "toolName": "Grype",
       "description": "Sum of findings of type CWE-5"

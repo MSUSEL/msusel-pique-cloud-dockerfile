@@ -42,7 +42,8 @@ public class GrypeWrapper extends Tool implements ITool {
     public Path analyze(Path projectLocation) {
         //workaround because grype targets images, which are loaded by docker
         String imageName = projectLocation.toString();
-        System.out.println("Analyzing "+ imageName + " with " + this.getName());
+        System.out.println("Executing SAT " + this.getName() + " on image: " + imageName);
+        LOGGER.debug("Executing SAT " + this.getName() + " on image: " + imageName);
         String imageNameForDirectory = imageName.split(":")[0];
         //set up results dir
         String workingDirectoryPrefix = "";
@@ -92,8 +93,8 @@ public class GrypeWrapper extends Tool implements ITool {
      */
     @Override
     public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-        System.out.println(this.getName() + " Parsing Analysis...");
-        LOGGER.debug(this.getName() + " Parsing Analysis...");
+        System.out.println("Parsing output from SAT " + this.getName());
+        LOGGER.debug("Parsing output from SAT " + this.getName());
 
         Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 

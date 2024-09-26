@@ -17,7 +17,7 @@ public class NaiveCloudBenchmarker extends CloudBenchmarker{
 
     @Override
     public Map<String, BigDecimal[]> calculateThresholds(Map<String, ArrayList<BigDecimal>> measureBenchmarkData) {
-        // Identify the lowest and highest of each measure value
+        //for the pdf function, store all values as the thresholds. PDF function operation occurs in the evaluator run
         Map<String, BigDecimal[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             BigDecimal[] measureValuesArray = new BigDecimal[measureValues.size()];
