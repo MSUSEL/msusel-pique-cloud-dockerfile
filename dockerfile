@@ -5,6 +5,7 @@ ARG GRYPE_VERSION=0.72.0
 ARG PIQUE_DOCKERFILE_VERSION=1.0.1
 # Trivy release without the 'v' because the release of trivy does not include the v on its download page
 ARG TRIVY_VERSION=0.44.1
+ARG DIVE_VERSION=0.12.0
 
 
 RUN apk update && apk upgrade && apk add --update --no-cache \
@@ -18,14 +19,18 @@ RUN rc-update add docker boot
 # move to home for a fresh start
 WORKDIR "/home"
 
-## grype installs
+## grype install
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v$GRYPE_VERSION
 
-## trivy installs
+## trivy install
 RUN wget "https://github.com/aquasecurity/trivy/releases/download/v"$TRIVY_VERSION"/trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
 RUN dpkg --add-architecture amd64
 RUN dpkg -i "trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
 RUN rm "trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
+
+## dive install
+RUN curl -OL https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb
+RUN sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 
 ##################################################
 ######### pique dockerfile install ###############

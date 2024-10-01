@@ -42,10 +42,7 @@ package tool;
  import java.nio.file.Files;
  import java.nio.file.Path;
  import java.nio.file.Paths;
- import java.util.ArrayList;
- import java.util.Arrays;
- import java.util.Map;
- import java.util.Properties;
+ import java.util.*;
 
  /**
   * CODE TAKEN FROM PIQUE-BIN-DOCKER AND MODIFIED FOR PIQUE-SBOM-CONTENT and PIQUE-CLOUD-DOCKERFILE.
@@ -152,8 +149,6 @@ package tool;
                      return diagnostics;
                  }
 
-
-
                  for (int i = 0; i < trivyResults.length(); i++) {
                      JSONArray jsonVulnerabilities = ((JSONObject) trivyResults.get(i)).optJSONArray("Vulnerabilities");
                      if (jsonVulnerabilities != null){
@@ -162,34 +157,29 @@ package tool;
                              JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
                              String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
 
+                             //associated CWEs are Aqua's CWEs and NVDs CWEs
                              ArrayList<String> associatedCWEs = new ArrayList<>();
+                             // get aqua CWEs
                              JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
-                             if (jsonWeaknesses == null) {
-                                 //try pique data and the NVD, because the default is just aqua's vuln database
-
-                                 ArrayList<String> cwes = new ArrayList<>();
-                                 //FIXME--- remove try catch block after checked exceptions changes
-                                 try {
-                                     //do we have a cwe for this cve?
-                                     cwes.addAll(piqueData.getCweName(vulnerabilityID));
-                                 }catch (DataAccessException e){
-                                     e.printStackTrace();
-                                 }
-
-                                 if (cwes.size() == 0) {
-                                     //NVD has none, we skip it
-                                     //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et
-                                     LOGGER.info("found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
-                                     System.out.println("found no CWEs for vulnerability: " + vulnerabilityID + ". This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
-
-                                 }else {
-                                     associatedCWEs.addAll(cwes);
-                                 }
-                             }else {
+                             if (jsonWeaknesses != null) {
                                  for (int k = 0; k < jsonWeaknesses.length(); k++) {
                                      associatedCWEs.add(jsonWeaknesses.get(k).toString());
                                  }
                              }
+                             // get NVD CWEs
+                             //FIXME--- remove try catch block after checked exceptions changes
+                             try {
+                                 //do we have a cwe for this cve?
+                                 associatedCWEs.addAll(piqueData.getCweName(vulnerabilityID));
+                             }catch (DataAccessException e){
+                                 e.printStackTrace();
+                             }
+
+                             // remove duplicate CWEs
+                             Set<String> cweSet = new HashSet<>(associatedCWEs);
+                             associatedCWEs.clear();
+                             associatedCWEs.addAll(cweSet);
+
                              //regardless of cwes, continue with severity.
                              String vulnerabilitySeverity = jsonFinding.getString("Severity");
                              int severity = this.severityToInt(vulnerabilitySeverity);
@@ -197,6 +187,7 @@ package tool;
                              for (int k = 0; k < associatedCWEs.size(); k++) {
                                  Diagnostic diag = diagnostics.get((associatedCWEs.get(k) + " Diagnostic Trivy"));
                                  if (diag != null) {
+                                     LOGGER.info("Found " + associatedCWEs.get(k) + " in the model definition for our " + vulnerabilityID);
                                      Finding finding = new Finding("", 0, 0, severity);
                                      finding.setName(vulnerabilityID);
                                      diag.setChild(finding);
@@ -242,15 +233,15 @@ package tool;
              Integer severityInt = 1;
              switch(severity.toLowerCase()) {
                  case "low": {
-                     severityInt = 4;
+                     severityInt = 1;
                      break;
                  }
                  case "medium": {
-                     severityInt = 7;
+                     severityInt = 3;
                      break;
                  }
                  case "high": {
-                     severityInt = 9;
+                     severityInt = 6;
                      break;
                  }
                  case "critical": {

@@ -67,7 +67,7 @@ public class DiveWrapper extends Tool implements ITool {
             try {
                 helperFunctions.getOutputFromProgram(cmd, LOGGER);
             } catch (IOException e) {
-                LOGGER.error("Failed to run Grype");
+                LOGGER.error("Failed to run Dive");
                 LOGGER.error(e.toString());
                 e.printStackTrace();
             }

@@ -12,12 +12,10 @@ import pique.model.Diagnostic;
 import pique.model.Finding;
 import pique.utility.PiqueProperties;
 import presentation.PiqueData;
-import presentation.PiqueDataFactory;
 import utilities.helperFunctions;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -105,11 +103,6 @@ public class GrypeWrapper extends Tool implements ITool {
         } catch (IOException e) {
             LOGGER.info("No results to read from Grype.");
         }
-
-        //TODO change these arraylists to the data structure Pairs. Later on when we initialize them as findings we key both arrays off one index
-        ArrayList<String> cveList = new ArrayList<>();
-        ArrayList<Integer> severityList = new ArrayList<>();
-
         try {
             JSONObject jsonResults = new JSONObject(results);
             JSONArray matches = jsonResults.optJSONArray("matches");
@@ -119,38 +112,44 @@ public class GrypeWrapper extends Tool implements ITool {
                 return diagnostics;
             }
 
-            ArrayList<String> findingNames = new ArrayList<>();
             for (int i = 0; i < matches.length(); i++) {
                 JSONObject jsonFinding = ((JSONObject) matches.get(i)).optJSONObject("vulnerability");
                 //Need to change this for this tool.
                 String findingName = jsonFinding.get("id").toString();
+                LOGGER.info("Found vulnerability: ");
                 String findingSeverity = jsonFinding.get("severity").toString();
-                severityList.add(this.severityToInt(findingSeverity));
-                cveList.add(findingName);
                 List<String> cwes = new ArrayList<>();
                 //FIXME--- remove try catch block after checked exceptions changes
                 try {
                     //do we have a cwe for this cve?
                     cwes = piqueData.getCweName(findingName);
                 }catch (DataAccessException e){
+                    LOGGER.error("Data access exception with CVE: " + findingName);
                     e.printStackTrace();
                 }
+                // are CWE's unique? In some cases the NVD reports the same CWE from a Primary and Secondary source
+                // we want only unique CWEs
+                Set<String> cweSet = new HashSet<>(cwes);
+                cwes.clear();
+                cwes.addAll(cweSet);
 
-                findingNames.addAll(cwes);
-            }
-
-            for (int i = 0; i < findingNames.size(); i++) {
-                Diagnostic diag = diagnostics.get((findingNames.get(i) + " Diagnostic Grype"));
-                if (diag != null) {
-                    Finding finding = new Finding("",0,0,severityList.get(i));
-                    finding.setName(cveList.get(i));
-                    diag.setChild(finding);
-                }else{
-                    //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-                    // We may want to treat this in another way in the future, but im ignoring it for now.
-                    System.out.println("Vulnerability " + cveList.get(i) + " with CWE: " + findingNames.get(i)  + "  outside of CWE-1000 was found. Ignoring this CVE.");
-                    LOGGER.warn("Vulnerability " + cveList.get(i) + " with CWE: " + findingNames.get(i) + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                for (String matchedCWE : cwes){
+                    //do we have a diag for this matchedCWE? (Is it in the model definition?)
+                    Diagnostic diag = diagnostics.get(matchedCWE + " Diagnostic Grype");
+                    if (diag != null) {
+                        //found a cwe node for this in the model definition, creating a finding for it and adding.
+                        LOGGER.info("Found " + matchedCWE + " in the model definition for our " + findingName);
+                        Finding finding = new Finding("",0,0, this.severityToInt(findingSeverity));
+                        finding.setName(findingName);
+                        diag.setChild(finding);
+                    }else{
+                        //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
+                        // We may want to treat this in another way in the future, but im ignoring it for now.
+                        System.out.println("Vulnerability " + findingName + " with CWE: " + matchedCWE  + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                        LOGGER.warn("Vulnerability " + findingName + " with CWE: " + matchedCWE + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                    }
                 }
+
             }
         } catch (JSONException e) {
             LOGGER.warn("Unable to read results from Grype");
@@ -183,15 +182,15 @@ public class GrypeWrapper extends Tool implements ITool {
         Integer severityInt = 1;
         switch(severity.toLowerCase()) {
             case "low": {
-                severityInt = 4;
+                severityInt = 1;
                 break;
             }
             case "medium": {
-                severityInt = 7;
+                severityInt = 3;
                 break;
             }
             case "high": {
-                severityInt = 9;
+                severityInt = 6;
                 break;
             }
             case "critical": {
