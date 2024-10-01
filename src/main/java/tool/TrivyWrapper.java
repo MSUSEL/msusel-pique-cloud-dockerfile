@@ -172,7 +172,8 @@ package tool;
                                  //do we have a cwe for this cve?
                                  associatedCWEs.addAll(piqueData.getCweName(vulnerabilityID));
                              }catch (DataAccessException e){
-                                 e.printStackTrace();
+                                 LOGGER.error(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                                 System.out.println(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
                              }
 
                              // remove duplicate CWEs

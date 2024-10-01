@@ -124,8 +124,8 @@ public class GrypeWrapper extends Tool implements ITool {
                     //do we have a cwe for this cve?
                     cwes = piqueData.getCweName(findingName);
                 }catch (DataAccessException e){
-                    LOGGER.error("Data access exception with CVE: " + findingName);
-                    e.printStackTrace();
+                    LOGGER.error(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                    System.out.println(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
                 }
                 // are CWE's unique? In some cases the NVD reports the same CWE from a Primary and Secondary source
                 // we want only unique CWEs
