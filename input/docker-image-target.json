@@ -1,9 +1,15 @@
 {
   "images": [ 
     {
-      "name": "alpine",
+      "name": "sagikazarmark/dvwa",
       "versions": [
-        "3.19.0"
+        "latest"
+      ]
+    },
+    {
+      "name": "peakkk/metasploitable",
+      "versions": [
+        "latest"
       ]
     }
   ]
