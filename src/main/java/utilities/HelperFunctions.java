@@ -27,14 +27,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pique.model.Diagnostic;
-import pique.model.ModelNode;
-import pique.model.QualityModel;
-import pique.model.QualityModelImport;
+import pique.model.*;
 import pique.utility.PiqueProperties;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -48,8 +44,8 @@ import java.util.stream.Stream;
  * Collection of common helper functions used across the project
  *
  */
-public class helperFunctions {
-	private static final Logger LOGGER = LoggerFactory.getLogger(helperFunctions.class);
+public class HelperFunctions {
+	private static final Logger LOGGER = LoggerFactory.getLogger(HelperFunctions.class);
 	/**
 	 * A method to check for equality up to some error bounds
 	 * @param x The first number
@@ -183,6 +179,67 @@ public class helperFunctions {
 	public static String formatFileWithSpaces(String pathWithSpace) {
 		String retString = pathWithSpace.replaceAll("([a-zA-Z]*) ([a-zA-Z]*)", "'$1 $2'");
 		return retString;
+	}
+
+
+	private static Map<String, ModelNode> recursiveRemoveMeasureAllZeroes(ModelNode node){
+		Map<String, ModelNode> newDiagnostics = new HashMap<>();
+		Map<String, ModelNode> newMeasures = new HashMap<>();
+
+		boolean allZeroes = true;
+		for (BigDecimal threshold : node.getThresholds()){
+			if (threshold.compareTo(BigDecimal.ZERO) != 0){
+				//break to gain some efficiency
+				allZeroes = false;
+				break;
+			}
+		}
+		if (!allZeroes){
+			//do not remove, keep Diagnostics always, consider keeping Measures iff they OR THEIR CHILDREN have non-zero thresholds
+			for (ModelNode child : node.getChildren().values()){
+				//need to do this check because a Measure can have Diagnostic children AND Measure children, and we handle them differently
+				if (child instanceof Diagnostic){
+					//done, keep child
+					newDiagnostics.put(child.getName(), child);
+					return newDiagnostics;
+				} else {
+					//recursively call because we found a measure
+					newMeasures.put(child.getName(), child);
+					//needs to be fixed.. ugh hard algorithm
+					return recursiveRemoveMeasureAllZeroes(child);
+				}
+			}
+		}
+		HashMap<String, ModelNode> newChildren =
+		//not all zeroes, we can return
+		return toRet;
+	}
+
+
+	public static QualityModel trimBenchmarkedMeasuresWithNoFindings(QualityModel qm){
+		QualityModel toRet = qm.clone();
+		Map<String, ModelNode> newQAs = new HashMap<>();
+		for (ModelNode qa : qm.getQualityAspects().values()){
+			Map<String, ModelNode> newPFs = new HashMap<>();
+			for (ModelNode pf : qa.getChildren().values()){
+				Map<String, ModelNode> newMeasures = recursiveRemoveMeasureAllZeroes(pf);
+				//if we have measures with nonzero values, keep them
+				if (!newMeasures.isEmpty()) {
+					//need to initialize first
+					newPFs.put(pf.getName(), pf);
+					//set children after initialization
+					newPFs.get(pf.getName()).setChildren(newMeasures);
+
+				}
+			}
+			//same logic to QAs; if we have PFs with Measures with nonzero values, keep them
+			if (!newPFs.isEmpty()){
+				newQAs.put(qa.getName(), qa);
+				newQAs.get(qa.getName()).setChildren(newPFs);
+			}
+			toRet.getTqi().setChildren(newQAs);
+		}
+		return toRet;
 	}
 
 }

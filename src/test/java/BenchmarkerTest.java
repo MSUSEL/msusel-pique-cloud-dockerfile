@@ -1,22 +1,18 @@
 import calibration.CloudBenchmarker;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import pique.analysis.ITool;
-import pique.evaluation.Project;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.utility.PiqueProperties;
 import presentation.PiqueData;
 import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
-import tool.TrivyWrapper;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -48,7 +44,7 @@ public class BenchmarkerTest {
     @Test
     public void testBenchmarkImport(){
 
-        Set<Path> dockerImages = helperFunctions.getDockerImagesToAnalyze(Paths.get(prop.getProperty("benchmark.repo")));
+        Set<Path> dockerImages = HelperFunctions.getDockerImagesToAnalyze(Paths.get(prop.getProperty("benchmark.repo")));
 
     }
 

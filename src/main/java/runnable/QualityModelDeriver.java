@@ -13,6 +13,7 @@ import presentation.PiqueDataFactory;
 import tool.DiveWrapper;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
+import utilities.HelperFunctions;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -63,15 +64,23 @@ public class QualityModelDeriver extends AQualityModelDeriver {
         Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper, diveWrapper).collect(Collectors.toSet());
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
-        //qmDescription = pique.utility.TreeTrimmingUtility.trimQualityModelTree(qmDescription);
 
         QualityModel derivedQualityModel = deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
 
         Path jsonOutput = new QualityModelExport(derivedQualityModel)
                 .exportToJson(derivedQualityModel
                         .getName(), derivedModelFilePath);
+        LOGGER.info("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath());
 
-        LOGGER.info("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath().toString());
+        QualityModel trimmedDerivedQualityModel = HelperFunctions.trimBenchmarkedMeasuresWithNoFindings(derivedQualityModel);
+
+        Path trimmedJsonOutput = new QualityModelExport(trimmedDerivedQualityModel)
+                .exportToJson(trimmedDerivedQualityModel
+                        .getName() + "_trimmed", derivedModelFilePath);
+
+        LOGGER.info("Quality Model derivation finished with trimmed model. You can find the file at " + trimmedJsonOutput.toAbsolutePath());
+
+
     }
 
 

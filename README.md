@@ -40,7 +40,7 @@ are supplied on this repository.
 6. Generate a [Github API token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and save the text of the key to a file 'github-token.txt' 
 7. Move the files 'nvd-api-key.txt' and 'github-token.txt' to the 'keys' directory.
 8. Create a file named 'docker-image-target.json' and place it in the 'input' directory.
-9. Copy and paste the contents of the [targets file](input/docker-image-target.json) to 'docker-image-target.json'
+9. Copy and paste the contents of the [targets file](input/docker-image-target-single.json) to 'docker-image-target.json'
     1. Modify 'docker-image-target.json' to target the docker images to be analyzed.
 10. The resulting directory structure should look like this:
 ```

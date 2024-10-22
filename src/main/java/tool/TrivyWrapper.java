@@ -34,11 +34,10 @@ package tool;
  import pique.model.Finding;
  import pique.utility.PiqueProperties;
  import presentation.PiqueData;
- import utilities.helperFunctions;
+ import utilities.HelperFunctions;
 
  import java.io.File;
  import java.io.IOException;
- import java.lang.reflect.Array;
  import java.nio.file.Files;
  import java.nio.file.Path;
  import java.nio.file.Paths;
@@ -107,7 +106,7 @@ package tool;
                          projectLocation.toString()};
                  LOGGER.info(Arrays.toString(cmd));
                  try {
-                     helperFunctions.getOutputFromProgram(cmd, LOGGER);
+                     HelperFunctions.getOutputFromProgram(cmd, LOGGER);
                  } catch (IOException e) {
                      LOGGER.error("Failed to run Trivy");
                      LOGGER.error(e.toString());
@@ -129,12 +128,12 @@ package tool;
              System.out.println("Parsing output from SAT " + this.getName());
              LOGGER.debug("Parsing output from SAT " + this.getName());
 
-             Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
+             Map<String, Diagnostic> diagnostics = HelperFunctions.initializeDiagnostics(this.getName());
 
              String results = "";
 
              try {
-                 results = helperFunctions.readFileContent(toolResults);
+                 results = HelperFunctions.readFileContent(toolResults);
              } catch (IOException e) {
                  LOGGER.info("No results to read from Trivy.");
              }
@@ -218,7 +217,7 @@ package tool;
              final String[] cmd = {"trivy", "version"};
 
              try {
-                 helperFunctions.getOutputFromProgram(cmd, LOGGER);
+                 HelperFunctions.getOutputFromProgram(cmd, LOGGER);
              } catch (IOException e) {
                  e.printStackTrace();
                  LOGGER.error("Failed to initialize " + this.getName());

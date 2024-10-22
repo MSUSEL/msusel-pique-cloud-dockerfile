@@ -39,21 +39,21 @@ public class DiveWrapperTest {
 
     @Test
     public void runDive(){
-        Path alpine3_15_output = diveWrapper.analyze(Paths.get("alpine:3.15"));
+        Double delta = 0.0005;
+
+        Path alpine3_15_output = diveWrapper.analyze(Paths.get("alpine:3.15.0"));
         //maybe one or two tests to see if dive ran correctly
 
         Map<String, Diagnostic> results = diveWrapper.parseAnalysis(alpine3_15_output);
 
-        Diagnostic d = results.get("CWE-787 Diagnostic Grype");
-        // one finding coming from alpine:3.15, but it appears twice. Not sure why but this is a Grype issue I think..
-        assertEquals(1, d.getChildren().keySet().size());
-        // check that one finding matches with our expectations (name + critical severity + value)
-        Finding f = (Finding) d.getChild("CVE-2022-48174");
-        assertEquals(10, f.getSeverity());
-        assertEquals(new BigDecimal(10), f.getValue());
+        Diagnostic d1 = results.get("Inefficient Bytes Diagnostic Dive");
+        assertEquals(0, d1.getValue().doubleValue(), delta);
 
-        //check the value is being aggregated correctly to diagnostic value
-        assertEquals(new BigDecimal(10.0).stripTrailingZeros(), d.getValue().stripTrailingZeros());
+        Diagnostic d2 = results.get("Image Efficiency Score Diagnostic Dive");
+        assertEquals(1, d2.getValue().doubleValue(), delta);
+
+        Diagnostic d3 = results.get("Size in Bytes Diagnostic Dive");
+        assertEquals(5580949, d3.getValue().doubleValue(), delta);
 
     }
 }

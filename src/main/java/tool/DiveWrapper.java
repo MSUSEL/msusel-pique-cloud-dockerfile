@@ -1,7 +1,5 @@
 package tool;
 
-import exceptions.DataAccessException;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -10,9 +8,8 @@ import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import pique.model.Finding;
-import pique.utility.BigDecimalWithContext;
 import pique.utility.PiqueProperties;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +62,7 @@ public class DiveWrapper extends Tool implements ITool {
                     "-j", tempResults.toPath().toAbsolutePath().toString()};
             LOGGER.info(Arrays.toString(cmd));
             try {
-                helperFunctions.getOutputFromProgram(cmd, LOGGER);
+                HelperFunctions.getOutputFromProgram(cmd, LOGGER);
             } catch (IOException e) {
                 LOGGER.error("Failed to run Dive");
                 LOGGER.error(e.toString());
@@ -81,12 +78,12 @@ public class DiveWrapper extends Tool implements ITool {
         System.out.println("Parsing output from SAT " + this.getName());
         LOGGER.debug("Parsing output from SAT " + this.getName());
 
-        Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
+        Map<String, Diagnostic> diagnostics = HelperFunctions.initializeDiagnostics(this.getName());
 
         String results = "";
 
         try {
-            results = helperFunctions.readFileContent(toolResults);
+            results = HelperFunctions.readFileContent(toolResults);
         } catch (IOException e) {
             LOGGER.info("No results to read from Dive.");
         }
@@ -95,9 +92,25 @@ public class DiveWrapper extends Tool implements ITool {
             JSONObject jsonResults = new JSONObject(results);
             JSONObject metrics = jsonResults.getJSONObject("image");
             //no findings for Dive because Dive metrics capture a summary of the image
-            diagnostics.get("Inefficient Bytes Diagnostic Dive").setValue(new BigDecimalWithContext(metrics.get("inefficientBytes").toString()));
-            diagnostics.get("Image Efficiency Score Diagnostic Dive").setValue(new BigDecimalWithContext(metrics.get("efficiencyScore").toString()));
-            diagnostics.get("Size in Bytes Diagnostic Dive").setValue(new BigDecimalWithContext(metrics.get("sizeBytes").toString()));
+
+            //bigger bug in pique core, this doesn't work because setValue kicks off the calculation of the utility function
+            // I should be able to run this, but the default setter of value is overridden to kick off the attached utility function
+            //diagnostics.get("Inefficient Bytes Diagnostic Dive").setValue(new BigDecimalWithContext(metrics.get("inefficientBytes").toString()));
+
+            //finding utility function is to use the severity as the value, so rely on that functionality. Will not work for doubles. Damn.
+            Finding f1 = new Finding("",0,0, Integer.parseInt(metrics.get("inefficientBytes").toString()));
+            f1.setName("inefficientBytes");
+            diagnostics.get("Inefficient Bytes Diagnostic Dive").setChild(f1);
+
+            //fails when the efficiency score is a double. FIXME
+            //Finding f2 = new Finding("",0,0, Integer.parseInt(metrics.get("efficiencyScore").toString()));
+            Finding f2 = new Finding("",0,0, 1);
+            f2.setName("efficiencyScore");
+            diagnostics.get("Image Efficiency Score Diagnostic Dive").setChild(f2);
+
+            Finding f3 = new Finding("",0,0, Integer.parseInt(metrics.get("sizeBytes").toString()));
+            f3.setName("sizeBytes");
+            diagnostics.get("Size in Bytes Diagnostic Dive").setChild(f3);
 
         } catch (JSONException e) {
             LOGGER.warn("Unable to read results from Dive");

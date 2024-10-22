@@ -15,9 +15,8 @@ import presentation.PiqueData;
 import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -51,7 +50,7 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
         //projectLocation is a json file, need to parse. 
         Path dockerfileJSONPath = Paths.get(projectsToAnalyze);
 
-        Set<Path> dockerfilesToAnalyze = helperFunctions.getDockerImagesToAnalyze(dockerfileJSONPath);
+        Set<Path> dockerfilesToAnalyze = HelperFunctions.getDockerImagesToAnalyze(dockerfileJSONPath);
 
 
         Path projectsRepo = Paths.get(prop.getProperty("project.root"));

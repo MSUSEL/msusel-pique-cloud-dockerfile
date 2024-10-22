@@ -10,7 +10,7 @@ import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.QualityModel;
 import tool.DockerMarshaller;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
 import java.math.BigDecimal;
 import java.nio.file.Path;
@@ -28,7 +28,7 @@ public class CloudBenchmarker extends AbstractBenchmarker implements IBenchmarke
     @Override
     public Map<String, BigDecimal[]> deriveThresholds(Path benchmarkRepository, QualityModel qmDescription, Set<ITool> tools, String projectRootFlag) {
         // Import list of docker images from flat .json file to a set of strings
-        Set<Path> dockerImages = helperFunctions.getDockerImagesToAnalyze(benchmarkRepository);
+        Set<Path> dockerImages = HelperFunctions.getDockerImagesToAnalyze(benchmarkRepository);
 
         System.out.println("* Beginning repository benchmark analysis");
         System.out.println(dockerImages.size() + " projects to analyze.\n");

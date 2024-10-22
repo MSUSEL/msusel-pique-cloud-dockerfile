@@ -16,7 +16,7 @@ public class ModelEvaluateTest {
 
     @Test
     public void testEvaluate(){
-        new SingleProjectEvaluator("input/docker-image-target.json");
+        new SingleProjectEvaluator("input/docker-image-target-alpine.json");
     }
 
     @AfterClass
