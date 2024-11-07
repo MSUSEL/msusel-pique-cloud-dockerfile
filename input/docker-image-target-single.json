@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "name": "alpine",
+      "name": "sagikazarmark/dvwa",
       "versions": [
-        "20220328"
+        "latest"
       ]
     }
   ]

@@ -8,11 +8,13 @@ import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import pique.model.Finding;
+import pique.utility.BigDecimalWithContext;
 import pique.utility.PiqueProperties;
 import utilities.HelperFunctions;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -93,25 +95,21 @@ public class DiveWrapper extends Tool implements ITool {
             JSONObject jsonResults = new JSONObject(results);
             JSONObject metrics = jsonResults.getJSONObject("image");
             //no findings for Dive because Dive metrics capture a summary of the image
+            //save as diagnostics, no findings
+            Finding inefficientBytesFinding = new Finding("", 0, 0, 0);
+            BigDecimal inefficientBytes = new BigDecimalWithContext(metrics.get("inefficientBytes").toString());
+            inefficientBytesFinding.setValue(inefficientBytes);
+            diagnostics.get("Inefficient Bytes Diagnostic Dive").setChild(inefficientBytesFinding);
 
-            //bigger bug in pique core, this doesn't work because setValue kicks off the calculation of the utility function
-            // I should be able to run this, but the default setter of value is overridden to kick off the attached utility function
-            //diagnostics.get("Inefficient Bytes Diagnostic Dive").setValue(new BigDecimalWithContext(metrics.get("inefficientBytes").toString()));
+            Finding efficiencyScoreFinding = new Finding("", 0, 0, 0);
+            BigDecimal efficiencyScore = new BigDecimalWithContext(metrics.get("efficiencyScore").toString());
+            efficiencyScoreFinding.setValue(efficiencyScore);
+            diagnostics.get("Image Efficiency Score Diagnostic Dive").setChild(efficiencyScoreFinding);
 
-            //finding utility function is to use the severity as the value, so rely on that functionality. Will not work for doubles. Damn.
-            Finding f1 = new Finding("",0,0, Integer.parseInt(metrics.get("inefficientBytes").toString()));
-            f1.setName("inefficientBytes");
-            diagnostics.get("Inefficient Bytes Diagnostic Dive").setChild(f1);
-
-            //fails when the efficiency score is a double. FIXME
-            //Finding f2 = new Finding("",0,0, Integer.parseInt(metrics.get("efficiencyScore").toString()));
-            Finding f2 = new Finding("",0,0, 1);
-            f2.setName("efficiencyScore");
-            diagnostics.get("Image Efficiency Score Diagnostic Dive").setChild(f2);
-
-            Finding f3 = new Finding("",0,0, Integer.parseInt(metrics.get("sizeBytes").toString()));
-            f3.setName("sizeBytes");
-            diagnostics.get("Size in Bytes Diagnostic Dive").setChild(f3);
+            Finding sizeFinding = new Finding("", 0, 0, 0);
+            BigDecimal sizeInBytes = new BigDecimalWithContext(metrics.get("sizeBytes").toString());
+            sizeFinding.setValue(sizeInBytes);
+            diagnostics.get("Size in Bytes Diagnostic Dive").setChild(sizeFinding);
 
         } catch (JSONException e) {
             LOGGER.warn("Unable to read results from Dive");

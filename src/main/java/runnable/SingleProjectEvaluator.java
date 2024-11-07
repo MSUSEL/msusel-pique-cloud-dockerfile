@@ -13,6 +13,7 @@ import pique.runnable.ASingleProjectEvaluator;
 import pique.utility.PiqueProperties;
 import presentation.PiqueData;
 import presentation.PiqueDataFactory;
+import tool.DiveWrapper;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
 import utilities.HelperFunctions;
@@ -70,7 +71,8 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
 
         ITool gyrpeWrapper = new GrypeWrapper(piqueData);
         ITool trivyWrapper = new TrivyWrapper(piqueData);
-        Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper).collect(Collectors.toSet());
+        ITool diveWrapper = new DiveWrapper();
+        Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper, diveWrapper).collect(Collectors.toSet());
 
         for (Path dockerfile : dockerfilesToAnalyze) {
             //tricky here. getParent  because the Path points to a json file, and we need the parent.
