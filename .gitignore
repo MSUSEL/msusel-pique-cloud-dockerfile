@@ -45,6 +45,4 @@ tool-out/*
 out/*
 output/*
 
-output/PIQUECloud-dockerfilequalitymodel.json
-src/test/resources/PIQUECloud-dockerfilequalitymodel.json
 
