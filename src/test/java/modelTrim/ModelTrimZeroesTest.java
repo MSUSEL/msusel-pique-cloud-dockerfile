@@ -19,7 +19,7 @@ public class ModelTrimZeroesTest {
 
     @Test
     public void testTrimZeroes() {
-        //load model
+        //load model --missing, had to delete it from git and tracking due to file size
         Path qmPath = Paths.get("src/test/resources/PIQUECloud-dockerfilequalitymodel.json");
         QualityModelImport qmImport = new QualityModelImport(qmPath);
         QualityModel model = qmImport.importQualityModel();
