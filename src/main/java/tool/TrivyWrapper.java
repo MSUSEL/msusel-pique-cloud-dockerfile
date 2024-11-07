@@ -93,6 +93,7 @@ package tool;
                  LOGGER.info("Already ran Trivy on: " + imageName + ", results stored in: " + tempResults.toString());
              }else {
                  LOGGER.info("Have not run Trivy on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
+                 System.out.println("Have not run Trivy on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
                  tempResults.getParentFile().mkdirs();
                  //Unlike Grype, Trivy does not automatically download an image if it doesn't already exist.
                  //so, we need to download it.
@@ -171,8 +172,7 @@ package tool;
                                  //do we have a cwe for this cve?
                                  associatedCWEs.addAll(piqueData.getCweName(vulnerabilityID));
                              }catch (DataAccessException e){
-                                 LOGGER.error(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
-                                 System.out.println(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                                 LOGGER.info(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
                              }
 
                              // remove duplicate CWEs
@@ -194,7 +194,6 @@ package tool;
                                  } else {
                                      //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                                      // We may want to treat this in another way in the future, but im ignoring it for now.
-                                     System.out.println("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
                                      LOGGER.warn("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
                                  }
                              }

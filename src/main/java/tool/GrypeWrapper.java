@@ -63,6 +63,7 @@ public class GrypeWrapper extends Tool implements ITool {
             LOGGER.info("Already ran Grype on: " + imageName + ", results stored in: " + tempResults.toString());
         }else {
             LOGGER.info("Have not run Grype on: " + imageName + ", running now and storing in:" +  tempResults.toString());
+            System.out.println("Have not run Grype on: " + imageName + ", running now and storing in:" +  tempResults.toString());
             tempResults.getParentFile().mkdirs();
 
             String[] cmd = {"grype",
@@ -124,8 +125,7 @@ public class GrypeWrapper extends Tool implements ITool {
                     //do we have a cwe for this cve?
                     cwes = piqueData.getCweName(findingName);
                 }catch (DataAccessException e){
-                    LOGGER.error(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
-                    System.out.println(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                    LOGGER.info(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
                 }
                 // are CWE's unique? In some cases the NVD reports the same CWE from a Primary and Secondary source
                 // we want only unique CWEs
@@ -145,7 +145,6 @@ public class GrypeWrapper extends Tool implements ITool {
                     }else{
                         //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                         // We may want to treat this in another way in the future, but im ignoring it for now.
-                        System.out.println("Vulnerability " + findingName + " with CWE: " + matchedCWE  + "  outside of CWE-1000 was found. Ignoring this CVE.");
                         LOGGER.warn("Vulnerability " + findingName + " with CWE: " + matchedCWE + "  outside of CWE-1000 was found. Ignoring this CVE.");
                     }
                 }

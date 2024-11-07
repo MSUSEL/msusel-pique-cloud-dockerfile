@@ -55,6 +55,7 @@ public class DiveWrapper extends Tool implements ITool {
             LOGGER.info("Already ran Dive on: " + imageName + ", results stored in: " + tempResults.toString());
         }else {
             LOGGER.info("Have not run Dive on: " + imageName + ", running now and storing in:" +  tempResults.toString());
+            System.out.println("Have not run Dive on: " + imageName + ", running now and storing in:" +  tempResults.toString());
             tempResults.getParentFile().mkdirs();
 
             String[] cmd = {"dive",

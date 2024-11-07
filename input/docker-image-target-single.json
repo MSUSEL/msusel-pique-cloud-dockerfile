@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "name": "peakkk/metasploitable",
+      "name": "alpine",
       "versions": [
-        "latest"
+        "20220328"
       ]
     }
   ]

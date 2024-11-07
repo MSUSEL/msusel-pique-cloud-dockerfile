@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pique.model.*;
+import pique.utility.BigDecimalWithContext;
 import pique.utility.PiqueProperties;
 
 import java.io.*;
@@ -181,45 +182,55 @@ public class HelperFunctions {
 		return retString;
 	}
 
+	private static boolean doThresholdsHaveNonZero(ModelNode node){
+		if (node.getThresholds() != null){
+			for (BigDecimal threshold : node.getThresholds()) {
+				if (threshold.compareTo(BigDecimal.ZERO) != 0) {
+					//found a nonZero
+					return  true;
+				}
+			}
+		}
+		return false;
+	}
 
 	//return children of node
 	private static void recursiveRemoveAllZeroes(ModelNode node){
-
+		 boolean foundNonZero = false;
 		if (node instanceof Diagnostic){
 			//base case, return. We should always run into a diagnostic node
 			return;
 		}
 		Map<String, ModelNode> newChildren = new HashMap<>();
-
 		for (ModelNode existingChild : node.getChildren().values()){
-			boolean foundNonZero = false;
-			if (existingChild.getThresholds() != null) {
-				for (BigDecimal threshold : existingChild.getThresholds()) {
-					if (threshold.compareTo(BigDecimal.ZERO) != 0) {
-						//found a nonZero
-						foundNonZero = true;
-						break;
-					}
-				}
-			}
+			foundNonZero = doThresholdsHaveNonZero(existingChild);
+			recursiveRemoveAllZeroes(existingChild);
 			if (foundNonZero){
 				//keep this node and this node's children, but still need to evaluate children
 				newChildren.put(existingChild.getName(), existingChild);
 			}
-			recursiveRemoveAllZeroes(existingChild);
+			if (existingChild instanceof Diagnostic){ //keep diagnostic nodes regardless; if
+				newChildren.put(existingChild.getName(), existingChild);
+			}
 		}
 		node.setChildren(newChildren);
+		Map<String, BigDecimal> newWeights = new HashMap<>();
+		for (ModelNode newChild : node.getChildren().values()){
+			double newWeight = 1 / (double) newChildren.size();
+			newWeights.put(newChild.getName(), new BigDecimalWithContext(newWeight));
+		}
+		node.setWeights(newWeights);
+
 	}
 
 
 	public static QualityModel trimBenchmarkedMeasuresWithNoFindings(QualityModel qm){
-		QualityModel toRet = qm.clone();
-		for (ModelNode qa : toRet.getQualityAspects().values()){
+		for (ModelNode qa : qm.getQualityAspects().values()){
 			for (ModelNode pf : qa.getChildren().values()){
 				recursiveRemoveAllZeroes(pf);
 			}
 		}
-		return toRet;
+		return qm;
 	}
 
 }
