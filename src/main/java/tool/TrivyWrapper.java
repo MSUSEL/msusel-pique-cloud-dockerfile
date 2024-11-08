@@ -22,6 +22,7 @@
  */
 package tool;
 
+ import exceptions.DataAccessException;
  import org.json.JSONArray;
  import org.json.JSONException;
  import org.json.JSONObject;
@@ -32,17 +33,16 @@ package tool;
  import pique.model.Diagnostic;
  import pique.model.Finding;
  import pique.utility.PiqueProperties;
- import utilities.helperFunctions;
+ import presentation.PiqueData;
+ import utilities.HelperFunctions;
 
+ import javax.ws.rs.HEAD;
  import java.io.File;
  import java.io.IOException;
  import java.nio.file.Files;
  import java.nio.file.Path;
  import java.nio.file.Paths;
- import java.util.ArrayList;
- import java.util.Arrays;
- import java.util.Map;
- import java.util.Properties;
+ import java.util.*;
 
  /**
   * CODE TAKEN FROM PIQUE-BIN-DOCKER AND MODIFIED FOR PIQUE-SBOM-CONTENT and PIQUE-CLOUD-DOCKERFILE.
@@ -54,11 +54,11 @@ package tool;
   */
  public class TrivyWrapper extends Tool implements ITool  {
      private static final Logger LOGGER = LoggerFactory.getLogger(TrivyWrapper.class);
-     private String githubTokenPath;
+     private PiqueData piqueData;
 
-     public TrivyWrapper(String githubTokenPath) {
+     public TrivyWrapper(PiqueData piqueData) {
          super("Trivy", null);
-         this.githubTokenPath = githubTokenPath;
+         this.piqueData = piqueData;
      }
 
      // Methods
@@ -70,7 +70,8 @@ package tool;
          public Path analyze(Path projectLocation) {
              String imageName = projectLocation.toString();
              LOGGER.info(this.getName() + "  Analyzing "+ imageName);
-             System.out.println("Analyzing "+ imageName + " with " + this.getName());
+             System.out.println("Executing SAT " + this.getName() + " on image: " + imageName);
+             LOGGER.debug("Executing SAT " + this.getName() + " on image: " + imageName);
              String imageNameForDirectory = imageName.split(":")[0];
              //set up results dir
 
@@ -92,6 +93,7 @@ package tool;
                  LOGGER.info("Already ran Trivy on: " + imageName + ", results stored in: " + tempResults.toString());
              }else {
                  LOGGER.info("Have not run Trivy on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
+                 System.out.println("Have not run Trivy on: "+ imageName + ", running now and storing in:" +  tempResults.toString());
                  tempResults.getParentFile().mkdirs();
                  //Unlike Grype, Trivy does not automatically download an image if it doesn't already exist.
                  //so, we need to download it.
@@ -105,7 +107,7 @@ package tool;
                          projectLocation.toString()};
                  LOGGER.info(Arrays.toString(cmd));
                  try {
-                     helperFunctions.getOutputFromProgram(cmd, LOGGER);
+                     HelperFunctions.getOutputFromProgram(cmd, LOGGER);
                  } catch (IOException e) {
                      LOGGER.error("Failed to run Trivy");
                      LOGGER.error(e.toString());
@@ -124,15 +126,15 @@ package tool;
           */
          @Override
          public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-             System.out.println(this.getName() + " Parsing Analysis...");
-             LOGGER.debug(this.getName() + " Parsing Analysis...");
+             System.out.println("Parsing output from SAT " + this.getName());
+             LOGGER.debug("Parsing output from SAT " + this.getName());
 
-             Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
+             Map<String, Diagnostic> diagnostics = HelperFunctions.initializeDiagnostics(this.getName());
 
              String results = "";
 
              try {
-                 results = helperFunctions.readFileContent(toolResults);
+                 results = HelperFunctions.readFileContent(toolResults);
              } catch (IOException e) {
                  LOGGER.info("No results to read from Trivy.");
              }
@@ -155,27 +157,28 @@ package tool;
                              JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
                              String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
 
+                             //associated CWEs are Aqua's CWEs and NVDs CWEs
                              ArrayList<String> associatedCWEs = new ArrayList<>();
+                             // get aqua CWEs
                              JSONArray jsonWeaknesses = jsonFinding.optJSONArray("CweIDs");
-                             if (jsonWeaknesses == null) {
-                                 //try the cve-cwe script...
-                                 ArrayList<String> wrapper = new ArrayList<>();
-                                 wrapper.add(vulnerabilityID);
-                                 String[] cwes = helperFunctions.getCWEFromNVDDatabaseDump(wrapper, this.githubTokenPath);
-                                 if (cwes.length == 0) {
-                                     //NVD has none, we skip it
-                                     //found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/et
-                                     LOGGER.info("found no CWEs for this vulnerability. This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
-                                     System.out.println("found no CWEs for vulnerability: " + vulnerabilityID + ". This is not present in my test cases but may happen when no CWE exists for a given CVE/GHSA/etc");
-
-                                 }else {
-                                     associatedCWEs.addAll(Arrays.asList(cwes));
-                                 }
-                             }else {
+                             if (jsonWeaknesses != null) {
                                  for (int k = 0; k < jsonWeaknesses.length(); k++) {
                                      associatedCWEs.add(jsonWeaknesses.get(k).toString());
                                  }
                              }
+                             // get NVD CWEs
+                             //FIXME--- remove try catch block after checked exceptions changes
+                             try {
+                                 //do we have a cwe for this cve?
+                                 associatedCWEs.addAll(piqueData.getCweName(vulnerabilityID));
+                             }catch (DataAccessException e){
+                                 LOGGER.info(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                             }
+
+                             // remove duplicate CWEs
+                             Set<String> cweSet = new HashSet<>(associatedCWEs);
+                             associatedCWEs.clear();
+                             associatedCWEs.addAll(cweSet);
                              //regardless of cwes, continue with severity.
                              String vulnerabilitySeverity = jsonFinding.getString("Severity");
                              int severity = this.severityToInt(vulnerabilitySeverity);
@@ -183,13 +186,13 @@ package tool;
                              for (int k = 0; k < associatedCWEs.size(); k++) {
                                  Diagnostic diag = diagnostics.get((associatedCWEs.get(k) + " Diagnostic Trivy"));
                                  if (diag != null) {
+                                     LOGGER.info("Found " + associatedCWEs.get(k) + " in the model definition for our " + vulnerabilityID);
                                      Finding finding = new Finding("", 0, 0, severity);
                                      finding.setName(vulnerabilityID);
                                      diag.setChild(finding);
                                  } else {
                                      //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                                      // We may want to treat this in another way in the future, but im ignoring it for now.
-                                     System.out.println("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
                                      LOGGER.warn("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
                                  }
                              }
@@ -212,7 +215,7 @@ package tool;
              final String[] cmd = {"trivy", "version"};
 
              try {
-                 helperFunctions.getOutputFromProgram(cmd, LOGGER);
+                 HelperFunctions.getOutputFromProgram(cmd, LOGGER);
              } catch (IOException e) {
                  e.printStackTrace();
                  LOGGER.error("Failed to initialize " + this.getName());
@@ -228,15 +231,15 @@ package tool;
              Integer severityInt = 1;
              switch(severity.toLowerCase()) {
                  case "low": {
-                     severityInt = 4;
+                     severityInt = 1;
                      break;
                  }
                  case "medium": {
-                     severityInt = 7;
+                     severityInt = 3;
                      break;
                  }
                  case "high": {
-                     severityInt = 9;
+                     severityInt = 6;
                      break;
                  }
                  case "critical": {

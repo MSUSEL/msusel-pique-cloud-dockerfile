@@ -11,11 +11,13 @@ import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.runnable.ASingleProjectEvaluator;
 import pique.utility.PiqueProperties;
+import presentation.PiqueData;
+import presentation.PiqueDataFactory;
+import tool.DiveWrapper;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -49,7 +51,7 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
         //projectLocation is a json file, need to parse. 
         Path dockerfileJSONPath = Paths.get(projectsToAnalyze);
 
-        Set<Path> dockerfilesToAnalyze = helperFunctions.getDockerImagesToAnalyze(dockerfileJSONPath);
+        Set<Path> dockerfilesToAnalyze = HelperFunctions.getDockerImagesToAnalyze(dockerfileJSONPath);
 
 
         Path projectsRepo = Paths.get(prop.getProperty("project.root"));
@@ -65,9 +67,12 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
 
         Path qmLocation = Paths.get(prop.getProperty("derived.qm"));
 
-        ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
-        ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
-        Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper).collect(Collectors.toSet());
+        PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+
+        ITool gyrpeWrapper = new GrypeWrapper(piqueData);
+        ITool trivyWrapper = new TrivyWrapper(piqueData);
+        ITool diveWrapper = new DiveWrapper();
+        Set<ITool> tools = Stream.of(gyrpeWrapper, trivyWrapper, diveWrapper).collect(Collectors.toSet());
 
         for (Path dockerfile : dockerfilesToAnalyze) {
             //tricky here. getParent  because the Path points to a json file, and we need the parent.

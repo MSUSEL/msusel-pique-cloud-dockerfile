@@ -1,0 +1,10 @@
+{
+  "images": [
+    {
+      "name": "sagikazarmark/dvwa",
+      "versions": [
+        "latest"
+      ]
+    }
+  ]
+}

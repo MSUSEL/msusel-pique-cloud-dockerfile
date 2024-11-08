@@ -1,19 +1,18 @@
 import calibration.CloudBenchmarker;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import pique.analysis.ITool;
-import pique.evaluation.Project;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.utility.PiqueProperties;
+import presentation.PiqueData;
+import presentation.PiqueDataFactory;
 import tool.GrypeWrapper;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -44,23 +43,20 @@ public class BenchmarkerTest {
 
     @Test
     public void testBenchmarkImport(){
-
-        Set<Path> dockerImages = helperFunctions.getDockerImagesToAnalyze(Paths.get(prop.getProperty("benchmark.repo")));
+        Set<Path> dockerImages = HelperFunctions.getDockerImagesToAnalyze(Paths.get(prop.getProperty("benchmark.repo")));
 
     }
 
     @Test
     public void testDeriveThresholds(){
-
-
-
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 
+        PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
 
-        ITool gyrpeWrapper = new GrypeWrapper(prop.getProperty("github-token-path"), prop.getProperty("nvd-api-key-path"));
-        //TODO ITool trivyWrapper = new TrivyWrapper(prop.getProperty("github-token-path"));
+        ITool gyrpeWrapper = new GrypeWrapper(piqueData);
+        //TODO ITool trivyWrapper = new TrivyWrapper(piqueData);
         Set<ITool> tools = Stream.of(gyrpeWrapper).collect(Collectors.toSet());
 
 

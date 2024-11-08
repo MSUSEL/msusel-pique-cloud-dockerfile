@@ -34,8 +34,15 @@ input/keys/nvd-api-key.txt
 # don't push compiled classes or compiled targets
 target/*
 
-# nvd database
-src/main/resources/nvd-dictionary.json
+# database credentials, both main and test
+src/main/resources/credentials.json
+src/test/resources/credentials.json
 
 # tool output files
 tool-out/*
+
+# output artifacts
+out/*
+output/*
+
+!output/PIQUECloud-dockerfilequalitymodel.json
