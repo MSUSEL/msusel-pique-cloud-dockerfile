@@ -20,7 +20,6 @@ public class GrypeWrapperTest {
 
     private static GrypeWrapper grypeWrapper;
 
-
     private static PiqueData piqueData;
 
     public GrypeWrapperTest(){

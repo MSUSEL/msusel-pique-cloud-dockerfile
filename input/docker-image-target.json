@@ -1,0 +1,10 @@
+{
+  "images": [
+    {
+      "name": "alpine",
+      "versions": [
+        "3.18"
+      ]
+    }
+  ]
+}

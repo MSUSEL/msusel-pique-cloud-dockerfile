@@ -36,6 +36,7 @@ package tool;
  import presentation.PiqueData;
  import utilities.HelperFunctions;
 
+ import javax.ws.rs.HEAD;
  import java.io.File;
  import java.io.IOException;
  import java.nio.file.Files;
@@ -54,7 +55,6 @@ package tool;
  public class TrivyWrapper extends Tool implements ITool  {
      private static final Logger LOGGER = LoggerFactory.getLogger(TrivyWrapper.class);
      private PiqueData piqueData;
-
 
      public TrivyWrapper(PiqueData piqueData) {
          super("Trivy", null);
@@ -179,7 +179,6 @@ package tool;
                              Set<String> cweSet = new HashSet<>(associatedCWEs);
                              associatedCWEs.clear();
                              associatedCWEs.addAll(cweSet);
-
                              //regardless of cwes, continue with severity.
                              String vulnerabilitySeverity = jsonFinding.getString("Severity");
                              int severity = this.severityToInt(vulnerabilitySeverity);

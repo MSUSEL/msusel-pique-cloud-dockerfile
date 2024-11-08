@@ -32,6 +32,7 @@ import pique.utility.BigDecimalWithContext;
 import pique.utility.PiqueProperties;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -64,7 +65,6 @@ public class HelperFunctions {
 			return true;
 		}
 	}
-
 
 	/***
 	 *

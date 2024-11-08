@@ -43,18 +43,15 @@ public class BenchmarkerTest {
 
     @Test
     public void testBenchmarkImport(){
-
         Set<Path> dockerImages = HelperFunctions.getDockerImagesToAnalyze(Paths.get(prop.getProperty("benchmark.repo")));
 
     }
 
     @Test
     public void testDeriveThresholds(){
-
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
-
 
         PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
 

@@ -148,7 +148,6 @@ public class GrypeWrapper extends Tool implements ITool {
                         LOGGER.warn("Vulnerability " + findingName + " with CWE: " + matchedCWE + "  outside of CWE-1000 was found. Ignoring this CVE.");
                     }
                 }
-
             }
         } catch (JSONException e) {
             LOGGER.warn("Unable to read results from Grype");

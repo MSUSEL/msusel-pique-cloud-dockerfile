@@ -22,7 +22,6 @@ public class TrivyWrapperTest {
 
     private static PiqueData piqueData;
 
-
     public TrivyWrapperTest(){
 
     }
@@ -34,7 +33,6 @@ public class TrivyWrapperTest {
 
         piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
         trivyWrapper = new TrivyWrapper(piqueData);
-
         //load docker marshaller
         DockerMarshallerTest.init();
     }
@@ -53,6 +51,7 @@ public class TrivyWrapperTest {
         assertEquals(1, d.getChildren().keySet().size());
         // check that the finding matches with our expectations (name + critical severity + value)
         Finding f = (Finding) d.getChild("CVE-2023-0464");
+
         assertEquals(7, f.getSeverity());
         assertEquals(new BigDecimal(7), f.getValue());
 
