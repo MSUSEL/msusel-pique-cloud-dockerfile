@@ -2,6 +2,7 @@ package tool;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.PullImageResultCallback;
+import com.github.dockerjava.api.exception.InternalServerErrorException;
 import com.github.dockerjava.api.exception.NotFoundException;
 import com.github.dockerjava.api.model.Image;
 import com.github.dockerjava.api.model.PullResponseItem;
@@ -91,7 +92,14 @@ public class DockerMarshaller {
                 }).awaitCompletion(5, TimeUnit.MINUTES);
             }
         }catch (InterruptedException interruptedException){
+            LOGGER.error("Timeout pulling docker images from DockerHub, with a 5 minute timeout. Perhaps DockerHub is down?");
+            LOGGER.error("\t" + interruptedException);
             System.out.println("Timeout pulling docker images from DockerHub, with a 5 minute timeout. Perhaps DockerHub is down?");
+        }catch (InternalServerErrorException internalServerErrorException){
+            LOGGER.error("Internal dockerjava-library service error. Perhaps the image does not exist?");
+            LOGGER.error("\t" + internalServerErrorException);
+            System.out.println("Internal dockerjava-library service error. Perhaps the image does not exist?");
+
         }
     }
 

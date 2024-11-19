@@ -182,16 +182,21 @@ public class HelperFunctions {
 		return retString;
 	}
 
-	private static boolean doThresholdsHaveNonZero(ModelNode node){
-		if (node.getThresholds() != null){
-			for (BigDecimal threshold : node.getThresholds()) {
+	public static boolean doThresholdsHaveNonZero(BigDecimal[] thresholds){
+		if (thresholds != null) {
+			//will be null when evaluate is called on a non measures node
+			for (BigDecimal threshold : thresholds) {
 				if (threshold.compareTo(BigDecimal.ZERO) != 0) {
 					//found a nonZero
-					return  true;
+					return true;
 				}
 			}
 		}
 		return false;
+	}
+
+	private static boolean doThresholdsHaveNonZero(ModelNode node){
+		return doThresholdsHaveNonZero(node.getThresholds());
 	}
 
 	//return children of node

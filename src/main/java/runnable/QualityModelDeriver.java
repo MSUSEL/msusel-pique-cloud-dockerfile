@@ -72,6 +72,10 @@ public class QualityModelDeriver extends AQualityModelDeriver {
                         .getName(), derivedModelFilePath);
         LOGGER.info("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath());
 
+
+        /*
+        uncomment when we decide to remove trimming or not
+
         QualityModel trimmedDerivedQualityModel = HelperFunctions.trimBenchmarkedMeasuresWithNoFindings(derivedQualityModel);
 
         Path trimmedJsonOutput = new QualityModelExport(trimmedDerivedQualityModel)
@@ -79,6 +83,7 @@ public class QualityModelDeriver extends AQualityModelDeriver {
                         .getName() + "_trimmed", derivedModelFilePath);
 
         LOGGER.info("Quality Model derivation finished with trimmed model. You can find the file at " + trimmedJsonOutput.toAbsolutePath());
+         */
 
 
     }

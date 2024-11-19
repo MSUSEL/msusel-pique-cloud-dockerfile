@@ -1,5 +1,6 @@
 package tool;
 
+import evaluation.ValueFinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -96,20 +97,27 @@ public class DiveWrapper extends Tool implements ITool {
             JSONObject metrics = jsonResults.getJSONObject("image");
             //no findings for Dive because Dive metrics capture a summary of the image
             //save as diagnostics, no findings
-            Finding inefficientBytesFinding = new Finding("", 0, 0, 0);
+
+            Diagnostic inefficientBytesDiag = diagnostics.get("Inefficient Bytes Diagnostic Dive");
+            Finding inefficientBytesFinding = new ValueFinding("", 0, 0, 0);
             BigDecimal inefficientBytes = new BigDecimalWithContext(metrics.get("inefficientBytes").toString());
+            inefficientBytesFinding.setName("Inefficient Bytes Finding");
             inefficientBytesFinding.setValue(inefficientBytes);
-            diagnostics.get("Inefficient Bytes Diagnostic Dive").setChild(inefficientBytesFinding);
+            inefficientBytesDiag.setChild(inefficientBytesFinding);
 
-            Finding efficiencyScoreFinding = new Finding("", 0, 0, 0);
+            Diagnostic efficiencyScoreDiag = diagnostics.get("Image Efficiency Score Diagnostic Dive");
+            Finding efficiencyScoreFinding = new ValueFinding("", 0, 0, 0);
             BigDecimal efficiencyScore = new BigDecimalWithContext(metrics.get("efficiencyScore").toString());
+            efficiencyScoreFinding.setName("Efficiency Score Finding");
             efficiencyScoreFinding.setValue(efficiencyScore);
-            diagnostics.get("Image Efficiency Score Diagnostic Dive").setChild(efficiencyScoreFinding);
+            efficiencyScoreDiag.setChild(efficiencyScoreFinding);
 
-            Finding sizeFinding = new Finding("", 0, 0, 0);
+            Diagnostic sizeDiag = diagnostics.get("Size in Bytes Diagnostic Dive");
+            Finding sizeFinding = new ValueFinding("", 0, 0, 0);
             BigDecimal sizeInBytes = new BigDecimalWithContext(metrics.get("sizeBytes").toString());
+            sizeFinding.setName("Size in Bytes Finding");
             sizeFinding.setValue(sizeInBytes);
-            diagnostics.get("Size in Bytes Diagnostic Dive").setChild(sizeFinding);
+            sizeDiag.setChild(sizeFinding);
 
         } catch (JSONException e) {
             LOGGER.warn("Unable to read results from Dive");
