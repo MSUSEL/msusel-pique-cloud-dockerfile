@@ -112,12 +112,16 @@ public class DiveWrapper extends Tool implements ITool {
             efficiencyScoreFinding.setValue(efficiencyScore);
             efficiencyScoreDiag.setChild(efficiencyScoreFinding);
 
+            /**
+             * commenting until we get the size score figured out
             Diagnostic sizeDiag = diagnostics.get("Size in Bytes Diagnostic Dive");
             Finding sizeFinding = new ValueFinding("", 0, 0, 0);
             BigDecimal sizeInBytes = new BigDecimalWithContext(metrics.get("sizeBytes").toString());
             sizeFinding.setName("Size in Bytes Finding");
             sizeFinding.setValue(sizeInBytes);
             sizeDiag.setChild(sizeFinding);
+             */
+
 
         } catch (JSONException e) {
             LOGGER.warn("Unable to read results from Dive");

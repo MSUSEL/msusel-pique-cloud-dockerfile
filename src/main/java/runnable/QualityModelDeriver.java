@@ -13,7 +13,6 @@ import presentation.PiqueDataFactory;
 import tool.DiveWrapper;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
-import utilities.HelperFunctions;
 
 import java.io.IOException;
 import java.nio.file.Path;

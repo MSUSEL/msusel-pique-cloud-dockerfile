@@ -17,7 +17,7 @@ public class PDFBandwidthCalculator extends ProbabilityDensityFunctionUtilityFun
         return super.utilityFunction(inValue, thresholds, positive);
     }
 
-    private int calculateNumberOfXPoints(BigDecimal[] thresholds){
+    protected int calculateNumberOfXPoints(BigDecimal[] thresholds){
         //experiment more, find functions for how many points
         if (thresholds == null || thresholds.length == 0) {
             return 1;
@@ -25,7 +25,7 @@ public class PDFBandwidthCalculator extends ProbabilityDensityFunctionUtilityFun
         return thresholds.length * 5;
     }
 
-    private double calculateBandwidth(BigDecimal[] thresholds){
+    protected double calculateBandwidth(BigDecimal[] thresholds){
         //bandwidth will calculate to NaN if thresholds are all zero, so we need logic to set bandwidth to 0 if we have all zero thresholds.
         //the pdf function itself it responsible for skipping these values
         double newBandwidth = 0.0;

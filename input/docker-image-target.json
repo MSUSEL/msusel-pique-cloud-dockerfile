@@ -17,6 +17,30 @@
       "versions": [
         "latest"
       ]
+    },
+    {
+      "name": "alpine",
+      "versions": [
+        "3.18.0"
+        ]
+    },
+    {
+      "name": "busybox",
+      "versions": [
+        "1.34.1-glibc"
+      ]
+    },
+    {
+      "name": "nginx",
+      "versions": [
+        "1.26.0-alpine-slim"
+        ]
+    },
+    {
+      "name": "ubuntu",
+      "versions": [
+        "impish-20210827"
+        ]
     }
   ]
 }
