@@ -117,8 +117,16 @@ public class GrypeWrapper extends Tool implements ITool {
                 JSONObject jsonFinding = ((JSONObject) matches.get(i)).optJSONObject("vulnerability");
                 //Need to change this for this tool.
                 String findingName = jsonFinding.get("id").toString();
-                LOGGER.info("Found vulnerability: ");
+                LOGGER.info("Found vulnerability: " + findingName);
                 String findingSeverity = jsonFinding.get("severity").toString();
+                if (findingName.substring(0,3).equals("GHSA")){
+                    //found a GHSA, find the relatedVulnerabilities field for the equivalent CVE
+                    LOGGER.info("\tConverting GHSA vulnerability to CVE vulnerability");
+                    JSONObject cveMapping = ((JSONObject) matches.get(i)).optJSONObject("relatedVulnerabilities");
+                    findingName = cveMapping.get("id").toString();
+                    findingSeverity = cveMapping.get("severity").toString();
+                    LOGGER.info("\tConverted GHSA to CVE: " + findingName);
+                }
                 List<String> cwes = new ArrayList<>();
                 //FIXME--- remove try catch block after checked exceptions changes
                 try {

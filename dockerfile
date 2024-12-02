@@ -1,4 +1,4 @@
-FROM msusel/pique-core:0.9.5_2
+FROM msusel/pique-core:1.0.1
 
 ## dependency and library versions
 ARG GRYPE_VERSION=0.72.0
