@@ -10,7 +10,7 @@ ARG DIVE_VERSION=0.12.0
 
 RUN apk update && apk upgrade && apk add --update --no-cache \
     # system level packages
-    curl dpkg docker openrc
+    curl dpkg docker openrc dpkg
 
 # add user to docker group
 RUN addgroup root docker
@@ -30,7 +30,7 @@ RUN rm "trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
 
 ## dive install
 RUN curl -OL https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb
-RUN sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
+RUN dpkg -i ./dive_${DIVE_VERSION}_linux_amd64.deb
 
 ##################################################
 ######### pique dockerfile install ###############
