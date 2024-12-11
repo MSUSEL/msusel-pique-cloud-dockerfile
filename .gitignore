@@ -44,5 +44,6 @@ tool-out/*
 # output artifacts
 out/*
 output/*
+sample_outputs/*
 
 !output/PIQUECloud-dockerfilequalitymodel.json

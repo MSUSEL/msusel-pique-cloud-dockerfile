@@ -13,6 +13,7 @@ import presentation.PiqueDataFactory;
 import tool.DiveWrapper;
 import tool.GrypeWrapper;
 import tool.TrivyWrapper;
+import utilities.HelperFunctions;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -72,8 +73,8 @@ public class QualityModelDeriver extends AQualityModelDeriver {
         LOGGER.info("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath());
 
 
-        /*
-        uncomment when we decide to remove trimming or not
+
+        //uncomment when we decide to remove trimming or not
 
         QualityModel trimmedDerivedQualityModel = HelperFunctions.trimBenchmarkedMeasuresWithNoFindings(derivedQualityModel);
 
@@ -82,7 +83,7 @@ public class QualityModelDeriver extends AQualityModelDeriver {
                         .getName() + "_trimmed", derivedModelFilePath);
 
         LOGGER.info("Quality Model derivation finished with trimmed model. You can find the file at " + trimmedJsonOutput.toAbsolutePath());
-         */
+
 
 
     }

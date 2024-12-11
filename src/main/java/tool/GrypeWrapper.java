@@ -115,17 +115,36 @@ public class GrypeWrapper extends Tool implements ITool {
 
             for (int i = 0; i < matches.length(); i++) {
                 JSONObject jsonFinding = ((JSONObject) matches.get(i)).optJSONObject("vulnerability");
-                //Need to change this for this tool.
                 String findingName = jsonFinding.get("id").toString();
                 LOGGER.info("Found vulnerability: " + findingName);
                 String findingSeverity = jsonFinding.get("severity").toString();
-                if (findingName.substring(0,3).equals("GHSA")){
+                String[] findingNames;
+                String[] findingSeverities;
+                if (findingName.substring(0,4).equals("GHSA")){
                     //found a GHSA, find the relatedVulnerabilities field for the equivalent CVE
                     LOGGER.info("\tConverting GHSA vulnerability to CVE vulnerability");
-                    JSONObject cveMapping = ((JSONObject) matches.get(i)).optJSONObject("relatedVulnerabilities");
-                    findingName = cveMapping.get("id").toString();
-                    findingSeverity = cveMapping.get("severity").toString();
+                    JSONArray cveMappings = ((JSONObject) matches.get(i)).optJSONArray("relatedVulnerabilities");
+                    findingNames = new String[cveMappings.length()];
+                    findingSeverities = new String[cveMappings.length()];
+                    //set finding names of first/default first
+                    findingName = ((JSONObject)cveMappings.get(0)).get("id").toString();
+                    findingSeverity = ((JSONObject)cveMappings.get(0)).get("severity").toString();
+                    findingNames[0] = findingName;
+                    findingSeverities[0] = findingSeverity;
+                    for (int j = 1; j < cveMappings.length(); j++) {
+                        findingNames[j] = ((JSONObject)cveMappings.get(j)).get("id").toString();
+                        findingSeverities[j] = ((JSONObject)cveMappings.get(j)).get("severity").toString();
+                    }
                     LOGGER.info("\tConverted GHSA to CVE: " + findingName);
+                }else{
+                    //no GHSA
+                    findingNames = new String[]{findingName};
+                    findingSeverities = new String[]{findingSeverity};
+                }
+                if (findingNames.length > 1){
+                    LOGGER.warn("Found more than one CVE for a GHSA vulnerability, unsure how to aggregate this, but only considering the first cve for now");
+                    findingName = findingNames[0];
+                    findingSeverity = findingSeverities[0];
                 }
                 List<String> cwes = new ArrayList<>();
                 //FIXME--- remove try catch block after checked exceptions changes
