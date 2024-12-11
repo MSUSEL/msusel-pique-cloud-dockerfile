@@ -156,7 +156,7 @@ package tool;
                          for (int j = 0; j < jsonVulnerabilities.length(); j++) {
                              JSONObject jsonFinding = ((JSONObject) jsonVulnerabilities.get(j));
                              String vulnerabilityID = jsonFinding.getString("VulnerabilityID");
-
+                             //trivy does not find GHSAs, so skip
                              //associated CWEs are Aqua's CWEs and NVDs CWEs
                              ArrayList<String> associatedCWEs = new ArrayList<>();
                              // get aqua CWEs

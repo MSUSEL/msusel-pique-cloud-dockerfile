@@ -1,8 +1,8 @@
-FROM msusel/pique-core:0.9.5_2
+FROM msusel/pique-core:1.0.1
 
 ## dependency and library versions
 ARG GRYPE_VERSION=0.72.0
-ARG PIQUE_DOCKERFILE_VERSION=1.0.1
+ARG PIQUE_DOCKERFILE_VERSION=2.0.0
 # Trivy release without the 'v' because the release of trivy does not include the v on its download page
 ARG TRIVY_VERSION=0.44.1
 ARG DIVE_VERSION=0.12.0
@@ -10,7 +10,7 @@ ARG DIVE_VERSION=0.12.0
 
 RUN apk update && apk upgrade && apk add --update --no-cache \
     # system level packages
-    curl python3 py3-pip dpkg docker openrc
+    curl dpkg docker openrc
 
 # add user to docker group
 RUN addgroup root docker
@@ -36,21 +36,18 @@ RUN sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 ######### pique dockerfile install ###############
 ##################################################
 
-# python dependency installs
-# [IMPORTANT the venv declaration is important because the host environment (pique-cloud) might have conflicting dependencies]
-RUN python3 -m venv .venv
-RUN source .venv/bin/activate
-RUN python3 -m pip install argparse requests --break-system-packages
-
 WORKDIR "/home"
 RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
 
-# build pique cloud dockerfile
-RUN mvn package -Dmaven.test.skip
+# copy credentials file for database communication
+COPY src/main/resources/credentials.json src/main/resources/credentials.json
 
-# Figure out a better way to work with the NVD database
-ADD src/main/resources/nvd-dictionary.json src/main/resources/nvd-dictionary.json
+# copy model file to resources
+COPY output/PIQUECloud-dockerfilequalitymodel.json src/main/resources/PIQUECloud-dockerfilequalitymodel.json
+
+# build pique cloud dockerfile
+RUN mvn package -Dmaven.test.skip -Dlicense.skip
 
 # create input directory
 RUN mkdir "/input"
@@ -66,4 +63,4 @@ RUN ln -s /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfi
         /home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar
 
 ##### secret sauce
-ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
+# ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
