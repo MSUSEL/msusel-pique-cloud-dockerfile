@@ -63,4 +63,4 @@ RUN ln -s /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfi
         /home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar
 
 ##### secret sauce
-# ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
+ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
