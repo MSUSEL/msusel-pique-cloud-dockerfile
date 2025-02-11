@@ -1,5 +1,5 @@
 {
-  "name": "PIQUE Cloud-dockerfile quality model",
+  "name": "PIQUE Cloud-dockerfile quality model 5055 Alignment",
   "additionalData": {},
   "global_config": {
     "benchmark_strategy": "calibration.NaiveCloudBenchmarker",

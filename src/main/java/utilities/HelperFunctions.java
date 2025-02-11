@@ -186,6 +186,7 @@ public class HelperFunctions {
 		if (thresholds != null) {
 			//will be null when evaluate is called on a non measures node
 			for (BigDecimal threshold : thresholds) {
+				//might need to change in the future to remove if all thresholds are the SAME
 				if (threshold.compareTo(BigDecimal.ZERO) != 0) {
 					//found a nonZero
 					return true;
@@ -217,8 +218,15 @@ public class HelperFunctions {
 			if (existingChild instanceof Diagnostic){ //keep diagnostic nodes regardless; if
 				newChildren.put(existingChild.getName(), existingChild);
 			}
+			if (existingChild instanceof ProductFactor){
+				if (!existingChild.getChildren().values().isEmpty()) {
+					//product factor's children have been retained from the recursive call
+					newChildren.put(existingChild.getName(), existingChild);
+				}
+			}
 		}
 		node.setChildren(newChildren);
+		//this code just does the weights
 		Map<String, BigDecimal> newWeights = new HashMap<>();
 		for (ModelNode newChild : node.getChildren().values()){
 			double newWeight = 1 / (double) newChildren.size();
@@ -231,9 +239,11 @@ public class HelperFunctions {
 
 	public static QualityModel trimBenchmarkedMeasuresWithNoFindings(QualityModel qm){
 		for (ModelNode qa : qm.getQualityAspects().values()){
-			for (ModelNode pf : qa.getChildren().values()){
-				recursiveRemoveAllZeroes(pf);
-			}
+			recursiveRemoveAllZeroes(qa);
+//			for (ModelNode pf : qa.getChildren().values()){
+//				recursiveRemoveAllZeroes(pf);
+			//check if PFs have no children
+//			}
 		}
 		return qm;
 	}
