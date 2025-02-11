@@ -160,15 +160,16 @@ public class GrypeWrapper extends Tool implements ITool {
                 cwes.clear();
                 cwes.addAll(cweSet);
 
+                int uniqueFindingCounter = 0;
                 for (String matchedCWE : cwes){
                     //do we have a diag for this matchedCWE? (Is it in the model definition?)
                     Diagnostic diag = diagnostics.get(matchedCWE + " Diagnostic Grype");
                     if (diag != null) {
                         //found a cwe node for this in the model definition, creating a finding for it and adding.
                         LOGGER.info("Found " + matchedCWE + " in the model definition for our " + findingName);
-                        Finding finding = new Finding("",0,0, this.severityToInt(findingSeverity));
-                        finding.setName(findingName);
+                        Finding finding = new Finding("" + uniqueFindingCounter,0,0, this.severityToInt(findingSeverity));
                         diag.setChild(finding);
+                        uniqueFindingCounter++;
                     }else{
                         //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
                         // We may want to treat this in another way in the future, but im ignoring it for now.

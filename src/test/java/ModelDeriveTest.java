@@ -1,6 +1,7 @@
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import pique.model.Finding;
 import runnable.QualityModelDeriver;
 
 public class ModelDeriveTest {
@@ -18,11 +19,6 @@ public class ModelDeriveTest {
     public void deriveModel(){
         // kick off model deriver
         QualityModelDeriver deriver = new QualityModelDeriver("src/test/resources/pique-test-properties.properties");
-
-    }
-
-    @Test
-    public void testBenchmarkParsing(){
 
     }
 
