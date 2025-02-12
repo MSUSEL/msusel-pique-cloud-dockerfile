@@ -37,7 +37,7 @@
     </parent>
 
     <artifactId>msusel-pique-cloud-dockerfile</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <packaging>jar</packaging>
     <description>MSU PIQUE quality model implementation for dockerfiles</description>
     <url>https://msusel.github.io</url>

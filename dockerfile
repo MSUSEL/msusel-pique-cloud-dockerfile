@@ -2,7 +2,7 @@ FROM msusel/pique-core:1.0.1
 
 ## dependency and library versions
 ARG GRYPE_VERSION=0.72.0
-ARG PIQUE_DOCKERFILE_VERSION=2.0.0
+ARG PIQUE_DOCKERFILE_VERSION=2.0.1
 # Trivy release without the 'v' because the release of trivy does not include the v on its download page
 ARG TRIVY_VERSION=0.44.1
 ARG DIVE_VERSION=0.12.0
