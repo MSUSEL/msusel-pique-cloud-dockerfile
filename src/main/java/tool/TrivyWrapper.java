@@ -97,7 +97,12 @@ package tool;
                  tempResults.getParentFile().mkdirs();
                  //Unlike Grype, Trivy does not automatically download an image if it doesn't already exist.
                  //so, we need to download it.
-                 DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
+
+                 //there is a bug here -- what is happening is that when we run this without mapping the docker daemon to the
+                 //container this will be eventually be running in, the java-docker library does not have permissions to talk
+                 //to the docker daemon on the system. I think we just need to assume that the user has the docker image they
+                 //want to analyze already on their system. Commenting out for now..
+                 //DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
 
                  String[] cmd = {"trivy",
                          "image",
@@ -110,6 +115,7 @@ package tool;
                      HelperFunctions.getOutputFromProgram(cmd, LOGGER);
                  } catch (IOException e) {
                      LOGGER.error("Failed to run Trivy");
+                     System.out.println("Failed to run Trivy");
                      LOGGER.error(e.toString());
                      e.printStackTrace();
                  }
