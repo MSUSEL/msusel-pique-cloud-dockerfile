@@ -67,7 +67,11 @@ public class SingleProjectEvaluator extends ASingleProjectEvaluator {
 
         Path qmLocation = Paths.get(prop.getProperty("derived.qm"));
 
-        PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+        //dev mode, with credentials to connect
+        //PiqueData piqueData = new PiqueDataFactory(prop.getProperty("database-credentials")).getPiqueData();
+
+        //prod mode, to connect with environment vars
+        PiqueData piqueData = new PiqueDataFactory().getPiqueData();
 
         ITool gyrpeWrapper = new GrypeWrapper(piqueData);
         ITool trivyWrapper = new TrivyWrapper(piqueData);
