@@ -68,8 +68,8 @@ A user in any environment may follow the manual steps to setup and run PIQUE-clo
 │   │   ├── docker-image-target.json
 │   ├── output
 ```
-11. Run the command `docker run -it --rm -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v /path/to/working/directory/input:/input -v /path/to/working/directory/output:/output pique-cloud-dockerfile:latest`
-12. Results will be generated in the 'output' directory
+5. Run the command `docker run -it --rm -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v /path/to/working/directory/input:/input -v /path/to/working/directory/output:/output pique-cloud-dockerfile:latest`
+6. Results will be generated in the 'output' directory
 
 Funding Agency:
 [<img src="https://www.cisa.gov/profiles/cisad8_gov/themes/custom/gesso/dist/images/backgrounds/6fdaa25709d28dfb5cca.svg" width="20%" height="20%">](https://www.cisa.gov/)

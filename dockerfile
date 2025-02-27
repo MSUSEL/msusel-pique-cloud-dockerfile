@@ -7,6 +7,12 @@ ARG PIQUE_DOCKERFILE_VERSION=2.0.1
 ARG TRIVY_VERSION=0.44.1
 ARG DIVE_VERSION=0.12.0
 
+ENV PG_HOSTNAME=db_nvd_mirror
+ENV PG_DRIVER=jdbc:postgresql
+ENV PG_PORT=5432
+ENV PG_DBNAME=nvd_mirror
+ENV PG_USERNAME=postgres
+ENV PG_PASS=postgres
 
 RUN apk update && apk upgrade && apk add --update --no-cache \
     # system level packages
@@ -40,9 +46,6 @@ WORKDIR "/home"
 RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
 
-# copy credentials file for database communication
-COPY src/main/resources/credentials.json src/main/resources/credentials.json
-
 # copy model file to resources
 COPY output/PIQUECloud-dockerfilequalitymodel.json src/main/resources/PIQUECloud-dockerfilequalitymodel.json
 
@@ -60,7 +63,8 @@ VOLUME ["/output"]
 
 # symlink to jar file for cleanliness
 RUN ln -s /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-$PIQUE_DOCKERFILE_VERSION-jar-with-dependencies.jar \
-        /home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar
+        /home/msusel-pique-cloud-dockerfile/pique-cloud-entrypoint.jar
 
 ##### secret sauce
-ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
+ENTRYPOINT ["/home/msusel-pique-cloud-dockerfile/entrypoint.sh"]
+
