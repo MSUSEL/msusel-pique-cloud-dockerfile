@@ -65,6 +65,7 @@ VOLUME ["/output"]
 RUN ln -s /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-$PIQUE_DOCKERFILE_VERSION-jar-with-dependencies.jar \
         /home/msusel-pique-cloud-dockerfile/pique-cloud-entrypoint.jar
 
-##### secret sauce
-ENTRYPOINT ["/home/msusel-pique-cloud-dockerfile/entrypoint.sh"]
+RUN chmod +x /home/msusel-pique-cloud-dockerfile/entrypoint.sh
 
+##### secret sauce
+ENTRYPOINT ["./home/msusel-pique-cloud-dockerfile/entrypoint.sh"]

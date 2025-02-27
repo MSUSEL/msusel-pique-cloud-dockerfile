@@ -1,4 +1,4 @@
-/bin/sh
+/bin/bash
 
 java -jar /home/msusel-pique-cloud-dockerfile/pique-cloud-entrypoint.jar --run evaluate --file /input/docker-image-target.json
 
