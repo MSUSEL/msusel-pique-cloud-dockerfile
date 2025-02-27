@@ -63,9 +63,7 @@ VOLUME ["/output"]
 
 # symlink to jar file for cleanliness
 RUN ln -s /home/msusel-pique-cloud-dockerfile/target/msusel-pique-cloud-dockerfile-$PIQUE_DOCKERFILE_VERSION-jar-with-dependencies.jar \
-        /home/msusel-pique-cloud-dockerfile/pique-cloud-entrypoint.jar
-
-RUN chmod +x /home/msusel-pique-cloud-dockerfile/entrypoint.sh
+        /home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar
 
 ##### secret sauce
-ENTRYPOINT ["./home/msusel-pique-cloud-dockerfile/entrypoint.sh"]
+ENTRYPOINT ["java", "-jar", "/home/msusel-pique-cloud-dockerfile/docker_entrypoint.jar", "--run", "evaluate", "--file", "/input/docker-image-target.json"]
