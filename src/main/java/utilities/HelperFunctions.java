@@ -113,6 +113,7 @@ public class HelperFunctions {
 	        try (BufferedReader br = new BufferedReader(new InputStreamReader(isForOutput))) {
 	            String line;
 	            while ((line = br.readLine()) != null) {
+					System.out.println(line);
 	            	if(logger!=null) {
 	            		logger.debug(line);
 	            	}
