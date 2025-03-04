@@ -9,7 +9,7 @@ ARG DIVE_VERSION=0.12.0
 
 ENV PG_HOSTNAME=db_nvd_mirror
 ENV PG_DRIVER=jdbc:postgresql
-ENV PG_PORT=5432
+ENV PG_PORT=5433
 ENV PG_DBNAME=nvd_mirror
 ENV PG_USERNAME=postgres
 ENV PG_PASS=postgres

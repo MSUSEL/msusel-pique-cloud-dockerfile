@@ -122,7 +122,10 @@ public class HelperFunctions {
 	        } catch (IOException e) {
 	        	logger.error("Failed to get output of execution.");
 	            throw new RuntimeException(e);
-	        }
+	        } catch	(Exception e){
+				logger.error("Unspecified error occurred when running tools: " + e.getMessage());
+				System.out.println("Unspecified error occurred when running tools: " + e.getMessage());
+			}
 	        return output;
 	    }).collect(Collectors.joining());
 	}
