@@ -4,7 +4,7 @@ FROM msusel/pique-core:1.0.1
 ARG GRYPE_VERSION=0.72.0
 ARG PIQUE_DOCKERFILE_VERSION=2.0.1
 # Trivy release without the 'v' because the release of trivy does not include the v on its download page
-ARG TRIVY_VERSION=0.44.1
+ARG TRIVY_VERSION=0.59.1
 ARG DIVE_VERSION=0.12.0
 
 ENV PG_HOSTNAME=db_nvd_mirror
@@ -27,12 +27,17 @@ WORKDIR "/home"
 
 ## grype install
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v$GRYPE_VERSION
+## grype db update
+RUN grype db update
 
 ## trivy install
 RUN wget "https://github.com/aquasecurity/trivy/releases/download/v"$TRIVY_VERSION"/trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
 RUN dpkg --add-architecture amd64
 RUN dpkg -i "trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
 RUN rm "trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
+
+## trivy database update
+RUN trivy clean --scan-cache
 
 ## dive install
 RUN curl -OL https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb
