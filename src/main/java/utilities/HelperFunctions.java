@@ -113,7 +113,6 @@ public class HelperFunctions {
 	        try (BufferedReader br = new BufferedReader(new InputStreamReader(isForOutput))) {
 	            String line;
 	            while ((line = br.readLine()) != null) {
-					System.out.println(line);
 	            	if(logger!=null) {
 	            		logger.debug(line);
 	            	}
@@ -125,7 +124,7 @@ public class HelperFunctions {
 	            throw new RuntimeException(e);
 	        } catch	(Exception e){
 				logger.error("Unspecified error occurred when running tools: " + e.getMessage());
-				System.out.println("Unspecified error occurred when running tools: " + e.getMessage());
+				System.out.println("Unspecified error occurred when attempting to get output from tools: " + e.getMessage());
 			}
 	        return output;
 	    }).collect(Collectors.joining());
