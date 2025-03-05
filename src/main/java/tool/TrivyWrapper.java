@@ -105,6 +105,8 @@ package tool;
                  //DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
 
                  String[] cmd = {"trivy",
+                         "--timeout", "30m",
+                         "--debug",
                          "image",
                          "--format", "json",
                          "--quiet",
