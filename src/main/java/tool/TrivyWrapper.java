@@ -108,6 +108,7 @@ package tool;
                          "image",
                          "--format", "json",
                          "--quiet",
+                         "--offline-scan", //try to get around https://github.com/aquasecurity/trivy/discussions/5420
                          "--output", tempResults.toPath().toAbsolutePath().toString(),
                          projectLocation.toString()};
                  LOGGER.info(Arrays.toString(cmd));
