@@ -38,6 +38,7 @@ RUN rm "trivy_"$TRIVY_VERSION"_Linux-64bit.deb"
 
 ## trivy database update
 RUN trivy image --download-db-only
+RUN trivy image --download-java-db-only
 
 ## dive install
 RUN curl -OL https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb

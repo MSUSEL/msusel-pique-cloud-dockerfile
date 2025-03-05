@@ -150,6 +150,8 @@ public class GrypeWrapper extends Tool implements ITool {
                 //FIXME--- remove try catch block after checked exceptions changes
                 try {
                     //do we have a cwe for this cve?
+                    System.out.println("checking PIQUE data for cwe for CVE: " + findingName);
+                    System.out.println("pique data reporting: " + piqueData.getCweName(findingName));
                     cwes = piqueData.getCweName(findingName);
                 }catch (DataAccessException e){
                     LOGGER.info(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
