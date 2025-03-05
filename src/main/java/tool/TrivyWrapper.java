@@ -105,7 +105,6 @@ package tool;
                  //DockerMarshaller.downloadDockerImageFromDockerHub(imageName);
 
                  String[] cmd = {"trivy",
-                         "--insecure", //insecure is to allow trivy to connect to a potentially insecure database when pulling vulns
                          "image",
                          "--format", "json",
                          "--quiet",
