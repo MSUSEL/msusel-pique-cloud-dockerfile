@@ -27,10 +27,6 @@ replay_pid*
 .*
 !/.gitignore
 
-# key files
-input/keys/github-token.txt
-input/keys/nvd-api-key.txt
-
 # don't push compiled classes or compiled targets
 target/*
 
@@ -45,5 +41,11 @@ tool-out/*
 out/*
 output/*
 sample_outputs/*
+
+# testing resource duplicates
+src/test/resources/input
+src/test/resources/output
+src/test/resources/PIQUECloud-dockerfilequalitymodel.json
+src/test/resources/PIQUECloud-dockerfilequalitymodel_trimmed.json
 
 !output/PIQUECloud-dockerfilequalitymodel.json
