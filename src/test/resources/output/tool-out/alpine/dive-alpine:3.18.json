@@ -1,0 +1,17 @@
+{
+  "layer": [
+    {
+      "index": 0,
+      "id": "blobs",
+      "digestId": "sha256:f44f286046d9443b2aeb895c0e1f4e688698247427bca4d15112c8e3432a803e",
+      "sizeBytes": 7354986,
+      "command": "ADD alpine-minirootfs-3.18.12-x86_64.tar.gz / # buildkit"
+    }
+  ],
+  "image": {
+    "sizeBytes": 7354986,
+    "inefficientBytes": 0,
+    "efficiencyScore": 1,
+    "fileReference": []
+  }
+}

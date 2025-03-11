@@ -1,0 +1,124 @@
+{
+ "matches": [],
+ "source": {
+  "type": "image",
+  "target": {
+   "userInput": "alpine:3.18",
+   "imageID": "sha256:802c91d5298192c0f3a08101aeb5f9ade2992e22c9e27fa8b88eab82602550d0",
+   "manifestDigest": "sha256:c6d9e8073c076929ad13333f5ba423c5127a575a45ff83a2061c2a4560d92d73",
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "tags": [
+    "alpine:3.18"
+   ],
+   "imageSize": 7354986,
+   "layers": [
+    {
+     "mediaType": "application/vnd.oci.image.layer.v1.tar",
+     "digest": "sha256:f44f286046d9443b2aeb895c0e1f4e688698247427bca4d15112c8e3432a803e",
+     "size": 7354986
+    }
+   ],
+   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjo1ODIsImRpZ2VzdCI6InNoYTI1Njo4MDJjOTFkNTI5ODE5MmMwZjNhMDgxMDFhZWI1ZjlhZGUyOTkyZTIyYzllMjdmYThiODhlYWI4MjYwMjU1MGQwIn0sImxheWVycyI6W3sibWVkaWFUeXBlIjoiYXBwbGljYXRpb24vdm5kLmRvY2tlci5pbWFnZS5yb290ZnMuZGlmZi50YXIuZ3ppcCIsInNpemUiOjc2NDk3OTIsImRpZ2VzdCI6InNoYTI1NjpmNDRmMjg2MDQ2ZDk0NDNiMmFlYjg5NWMwZTFmNGU2ODg2OTgyNDc0MjdiY2E0ZDE1MTEyYzhlMzQzMmE4MDNlIn1dfQ==",
+   "config": "eyJhcmNoaXRlY3R1cmUiOiJhbWQ2NCIsImNvbmZpZyI6eyJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiQ21kIjpbIi9iaW4vc2giXSwiV29ya2luZ0RpciI6Ii8ifSwiY3JlYXRlZCI6IjIwMjUtMDItMTRUMDM6MDM6MDZaIiwiaGlzdG9yeSI6W3siY3JlYXRlZCI6IjIwMjUtMDItMTRUMDM6MDM6MDZaIiwiY3JlYXRlZF9ieSI6IkFERCBhbHBpbmUtbWluaXJvb3Rmcy0zLjE4LjEyLXg4Nl82NC50YXIuZ3ogLyAjIGJ1aWxka2l0IiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAifSx7ImNyZWF0ZWQiOiIyMDI1LTAyLTE0VDAzOjAzOjA2WiIsImNyZWF0ZWRfYnkiOiJDTUQgW1wiL2Jpbi9zaFwiXSIsImNvbW1lbnQiOiJidWlsZGtpdC5kb2NrZXJmaWxlLnYwIiwiZW1wdHlfbGF5ZXIiOnRydWV9XSwib3MiOiJsaW51eCIsInJvb3RmcyI6eyJ0eXBlIjoibGF5ZXJzIiwiZGlmZl9pZHMiOlsic2hhMjU2OmY0NGYyODYwNDZkOTQ0M2IyYWViODk1YzBlMWY0ZTY4ODY5ODI0NzQyN2JjYTRkMTUxMTJjOGUzNDMyYTgwM2UiXX19",
+   "repoDigests": [
+    "alpine@sha256:de0eb0b3f2a47ba1eb89389859a9bd88b28e82f5826b6969ad604979713c2d4f"
+   ],
+   "architecture": "amd64",
+   "os": "linux"
+  }
+ },
+ "distro": {
+  "name": "alpine",
+  "version": "3.18.12",
+  "idLike": []
+ },
+ "descriptor": {
+  "name": "grype",
+  "version": "0.72.0",
+  "configuration": {
+   "output": [
+    "json"
+   ],
+   "file": "/home/derek/msusel/msusel-pique-cloud-dockerfile/src/test/resources/output/tool-out/alpine/grype-alpine:3.18.json",
+   "distro": "",
+   "add-cpes-if-none": false,
+   "output-template-file": "",
+   "check-for-app-update": true,
+   "only-fixed": false,
+   "only-notfixed": false,
+   "ignore-wontfix": "",
+   "platform": "",
+   "search": {
+    "scope": "all-layers",
+    "unindexed-archives": false,
+    "indexed-archives": true
+   },
+   "ignore": null,
+   "exclude": [],
+   "db": {
+    "cache-dir": "/home/derek/.cache/grype/db",
+    "update-url": "https://toolbox-data.anchore.io/grype/databases/listing.json",
+    "ca-cert": "",
+    "auto-update": true,
+    "validate-by-hash-on-start": false,
+    "validate-age": true,
+    "max-allowed-built-age": 432000000000000
+   },
+   "externalSources": {
+    "enable": false,
+    "maven": {
+     "searchUpstreamBySha1": true,
+     "baseUrl": "https://search.maven.org/solrsearch/select"
+    }
+   },
+   "match": {
+    "java": {
+     "using-cpes": false
+    },
+    "dotnet": {
+     "using-cpes": false
+    },
+    "golang": {
+     "using-cpes": false,
+     "always-use-cpe-for-stdlib": true
+    },
+    "javascript": {
+     "using-cpes": false
+    },
+    "python": {
+     "using-cpes": false
+    },
+    "ruby": {
+     "using-cpes": false
+    },
+    "rust": {
+     "using-cpes": false
+    },
+    "stock": {
+     "using-cpes": true
+    }
+   },
+   "fail-on-severity": "",
+   "registry": {
+    "insecure-skip-tls-verify": false,
+    "insecure-use-http": false,
+    "auth": null,
+    "ca-cert": ""
+   },
+   "show-suppressed": false,
+   "by-cve": false,
+   "name": "",
+   "default-image-pull-source": "",
+   "vex-documents": [],
+   "vex-add": []
+  },
+  "db": {
+   "built": "2025-03-09T01:32:18Z",
+   "schemaVersion": 5,
+   "location": "/home/derek/.cache/grype/db/5",
+   "checksum": "sha256:72893a67190eef4c4b66f51f6d149bd8a4b77464b726c80bddce0d64d91b5f14",
+   "error": null
+  },
+  "timestamp": "2025-03-10T08:22:03.480643246-06:00"
+ }
+}

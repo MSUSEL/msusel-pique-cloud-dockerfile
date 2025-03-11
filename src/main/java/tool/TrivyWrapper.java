@@ -106,7 +106,6 @@ package tool;
 
                  String[] cmd = {"trivy",
                          "--timeout", "30m",
-                         "--debug",
                          "image",
                          "--format", "json",
                          "--quiet",
@@ -181,7 +180,11 @@ package tool;
                                  //do we have a cwe for this cve?
                                  associatedCWEs.addAll(piqueData.getCweName(vulnerabilityID));
                              }catch (DataAccessException e){
-                                 LOGGER.info(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                                 LOGGER.error(vulnerabilityID + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                             }catch (Exception e){
+                                 //catch all, remove after
+                                 System.out.println("PIQUE data exception caught, most likely because the NVD isn't updated");
+                                 LOGGER.error("PIQUE data exception caught, most likely because the NVD isn't updated");
                              }
 
                              // remove duplicate CWEs

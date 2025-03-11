@@ -1,0 +1,158 @@
+{
+  "layer": [
+    {
+      "index": 0,
+      "id": "blobs",
+      "digestId": "sha256:420179ad2efafbf953a0c75f68a4c9dfaf38a98643df97d415bce49b179895f7",
+      "sizeBytes": 80627431,
+      "command": "#(nop) ADD file:5d6b639e8b6bcc01149b7486502558088f9816200063ca72b91a1f989bc8d85e in / "
+    },
+    {
+      "index": 1,
+      "id": "blobs",
+      "digestId": "sha256:13c8460bfc9a101c9d6fe94fc9c71f56a95fe69124ca0f51f08dc2b0dbd5956c",
+      "sizeBytes": 61648065,
+      "command": "RUN /bin/sh -c set -x     \u0026\u0026 addgroup --system --gid 101 nginx     \u0026\u0026 adduser --system --disabled-login --ingroup nginx --no-create-home --home /nonexistent --gecos \"nginx user\" --shell /bin/false --uid 101 nginx     \u0026\u0026 apt-get update     \u0026\u0026 apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates     \u0026\u0026     NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62;     NGINX_GPGKEY_PATH=/usr/share/keyrings/nginx-archive-keyring.gpg;     export GNUPGHOME=\"$(mktemp -d)\";     found='';     for server in         hkp://keyserver.ubuntu.com:80         pgp.mit.edu     ; do         echo \"Fetching GPG key $NGINX_GPGKEY from $server\";         gpg1 --keyserver \"$server\" --keyserver-options timeout=10 --recv-keys \"$NGINX_GPGKEY\" \u0026\u0026 found=yes \u0026\u0026 break;     done;     test -z \"$found\" \u0026\u0026 echo \u003e\u00262 \"error: failed to fetch GPG key $NGINX_GPGKEY\" \u0026\u0026 exit 1;     gpg1 --export \"$NGINX_GPGKEY\" \u003e \"$NGINX_GPGKEY_PATH\" ;     rm -rf \"$GNUPGHOME\";     apt-get remove --purge --auto-remove -y gnupg1 \u0026\u0026 rm -rf /var/lib/apt/lists/*     \u0026\u0026 dpkgArch=\"$(dpkg --print-architecture)\"     \u0026\u0026 nginxPackages=\"         nginx=${NGINX_VERSION}-${PKG_RELEASE}         nginx-module-xslt=${NGINX_VERSION}-${PKG_RELEASE}         nginx-module-geoip=${NGINX_VERSION}-${PKG_RELEASE}         nginx-module-image-filter=${NGINX_VERSION}-${PKG_RELEASE}         nginx-module-njs=${NGINX_VERSION}+${NJS_VERSION}-${PKG_RELEASE}     \"     \u0026\u0026 case \"$dpkgArch\" in         amd64|arm64)             echo \"deb [signed-by=$NGINX_GPGKEY_PATH] https://nginx.org/packages/debian/ bullseye nginx\" \u003e\u003e /etc/apt/sources.list.d/nginx.list             \u0026\u0026 apt-get update             ;;         *)             echo \"deb-src [signed-by=$NGINX_GPGKEY_PATH] https://nginx.org/packages/debian/ bullseye nginx\" \u003e\u003e /etc/apt/sources.list.d/nginx.list                         \u0026\u0026 tempDir=\"$(mktemp -d)\"             \u0026\u0026 chmod 777 \"$tempDir\"                         \u0026\u0026 savedAptMark=\"$(apt-mark showmanual)\"                         \u0026\u0026 apt-get update             \u0026\u0026 apt-get build-dep -y $nginxPackages             \u0026\u0026 (                 cd \"$tempDir\"                 \u0026\u0026 DEB_BUILD_OPTIONS=\"nocheck parallel=$(nproc)\"                     apt-get source --compile $nginxPackages             )                         \u0026\u0026 apt-mark showmanual | xargs apt-mark auto \u003e /dev/null             \u0026\u0026 { [ -z \"$savedAptMark\" ] || apt-mark manual $savedAptMark; }                         \u0026\u0026 ls -lAFh \"$tempDir\"             \u0026\u0026 ( cd \"$tempDir\" \u0026\u0026 dpkg-scanpackages . \u003e Packages )             \u0026\u0026 grep '^Package: ' \"$tempDir/Packages\"             \u0026\u0026 echo \"deb [ trusted=yes ] file://$tempDir ./\" \u003e /etc/apt/sources.list.d/temp.list             \u0026\u0026 apt-get -o Acquire::GzipIndexes=false update             ;;     esac         \u0026\u0026 apt-get install --no-install-recommends --no-install-suggests -y                         $nginxPackages                         gettext-base                         curl     \u0026\u0026 apt-get remove --purge --auto-remove -y \u0026\u0026 rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list         \u0026\u0026 if [ -n \"$tempDir\" ]; then         apt-get purge -y --auto-remove         \u0026\u0026 rm -rf \"$tempDir\" /etc/apt/sources.list.d/temp.list;     fi     \u0026\u0026 ln -sf /dev/stdout /var/log/nginx/access.log     \u0026\u0026 ln -sf /dev/stderr /var/log/nginx/error.log     \u0026\u0026 mkdir /docker-entrypoint.d # buildkit"
+    },
+    {
+      "index": 2,
+      "id": "blobs",
+      "digestId": "sha256:b9a187a24e195526ec928d77020241c6965abc70102d604fd424d7d7a3caf796",
+      "sizeBytes": 1616,
+      "command": "COPY docker-entrypoint.sh / # buildkit"
+    },
+    {
+      "index": 3,
+      "id": "blobs",
+      "digestId": "sha256:96c08fed6a4cb59eeeb7c0bd67f71a17e0e8981e29903dc589c07cfee160c815",
+      "sizeBytes": 2123,
+      "command": "COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d # buildkit"
+    },
+    {
+      "index": 4,
+      "id": "blobs",
+      "digestId": "sha256:29492f82bbc2d3446f771f4db2cf5afba6c73c40a834c2a74b27e461721b0870",
+      "sizeBytes": 1273,
+      "command": "COPY 20-envsubst-on-templates.sh /docker-entrypoint.d # buildkit"
+    },
+    {
+      "index": 5,
+      "id": "blobs",
+      "digestId": "sha256:bc4a3582faa9d8347cf764790d3a90c117d4c8a308f48e5716476380882d49ab",
+      "sizeBytes": 4621,
+      "command": "COPY 30-tune-worker-processes.sh /docker-entrypoint.d # buildkit"
+    }
+  ],
+  "image": {
+    "sizeBytes": 142285129,
+    "inefficientBytes": 3823853,
+    "efficiencyScore": 0.9855906094023361,
+    "fileReference": [
+      {
+        "count": 2,
+        "sizeBytes": 1662452,
+        "file": "/var/cache/debconf/templates.dat"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 1598161,
+        "file": "/var/cache/debconf/templates.dat-old"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 203540,
+        "file": "/var/lib/dpkg/status"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 203050,
+        "file": "/var/lib/dpkg/status-old"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 59276,
+        "file": "/var/log/lastlog"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 21465,
+        "file": "/var/cache/debconf/config.dat"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 20861,
+        "file": "/var/cache/debconf/config.dat-old"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 15636,
+        "file": "/etc/ld.so.cache"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 13480,
+        "file": "/var/lib/apt/extended_states"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 11040,
+        "file": "/var/log/apt/eipp.log.xz"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 6496,
+        "file": "/var/log/faillog"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 1898,
+        "file": "/etc/passwd"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 1885,
+        "file": "/etc/passwd-"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 1029,
+        "file": "/etc/shadow-"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 1029,
+        "file": "/etc/shadow"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 905,
+        "file": "/etc/group"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 892,
+        "file": "/etc/group-"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 758,
+        "file": "/etc/gshadow"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 0,
+        "file": "/var/lib/dpkg/lock"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 0,
+        "file": "/var/lib/dpkg/triggers/Lock"
+      },
+      {
+        "count": 2,
+        "sizeBytes": 0,
+        "file": "/var/lib/dpkg/triggers/Unincorp"
+      }
+    ]
+  }
+}

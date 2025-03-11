@@ -83,7 +83,7 @@ public class QualityModelDeriver extends AQualityModelDeriver {
                         .getName() + "_trimmed", derivedModelFilePath);
 
         LOGGER.info("Quality Model derivation finished with trimmed model. You can find the file at " + trimmedJsonOutput.toAbsolutePath());
-
+        System.out.println("Quality Model derivation finished with trimmed model. You can find the file at " + trimmedJsonOutput.toAbsolutePath());
 
 
     }

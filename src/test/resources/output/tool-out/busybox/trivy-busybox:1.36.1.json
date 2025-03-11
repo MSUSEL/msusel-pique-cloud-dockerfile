@@ -1,0 +1,43 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2025-03-10T08:41:37.553688102-06:00",
+  "ArtifactName": "busybox:1.36.1",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "ImageID": "sha256:83ef53509aa521591f172ea20befd68f6624877539c03c5353172df8f2528ebb",
+    "DiffIDs": [
+      "sha256:66140dc7271ceb0a9b5e521509e7d96b916d4182681f723881bfae89675de7f6"
+    ],
+    "RepoTags": [
+      "busybox:1.36.1"
+    ],
+    "RepoDigests": [
+      "busybox@sha256:7a5342b7662db8de99e045a2b47b889c5701b8dde0ce5ae3f1577bf57a15ed40"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2023-05-18T22:34:17Z",
+      "history": [
+        {
+          "created": "2023-05-18T22:34:17Z",
+          "created_by": "BusyBox 1.36.1 (glibc), Debian 12"
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:66140dc7271ceb0a9b5e521509e7d96b916d4182681f723881bfae89675de7f6"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "sh"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ]
+      }
+    }
+  }
+}

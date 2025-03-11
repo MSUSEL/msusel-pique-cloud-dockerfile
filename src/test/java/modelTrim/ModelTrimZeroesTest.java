@@ -30,4 +30,5 @@ public class ModelTrimZeroesTest {
         qmExport.exportToJson(newModel.getName() + "_trimmed", Paths.get("src/test/resources"));
 
     }
+
 }

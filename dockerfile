@@ -7,13 +7,6 @@ ARG PIQUE_DOCKERFILE_VERSION=2.0.1
 ARG TRIVY_VERSION=0.59.1
 ARG DIVE_VERSION=0.12.0
 
-ENV PG_HOSTNAME=db_nvd_mirror
-ENV PG_DRIVER=jdbc:postgresql
-ENV PG_PORT=5433
-ENV PG_DBNAME=nvd_mirror
-ENV PG_USERNAME=postgres
-ENV PG_PASS=postgres
-
 RUN apk update && apk upgrade && apk add --update --no-cache \
     # system level packages
     curl dpkg docker openrc dpkg

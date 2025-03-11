@@ -1,0 +1,17 @@
+{
+  "layer": [
+    {
+      "index": 0,
+      "id": "blobs",
+      "digestId": "sha256:e41a02dae87b9cfa96724113d920e0e3ff7070962ba6c9caa85d46af20e493e0",
+      "sizeBytes": 4269646,
+      "command": "BusyBox 1.35.0 (glibc), Debian 12"
+    }
+  ],
+  "image": {
+    "sizeBytes": 4269646,
+    "inefficientBytes": 0,
+    "efficiencyScore": 1,
+    "fileReference": []
+  }
+}

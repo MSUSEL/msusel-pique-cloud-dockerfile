@@ -1,0 +1,386 @@
+{
+ "matches": [
+  {
+   "vulnerability": {
+    "id": "CVE-2022-48174",
+    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-48174",
+    "namespace": "nvd:cpe",
+    "severity": "Critical",
+    "urls": [
+     "https://bugs.busybox.net/show_bug.cgi?id=15216",
+     "https://bugs.busybox.net/show_bug.cgi?id=15216",
+     "https://security.netapp.com/advisory/ntap-20241129-0001/"
+    ],
+    "description": "There is a stack overflow vulnerability in ash.c:6030 in busybox before 1.35. In the environment of Internet of Vehicles, this vulnerability can be executed from command to arbitrary code execution.",
+    "cvss": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "metrics": {
+       "baseScore": 9.8,
+       "exploitabilityScore": 3.9,
+       "impactScore": 5.9
+      },
+      "vendorMetadata": {}
+     }
+    ],
+    "fix": {
+     "versions": [],
+     "state": "unknown"
+    },
+    "advisories": []
+   },
+   "relatedVulnerabilities": [],
+   "matchDetails": [
+    {
+     "type": "cpe-match",
+     "matcher": "stock-matcher",
+     "searchedBy": {
+      "namespace": "nvd:cpe",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+      ],
+      "Package": {
+       "name": "busybox",
+       "version": "1.35.0"
+      }
+     },
+     "found": {
+      "vulnerabilityID": "CVE-2022-48174",
+      "versionConstraint": "<= 1.35.0 (unknown)",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
+      ]
+     }
+    }
+   ],
+   "artifact": {
+    "id": "cebb78adce20616c",
+    "name": "busybox",
+    "version": "1.35.0",
+    "type": "binary",
+    "locations": [
+     {
+      "path": "/bin/[",
+      "layerID": "sha256:e41a02dae87b9cfa96724113d920e0e3ff7070962ba6c9caa85d46af20e493e0"
+     }
+    ],
+    "language": "",
+    "licenses": [],
+    "cpes": [
+     "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+    ],
+    "purl": "",
+    "upstreams": []
+   }
+  },
+  {
+   "vulnerability": {
+    "id": "CVE-2022-30065",
+    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-30065",
+    "namespace": "nvd:cpe",
+    "severity": "High",
+    "urls": [
+     "https://bugs.busybox.net/show_bug.cgi?id=14781",
+     "https://cert-portal.siemens.com/productcert/pdf/ssa-333517.pdf",
+     "https://bugs.busybox.net/show_bug.cgi?id=14781",
+     "https://cert-portal.siemens.com/productcert/pdf/ssa-333517.pdf"
+    ],
+    "description": "A use-after-free in Busybox 1.35-x's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the copyvar function.",
+    "cvss": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "2.0",
+      "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+      "metrics": {
+       "baseScore": 6.8,
+       "exploitabilityScore": 8.6,
+       "impactScore": 6.4
+      },
+      "vendorMetadata": {}
+     },
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "3.1",
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "metrics": {
+       "baseScore": 7.8,
+       "exploitabilityScore": 1.8,
+       "impactScore": 5.9
+      },
+      "vendorMetadata": {}
+     }
+    ],
+    "fix": {
+     "versions": [],
+     "state": "unknown"
+    },
+    "advisories": []
+   },
+   "relatedVulnerabilities": [],
+   "matchDetails": [
+    {
+     "type": "cpe-match",
+     "matcher": "stock-matcher",
+     "searchedBy": {
+      "namespace": "nvd:cpe",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+      ],
+      "Package": {
+       "name": "busybox",
+       "version": "1.35.0"
+      }
+     },
+     "found": {
+      "vulnerabilityID": "CVE-2022-30065",
+      "versionConstraint": "= 1.35.0 (unknown)",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+      ]
+     }
+    }
+   ],
+   "artifact": {
+    "id": "cebb78adce20616c",
+    "name": "busybox",
+    "version": "1.35.0",
+    "type": "binary",
+    "locations": [
+     {
+      "path": "/bin/[",
+      "layerID": "sha256:e41a02dae87b9cfa96724113d920e0e3ff7070962ba6c9caa85d46af20e493e0"
+     }
+    ],
+    "language": "",
+    "licenses": [],
+    "cpes": [
+     "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+    ],
+    "purl": "",
+    "upstreams": []
+   }
+  },
+  {
+   "vulnerability": {
+    "id": "CVE-2022-28391",
+    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2022-28391",
+    "namespace": "nvd:cpe",
+    "severity": "High",
+    "urls": [
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
+     "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
+     "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661"
+    ],
+    "description": "BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.",
+    "cvss": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "2.0",
+      "vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+      "metrics": {
+       "baseScore": 6.8,
+       "exploitabilityScore": 8.6,
+       "impactScore": 6.4
+      },
+      "vendorMetadata": {}
+     },
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "version": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "metrics": {
+       "baseScore": 8.8,
+       "exploitabilityScore": 2.8,
+       "impactScore": 5.9
+      },
+      "vendorMetadata": {}
+     }
+    ],
+    "fix": {
+     "versions": [],
+     "state": "unknown"
+    },
+    "advisories": []
+   },
+   "relatedVulnerabilities": [],
+   "matchDetails": [
+    {
+     "type": "cpe-match",
+     "matcher": "stock-matcher",
+     "searchedBy": {
+      "namespace": "nvd:cpe",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+      ],
+      "Package": {
+       "name": "busybox",
+       "version": "1.35.0"
+      }
+     },
+     "found": {
+      "vulnerabilityID": "CVE-2022-28391",
+      "versionConstraint": "<= 1.35.0 (unknown)",
+      "cpes": [
+       "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
+      ]
+     }
+    }
+   ],
+   "artifact": {
+    "id": "cebb78adce20616c",
+    "name": "busybox",
+    "version": "1.35.0",
+    "type": "binary",
+    "locations": [
+     {
+      "path": "/bin/[",
+      "layerID": "sha256:e41a02dae87b9cfa96724113d920e0e3ff7070962ba6c9caa85d46af20e493e0"
+     }
+    ],
+    "language": "",
+    "licenses": [],
+    "cpes": [
+     "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*",
+     "cpe:2.3:a:busybox:busybox:1.35.0:*:*:*:*:*:*:*"
+    ],
+    "purl": "",
+    "upstreams": []
+   }
+  }
+ ],
+ "source": {
+  "type": "image",
+  "target": {
+   "userInput": "busybox:1.35.0",
+   "imageID": "sha256:95f45f955052d6485b34fb167a1b938e3dd684b4fc43115a77faf23593d4c513",
+   "manifestDigest": "sha256:c4a6bf1a81145e201b1973f25b82fc4fa2c019cf35b10da64e72c30e7c77c370",
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "tags": [
+    "busybox:1.35.0"
+   ],
+   "imageSize": 4269646,
+   "layers": [
+    {
+     "mediaType": "application/vnd.oci.image.layer.v1.tar",
+     "digest": "sha256:e41a02dae87b9cfa96724113d920e0e3ff7070962ba6c9caa85d46af20e493e0",
+     "size": 4269646
+    }
+   ],
+   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjozNzIsImRpZ2VzdCI6InNoYTI1Njo5NWY0NWY5NTUwNTJkNjQ4NWIzNGZiMTY3YTFiOTM4ZTNkZDY4NGI0ZmM0MzExNWE3N2ZhZjIzNTkzZDRjNTEzIn0sImxheWVycyI6W3sibWVkaWFUeXBlIjoiYXBwbGljYXRpb24vdm5kLmRvY2tlci5pbWFnZS5yb290ZnMuZGlmZi50YXIuZ3ppcCIsInNpemUiOjQ1MDU2MDAsImRpZ2VzdCI6InNoYTI1NjplNDFhMDJkYWU4N2I5Y2ZhOTY3MjQxMTNkOTIwZTBlM2ZmNzA3MDk2MmJhNmM5Y2FhODVkNDZhZjIwZTQ5M2UwIn1dfQ==",
+   "config": "ewoJImNvbmZpZyI6IHsKCQkiQ21kIjogWwoJCQkic2giCgkJXQoJfSwKCSJjcmVhdGVkIjogIjIwMjEtMTItMjZUMTY6NTY6NTdaIiwKCSJoaXN0b3J5IjogWwoJCXsKCQkJImNyZWF0ZWQiOiAiMjAyMS0xMi0yNlQxNjo1Njo1N1oiLAoJCQkiY3JlYXRlZF9ieSI6ICJCdXN5Qm94IDEuMzUuMCAoZ2xpYmMpLCBEZWJpYW4gMTIiCgkJfQoJXSwKCSJyb290ZnMiOiB7CgkJInR5cGUiOiAibGF5ZXJzIiwKCQkiZGlmZl9pZHMiOiBbCgkJCSJzaGEyNTY6ZTQxYTAyZGFlODdiOWNmYTk2NzI0MTEzZDkyMGUwZTNmZjcwNzA5NjJiYTZjOWNhYTg1ZDQ2YWYyMGU0OTNlMCIKCQldCgl9LAoJImFyY2hpdGVjdHVyZSI6ICJhbWQ2NCIsCgkib3MiOiAibGludXgiCn0K",
+   "repoDigests": [
+    "busybox@sha256:98ad9d1a2be345201bb0709b0d38655eb1b370145c7d94ca1fe9c421f76e245a"
+   ],
+   "architecture": "amd64",
+   "os": "linux"
+  }
+ },
+ "distro": {
+  "name": "busybox",
+  "version": "1.35.0",
+  "idLike": [
+   "busybox"
+  ]
+ },
+ "descriptor": {
+  "name": "grype",
+  "version": "0.72.0",
+  "configuration": {
+   "output": [
+    "json"
+   ],
+   "file": "/home/derek/msusel/msusel-pique-cloud-dockerfile/src/test/resources/output/tool-out/busybox/grype-busybox:1.35.0.json",
+   "distro": "",
+   "add-cpes-if-none": false,
+   "output-template-file": "",
+   "check-for-app-update": true,
+   "only-fixed": false,
+   "only-notfixed": false,
+   "ignore-wontfix": "",
+   "platform": "",
+   "search": {
+    "scope": "all-layers",
+    "unindexed-archives": false,
+    "indexed-archives": true
+   },
+   "ignore": null,
+   "exclude": [],
+   "db": {
+    "cache-dir": "/home/derek/.cache/grype/db",
+    "update-url": "https://toolbox-data.anchore.io/grype/databases/listing.json",
+    "ca-cert": "",
+    "auto-update": true,
+    "validate-by-hash-on-start": false,
+    "validate-age": true,
+    "max-allowed-built-age": 432000000000000
+   },
+   "externalSources": {
+    "enable": false,
+    "maven": {
+     "searchUpstreamBySha1": true,
+     "baseUrl": "https://search.maven.org/solrsearch/select"
+    }
+   },
+   "match": {
+    "java": {
+     "using-cpes": false
+    },
+    "dotnet": {
+     "using-cpes": false
+    },
+    "golang": {
+     "using-cpes": false,
+     "always-use-cpe-for-stdlib": true
+    },
+    "javascript": {
+     "using-cpes": false
+    },
+    "python": {
+     "using-cpes": false
+    },
+    "ruby": {
+     "using-cpes": false
+    },
+    "rust": {
+     "using-cpes": false
+    },
+    "stock": {
+     "using-cpes": true
+    }
+   },
+   "fail-on-severity": "",
+   "registry": {
+    "insecure-skip-tls-verify": false,
+    "insecure-use-http": false,
+    "auth": null,
+    "ca-cert": ""
+   },
+   "show-suppressed": false,
+   "by-cve": false,
+   "name": "",
+   "default-image-pull-source": "",
+   "vex-documents": [],
+   "vex-add": []
+  },
+  "db": {
+   "built": "2025-03-09T01:32:18Z",
+   "schemaVersion": 5,
+   "location": "/home/derek/.cache/grype/db/5",
+   "checksum": "sha256:72893a67190eef4c4b66f51f6d149bd8a4b77464b726c80bddce0d64d91b5f14",
+   "error": null
+  },
+  "timestamp": "2025-03-10T08:41:21.267002833-06:00"
+ }
+}

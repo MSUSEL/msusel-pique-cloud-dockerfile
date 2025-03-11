@@ -154,7 +154,11 @@ public class GrypeWrapper extends Tool implements ITool {
                     System.out.println("pique data reporting: " + piqueData.getCweName(findingName));
                     cwes = piqueData.getCweName(findingName);
                 }catch (DataAccessException e){
-                    LOGGER.info(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                    LOGGER.error(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
+                }catch (Exception e){
+                    //catch all, remove after
+                    System.out.println("PIQUE data exception caught, most likely because the NVD isn't updated");
+                    LOGGER.error("PIQUE data exception caught, most likely because the NVD isn't updated");
                 }
                 // are CWE's unique? In some cases the NVD reports the same CWE from a Primary and Secondary source
                 // we want only unique CWEs

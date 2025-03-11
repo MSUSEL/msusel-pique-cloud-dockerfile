@@ -1,0 +1,30 @@
+{
+  "layer": [
+    {
+      "index": 0,
+      "id": "blobs",
+      "digestId": "sha256:e589b41a19776ee51f7394d5b88f222e85b178938cda99e5f592e79b571489c0",
+      "sizeBytes": 1210457184,
+      "command": "#(nop) ADD file:52b09762b21d46b0d456f483818420422e127134a839f197ad0a9a4758b98261 in / "
+    },
+    {
+      "index": 1,
+      "id": "blobs",
+      "digestId": "sha256:0d6449a3cf7c53eb15ab09f4e06b0e498109da54c03139843883608ca5f87c3a",
+      "sizeBytes": 89605,
+      "command": "set -ex     \u0026\u0026 echo '' \u003e /etc/fstab     \u0026\u0026 cp /sbin/init /sbin/init.real"
+    }
+  ],
+  "image": {
+    "sizeBytes": 1210546789,
+    "inefficientBytes": 535,
+    "efficiencyScore": 0.9999995588770257,
+    "fileReference": [
+      {
+        "count": 2,
+        "sizeBytes": 535,
+        "file": "/etc/fstab"
+      }
+    ]
+  }
+}

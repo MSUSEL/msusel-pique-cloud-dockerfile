@@ -1,0 +1,2143 @@
+{
+  "name": "PIQUE Cloud-dockerfile quality model 5055 Alignment",
+  "additionalData": {
+    "projectName": "alpine:3.18"
+  },
+  "global_config": {
+    "benchmark_strategy": "calibration.NaiveCloudBenchmarker",
+    "weights_strategy": "pique.calibration.NaiveWeighter"
+  },
+  "factors": {
+    "product_factors": {
+      "Space Usage": {
+        "name": "Space Usage",
+        "value": 0.500000000000000,
+        "description": "The usage of space in this image, including wasted space (bytes), image efficiency, and size on disk (bytes)",
+        "weights": {
+          "Efficiency Score": 0.5,
+          "Inefficient Bytes": 0.5
+        },
+        "eval_strategy": "pique.evaluation.DefaultProductFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      },
+      "Maintainability": {
+        "name": "Maintainability",
+        "value": 1.0,
+        "description": "Degree of effectiveness and efficiency with which a product or system can be modified by the intended maintainers",
+        "weights": {
+          "CWE-407": 1.0
+        },
+        "eval_strategy": "pique.evaluation.DefaultProductFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      },
+      "Performance Efficiency": {
+        "name": "Performance Efficiency",
+        "value": 1.0,
+        "description": "Performance relative to the amount of resources used under stated conditions",
+        "weights": {
+          "CWE-404": 1.0
+        },
+        "eval_strategy": "pique.evaluation.DefaultProductFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      },
+      "Reliability": {
+        "name": "Reliability",
+        "value": 1.0,
+        "description": "Degree to which a system, product or component performs specified functions under specified conditions for a specified period of time",
+        "weights": {
+          "CWE-665": 0.1111111111111111,
+          "CWE-404": 0.1111111111111111,
+          "CWE-119": 0.1111111111111111,
+          "CWE-835": 0.1111111111111111,
+          "CWE-703": 0.1111111111111111,
+          "CWE-704": 0.1111111111111111,
+          "CWE-682": 0.1111111111111111,
+          "CWE-672": 0.1111111111111111,
+          "CWE-476": 0.1111111111111111
+        },
+        "eval_strategy": "pique.evaluation.DefaultProductFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      },
+      "Security": {
+        "name": "Security",
+        "value": 1.0,
+        "description": "Degree to which a product or system protects information and data so that persons or other products or systems have the degree of data access appropriate to their types and levels of authorization",
+        "weights": {
+          "CWE-79": 0.1111111111111111,
+          "CWE-665": 0.1111111111111111,
+          "CWE-611": 0.1111111111111111,
+          "CWE-404": 0.1111111111111111,
+          "CWE-119": 0.1111111111111111,
+          "CWE-835": 0.1111111111111111,
+          "CWE-606": 0.1111111111111111,
+          "CWE-682": 0.1111111111111111,
+          "CWE-672": 0.1111111111111111
+        },
+        "eval_strategy": "pique.evaluation.DefaultProductFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      }
+    },
+    "quality_aspects": {
+      "ISO-25010:2023 Alignment": {
+        "name": "ISO-25010:2023 Alignment",
+        "value": 0.9000000000000000,
+        "description": "Alignment to the ISO 25010:2023 Software Product Quality Model Concerns",
+        "weights": {
+          "Performance Efficiency": 0.2,
+          "Space Usage": 0.2,
+          "Maintainability": 0.2,
+          "Reliability": 0.2,
+          "Security": 0.2
+        },
+        "eval_strategy": "pique.evaluation.DefaultFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      }
+    },
+    "tqi": {
+      "PIQUE Cloud-dockerfile quality model": {
+        "name": "PIQUE Cloud-dockerfile quality model",
+        "value": 0.90000000000000000,
+        "description": "PIQUE Cloud-dockerfile quality model",
+        "weights": {
+          "ISO-25010:2023 Alignment": 1.0
+        },
+        "eval_strategy": "pique.evaluation.DefaultFactorEvaluator",
+        "normalizer": "pique.evaluation.DefaultNormalizer",
+        "utility_function": {
+          "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+          "description": "A Probability Density Function to model the distribution of findings"
+        }
+      }
+    }
+  },
+  "measures": {
+    "CWE-611": {
+      "positive": false,
+      "name": "CWE-611",
+      "value": 1.0,
+      "description": "The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+      "weights": {
+        "CWE-611 Diagnostic Trivy": 0.5,
+        "CWE-611 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        14,
+        0,
+        12,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-754": {
+      "positive": false,
+      "name": "CWE-754",
+      "value": 1.0,
+      "description": "The product does not check or incorrectly checks for unusual or exceptional conditions that are not expected to occur frequently during day to day operation of the product.",
+      "weights": {
+        "CWE-754 Diagnostic Grype": 0.25,
+        "CWE-754 Diagnostic Trivy": 0.25,
+        "CWE-354": 0.25,
+        "CWE-476": 0.25
+      },
+      "thresholds": [
+        3,
+        60,
+        0,
+        51,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-755": {
+      "positive": false,
+      "name": "CWE-755",
+      "value": 0.8480057546192997779800190,
+      "description": "The product does not handle or incorrectly handles an exceptional condition.",
+      "weights": {
+        "CWE-248": 0.25,
+        "CWE-755 Diagnostic Trivy": 0.25,
+        "CWE-209": 0.25,
+        "CWE-755 Diagnostic Grype": 0.25
+      },
+      "thresholds": [
+        0,
+        10,
+        0,
+        8,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-415": {
+      "positive": false,
+      "name": "CWE-415",
+      "value": 1.0,
+      "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "weights": {
+        "CWE-415 Diagnostic Grype": 0.5,
+        "CWE-415 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-119": {
+      "positive": false,
+      "name": "CWE-119",
+      "value": 1.0,
+      "description": "The product performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+      "weights": {
+        "CWE-125": 0.125,
+        "CWE-466": 0.125,
+        "CWE-787": 0.125,
+        "CWE-788": 0.125,
+        "CWE-825": 0.125,
+        "CWE-119 Diagnostic Grype": 0.125,
+        "CWE-119 Diagnostic Trivy": 0.125,
+        "CWE-120": 0.125
+      },
+      "thresholds": [
+        13,
+        204,
+        10,
+        182,
+        3,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-416": {
+      "positive": false,
+      "name": "CWE-416",
+      "value": 1.0,
+      "description": "Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",
+      "weights": {
+        "CWE-416 Diagnostic Grype": 0.5,
+        "CWE-416 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        6,
+        41,
+        6,
+        32,
+        3,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-835": {
+      "positive": false,
+      "name": "CWE-835",
+      "value": 1.0,
+      "description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
+      "weights": {
+        "CWE-835 Diagnostic Grype": 0.5,
+        "CWE-835 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-131": {
+      "positive": false,
+      "name": "CWE-131",
+      "value": 1.0,
+      "description": "The product does not correctly calculate the size to be used when allocating a buffer, which could lead to a buffer overflow.",
+      "weights": {
+        "CWE-131 Diagnostic Trivy": 0.5,
+        "CWE-131 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        9,
+        0,
+        9,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-770": {
+      "positive": false,
+      "name": "CWE-770",
+      "value": 1.0,
+      "description": "The product allocates a reusable resource or group of resources on behalf of an actor without imposing any restrictions on the size or number of resources that can be allocated, in violation of the intended security policy for that actor.",
+      "weights": {
+        "CWE-770 Diagnostic Grype": 0.3333333333333333,
+        "CWE-770 Diagnostic Trivy": 0.3333333333333333,
+        "CWE-1325": 0.3333333333333333
+      },
+      "thresholds": [
+        1,
+        16,
+        0,
+        22,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-672": {
+      "positive": false,
+      "name": "CWE-672",
+      "value": 1.0,
+      "description": "The product uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
+      "weights": {
+        "CWE-672 Diagnostic Grype": 0.3333333333333333,
+        "CWE-825": 0.3333333333333333,
+        "CWE-672 Diagnostic Trivy": 0.3333333333333333
+      },
+      "thresholds": [
+        6,
+        43,
+        6,
+        32,
+        3,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-772": {
+      "positive": false,
+      "name": "CWE-772",
+      "value": 1.0,
+      "description": "The product does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "weights": {
+        "CWE-401": 0.3333333333333333,
+        "CWE-772 Diagnostic Grype": 0.3333333333333333,
+        "CWE-772 Diagnostic Trivy": 0.3333333333333333
+      },
+      "thresholds": [
+        0,
+        4,
+        0,
+        8,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-354": {
+      "positive": false,
+      "name": "CWE-354",
+      "value": 1.0,
+      "description": "The product does not validate or incorrectly validates the integrity check values or checksums of a message. This may prevent it from detecting if the data has been modified or corrupted in transmission.",
+      "weights": {
+        "CWE-354 Diagnostic Grype": 0.5,
+        "CWE-354 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        4,
+        0,
+        4,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-476": {
+      "positive": false,
+      "name": "CWE-476",
+      "value": 1.0,
+      "description": "A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit.",
+      "weights": {
+        "CWE-476 Diagnostic Trivy": 0.5,
+        "CWE-476 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        3,
+        47,
+        0,
+        38,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-190": {
+      "positive": false,
+      "name": "CWE-190",
+      "value": 1.0,
+      "description": "The product performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+      "weights": {
+        "CWE-190 Diagnostic Grype": 0.5,
+        "CWE-190 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        43,
+        0,
+        67,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-606": {
+      "positive": false,
+      "name": "CWE-606",
+      "value": 1.0,
+      "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+      "weights": {
+        "CWE-606 Diagnostic Grype": 0.5,
+        "CWE-606 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        6,
+        0,
+        15,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-1325": {
+      "positive": false,
+      "name": "CWE-1325",
+      "value": 1.0,
+      "description": "The product manages a group of objects or resources and performs a separate memory allocation for each object, but it does not properly limit the total amount of memory that is consumed by all of the combined objects.",
+      "weights": {
+        "CWE-1325 Diagnostic Grype": 0.5,
+        "CWE-1325 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        1,
+        2,
+        0,
+        2,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "Inefficient Bytes": {
+      "positive": false,
+      "name": "Inefficient Bytes",
+      "value": 1.0,
+      "description": "A score of inefficient bytes in an image",
+      "weights": {
+        "Inefficient Bytes Diagnostic Dive": 1.0
+      },
+      "thresholds": [
+        0,
+        3823853,
+        0,
+        3555819,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-79": {
+      "positive": false,
+      "name": "CWE-79",
+      "value": 1.0,
+      "description": "The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "weights": {
+        "CWE-79 Diagnostic Trivy": 0.5,
+        "CWE-79 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-1188": {
+      "positive": false,
+      "name": "CWE-1188",
+      "value": 1.0,
+      "description": "The product initializes or sets a resource with a default that is intended to be changed by the administrator, but the default is not secure.",
+      "weights": {
+        "CWE-1188 Diagnostic Trivy": 0.5,
+        "CWE-1188 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        2,
+        0,
+        2,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-125": {
+      "positive": false,
+      "name": "CWE-125",
+      "value": 1.0,
+      "description": "The product reads data past the end, or before the beginning, of the intended buffer.",
+      "weights": {
+        "CWE-126": 0.3333333333333333,
+        "CWE-125 Diagnostic Trivy": 0.3333333333333333,
+        "CWE-125 Diagnostic Grype": 0.3333333333333333
+      },
+      "thresholds": [
+        0,
+        55,
+        0,
+        23,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-466": {
+      "positive": false,
+      "name": "CWE-466",
+      "value": 1.0,
+      "description": "A function can return a pointer to memory that is outside of the buffer that the pointer is expected to reference.",
+      "weights": {
+        "CWE-466 Diagnostic Trivy": 0.5,
+        "CWE-466 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        9,
+        0,
+        9,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-665": {
+      "positive": false,
+      "name": "CWE-665",
+      "value": 1.0,
+      "description": "The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+      "weights": {
+        "CWE-1188": 0.25,
+        "CWE-665 Diagnostic Grype": 0.25,
+        "CWE-665 Diagnostic Trivy": 0.25,
+        "CWE-770": 0.25
+      },
+      "thresholds": [
+        1,
+        20,
+        0,
+        26,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-401": {
+      "positive": false,
+      "name": "CWE-401",
+      "value": 1.0,
+      "description": "The product does not sufficiently track and release allocated memory after it has been used, which slowly consumes remaining memory.",
+      "weights": {
+        "CWE-401 Diagnostic Trivy": 0.5,
+        "CWE-401 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        2,
+        0,
+        6,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-126": {
+      "positive": false,
+      "name": "CWE-126",
+      "value": 1.0,
+      "description": "The product reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+      "weights": {
+        "CWE-126 Diagnostic Trivy": 0.5,
+        "CWE-126 Diagnostic Grype": 0.5
+      },
+      "thresholds": [
+        0,
+        6,
+        0,
+        6,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-787": {
+      "positive": false,
+      "name": "CWE-787",
+      "value": 1.0,
+      "description": "The product writes data past the end, or before the beginning, of the intended buffer.",
+      "weights": {
+        "CWE-787 Diagnostic Grype": 0.25,
+        "CWE-787 Diagnostic Trivy": 0.25,
+        "CWE-121": 0.25,
+        "CWE-122": 0.25
+      },
+      "thresholds": [
+        13,
+        65,
+        10,
+        68,
+        3,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-369": {
+      "positive": false,
+      "name": "CWE-369",
+      "value": 1.0,
+      "description": "The product divides a value by zero.",
+      "weights": {
+        "CWE-369 Diagnostic Grype": 0.5,
+        "CWE-369 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-248": {
+      "positive": false,
+      "name": "CWE-248",
+      "value": 1.0,
+      "description": "An exception is thrown from a function, but it is not caught.",
+      "weights": {
+        "CWE-248 Diagnostic Grype": 0.5,
+        "CWE-248 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        6,
+        0,
+        6,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-788": {
+      "positive": false,
+      "name": "CWE-788",
+      "value": 1.0,
+      "description": "The product reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+      "weights": {
+        "CWE-126": 0.2,
+        "CWE-788 Diagnostic Grype": 0.2,
+        "CWE-788 Diagnostic Trivy": 0.2,
+        "CWE-121": 0.2,
+        "CWE-122": 0.2
+      },
+      "thresholds": [
+        0,
+        33,
+        0,
+        45,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-843": {
+      "positive": false,
+      "name": "CWE-843",
+      "value": 1.0,
+      "description": "The product allocates or initializes a resource such as a pointer, object, or variable using one type, but it later accesses that resource using a type that is incompatible with the original type.",
+      "weights": {
+        "CWE-843 Diagnostic Grype": 0.5,
+        "CWE-843 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        0,
+        0,
+        9,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-404": {
+      "positive": false,
+      "name": "CWE-404",
+      "value": 1.0,
+      "description": "The product does not release or incorrectly releases a resource before it is made available for re-use.",
+      "weights": {
+        "CWE-404 Diagnostic Grype": 0.3333333333333333,
+        "CWE-404 Diagnostic Trivy": 0.3333333333333333,
+        "CWE-772": 0.3333333333333333
+      },
+      "thresholds": [
+        0,
+        6,
+        0,
+        10,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-703": {
+      "positive": false,
+      "name": "CWE-703",
+      "value": 1.0,
+      "description": "The product does not properly anticipate or handle exceptional conditions that rarely occur during normal operation of the product.",
+      "weights": {
+        "CWE-703 Diagnostic Trivy": 0.25,
+        "CWE-754": 0.25,
+        "CWE-755": 0.25,
+        "CWE-703 Diagnostic Grype": 0.25
+      },
+      "thresholds": [
+        3,
+        70,
+        0,
+        59,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "Efficiency Score": {
+      "positive": true,
+      "name": "Efficiency Score",
+      "value": 0E-15,
+      "description": "A score of the percentage of non-wasted bytes in an image to the image's overall size in bytes. Interpretation of this Measure is as a score of scores.",
+      "weights": {
+        "Image Efficiency Score Diagnostic Dive": 1.0
+      },
+      "thresholds": [
+        1,
+        0.9855906094023361,
+        1,
+        0.9897440616065993,
+        1,
+        1
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-407": {
+      "positive": false,
+      "name": "CWE-407",
+      "value": 1.0,
+      "description": "An algorithm in a product has an inefficient worst-case computational complexity that may be detrimental to system performance and can be triggered by an attacker, typically using crafted manipulations that ensure that the worst case is being reached.",
+      "weights": {
+        "CWE-407 Diagnostic Grype": 0.5,
+        "CWE-407 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        9,
+        0,
+        9,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-704": {
+      "positive": false,
+      "name": "CWE-704",
+      "value": 1.0,
+      "description": "The product does not correctly convert an object, resource, or structure from one type to a different type.",
+      "weights": {
+        "CWE-843": 0.3333333333333333,
+        "CWE-704 Diagnostic Grype": 0.3333333333333333,
+        "CWE-704 Diagnostic Trivy": 0.3333333333333333
+      },
+      "thresholds": [
+        0,
+        0,
+        0,
+        9,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-825": {
+      "positive": false,
+      "name": "CWE-825",
+      "value": 1.0,
+      "description": "The product dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+      "weights": {
+        "CWE-825 Diagnostic Grype": 0.25,
+        "CWE-415": 0.25,
+        "CWE-416": 0.25,
+        "CWE-825 Diagnostic Trivy": 0.25
+      },
+      "thresholds": [
+        6,
+        43,
+        6,
+        32,
+        3,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-209": {
+      "positive": false,
+      "name": "CWE-209",
+      "value": 1.0,
+      "description": "The product generates an error message that includes sensitive information about its environment, users, or associated data.",
+      "weights": {
+        "CWE-209 Diagnostic Grype": 0.5,
+        "CWE-209 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        2,
+        0,
+        2,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-120": {
+      "positive": false,
+      "name": "CWE-120",
+      "value": 1.0,
+      "description": "The product copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+      "weights": {
+        "CWE-120 Diagnostic Grype": 0.5,
+        "CWE-120 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        15,
+        0,
+        15,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-682": {
+      "positive": false,
+      "name": "CWE-682",
+      "value": 1.0,
+      "description": "The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "weights": {
+        "CWE-369": 0.2,
+        "CWE-190": 0.2,
+        "CWE-682 Diagnostic Trivy": 0.2,
+        "CWE-682 Diagnostic Grype": 0.2,
+        "CWE-131": 0.2
+      },
+      "thresholds": [
+        0,
+        52,
+        0,
+        82,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-121": {
+      "positive": false,
+      "name": "CWE-121",
+      "value": 1.0,
+      "description": "A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+      "weights": {
+        "CWE-121 Diagnostic Grype": 0.5,
+        "CWE-121 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        13,
+        0,
+        16,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-122": {
+      "positive": false,
+      "name": "CWE-122",
+      "value": 1.0,
+      "description": "A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+      "weights": {
+        "CWE-122 Diagnostic Grype": 0.5,
+        "CWE-122 Diagnostic Trivy": 0.5
+      },
+      "thresholds": [
+        0,
+        14,
+        0,
+        23,
+        0,
+        0
+      ],
+      "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    }
+  },
+  "diagnostics": {
+    "CWE-401 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-401 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-401",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-611 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-611 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-611",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-190 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-190 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-190",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-121 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-121 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-121",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-611 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-611 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-611",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-672 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-672 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-672",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "Image Efficiency Score Diagnostic Dive": {
+      "toolName": "Dive",
+      "name": "Image Efficiency Score Diagnostic Dive",
+      "value": 1.0,
+      "description": "A score that features the ratio of non-wasted size in bytes (calculated via the difference of the overally image size in bytes subtract the value of the inefficient bytes metric) to overall image size in bytes",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-120 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-120 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-120",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-665 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-665 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-665",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-476 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-476 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-476",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-121 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-121 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-121",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-755 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-755 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-755",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-79 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-79 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-79",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-770 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-770 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-770",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-131 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-131 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-131",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-131 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-131 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-131",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-770 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-770 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-770",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-126 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-126 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-126",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-665 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-665 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-665",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-126 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-126 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-126",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-825 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-825 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-825",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-703 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-703 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-703",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-754 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-754 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-754",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-682 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-682 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-682",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-416 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-416 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-416",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-466 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-466 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-466",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-755 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-755 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-755",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-119 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-119 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-119",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-79 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-79 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-79",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-788 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-788 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-788",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-704 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-704 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-704",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-466 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-466 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-466",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-1325 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-1325 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-1325",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "Inefficient Bytes Diagnostic Dive": {
+      "toolName": "Dive",
+      "name": "Inefficient Bytes Diagnostic Dive",
+      "value": 0.0,
+      "description": "Wasted space this image contains. The concept of wasted space includes duplicating files across layers, moving files across layers, or not fully removing files and/or configurations",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-606 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-606 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-606",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-703 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-703 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-703",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-772 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-772 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-772",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-788 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-788 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-788",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-120 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-120 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-120",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-415 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-415 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-415",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-415 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-415 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-415",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-119 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-119 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-119",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-825 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-825 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-825",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-754 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-754 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-754",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-416 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-416 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-416",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-407 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-407 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-407",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-354 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-354 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-354",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-354 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-354 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-354",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-672 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-672 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-672",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-476 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-476 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-476",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-407 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-407 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-407",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-772 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-772 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-772",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-369 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-369 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-369",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-843 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-843 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-843",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-1325 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-1325 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-1325",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-606 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-606 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-606",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-125 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-125 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-125",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-404 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-404 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-404",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-704 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-704 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-704",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-125 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-125 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-125",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-1188 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-1188 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-1188",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-404 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-404 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-404",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-369 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-369 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-369",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-190 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-190 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-190",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-122 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-122 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-122",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-843 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-843 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-843",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-401 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-401 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-401",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-835 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-835 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-835",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-682 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-682 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-682",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-248 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-248 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-248",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-787 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-787 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-787",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-787 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-787 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-787",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-209 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-209 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-209",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-248 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-248 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-248",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-835 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-835 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-835",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-1188 Diagnostic Grype": {
+      "toolName": "Grype",
+      "name": "CWE-1188 Diagnostic Grype",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-1188",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-122 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-122 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-122",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    },
+    "CWE-209 Diagnostic Trivy": {
+      "toolName": "Trivy",
+      "name": "CWE-209 Diagnostic Trivy",
+      "value": 0.0,
+      "description": "Sum of findings of type CWE-209",
+      "weights": {},
+      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
+      "normalizer": "pique.evaluation.DefaultNormalizer",
+      "utility_function": {
+        "name": "pique.evaluation.ProbabilityDensityFunctionUtilityFunction",
+        "description": "A Probability Density Function to model the distribution of findings"
+      }
+    }
+  }
+}
