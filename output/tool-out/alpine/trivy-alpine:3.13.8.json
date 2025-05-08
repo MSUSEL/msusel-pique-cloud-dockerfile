@@ -1,5 +1,6 @@
 {
   "SchemaVersion": 2,
+  "CreatedAt": "2025-04-02T09:50:34.750947985-06:00",
   "ArtifactName": "alpine:3.13.8",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -20,7 +21,6 @@
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "container": "5735966d55e57ab656f2466d3e524f9155c7164cd736d37a086421cf17b53ea2",
       "created": "2022-03-17T15:19:36.218959308Z",
       "docker_version": "20.10.12",
       "history": [
@@ -62,8 +62,13 @@
           "VulnerabilityID": "CVE-2022-28391",
           "PkgID": "busybox@1.32.1-r7",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.32.1-r7?arch=x86_64\u0026distro=3.13.8",
+            "UID": "67d85cdad2cb9cfb"
+          },
           "InstalledVersion": "1.32.1-r7",
           "FixedVersion": "1.32.1-r8",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -77,6 +82,13 @@
           "Title": "busybox: remote attackers may execute arbitrary code if netstat is used",
           "Description": "BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.",
           "Severity": "HIGH",
+          "VendorSeverity": {
+            "amazon": 2,
+            "azure": 3,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
@@ -91,7 +103,6 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2022-28391",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28391",
             "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
             "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
             "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
@@ -99,14 +110,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2022-28391"
           ],
           "PublishedDate": "2022-04-03T21:15:08.207Z",
-          "LastModifiedDate": "2022-08-11T18:44:50.37Z"
+          "LastModifiedDate": "2024-11-21T06:57:17.253Z"
         },
         {
           "VulnerabilityID": "CVE-2022-30065",
           "PkgID": "busybox@1.32.1-r7",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.32.1-r7?arch=x86_64\u0026distro=3.13.8",
+            "UID": "67d85cdad2cb9cfb"
+          },
           "InstalledVersion": "1.32.1-r7",
           "FixedVersion": "1.32.1-r9",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -123,6 +139,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
@@ -143,14 +165,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2022-30065"
           ],
           "PublishedDate": "2022-05-18T15:15:10.24Z",
-          "LastModifiedDate": "2023-02-11T17:44:54.01Z"
+          "LastModifiedDate": "2024-11-21T07:02:09.397Z"
         },
         {
           "VulnerabilityID": "CVE-2022-2097",
           "PkgID": "libcrypto1.1@1.1.1n-r0",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1n-r0?arch=x86_64\u0026distro=3.13.8",
+            "UID": "1411b3aca3f1ecb5"
+          },
           "InstalledVersion": "1.1.1n-r0",
           "FixedVersion": "1.1.1q-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -167,6 +194,19 @@
           "CweIDs": [
             "CWE-327"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 2,
+            "azure": 2,
+            "cbl-mariner": 2,
+            "ghsa": 3,
+            "nvd": 2,
+            "oracle-oval": 3,
+            "photon": 2,
+            "redhat": 2,
+            "rocky": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -184,9 +224,11 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2022:5818",
+            "https://access.redhat.com/errata/RHSA-2022:6224",
             "https://access.redhat.com/security/cve/CVE-2022-2097",
             "https://bugzilla.redhat.com/2081494",
+            "https://bugzilla.redhat.com/2087911",
+            "https://bugzilla.redhat.com/2087913",
             "https://bugzilla.redhat.com/2097310",
             "https://bugzilla.redhat.com/2104905",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2081494",
@@ -197,7 +239,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-1292",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2068",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2097",
-            "https://errata.almalinux.org/8/ALSA-2022-5818.html",
+            "https://errata.almalinux.org/9/ALSA-2022-6224.html",
             "https://errata.rockylinux.org/RLSA-2022:5818",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=919925673d6c9cfed3c1085497f5dfbbed5fc431",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=a98f339ddd7e8f487d6e0088d4a9a42324885a93",
@@ -205,19 +247,28 @@
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=a98f339ddd7e8f487d6e0088d4a9a42324885a93",
             "https://github.com/alexcrichton/openssl-src-rs",
             "https://linux.oracle.com/cve/CVE-2022-2097.html",
-            "https://linux.oracle.com/errata/ELSA-2022-9751.html",
+            "https://linux.oracle.com/errata/ELSA-2022-9955.html",
             "https://lists.debian.org/debian-lts-announce/2023/02/msg00019.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK/",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7/",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK",
             "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7",
             "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA",
             "https://nvd.nist.gov/vuln/detail/CVE-2022-2097",
             "https://rustsec.org/advisories/RUSTSEC-2022-0032.html",
             "https://security.gentoo.org/glsa/202210-02",
+            "https://security.netapp.com/advisory/ntap-20220715-0011",
             "https://security.netapp.com/advisory/ntap-20220715-0011/",
+            "https://security.netapp.com/advisory/ntap-20230420-0008",
             "https://security.netapp.com/advisory/ntap-20230420-0008/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://ubuntu.com/security/notices/USN-5502-1",
             "https://ubuntu.com/security/notices/USN-6457-1",
             "https://www.cve.org/CVERecord?id=CVE-2022-2097",
@@ -225,14 +276,19 @@
             "https://www.openssl.org/news/secadv/20220705.txt"
           ],
           "PublishedDate": "2022-07-05T11:15:08.34Z",
-          "LastModifiedDate": "2023-11-07T03:46:13Z"
+          "LastModifiedDate": "2024-11-21T07:00:18.757Z"
         },
         {
           "VulnerabilityID": "CVE-2022-2097",
           "PkgID": "libssl1.1@1.1.1n-r0",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1n-r0?arch=x86_64\u0026distro=3.13.8",
+            "UID": "770eaad8b35bd104"
+          },
           "InstalledVersion": "1.1.1n-r0",
           "FixedVersion": "1.1.1q-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -249,6 +305,19 @@
           "CweIDs": [
             "CWE-327"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 2,
+            "azure": 2,
+            "cbl-mariner": 2,
+            "ghsa": 3,
+            "nvd": 2,
+            "oracle-oval": 3,
+            "photon": 2,
+            "redhat": 2,
+            "rocky": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -266,9 +335,11 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2022:5818",
+            "https://access.redhat.com/errata/RHSA-2022:6224",
             "https://access.redhat.com/security/cve/CVE-2022-2097",
             "https://bugzilla.redhat.com/2081494",
+            "https://bugzilla.redhat.com/2087911",
+            "https://bugzilla.redhat.com/2087913",
             "https://bugzilla.redhat.com/2097310",
             "https://bugzilla.redhat.com/2104905",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2081494",
@@ -279,7 +350,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-1292",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2068",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2097",
-            "https://errata.almalinux.org/8/ALSA-2022-5818.html",
+            "https://errata.almalinux.org/9/ALSA-2022-6224.html",
             "https://errata.rockylinux.org/RLSA-2022:5818",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=919925673d6c9cfed3c1085497f5dfbbed5fc431",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=a98f339ddd7e8f487d6e0088d4a9a42324885a93",
@@ -287,19 +358,28 @@
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=a98f339ddd7e8f487d6e0088d4a9a42324885a93",
             "https://github.com/alexcrichton/openssl-src-rs",
             "https://linux.oracle.com/cve/CVE-2022-2097.html",
-            "https://linux.oracle.com/errata/ELSA-2022-9751.html",
+            "https://linux.oracle.com/errata/ELSA-2022-9955.html",
             "https://lists.debian.org/debian-lts-announce/2023/02/msg00019.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK/",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7/",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK",
             "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/R6CK57NBQFTPUMXAPJURCGXUYT76NQAK/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7",
             "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/V6567JERRHHJW2GNGJGKDRNHR7SNPZK7/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VCMNWKERPBKOEBNL7CLTTX3ZZCZLH7XA",
             "https://nvd.nist.gov/vuln/detail/CVE-2022-2097",
             "https://rustsec.org/advisories/RUSTSEC-2022-0032.html",
             "https://security.gentoo.org/glsa/202210-02",
+            "https://security.netapp.com/advisory/ntap-20220715-0011",
             "https://security.netapp.com/advisory/ntap-20220715-0011/",
+            "https://security.netapp.com/advisory/ntap-20230420-0008",
             "https://security.netapp.com/advisory/ntap-20230420-0008/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://ubuntu.com/security/notices/USN-5502-1",
             "https://ubuntu.com/security/notices/USN-6457-1",
             "https://www.cve.org/CVERecord?id=CVE-2022-2097",
@@ -307,14 +387,19 @@
             "https://www.openssl.org/news/secadv/20220705.txt"
           ],
           "PublishedDate": "2022-07-05T11:15:08.34Z",
-          "LastModifiedDate": "2023-11-07T03:46:13Z"
+          "LastModifiedDate": "2024-11-21T07:00:18.757Z"
         },
         {
           "VulnerabilityID": "CVE-2022-28391",
           "PkgID": "ssl_client@1.32.1-r7",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.32.1-r7?arch=x86_64\u0026distro=3.13.8",
+            "UID": "603543075eec2515"
+          },
           "InstalledVersion": "1.32.1-r7",
           "FixedVersion": "1.32.1-r8",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -328,6 +413,13 @@
           "Title": "busybox: remote attackers may execute arbitrary code if netstat is used",
           "Description": "BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.",
           "Severity": "HIGH",
+          "VendorSeverity": {
+            "amazon": 2,
+            "azure": 3,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
@@ -342,7 +434,6 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2022-28391",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28391",
             "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
             "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
             "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
@@ -350,14 +441,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2022-28391"
           ],
           "PublishedDate": "2022-04-03T21:15:08.207Z",
-          "LastModifiedDate": "2022-08-11T18:44:50.37Z"
+          "LastModifiedDate": "2024-11-21T06:57:17.253Z"
         },
         {
           "VulnerabilityID": "CVE-2022-30065",
           "PkgID": "ssl_client@1.32.1-r7",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.32.1-r7?arch=x86_64\u0026distro=3.13.8",
+            "UID": "603543075eec2515"
+          },
           "InstalledVersion": "1.32.1-r7",
           "FixedVersion": "1.32.1-r9",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -374,6 +470,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
@@ -394,14 +496,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2022-30065"
           ],
           "PublishedDate": "2022-05-18T15:15:10.24Z",
-          "LastModifiedDate": "2023-02-11T17:44:54.01Z"
+          "LastModifiedDate": "2024-11-21T07:02:09.397Z"
         },
         {
           "VulnerabilityID": "CVE-2022-37434",
           "PkgID": "zlib@1.2.11-r3",
           "PkgName": "zlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/zlib@1.2.11-r3?arch=x86_64\u0026distro=3.13.8",
+            "UID": "c0490196497b20eb"
+          },
           "InstalledVersion": "1.2.11-r3",
           "FixedVersion": "1.2.12-r2",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -418,6 +525,18 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "azure": 4,
+            "cbl-mariner": 4,
+            "nvd": 4,
+            "oracle-oval": 2,
+            "photon": 4,
+            "redhat": 2,
+            "rocky": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "nvd": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -435,7 +554,7 @@
             "http://seclists.org/fulldisclosure/2022/Oct/42",
             "http://www.openwall.com/lists/oss-security/2022/08/05/2",
             "http://www.openwall.com/lists/oss-security/2022/08/09/1",
-            "https://access.redhat.com/errata/RHSA-2022:7793",
+            "https://access.redhat.com/errata/RHSA-2022:8291",
             "https://access.redhat.com/security/cve/CVE-2022-37434",
             "https://bugzilla.redhat.com/2116639",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2053198",
@@ -443,7 +562,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2081296",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2116639",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37434",
-            "https://errata.almalinux.org/8/ALSA-2022-7793.html",
+            "https://errata.almalinux.org/9/ALSA-2022-8291.html",
             "https://errata.rockylinux.org/RLSA-2022:8291",
             "https://github.com/curl/curl/issues/9271",
             "https://github.com/ivd38/zlib_overflow",
@@ -470,18 +589,25 @@
             "https://ubuntu.com/security/notices/USN-5570-1",
             "https://ubuntu.com/security/notices/USN-5570-2",
             "https://ubuntu.com/security/notices/USN-5573-1",
+            "https://ubuntu.com/security/notices/USN-6736-1",
+            "https://ubuntu.com/security/notices/USN-6736-2",
             "https://www.cve.org/CVERecord?id=CVE-2022-37434",
             "https://www.debian.org/security/2022/dsa-5218"
           ],
           "PublishedDate": "2022-08-05T07:15:07.24Z",
-          "LastModifiedDate": "2023-07-19T00:56:46.373Z"
+          "LastModifiedDate": "2024-11-21T07:14:59.07Z"
         },
         {
           "VulnerabilityID": "CVE-2018-25032",
           "PkgID": "zlib@1.2.11-r3",
           "PkgName": "zlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/zlib@1.2.11-r3?arch=x86_64\u0026distro=3.13.8",
+            "UID": "c0490196497b20eb"
+          },
           "InstalledVersion": "1.2.11-r3",
           "FixedVersion": "1.2.12-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:0f49a1f7d403231804068b9d90b5644695397d383f92cc29673d6a747c55f7a2"
           },
@@ -498,6 +624,19 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "alma": 3,
+            "amazon": 3,
+            "azure": 3,
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 3,
+            "photon": 3,
+            "redhat": 3,
+            "ruby-advisory-db": 3,
+            "ubuntu": 2
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -520,13 +659,12 @@
             "http://seclists.org/fulldisclosure/2022/May/38",
             "http://www.openwall.com/lists/oss-security/2022/03/25/2",
             "http://www.openwall.com/lists/oss-security/2022/03/26/1",
-            "https://access.redhat.com/errata/RHSA-2022:7813",
+            "https://access.redhat.com/errata/RHSA-2022:8420",
             "https://access.redhat.com/hydra/rest/securitydata/cve/CVE-2018-25032.json",
             "https://access.redhat.com/security/cve/CVE-2018-25032",
             "https://bugzilla.redhat.com/2067945",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-333517.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-25032",
-            "https://errata.almalinux.org/8/ALSA-2022-7813.html",
+            "https://errata.almalinux.org/9/ALSA-2022-8420.html",
             "https://github.com/madler/zlib/commit/5c44459c3b28a9bd3283aaceab7c615f8020c531",
             "https://github.com/madler/zlib/compare/v1.2.11...v1.2.12",
             "https://github.com/madler/zlib/issues/605",
@@ -545,15 +683,17 @@
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NS2D2GFPFGOJUL4WQ3DUAY7HF4VWQ77F/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOKNP2L734AEL47NRYGVZIKEFOUBQY5Y/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XOKFMSNQ5D5WGMALBNBXU3GE442V74WU/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DCZFIJBJTZ7CL5QXBFKTQ22Q26VINRUF/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DF62MVMH3QUGMBDCB3DY2ERQ6EBHTADB/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JZZPTWRYQULAOL3AW7RZJNVZ2UONXCV4/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NS2D2GFPFGOJUL4WQ3DUAY7HF4VWQ77F/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOKNP2L734AEL47NRYGVZIKEFOUBQY5Y/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XOKFMSNQ5D5WGMALBNBXU3GE442V74WU/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DCZFIJBJTZ7CL5QXBFKTQ22Q26VINRUF",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DF62MVMH3QUGMBDCB3DY2ERQ6EBHTADB",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JZZPTWRYQULAOL3AW7RZJNVZ2UONXCV4",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NS2D2GFPFGOJUL4WQ3DUAY7HF4VWQ77F",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOKNP2L734AEL47NRYGVZIKEFOUBQY5Y",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XOKFMSNQ5D5WGMALBNBXU3GE442V74WU",
             "https://nvd.nist.gov/vuln/detail/CVE-2018-25032",
             "https://security.gentoo.org/glsa/202210-42",
+            "https://security.netapp.com/advisory/ntap-20220526-0009",
             "https://security.netapp.com/advisory/ntap-20220526-0009/",
+            "https://security.netapp.com/advisory/ntap-20220729-0004",
             "https://security.netapp.com/advisory/ntap-20220729-0004/",
             "https://support.apple.com/kb/HT213255",
             "https://support.apple.com/kb/HT213256",
@@ -563,6 +703,8 @@
             "https://ubuntu.com/security/notices/USN-5359-1",
             "https://ubuntu.com/security/notices/USN-5359-2",
             "https://ubuntu.com/security/notices/USN-5739-1",
+            "https://ubuntu.com/security/notices/USN-6736-1",
+            "https://ubuntu.com/security/notices/USN-6736-2",
             "https://www.cve.org/CVERecord?id=CVE-2018-25032",
             "https://www.debian.org/security/2022/dsa-5111",
             "https://www.openwall.com/lists/oss-security/2022/03/24/1",
@@ -571,7 +713,7 @@
             "https://www.oracle.com/security-alerts/cpujul2022.html"
           ],
           "PublishedDate": "2022-03-25T09:15:08.187Z",
-          "LastModifiedDate": "2023-11-07T02:56:26.393Z"
+          "LastModifiedDate": "2025-03-28T15:16:29.617Z"
         }
       ]
     }

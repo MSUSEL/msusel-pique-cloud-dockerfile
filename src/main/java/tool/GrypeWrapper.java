@@ -150,8 +150,6 @@ public class GrypeWrapper extends Tool implements ITool {
                 //FIXME--- remove try catch block after checked exceptions changes
                 try {
                     //do we have a cwe for this cve?
-                    System.out.println("checking PIQUE data for cwe for CVE: " + findingName);
-                    System.out.println("pique data reporting: " + piqueData.getCweName(findingName));
                     cwes = piqueData.getCweName(findingName);
                 }catch (DataAccessException e){
                     LOGGER.error(findingName + " has no NVD page, page likely reserved by a CNA. Skipping.");
@@ -170,17 +168,16 @@ public class GrypeWrapper extends Tool implements ITool {
                 for (String matchedCWE : cwes){
                     //do we have a diag for this matchedCWE? (Is it in the model definition?)
                     Diagnostic diag = diagnostics.get(matchedCWE + " Diagnostic Grype");
-                    if (diag != null) {
-                        //found a cwe node for this in the model definition, creating a finding for it and adding.
-                        LOGGER.info("Found " + matchedCWE + " in the model definition for our " + findingName);
-                        Finding finding = new Finding("" + uniqueFindingCounter,0,0, this.severityToInt(findingSeverity));
-                        diag.setChild(finding);
-                        uniqueFindingCounter++;
-                    }else{
-                        //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-                        // We may want to treat this in another way in the future, but im ignoring it for now.
-                        LOGGER.warn("Vulnerability " + findingName + " with CWE: " + matchedCWE + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                    if (diag == null) {
+                        //this means the vuln was mapped to a CWE outside the 1000 scope
+                        LOGGER.info("Vulnerability " + findingName + " with CWE: " + matchedCWE + " mapped to CWE-outside-1000");
+                        diag = diagnostics.get("CWE-outside-1000 Diagnostic Grype");
                     }
+                    //found a cwe node for this in the model definition, creating a finding for it and adding.
+                    LOGGER.info("Found " + matchedCWE + " in the model definition for our " + findingName +  " and adding to diag node: " + diag.getName());
+                    Finding finding = new Finding("" + uniqueFindingCounter,0,0, this.severityToInt(findingSeverity));
+                    diag.setChild(finding);
+                    uniqueFindingCounter++;
                 }
             }
         } catch (JSONException e) {

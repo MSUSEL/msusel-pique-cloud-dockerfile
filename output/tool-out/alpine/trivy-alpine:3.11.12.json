@@ -1,5 +1,6 @@
 {
   "SchemaVersion": 2,
+  "CreatedAt": "2025-04-02T09:27:48.531366355-06:00",
   "ArtifactName": "alpine:3.11.12",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -20,7 +21,6 @@
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "container": "ebb2b3b2bab962741461233244dd814ba3e30f53ff73d8580259cefc3d406a35",
       "created": "2021-08-31T23:18:31.468221118Z",
       "docker_version": "20.10.7",
       "history": [
@@ -62,8 +62,13 @@
           "VulnerabilityID": "CVE-2021-42378",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -80,6 +85,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -95,7 +107,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42378",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42378",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -105,14 +116,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42378"
           ],
           "PublishedDate": "2021-11-15T21:15:07.753Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.25Z"
+          "LastModifiedDate": "2024-11-21T06:27:41.79Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42379",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -129,6 +145,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -144,7 +167,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42379",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42379",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -154,14 +176,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42379"
           ],
           "PublishedDate": "2021-11-15T21:15:07.807Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.34Z"
+          "LastModifiedDate": "2024-11-21T06:27:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42380",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -178,6 +205,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -193,7 +226,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42380",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42380",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -203,14 +235,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42380"
           ],
           "PublishedDate": "2021-11-15T21:15:07.857Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.423Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.03Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42381",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -227,6 +264,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -242,7 +285,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42381",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42381",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -252,14 +294,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42381"
           ],
           "PublishedDate": "2021-11-15T21:15:07.913Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.5Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.157Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42382",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -276,6 +323,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -291,7 +344,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42382",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42382",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -301,14 +353,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42382"
           ],
           "PublishedDate": "2021-11-15T21:15:07.963Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.577Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.283Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42383",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -325,6 +382,10 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "nvd": 3,
+            "redhat": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -348,14 +409,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42383"
           ],
           "PublishedDate": "2021-11-15T21:15:08.017Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.66Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.41Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42384",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -372,6 +438,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -387,7 +460,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42384",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42384",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -397,14 +469,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42384"
           ],
           "PublishedDate": "2021-11-15T21:15:08.07Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.737Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.53Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42385",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -421,6 +498,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -436,7 +520,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42385",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42385",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -446,14 +529,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42385"
           ],
           "PublishedDate": "2021-11-15T21:15:08.123Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.82Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.657Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42386",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -470,6 +558,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -485,7 +580,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42386",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42386",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -495,14 +589,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42386"
           ],
           "PublishedDate": "2021-11-15T21:15:08.173Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.903Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.78Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42374",
           "PkgID": "busybox@1.31.1-r10",
           "PkgName": "busybox",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "6706dbc3cc533d7a"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -519,6 +618,13 @@
           "CweIDs": [
             "CWE-125"
           ],
+          "VendorSeverity": {
+            "azure": 2,
+            "cbl-mariner": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:L/AC:M/Au:N/C:P/I:N/A:P",
@@ -534,7 +640,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42374",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42374",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -544,14 +649,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42374"
           ],
           "PublishedDate": "2021-11-15T21:15:07.54Z",
-          "LastModifiedDate": "2023-11-07T03:39:09.877Z"
+          "LastModifiedDate": "2024-11-21T06:27:41.273Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42378",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -568,6 +678,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -583,7 +700,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42378",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42378",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -593,14 +709,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42378"
           ],
           "PublishedDate": "2021-11-15T21:15:07.753Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.25Z"
+          "LastModifiedDate": "2024-11-21T06:27:41.79Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42379",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -617,6 +738,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -632,7 +760,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42379",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42379",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -642,14 +769,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42379"
           ],
           "PublishedDate": "2021-11-15T21:15:07.807Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.34Z"
+          "LastModifiedDate": "2024-11-21T06:27:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42380",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -666,6 +798,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -681,7 +819,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42380",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42380",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -691,14 +828,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42380"
           ],
           "PublishedDate": "2021-11-15T21:15:07.857Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.423Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.03Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42381",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -715,6 +857,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -730,7 +878,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42381",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42381",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -740,14 +887,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42381"
           ],
           "PublishedDate": "2021-11-15T21:15:07.913Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.5Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.157Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42382",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -764,6 +916,12 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -779,7 +937,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42382",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42382",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -789,14 +946,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42382"
           ],
           "PublishedDate": "2021-11-15T21:15:07.963Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.577Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.283Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42383",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -813,6 +975,10 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "nvd": 3,
+            "redhat": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -836,14 +1002,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42383"
           ],
           "PublishedDate": "2021-11-15T21:15:08.017Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.66Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.41Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42384",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -860,6 +1031,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -875,7 +1053,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42384",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42384",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -885,14 +1062,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42384"
           ],
           "PublishedDate": "2021-11-15T21:15:08.07Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.737Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.53Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42385",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -909,6 +1091,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -924,7 +1113,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42385",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42385",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -934,14 +1122,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42385"
           ],
           "PublishedDate": "2021-11-15T21:15:08.123Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.82Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.657Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42386",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -958,6 +1151,13 @@
           "CweIDs": [
             "CWE-416"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
@@ -973,7 +1173,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42386",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42386",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -983,14 +1182,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42386"
           ],
           "PublishedDate": "2021-11-15T21:15:08.173Z",
-          "LastModifiedDate": "2023-11-07T03:39:10.903Z"
+          "LastModifiedDate": "2024-11-21T06:27:42.78Z"
         },
         {
           "VulnerabilityID": "CVE-2021-42374",
           "PkgID": "ssl_client@1.31.1-r10",
           "PkgName": "ssl_client",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.31.1-r10?arch=x86_64\u0026distro=3.11.12",
+            "UID": "421eb7df295ad24f"
+          },
           "InstalledVersion": "1.31.1-r10",
           "FixedVersion": "1.31.1-r11",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -1007,6 +1211,13 @@
           "CweIDs": [
             "CWE-125"
           ],
+          "VendorSeverity": {
+            "azure": 2,
+            "cbl-mariner": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:L/AC:M/Au:N/C:P/I:N/A:P",
@@ -1022,7 +1233,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-42374",
             "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42374",
             "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
@@ -1032,14 +1242,19 @@
             "https://www.cve.org/CVERecord?id=CVE-2021-42374"
           ],
           "PublishedDate": "2021-11-15T21:15:07.54Z",
-          "LastModifiedDate": "2023-11-07T03:39:09.877Z"
+          "LastModifiedDate": "2024-11-21T06:27:41.273Z"
         },
         {
           "VulnerabilityID": "CVE-2022-37434",
           "PkgID": "zlib@1.2.11-r3",
           "PkgName": "zlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/zlib@1.2.11-r3?arch=x86_64\u0026distro=3.11.12",
+            "UID": "eadacbfd8d941e51"
+          },
           "InstalledVersion": "1.2.11-r3",
           "FixedVersion": "1.2.11-r4",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:39982b2a789afc156fff00c707d0ff1c6ab4af8f1666a8df4787714059ce24e7"
           },
@@ -1056,6 +1271,18 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "azure": 4,
+            "cbl-mariner": 4,
+            "nvd": 4,
+            "oracle-oval": 2,
+            "photon": 4,
+            "redhat": 2,
+            "rocky": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "nvd": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -1073,7 +1300,7 @@
             "http://seclists.org/fulldisclosure/2022/Oct/42",
             "http://www.openwall.com/lists/oss-security/2022/08/05/2",
             "http://www.openwall.com/lists/oss-security/2022/08/09/1",
-            "https://access.redhat.com/errata/RHSA-2022:7793",
+            "https://access.redhat.com/errata/RHSA-2022:8291",
             "https://access.redhat.com/security/cve/CVE-2022-37434",
             "https://bugzilla.redhat.com/2116639",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2053198",
@@ -1081,7 +1308,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2081296",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2116639",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37434",
-            "https://errata.almalinux.org/8/ALSA-2022-7793.html",
+            "https://errata.almalinux.org/9/ALSA-2022-8291.html",
             "https://errata.rockylinux.org/RLSA-2022:8291",
             "https://github.com/curl/curl/issues/9271",
             "https://github.com/ivd38/zlib_overflow",
@@ -1108,11 +1335,13 @@
             "https://ubuntu.com/security/notices/USN-5570-1",
             "https://ubuntu.com/security/notices/USN-5570-2",
             "https://ubuntu.com/security/notices/USN-5573-1",
+            "https://ubuntu.com/security/notices/USN-6736-1",
+            "https://ubuntu.com/security/notices/USN-6736-2",
             "https://www.cve.org/CVERecord?id=CVE-2022-37434",
             "https://www.debian.org/security/2022/dsa-5218"
           ],
           "PublishedDate": "2022-08-05T07:15:07.24Z",
-          "LastModifiedDate": "2023-07-19T00:56:46.373Z"
+          "LastModifiedDate": "2024-11-21T07:14:59.07Z"
         }
       ]
     }

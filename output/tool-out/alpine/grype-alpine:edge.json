@@ -2,677 +2,17 @@
  "matches": [
   {
    "vulnerability": {
-    "id": "CVE-2023-42366",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42366",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15874"
-    ],
-    "description": "A heap-buffer-overflow was discovered in BusyBox v.1.36.1 in the next_token function at awk.c:1159.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42366",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "35800e1123d31e8e",
-    "name": "busybox",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox@1.36.1-r17?arch=x86_64&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42365",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42365",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15871"
-    ],
-    "description": "A use-after-free vulnerability was discovered in BusyBox v.1.36.1 via a crafted awk pattern in the awk.c copyvar function.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42365",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "35800e1123d31e8e",
-    "name": "busybox",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox@1.36.1-r17?arch=x86_64&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42364",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42364",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15868"
-    ],
-    "description": "A use-after-free vulnerability in BusyBox v.1.36.1 allows attackers to cause a denial of service via a crafted awk pattern in the awk.c evaluate function.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42364",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "35800e1123d31e8e",
-    "name": "busybox",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox@1.36.1-r17?arch=x86_64&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42363",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42363",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15865"
-    ],
-    "description": "A use-after-free vulnerability was discovered in xasprintf function in xfuncs_printf.c:344 in BusyBox v.1.36.1.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42363",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "35800e1123d31e8e",
-    "name": "busybox",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox@1.36.1-r17?arch=x86_64&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42366",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42366",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15874"
-    ],
-    "description": "A heap-buffer-overflow was discovered in BusyBox v.1.36.1 in the next_token function at awk.c:1159.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42366",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "ed3f537852f36edd",
-    "name": "busybox-binsh",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox-binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox-binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox-binsh@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42365",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42365",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15871"
-    ],
-    "description": "A use-after-free vulnerability was discovered in BusyBox v.1.36.1 via a crafted awk pattern in the awk.c copyvar function.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42365",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "ed3f537852f36edd",
-    "name": "busybox-binsh",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox-binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox-binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox-binsh@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42364",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42364",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15868"
-    ],
-    "description": "A use-after-free vulnerability in BusyBox v.1.36.1 allows attackers to cause a denial of service via a crafted awk pattern in the awk.c evaluate function.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42364",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "ed3f537852f36edd",
-    "name": "busybox-binsh",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox-binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox-binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox-binsh@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42363",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42363",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15865"
-    ],
-    "description": "A use-after-free vulnerability was discovered in xasprintf function in xfuncs_printf.c:344 in BusyBox v.1.36.1.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42363",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "ed3f537852f36edd",
-    "name": "busybox-binsh",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:busybox-binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox-binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox_binsh:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox-binsh:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:busybox:busybox_binsh:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/busybox-binsh@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2024-0727",
-    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2024-0727",
+    "id": "CVE-2024-13176",
+    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2024-13176",
     "namespace": "alpine:distro:alpine:edge",
     "severity": "Medium",
     "urls": [
-     "https://www.cve.org/CVERecord?id=CVE-2024-0727"
+     "https://www.cve.org/CVERecord?id=CVE-2024-13176"
     ],
     "cvss": [],
     "fix": {
      "versions": [
-      "3.1.4-r5"
+      "3.3.2-r5"
      ],
      "state": "fixed"
     },
@@ -680,29 +20,33 @@
    },
    "relatedVulnerabilities": [
     {
-     "id": "CVE-2024-0727",
-     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-0727",
+     "id": "CVE-2024-13176",
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-13176",
      "namespace": "nvd:cpe",
      "severity": "Medium",
      "urls": [
-      "https://github.com/openssl/openssl/commit/09df4395b5071217b76dc7d3d2e630eb8c5a79c2",
-      "https://github.com/openssl/openssl/commit/775acfdbd0c6af9ac855f34969cdab0c0c90844a",
-      "https://github.com/openssl/openssl/commit/d135eeab8a5dbf72b3da5240bab9ddb7678dbd2c",
-      "https://github.openssl.org/openssl/extended-releases/commit/03b3941d60c4bce58fab69a0c22377ab439bc0e8",
-      "https://github.openssl.org/openssl/extended-releases/commit/aebaa5883e31122b404e450732dc833dc9dee539",
-      "https://www.openssl.org/news/secadv/20240125.txt"
+      "https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844",
+      "https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467",
+      "https://github.com/openssl/openssl/commit/392dcb336405a0c94486aa6655057f59fd3a0902",
+      "https://github.com/openssl/openssl/commit/4b1cb94a734a7d4ec363ac0a215a25c181e11f65",
+      "https://github.com/openssl/openssl/commit/77c608f4c8857e63e98e66444e2e761c9627916f",
+      "https://github.openssl.org/openssl/extended-releases/commit/0d5fd1ab987f7571e2c955d8d8b638fc0fb54ded",
+      "https://github.openssl.org/openssl/extended-releases/commit/a2639000db19878d5d89586ae7b725080592ae86",
+      "https://openssl-library.org/news/secadv/20250120.txt",
+      "http://www.openwall.com/lists/oss-security/2025/01/20/2",
+      "https://security.netapp.com/advisory/ntap-20250124-0005/"
      ],
-     "description": "Issue summary: Processing a maliciously formatted PKCS12 file may lead OpenSSL\nto crash leading to a potential Denial of Service attack\n\nImpact summary: Applications loading files in the PKCS12 format from untrusted\nsources might terminate abruptly.\n\nA file in PKCS12 format can contain certificates and keys and may come from an\nuntrusted source. The PKCS12 specification allows certain fields to be NULL, but\nOpenSSL does not correctly check for this case. This can lead to a NULL pointer\ndereference that results in OpenSSL crashing. If an application processes PKCS12\nfiles from an untrusted source using the OpenSSL APIs then that application will\nbe vulnerable to this issue.\n\nOpenSSL APIs that are vulnerable to this are: PKCS12_parse(),\nPKCS12_unpack_p7data(), PKCS12_unpack_p7encdata(), PKCS12_unpack_authsafes()\nand PKCS12_newpass().\n\nWe have also fixed a similar issue in SMIME_write_PKCS7(). However since this\nfunction is related to writing data we do not consider it security significant.\n\nThe FIPS modules in 3.2, 3.1 and 3.0 are not affected by this issue.",
+     "description": "Issue summary: A timing side-channel which could potentially allow recovering\nthe private key exists in the ECDSA signature computation.\n\nImpact summary: A timing side-channel in ECDSA signature computations\ncould allow recovering the private key by an attacker. However, measuring\nthe timing would require either local access to the signing application or\na very fast network connection with low latency.\n\nThere is a timing signal of around 300 nanoseconds when the top word of\nthe inverted ECDSA nonce value is zero. This can happen with significant\nprobability only for some of the supported elliptic curves. In particular\nthe NIST P-521 curve is affected. To be able to measure this leak, the attacker\nprocess must either be located in the same physical computer or must\nhave a very fast network connection with low latency. For that reason\nthe severity of this vulnerability is Low.\n\nThe FIPS modules in 3.4, 3.3, 3.2, 3.1 and 3.0 are affected by this issue.",
      "cvss": [
       {
-       "source": "nvd@nist.gov",
-       "type": "Primary",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
        "version": "3.1",
-       "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+       "vector": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
        "metrics": {
-        "baseScore": 5.5,
-        "exploitabilityScore": 1.8,
-        "impactScore": 3.6
+        "baseScore": 4.1,
+        "exploitabilityScore": 0.7,
+        "impactScore": 3.4
        },
        "vendorMetadata": {}
       }
@@ -721,24 +65,24 @@
       "namespace": "alpine:distro:alpine:edge",
       "package": {
        "name": "openssl",
-       "version": "3.1.4-r2"
+       "version": "3.3.2-r4"
       }
      },
      "found": {
-      "versionConstraint": "< 3.1.4-r5 (apk)",
-      "vulnerabilityID": "CVE-2024-0727"
+      "versionConstraint": "< 3.3.2-r5 (apk)",
+      "vulnerabilityID": "CVE-2024-13176"
      }
     }
    ],
    "artifact": {
-    "id": "766c553e8ee6acca",
+    "id": "e6138c5f32b067b7",
     "name": "libcrypto3",
-    "version": "3.1.4-r2",
+    "version": "3.3.2-r4",
     "type": "apk",
     "locations": [
      {
       "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
+      "layerID": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1"
      }
     ],
     "language": "",
@@ -746,12 +90,12 @@
      "Apache-2.0"
     ],
     "cpes": [
-     "cpe:2.3:a:libcrypto3:libcrypto3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto3:libcrypto:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto:libcrypto3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto:libcrypto:3.1.4-r2:*:*:*:*:*:*:*"
+     "cpe:2.3:a:libcrypto3:libcrypto3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libcrypto3:libcrypto:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libcrypto:libcrypto3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libcrypto:libcrypto:3.3.2-r4:*:*:*:*:*:*:*"
     ],
-    "purl": "pkg:apk/alpine/libcrypto3@3.1.4-r2?arch=x86_64&upstream=openssl&distro=alpine-3.20.0_alpha20231219",
+    "purl": "pkg:apk/alpine/libcrypto3@3.3.2-r4?arch=x86_64&upstream=openssl&distro=alpine-3.22.0_alpha20250108",
     "upstreams": [
      {
       "name": "openssl"
@@ -761,17 +105,17 @@
   },
   {
    "vulnerability": {
-    "id": "CVE-2023-6129",
-    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2023-6129",
+    "id": "CVE-2024-12797",
+    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2024-12797",
     "namespace": "alpine:distro:alpine:edge",
     "severity": "Medium",
     "urls": [
-     "https://www.cve.org/CVERecord?id=CVE-2023-6129"
+     "https://www.cve.org/CVERecord?id=CVE-2024-12797"
     ],
     "cvss": [],
     "fix": {
      "versions": [
-      "3.1.4-r3"
+      "3.3.3-r0"
      ],
      "state": "fixed"
     },
@@ -779,27 +123,30 @@
    },
    "relatedVulnerabilities": [
     {
-     "id": "CVE-2023-6129",
-     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-6129",
+     "id": "CVE-2024-12797",
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-12797",
      "namespace": "nvd:cpe",
      "severity": "Medium",
      "urls": [
-      "https://github.com/openssl/openssl/commit/050d26383d4e264966fb83428e72d5d48f402d35",
-      "https://github.com/openssl/openssl/commit/5b139f95c9a47a55a0c54100f3837b1eee942b04",
-      "https://github.com/openssl/openssl/commit/f3fc5808fe9ff74042d639839610d03b8fdcc015",
-      "https://www.openssl.org/news/secadv/20240109.txt"
+      "https://github.com/openssl/openssl/commit/738d4f9fdeaad57660dcba50a619fafced3fd5e9",
+      "https://github.com/openssl/openssl/commit/798779d43494549b611233f92652f0da5328fbe7",
+      "https://github.com/openssl/openssl/commit/87ebd203feffcf92ad5889df92f90bb0ee10a699",
+      "https://openssl-library.org/news/secadv/20250211.txt",
+      "http://www.openwall.com/lists/oss-security/2025/02/11/3",
+      "http://www.openwall.com/lists/oss-security/2025/02/11/4",
+      "https://security.netapp.com/advisory/ntap-20250214-0001/"
      ],
-     "description": "Issue summary: The POLY1305 MAC (message authentication code) implementation\ncontains a bug that might corrupt the internal state of applications running\non PowerPC CPU based platforms if the CPU provides vector instructions.\n\nImpact summary: If an attacker can influence whether the POLY1305 MAC\nalgorithm is used, the application state might be corrupted with various\napplication dependent consequences.\n\nThe POLY1305 MAC (message authentication code) implementation in OpenSSL for\nPowerPC CPUs restores the contents of vector registers in a different order\nthan they are saved. Thus the contents of some of these vector registers\nare corrupted when returning to the caller. The vulnerable code is used only\non newer PowerPC processors supporting the PowerISA 2.07 instructions.\n\nThe consequences of this kind of internal application state corruption can\nbe various - from no consequences, if the calling application does not\ndepend on the contents of non-volatile XMM registers at all, to the worst\nconsequences, where the attacker could get complete control of the application\nprocess. However unless the compiler uses the vector registers for storing\npointers, the most likely consequence, if any, would be an incorrect result\nof some application dependent calculations or a crash leading to a denial of\nservice.\n\nThe POLY1305 MAC algorithm is most frequently used as part of the\nCHACHA20-POLY1305 AEAD (authenticated encryption with associated data)\nalgorithm. The most common usage of this AEAD cipher is with TLS protocol\nversions 1.2 and 1.3. If this cipher is enabled on the server a malicious\nclient can influence whether this AEAD cipher is used. This implies that\nTLS server applications using OpenSSL can be potentially impacted. However\nwe are currently not aware of any concrete application that would be affected\nby this issue therefore we consider this a Low severity security issue.",
+     "description": "Issue summary: Clients using RFC7250 Raw Public Keys (RPKs) to authenticate a\nserver may fail to notice that the server was not authenticated, because\nhandshakes don't abort as expected when the SSL_VERIFY_PEER verification mode\nis set.\n\nImpact summary: TLS and DTLS connections using raw public keys may be\nvulnerable to man-in-middle attacks when server authentication failure is not\ndetected by clients.\n\nRPKs are disabled by default in both TLS clients and TLS servers.  The issue\nonly arises when TLS clients explicitly enable RPK use by the server, and the\nserver, likewise, enables sending of an RPK instead of an X.509 certificate\nchain.  The affected clients are those that then rely on the handshake to\nfail when the server's RPK fails to match one of the expected public keys,\nby setting the verification mode to SSL_VERIFY_PEER.\n\nClients that enable server-side raw public keys can still find out that raw\npublic key verification failed by calling SSL_get_verify_result(), and those\nthat do, and take appropriate action, are not affected.  This issue was\nintroduced in the initial implementation of RPK support in OpenSSL 3.2.\n\nThe FIPS modules in 3.4, 3.3, 3.2, 3.1 and 3.0 are not affected by this issue.",
      "cvss": [
       {
-       "source": "nvd@nist.gov",
-       "type": "Primary",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
        "version": "3.1",
-       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
        "metrics": {
-        "baseScore": 6.5,
-        "exploitabilityScore": 2.2,
-        "impactScore": 4.2
+        "baseScore": 6.3,
+        "exploitabilityScore": 2.8,
+        "impactScore": 3.4
        },
        "vendorMetadata": {}
       }
@@ -818,24 +165,24 @@
       "namespace": "alpine:distro:alpine:edge",
       "package": {
        "name": "openssl",
-       "version": "3.1.4-r2"
+       "version": "3.3.2-r4"
       }
      },
      "found": {
-      "versionConstraint": "< 3.1.4-r3 (apk)",
-      "vulnerabilityID": "CVE-2023-6129"
+      "versionConstraint": "< 3.3.3-r0 (apk)",
+      "vulnerabilityID": "CVE-2024-12797"
      }
     }
    ],
    "artifact": {
-    "id": "766c553e8ee6acca",
+    "id": "e6138c5f32b067b7",
     "name": "libcrypto3",
-    "version": "3.1.4-r2",
+    "version": "3.3.2-r4",
     "type": "apk",
     "locations": [
      {
       "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
+      "layerID": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1"
      }
     ],
     "language": "",
@@ -843,12 +190,12 @@
      "Apache-2.0"
     ],
     "cpes": [
-     "cpe:2.3:a:libcrypto3:libcrypto3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto3:libcrypto:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto:libcrypto3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto:libcrypto:3.1.4-r2:*:*:*:*:*:*:*"
+     "cpe:2.3:a:libcrypto3:libcrypto3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libcrypto3:libcrypto:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libcrypto:libcrypto3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libcrypto:libcrypto:3.3.2-r4:*:*:*:*:*:*:*"
     ],
-    "purl": "pkg:apk/alpine/libcrypto3@3.1.4-r2?arch=x86_64&upstream=openssl&distro=alpine-3.20.0_alpha20231219",
+    "purl": "pkg:apk/alpine/libcrypto3@3.3.2-r4?arch=x86_64&upstream=openssl&distro=alpine-3.22.0_alpha20250108",
     "upstreams": [
      {
       "name": "openssl"
@@ -858,86 +205,17 @@
   },
   {
    "vulnerability": {
-    "id": "CVE-2023-6237",
-    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2023-6237",
-    "namespace": "alpine:distro:alpine:edge",
-    "severity": "Unknown",
-    "urls": [
-     "https://www.cve.org/CVERecord?id=CVE-2023-6237"
-    ],
-    "cvss": [],
-    "fix": {
-     "versions": [
-      "3.1.4-r4"
-     ],
-     "state": "fixed"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "exact-indirect-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "distro": {
-       "type": "alpine",
-       "version": ""
-      },
-      "namespace": "alpine:distro:alpine:edge",
-      "package": {
-       "name": "openssl",
-       "version": "3.1.4-r2"
-      }
-     },
-     "found": {
-      "versionConstraint": "< 3.1.4-r4 (apk)",
-      "vulnerabilityID": "CVE-2023-6237"
-     }
-    }
-   ],
-   "artifact": {
-    "id": "766c553e8ee6acca",
-    "name": "libcrypto3",
-    "version": "3.1.4-r2",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "Apache-2.0"
-    ],
-    "cpes": [
-     "cpe:2.3:a:libcrypto3:libcrypto3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto3:libcrypto:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto:libcrypto3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libcrypto:libcrypto:3.1.4-r2:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/libcrypto3@3.1.4-r2?arch=x86_64&upstream=openssl&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "openssl"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2024-0727",
-    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2024-0727",
+    "id": "CVE-2024-13176",
+    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2024-13176",
     "namespace": "alpine:distro:alpine:edge",
     "severity": "Medium",
     "urls": [
-     "https://www.cve.org/CVERecord?id=CVE-2024-0727"
+     "https://www.cve.org/CVERecord?id=CVE-2024-13176"
     ],
     "cvss": [],
     "fix": {
      "versions": [
-      "3.1.4-r5"
+      "3.3.2-r5"
      ],
      "state": "fixed"
     },
@@ -945,29 +223,33 @@
    },
    "relatedVulnerabilities": [
     {
-     "id": "CVE-2024-0727",
-     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-0727",
+     "id": "CVE-2024-13176",
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-13176",
      "namespace": "nvd:cpe",
      "severity": "Medium",
      "urls": [
-      "https://github.com/openssl/openssl/commit/09df4395b5071217b76dc7d3d2e630eb8c5a79c2",
-      "https://github.com/openssl/openssl/commit/775acfdbd0c6af9ac855f34969cdab0c0c90844a",
-      "https://github.com/openssl/openssl/commit/d135eeab8a5dbf72b3da5240bab9ddb7678dbd2c",
-      "https://github.openssl.org/openssl/extended-releases/commit/03b3941d60c4bce58fab69a0c22377ab439bc0e8",
-      "https://github.openssl.org/openssl/extended-releases/commit/aebaa5883e31122b404e450732dc833dc9dee539",
-      "https://www.openssl.org/news/secadv/20240125.txt"
+      "https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844",
+      "https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467",
+      "https://github.com/openssl/openssl/commit/392dcb336405a0c94486aa6655057f59fd3a0902",
+      "https://github.com/openssl/openssl/commit/4b1cb94a734a7d4ec363ac0a215a25c181e11f65",
+      "https://github.com/openssl/openssl/commit/77c608f4c8857e63e98e66444e2e761c9627916f",
+      "https://github.openssl.org/openssl/extended-releases/commit/0d5fd1ab987f7571e2c955d8d8b638fc0fb54ded",
+      "https://github.openssl.org/openssl/extended-releases/commit/a2639000db19878d5d89586ae7b725080592ae86",
+      "https://openssl-library.org/news/secadv/20250120.txt",
+      "http://www.openwall.com/lists/oss-security/2025/01/20/2",
+      "https://security.netapp.com/advisory/ntap-20250124-0005/"
      ],
-     "description": "Issue summary: Processing a maliciously formatted PKCS12 file may lead OpenSSL\nto crash leading to a potential Denial of Service attack\n\nImpact summary: Applications loading files in the PKCS12 format from untrusted\nsources might terminate abruptly.\n\nA file in PKCS12 format can contain certificates and keys and may come from an\nuntrusted source. The PKCS12 specification allows certain fields to be NULL, but\nOpenSSL does not correctly check for this case. This can lead to a NULL pointer\ndereference that results in OpenSSL crashing. If an application processes PKCS12\nfiles from an untrusted source using the OpenSSL APIs then that application will\nbe vulnerable to this issue.\n\nOpenSSL APIs that are vulnerable to this are: PKCS12_parse(),\nPKCS12_unpack_p7data(), PKCS12_unpack_p7encdata(), PKCS12_unpack_authsafes()\nand PKCS12_newpass().\n\nWe have also fixed a similar issue in SMIME_write_PKCS7(). However since this\nfunction is related to writing data we do not consider it security significant.\n\nThe FIPS modules in 3.2, 3.1 and 3.0 are not affected by this issue.",
+     "description": "Issue summary: A timing side-channel which could potentially allow recovering\nthe private key exists in the ECDSA signature computation.\n\nImpact summary: A timing side-channel in ECDSA signature computations\ncould allow recovering the private key by an attacker. However, measuring\nthe timing would require either local access to the signing application or\na very fast network connection with low latency.\n\nThere is a timing signal of around 300 nanoseconds when the top word of\nthe inverted ECDSA nonce value is zero. This can happen with significant\nprobability only for some of the supported elliptic curves. In particular\nthe NIST P-521 curve is affected. To be able to measure this leak, the attacker\nprocess must either be located in the same physical computer or must\nhave a very fast network connection with low latency. For that reason\nthe severity of this vulnerability is Low.\n\nThe FIPS modules in 3.4, 3.3, 3.2, 3.1 and 3.0 are affected by this issue.",
      "cvss": [
       {
-       "source": "nvd@nist.gov",
-       "type": "Primary",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
        "version": "3.1",
-       "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+       "vector": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
        "metrics": {
-        "baseScore": 5.5,
-        "exploitabilityScore": 1.8,
-        "impactScore": 3.6
+        "baseScore": 4.1,
+        "exploitabilityScore": 0.7,
+        "impactScore": 3.4
        },
        "vendorMetadata": {}
       }
@@ -986,24 +268,24 @@
       "namespace": "alpine:distro:alpine:edge",
       "package": {
        "name": "openssl",
-       "version": "3.1.4-r2"
+       "version": "3.3.2-r4"
       }
      },
      "found": {
-      "versionConstraint": "< 3.1.4-r5 (apk)",
-      "vulnerabilityID": "CVE-2024-0727"
+      "versionConstraint": "< 3.3.2-r5 (apk)",
+      "vulnerabilityID": "CVE-2024-13176"
      }
     }
    ],
    "artifact": {
-    "id": "583c174ccb4b0051",
+    "id": "ecc023da92c86bb8",
     "name": "libssl3",
-    "version": "3.1.4-r2",
+    "version": "3.3.2-r4",
     "type": "apk",
     "locations": [
      {
       "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
+      "layerID": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1"
      }
     ],
     "language": "",
@@ -1011,12 +293,12 @@
      "Apache-2.0"
     ],
     "cpes": [
-     "cpe:2.3:a:libssl3:libssl3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl3:libssl:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl:libssl3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl:libssl:3.1.4-r2:*:*:*:*:*:*:*"
+     "cpe:2.3:a:libssl3:libssl3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libssl3:libssl:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libssl:libssl3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libssl:libssl:3.3.2-r4:*:*:*:*:*:*:*"
     ],
-    "purl": "pkg:apk/alpine/libssl3@3.1.4-r2?arch=x86_64&upstream=openssl&distro=alpine-3.20.0_alpha20231219",
+    "purl": "pkg:apk/alpine/libssl3@3.3.2-r4?arch=x86_64&upstream=openssl&distro=alpine-3.22.0_alpha20250108",
     "upstreams": [
      {
       "name": "openssl"
@@ -1026,17 +308,17 @@
   },
   {
    "vulnerability": {
-    "id": "CVE-2023-6129",
-    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2023-6129",
+    "id": "CVE-2024-12797",
+    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2024-12797",
     "namespace": "alpine:distro:alpine:edge",
     "severity": "Medium",
     "urls": [
-     "https://www.cve.org/CVERecord?id=CVE-2023-6129"
+     "https://www.cve.org/CVERecord?id=CVE-2024-12797"
     ],
     "cvss": [],
     "fix": {
      "versions": [
-      "3.1.4-r3"
+      "3.3.3-r0"
      ],
      "state": "fixed"
     },
@@ -1044,27 +326,30 @@
    },
    "relatedVulnerabilities": [
     {
-     "id": "CVE-2023-6129",
-     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-6129",
+     "id": "CVE-2024-12797",
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-12797",
      "namespace": "nvd:cpe",
      "severity": "Medium",
      "urls": [
-      "https://github.com/openssl/openssl/commit/050d26383d4e264966fb83428e72d5d48f402d35",
-      "https://github.com/openssl/openssl/commit/5b139f95c9a47a55a0c54100f3837b1eee942b04",
-      "https://github.com/openssl/openssl/commit/f3fc5808fe9ff74042d639839610d03b8fdcc015",
-      "https://www.openssl.org/news/secadv/20240109.txt"
+      "https://github.com/openssl/openssl/commit/738d4f9fdeaad57660dcba50a619fafced3fd5e9",
+      "https://github.com/openssl/openssl/commit/798779d43494549b611233f92652f0da5328fbe7",
+      "https://github.com/openssl/openssl/commit/87ebd203feffcf92ad5889df92f90bb0ee10a699",
+      "https://openssl-library.org/news/secadv/20250211.txt",
+      "http://www.openwall.com/lists/oss-security/2025/02/11/3",
+      "http://www.openwall.com/lists/oss-security/2025/02/11/4",
+      "https://security.netapp.com/advisory/ntap-20250214-0001/"
      ],
-     "description": "Issue summary: The POLY1305 MAC (message authentication code) implementation\ncontains a bug that might corrupt the internal state of applications running\non PowerPC CPU based platforms if the CPU provides vector instructions.\n\nImpact summary: If an attacker can influence whether the POLY1305 MAC\nalgorithm is used, the application state might be corrupted with various\napplication dependent consequences.\n\nThe POLY1305 MAC (message authentication code) implementation in OpenSSL for\nPowerPC CPUs restores the contents of vector registers in a different order\nthan they are saved. Thus the contents of some of these vector registers\nare corrupted when returning to the caller. The vulnerable code is used only\non newer PowerPC processors supporting the PowerISA 2.07 instructions.\n\nThe consequences of this kind of internal application state corruption can\nbe various - from no consequences, if the calling application does not\ndepend on the contents of non-volatile XMM registers at all, to the worst\nconsequences, where the attacker could get complete control of the application\nprocess. However unless the compiler uses the vector registers for storing\npointers, the most likely consequence, if any, would be an incorrect result\nof some application dependent calculations or a crash leading to a denial of\nservice.\n\nThe POLY1305 MAC algorithm is most frequently used as part of the\nCHACHA20-POLY1305 AEAD (authenticated encryption with associated data)\nalgorithm. The most common usage of this AEAD cipher is with TLS protocol\nversions 1.2 and 1.3. If this cipher is enabled on the server a malicious\nclient can influence whether this AEAD cipher is used. This implies that\nTLS server applications using OpenSSL can be potentially impacted. However\nwe are currently not aware of any concrete application that would be affected\nby this issue therefore we consider this a Low severity security issue.",
+     "description": "Issue summary: Clients using RFC7250 Raw Public Keys (RPKs) to authenticate a\nserver may fail to notice that the server was not authenticated, because\nhandshakes don't abort as expected when the SSL_VERIFY_PEER verification mode\nis set.\n\nImpact summary: TLS and DTLS connections using raw public keys may be\nvulnerable to man-in-middle attacks when server authentication failure is not\ndetected by clients.\n\nRPKs are disabled by default in both TLS clients and TLS servers.  The issue\nonly arises when TLS clients explicitly enable RPK use by the server, and the\nserver, likewise, enables sending of an RPK instead of an X.509 certificate\nchain.  The affected clients are those that then rely on the handshake to\nfail when the server's RPK fails to match one of the expected public keys,\nby setting the verification mode to SSL_VERIFY_PEER.\n\nClients that enable server-side raw public keys can still find out that raw\npublic key verification failed by calling SSL_get_verify_result(), and those\nthat do, and take appropriate action, are not affected.  This issue was\nintroduced in the initial implementation of RPK support in OpenSSL 3.2.\n\nThe FIPS modules in 3.4, 3.3, 3.2, 3.1 and 3.0 are not affected by this issue.",
      "cvss": [
       {
-       "source": "nvd@nist.gov",
-       "type": "Primary",
+       "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+       "type": "Secondary",
        "version": "3.1",
-       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
+       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
        "metrics": {
-        "baseScore": 6.5,
-        "exploitabilityScore": 2.2,
-        "impactScore": 4.2
+        "baseScore": 6.3,
+        "exploitabilityScore": 2.8,
+        "impactScore": 3.4
        },
        "vendorMetadata": {}
       }
@@ -1083,24 +368,24 @@
       "namespace": "alpine:distro:alpine:edge",
       "package": {
        "name": "openssl",
-       "version": "3.1.4-r2"
+       "version": "3.3.2-r4"
       }
      },
      "found": {
-      "versionConstraint": "< 3.1.4-r3 (apk)",
-      "vulnerabilityID": "CVE-2023-6129"
+      "versionConstraint": "< 3.3.3-r0 (apk)",
+      "vulnerabilityID": "CVE-2024-12797"
      }
     }
    ],
    "artifact": {
-    "id": "583c174ccb4b0051",
+    "id": "ecc023da92c86bb8",
     "name": "libssl3",
-    "version": "3.1.4-r2",
+    "version": "3.3.2-r4",
     "type": "apk",
     "locations": [
      {
       "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
+      "layerID": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1"
      }
     ],
     "language": "",
@@ -1108,12 +393,12 @@
      "Apache-2.0"
     ],
     "cpes": [
-     "cpe:2.3:a:libssl3:libssl3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl3:libssl:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl:libssl3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl:libssl:3.1.4-r2:*:*:*:*:*:*:*"
+     "cpe:2.3:a:libssl3:libssl3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libssl3:libssl:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libssl:libssl3:3.3.2-r4:*:*:*:*:*:*:*",
+     "cpe:2.3:a:libssl:libssl:3.3.2-r4:*:*:*:*:*:*:*"
     ],
-    "purl": "pkg:apk/alpine/libssl3@3.1.4-r2?arch=x86_64&upstream=openssl&distro=alpine-3.20.0_alpha20231219",
+    "purl": "pkg:apk/alpine/libssl3@3.3.2-r4?arch=x86_64&upstream=openssl&distro=alpine-3.22.0_alpha20250108",
     "upstreams": [
      {
       "name": "openssl"
@@ -1123,23 +408,176 @@
   },
   {
    "vulnerability": {
-    "id": "CVE-2023-6237",
-    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2023-6237",
+    "id": "CVE-2025-26519",
+    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2025-26519",
     "namespace": "alpine:distro:alpine:edge",
-    "severity": "Unknown",
+    "severity": "High",
     "urls": [
-     "https://www.cve.org/CVERecord?id=CVE-2023-6237"
+     "https://www.cve.org/CVERecord?id=CVE-2025-26519"
     ],
     "cvss": [],
     "fix": {
      "versions": [
-      "3.1.4-r4"
+      "1.2.5-r10"
      ],
      "state": "fixed"
     },
     "advisories": []
    },
-   "relatedVulnerabilities": [],
+   "relatedVulnerabilities": [
+    {
+     "id": "CVE-2025-26519",
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-26519",
+     "namespace": "nvd:cpe",
+     "severity": "High",
+     "urls": [
+      "https://git.musl-libc.org/cgit/musl/commit/?id=c47ad25ea3b484e10326f933e927c0bc8cded3da",
+      "https://git.musl-libc.org/cgit/musl/commit/?id=e5adcd97b5196e29991b524237381a0202a60659",
+      "https://www.openwall.com/lists/oss-security/2025/02/13/2",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/2",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/3",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/4",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/5",
+      "http://www.openwall.com/lists/oss-security/2025/02/14/5",
+      "http://www.openwall.com/lists/oss-security/2025/02/14/6"
+     ],
+     "description": "musl libc 0.9.13 through 1.2.5 before 1.2.6 has an out-of-bounds write vulnerability when an attacker can trigger iconv conversion of untrusted EUC-KR text to UTF-8.",
+     "cvss": [
+      {
+       "source": "cve@mitre.org",
+       "type": "Secondary",
+       "version": "3.1",
+       "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:L",
+       "metrics": {
+        "baseScore": 8.1,
+        "exploitabilityScore": 1.4,
+        "impactScore": 6
+       },
+       "vendorMetadata": {}
+      }
+     ]
+    }
+   ],
+   "matchDetails": [
+    {
+     "type": "exact-direct-match",
+     "matcher": "apk-matcher",
+     "searchedBy": {
+      "distro": {
+       "type": "alpine",
+       "version": ""
+      },
+      "namespace": "alpine:distro:alpine:edge",
+      "package": {
+       "name": "musl",
+       "version": "1.2.5-r9"
+      }
+     },
+     "found": {
+      "versionConstraint": "< 1.2.5-r10 (apk)",
+      "vulnerabilityID": "CVE-2025-26519"
+     }
+    },
+    {
+     "type": "exact-indirect-match",
+     "matcher": "apk-matcher",
+     "searchedBy": {
+      "distro": {
+       "type": "alpine",
+       "version": ""
+      },
+      "namespace": "alpine:distro:alpine:edge",
+      "package": {
+       "name": "musl",
+       "version": "1.2.5-r9"
+      }
+     },
+     "found": {
+      "versionConstraint": "< 1.2.5-r10 (apk)",
+      "vulnerabilityID": "CVE-2025-26519"
+     }
+    }
+   ],
+   "artifact": {
+    "id": "3ae3e255288ef315",
+    "name": "musl",
+    "version": "1.2.5-r9",
+    "type": "apk",
+    "locations": [
+     {
+      "path": "/lib/apk/db/installed",
+      "layerID": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1"
+     }
+    ],
+    "language": "",
+    "licenses": [
+     "MIT"
+    ],
+    "cpes": [
+     "cpe:2.3:a:musl-libc:musl:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl_libc:musl:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl:musl:1.2.5-r9:*:*:*:*:*:*:*"
+    ],
+    "purl": "pkg:apk/alpine/musl@1.2.5-r9?arch=x86_64&distro=alpine-3.22.0_alpha20250108",
+    "upstreams": [
+     {
+      "name": "musl"
+     }
+    ]
+   }
+  },
+  {
+   "vulnerability": {
+    "id": "CVE-2025-26519",
+    "dataSource": "https://www.cve.org/CVERecord?id=CVE-2025-26519",
+    "namespace": "alpine:distro:alpine:edge",
+    "severity": "High",
+    "urls": [
+     "https://www.cve.org/CVERecord?id=CVE-2025-26519"
+    ],
+    "cvss": [],
+    "fix": {
+     "versions": [
+      "1.2.5-r10"
+     ],
+     "state": "fixed"
+    },
+    "advisories": []
+   },
+   "relatedVulnerabilities": [
+    {
+     "id": "CVE-2025-26519",
+     "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-26519",
+     "namespace": "nvd:cpe",
+     "severity": "High",
+     "urls": [
+      "https://git.musl-libc.org/cgit/musl/commit/?id=c47ad25ea3b484e10326f933e927c0bc8cded3da",
+      "https://git.musl-libc.org/cgit/musl/commit/?id=e5adcd97b5196e29991b524237381a0202a60659",
+      "https://www.openwall.com/lists/oss-security/2025/02/13/2",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/2",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/3",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/4",
+      "http://www.openwall.com/lists/oss-security/2025/02/13/5",
+      "http://www.openwall.com/lists/oss-security/2025/02/14/5",
+      "http://www.openwall.com/lists/oss-security/2025/02/14/6"
+     ],
+     "description": "musl libc 0.9.13 through 1.2.5 before 1.2.6 has an out-of-bounds write vulnerability when an attacker can trigger iconv conversion of untrusted EUC-KR text to UTF-8.",
+     "cvss": [
+      {
+       "source": "cve@mitre.org",
+       "type": "Secondary",
+       "version": "3.1",
+       "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:L",
+       "metrics": {
+        "baseScore": 8.1,
+        "exploitabilityScore": 1.4,
+        "impactScore": 6
+       },
+       "vendorMetadata": {}
+      }
+     ]
+    }
+   ],
    "matchDetails": [
     {
      "type": "exact-indirect-match",
@@ -1151,381 +589,45 @@
       },
       "namespace": "alpine:distro:alpine:edge",
       "package": {
-       "name": "openssl",
-       "version": "3.1.4-r2"
+       "name": "musl",
+       "version": "1.2.5-r9"
       }
      },
      "found": {
-      "versionConstraint": "< 3.1.4-r4 (apk)",
-      "vulnerabilityID": "CVE-2023-6237"
+      "versionConstraint": "< 1.2.5-r10 (apk)",
+      "vulnerabilityID": "CVE-2025-26519"
      }
     }
    ],
    "artifact": {
-    "id": "583c174ccb4b0051",
-    "name": "libssl3",
-    "version": "3.1.4-r2",
+    "id": "a4f755bc2a9771c8",
+    "name": "musl-utils",
+    "version": "1.2.5-r9",
     "type": "apk",
     "locations": [
      {
       "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
+      "layerID": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1"
      }
     ],
     "language": "",
     "licenses": [
-     "Apache-2.0"
+     "MIT AND BSD-2-Clause AND GPL-2.0-or-later"
     ],
     "cpes": [
-     "cpe:2.3:a:libssl3:libssl3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl3:libssl:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl:libssl3:3.1.4-r2:*:*:*:*:*:*:*",
-     "cpe:2.3:a:libssl:libssl:3.1.4-r2:*:*:*:*:*:*:*"
+     "cpe:2.3:a:musl-utils:musl-utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl-utils:musl_utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl_utils:musl-utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl_utils:musl_utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl-libc:musl-utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl-libc:musl_utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl:musl-utils:1.2.5-r9:*:*:*:*:*:*:*",
+     "cpe:2.3:a:musl:musl_utils:1.2.5-r9:*:*:*:*:*:*:*"
     ],
-    "purl": "pkg:apk/alpine/libssl3@3.1.4-r2?arch=x86_64&upstream=openssl&distro=alpine-3.20.0_alpha20231219",
+    "purl": "pkg:apk/alpine/musl-utils@1.2.5-r9?arch=x86_64&upstream=musl&distro=alpine-3.22.0_alpha20250108",
     "upstreams": [
      {
-      "name": "openssl"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42366",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42366",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15874"
-    ],
-    "description": "A heap-buffer-overflow was discovered in BusyBox v.1.36.1 in the next_token function at awk.c:1159.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42366",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "85b1f884950f4c36",
-    "name": "ssl_client",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:ssl-client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl-client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl_client:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/ssl_client@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42365",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42365",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15871"
-    ],
-    "description": "A use-after-free vulnerability was discovered in BusyBox v.1.36.1 via a crafted awk pattern in the awk.c copyvar function.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42365",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "85b1f884950f4c36",
-    "name": "ssl_client",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:ssl-client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl-client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl_client:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/ssl_client@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42364",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42364",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15868"
-    ],
-    "description": "A use-after-free vulnerability in BusyBox v.1.36.1 allows attackers to cause a denial of service via a crafted awk pattern in the awk.c evaluate function.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42364",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "85b1f884950f4c36",
-    "name": "ssl_client",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:ssl-client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl-client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl_client:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/ssl_client@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
-     }
-    ]
-   }
-  },
-  {
-   "vulnerability": {
-    "id": "CVE-2023-42363",
-    "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2023-42363",
-    "namespace": "nvd:cpe",
-    "severity": "Medium",
-    "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15865"
-    ],
-    "description": "A use-after-free vulnerability was discovered in xasprintf function in xfuncs_printf.c:344 in BusyBox v.1.36.1.",
-    "cvss": [
-     {
-      "source": "nvd@nist.gov",
-      "type": "Primary",
-      "version": "3.1",
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-      "metrics": {
-       "baseScore": 5.5,
-       "exploitabilityScore": 1.8,
-       "impactScore": 3.6
-      },
-      "vendorMetadata": {}
-     }
-    ],
-    "fix": {
-     "versions": [],
-     "state": "unknown"
-    },
-    "advisories": []
-   },
-   "relatedVulnerabilities": [],
-   "matchDetails": [
-    {
-     "type": "cpe-match",
-     "matcher": "apk-matcher",
-     "searchedBy": {
-      "namespace": "nvd:cpe",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1-r17:*:*:*:*:*:*:*"
-      ],
-      "Package": {
-       "name": "busybox",
-       "version": "1.36.1-r17"
-      }
-     },
-     "found": {
-      "vulnerabilityID": "CVE-2023-42363",
-      "versionConstraint": "= 1.36.1 (unknown)",
-      "cpes": [
-       "cpe:2.3:a:busybox:busybox:1.36.1:*:*:*:*:*:*:*"
-      ]
-     }
-    }
-   ],
-   "artifact": {
-    "id": "85b1f884950f4c36",
-    "name": "ssl_client",
-    "version": "1.36.1-r17",
-    "type": "apk",
-    "locations": [
-     {
-      "path": "/lib/apk/db/installed",
-      "layerID": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739"
-     }
-    ],
-    "language": "",
-    "licenses": [
-     "GPL-2.0-only"
-    ],
-    "cpes": [
-     "cpe:2.3:a:ssl-client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl-client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl_client:ssl_client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl-client:1.36.1-r17:*:*:*:*:*:*:*",
-     "cpe:2.3:a:ssl:ssl_client:1.36.1-r17:*:*:*:*:*:*:*"
-    ],
-    "purl": "pkg:apk/alpine/ssl_client@1.36.1-r17?arch=x86_64&upstream=busybox&distro=alpine-3.20.0_alpha20231219",
-    "upstreams": [
-     {
-      "name": "busybox"
+      "name": "musl"
      }
     ]
    }
@@ -1535,24 +637,24 @@
   "type": "image",
   "target": {
    "userInput": "alpine:edge",
-   "imageID": "sha256:9198849dd7f6d0e6e7d483145c7d50e5cc9f3138d544a46b76baed8dfd9c157d",
-   "manifestDigest": "sha256:3477e28c0a36adf92e2f35e74b7ec4f800e1e2085695278a148f2fee4a08bf22",
+   "imageID": "sha256:d6201085a1856afe6f74f77f514c54ea5d67538aa45f3b527aeb72a8d8dc44db",
+   "manifestDigest": "sha256:8d6402c2ab0975d15eaf50ea2c8c4c76c3338017f331253a40fdbcc28396f319",
    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
    "tags": [
     "alpine:edge"
    ],
-   "imageSize": 7375374,
+   "imageSize": 7829465,
    "layers": [
     {
-     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
-     "digest": "sha256:1bb475414a7e92af2a683b7864916ccb9fa4155aa029b4b7fc3b10d35ce93739",
-     "size": 7375374
+     "mediaType": "application/vnd.oci.image.layer.v1.tar",
+     "digest": "sha256:e21721183b10fa6d84b263043a2e6a3f972aab36fcbdb9640aeeb21044a8c8c1",
+     "size": 7829465
     }
    ],
-   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjoxNDcwLCJkaWdlc3QiOiJzaGEyNTY6OTE5ODg0OWRkN2Y2ZDBlNmU3ZDQ4MzE0NWM3ZDUwZTVjYzlmMzEzOGQ1NDRhNDZiNzZiYWVkOGRmZDljMTU3ZCJ9LCJsYXllcnMiOlt7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjo3NjcwMjcyLCJkaWdlc3QiOiJzaGEyNTY6MWJiNDc1NDE0YTdlOTJhZjJhNjgzYjc4NjQ5MTZjY2I5ZmE0MTU1YWEwMjliNGI3ZmMzYjEwZDM1Y2U5MzczOSJ9XX0=",
-   "config": "eyJhcmNoaXRlY3R1cmUiOiJhbWQ2NCIsImNvbmZpZyI6eyJIb3N0bmFtZSI6IiIsIkRvbWFpbm5hbWUiOiIiLCJVc2VyIjoiIiwiQXR0YWNoU3RkaW4iOmZhbHNlLCJBdHRhY2hTdGRvdXQiOmZhbHNlLCJBdHRhY2hTdGRlcnIiOmZhbHNlLCJUdHkiOmZhbHNlLCJPcGVuU3RkaW4iOmZhbHNlLCJTdGRpbk9uY2UiOmZhbHNlLCJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiQ21kIjpbIi9iaW4vc2giXSwiSW1hZ2UiOiJzaGEyNTY6NjRiZGY1ZjYwMWJlOTQyYTIwOTcyZTE4ZTRhM2ViMjk2N2U5YjJjZDI4NDEyZDU0YTMyYWNkYWYyOTdlMmFkYyIsIlZvbHVtZXMiOm51bGwsIldvcmtpbmdEaXIiOiIiLCJFbnRyeXBvaW50IjpudWxsLCJPbkJ1aWxkIjpudWxsLCJMYWJlbHMiOm51bGx9LCJjb250YWluZXIiOiIzYzI1Yjg4ZmRjNjZmMDI3YWM4Y2M3NmUzZWEwNjlmMmIzOGFjZjY0ODUzNTMxNTVhYjNhNjE3ZTQxNTBjZjY0IiwiY29udGFpbmVyX2NvbmZpZyI6eyJIb3N0bmFtZSI6IjNjMjViODhmZGM2NiIsIkRvbWFpbm5hbWUiOiIiLCJVc2VyIjoiIiwiQXR0YWNoU3RkaW4iOmZhbHNlLCJBdHRhY2hTdGRvdXQiOmZhbHNlLCJBdHRhY2hTdGRlcnIiOmZhbHNlLCJUdHkiOmZhbHNlLCJPcGVuU3RkaW4iOmZhbHNlLCJTdGRpbk9uY2UiOmZhbHNlLCJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiQ21kIjpbIi9iaW4vc2giLCItYyIsIiMobm9wKSAiLCJDTUQgW1wiL2Jpbi9zaFwiXSJdLCJJbWFnZSI6InNoYTI1Njo2NGJkZjVmNjAxYmU5NDJhMjA5NzJlMThlNGEzZWIyOTY3ZTliMmNkMjg0MTJkNTRhMzJhY2RhZjI5N2UyYWRjIiwiVm9sdW1lcyI6bnVsbCwiV29ya2luZ0RpciI6IiIsIkVudHJ5cG9pbnQiOm51bGwsIk9uQnVpbGQiOm51bGwsIkxhYmVscyI6e319LCJjcmVhdGVkIjoiMjAyMy0xMi0yMFQwODo0ODoxNy4yNjUyNjc0N1oiLCJkb2NrZXJfdmVyc2lvbiI6IjIwLjEwLjIzIiwiaGlzdG9yeSI6W3siY3JlYXRlZCI6IjIwMjMtMTItMjBUMDg6NDg6MTcuMTU1NzgzMTM1WiIsImNyZWF0ZWRfYnkiOiIvYmluL3NoIC1jICMobm9wKSBBREQgZmlsZTo4ZDI2N2VjYzVjMzA4ZTExZjFlM2NiZWM4YTk4NzQ4YzZjMGFiZDZlYzhhZmIwODMwMjQ0NzczZjU4NDA5ZTYzIGluIC8gIn0seyJjcmVhdGVkIjoiMjAyMy0xMi0yMFQwODo0ODoxNy4yNjUyNjc0N1oiLCJjcmVhdGVkX2J5IjoiL2Jpbi9zaCAtYyAjKG5vcCkgIENNRCBbXCIvYmluL3NoXCJdIiwiZW1wdHlfbGF5ZXIiOnRydWV9XSwib3MiOiJsaW51eCIsInJvb3RmcyI6eyJ0eXBlIjoibGF5ZXJzIiwiZGlmZl9pZHMiOlsic2hhMjU2OjFiYjQ3NTQxNGE3ZTkyYWYyYTY4M2I3ODY0OTE2Y2NiOWZhNDE1NWFhMDI5YjRiN2ZjM2IxMGQzNWNlOTM3MzkiXX19",
+   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjo1ODMsImRpZ2VzdCI6InNoYTI1NjpkNjIwMTA4NWExODU2YWZlNmY3NGY3N2Y1MTRjNTRlYTVkNjc1MzhhYTQ1ZjNiNTI3YWViNzJhOGQ4ZGM0NGRiIn0sImxheWVycyI6W3sibWVkaWFUeXBlIjoiYXBwbGljYXRpb24vdm5kLmRvY2tlci5pbWFnZS5yb290ZnMuZGlmZi50YXIuZ3ppcCIsInNpemUiOjgxMjA4MzIsImRpZ2VzdCI6InNoYTI1NjplMjE3MjExODNiMTBmYTZkODRiMjYzMDQzYTJlNmEzZjk3MmFhYjM2ZmNiZGI5NjQwYWVlYjIxMDQ0YThjOGMxIn1dfQ==",
+   "config": "eyJhcmNoaXRlY3R1cmUiOiJhbWQ2NCIsImNvbmZpZyI6eyJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiQ21kIjpbIi9iaW4vc2giXSwiV29ya2luZ0RpciI6Ii8ifSwiY3JlYXRlZCI6IjIwMjUtMDEtMDhUMTI6MTY6MzZaIiwiaGlzdG9yeSI6W3siY3JlYXRlZCI6IjIwMjUtMDEtMDhUMTI6MTY6MzZaIiwiY3JlYXRlZF9ieSI6IkFERCBhbHBpbmUtbWluaXJvb3Rmcy0yMDI1MDEwOC14ODZfNjQudGFyLmd6IC8gIyBidWlsZGtpdCIsImNvbW1lbnQiOiJidWlsZGtpdC5kb2NrZXJmaWxlLnYwIn0seyJjcmVhdGVkIjoiMjAyNS0wMS0wOFQxMjoxNjozNloiLCJjcmVhdGVkX2J5IjoiQ01EIFtcIi9iaW4vc2hcIl0iLCJjb21tZW50IjoiYnVpbGRraXQuZG9ja2VyZmlsZS52MCIsImVtcHR5X2xheWVyIjp0cnVlfV0sIm9zIjoibGludXgiLCJyb290ZnMiOnsidHlwZSI6ImxheWVycyIsImRpZmZfaWRzIjpbInNoYTI1NjplMjE3MjExODNiMTBmYTZkODRiMjYzMDQzYTJlNmEzZjk3MmFhYjM2ZmNiZGI5NjQwYWVlYjIxMDQ0YThjOGMxIl19fQ==",
    "repoDigests": [
-    "alpine@sha256:9f867dc20de5aa9690c5ef6c2c81ce35a918c0007f6eac27df90d3166eaa5cc0"
+    "alpine@sha256:115729ec5cb049ba6359c3ab005ac742012d92bbaa5b8bc1a878f1e8f62c0cb8"
    ],
    "architecture": "amd64",
    "os": "linux"
@@ -1644,12 +746,12 @@
    "vex-add": []
   },
   "db": {
-   "built": "2024-02-06T16:19:57Z",
+   "built": "2025-04-02T01:31:23Z",
    "schemaVersion": 5,
    "location": "/home/derek/.cache/grype/db/5",
-   "checksum": "sha256:a594a02e3670dc284e49d4c6a7119754c5f0381b491b949bb056aa36992f37ce",
+   "checksum": "sha256:39c1730b896e0cbb8598f24f9121ea8489412755206deb33b836e7f5ddff75a4",
    "error": null
   },
-  "timestamp": "2024-02-06T10:59:18.786442947-07:00"
+  "timestamp": "2025-04-02T09:24:12.677153814-06:00"
  }
 }

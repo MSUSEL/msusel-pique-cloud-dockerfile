@@ -194,19 +194,19 @@ package tool;
                              //regardless of cwes, continue with severity.
                              String vulnerabilitySeverity = jsonFinding.getString("Severity");
                              int severity = this.severityToInt(vulnerabilitySeverity);
-
+                             int uniqueFindingCounter = 0;
                              for (int k = 0; k < associatedCWEs.size(); k++) {
                                  Diagnostic diag = diagnostics.get((associatedCWEs.get(k) + " Diagnostic Trivy"));
-                                 if (diag != null) {
-                                     LOGGER.info("Found " + associatedCWEs.get(k) + " in the model definition for our " + vulnerabilityID);
-                                     Finding finding = new Finding("", 0, 0, severity);
-                                     finding.setName(vulnerabilityID);
-                                     diag.setChild(finding);
-                                 } else {
-                                     //this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-                                     // We may want to treat this in another way in the future, but im ignoring it for now.
-                                     LOGGER.warn("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + "  outside of CWE-1000 was found. Ignoring this CVE.");
+                                 if (diag == null) {
+                                     //this means the vuln was mapped to a CWE outside the 1000 scope
+                                     LOGGER.info("Vulnerability " + vulnerabilityID + " with CWE: " + associatedCWEs.get(k) + " mapped to CWE-outside-1000");
+                                     diag = diagnostics.get("CWE-outside-1000 Diagnostic Trivy");
                                  }
+                                 //found a cwe node for this in the model definition, creating a finding for it and adding.
+                                 LOGGER.info("Found " + associatedCWEs.get(k) + " in the model definition for our " + vulnerabilityID +  " and adding to diag node: " + diag.getName());
+                                 Finding finding = new Finding("" + uniqueFindingCounter,0,0, this.severityToInt(vulnerabilitySeverity));
+                                 diag.setChild(finding);
+                                 uniqueFindingCounter++;
                              }
                          }
                      }

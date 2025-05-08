@@ -1,5 +1,6 @@
 {
   "SchemaVersion": 2,
+  "CreatedAt": "2025-04-02T09:28:08.031472329-06:00",
   "ArtifactName": "alpine:3.3",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -20,7 +21,6 @@
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "container": "b00b596fde5d38c100a82bc010c4236576231341a116316960a21eb81e2ed14f",
       "created": "2019-01-30T22:20:20.590559734Z",
       "docker_version": "18.06.1-ce",
       "history": [

@@ -7,7 +7,9 @@
     "namespace": "nvd:cpe",
     "severity": "Critical",
     "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15216"
+     "https://bugs.busybox.net/show_bug.cgi?id=15216",
+     "https://bugs.busybox.net/show_bug.cgi?id=15216",
+     "https://security.netapp.com/advisory/ntap-20241129-0001/"
     ],
     "description": "There is a stack overflow vulnerability in ash.c:6030 in busybox before 1.35. In the environment of Internet of Vehicles, this vulnerability can be executed from command to arbitrary code execution.",
     "cvss": [
@@ -47,7 +49,7 @@
      },
      "found": {
       "vulnerabilityID": "CVE-2022-48174",
-      "versionConstraint": "< 1.35.0 (unknown)",
+      "versionConstraint": "<= 1.35.0 (unknown)",
       "cpes": [
        "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
       ]
@@ -90,6 +92,10 @@
      "https://git.busybox.net/busybox/commit/?id=8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e",
      "https://lists.debian.org/debian-lts-announce/2018/07/msg00037.html",
      "https://lists.debian.org/debian-lts-announce/2021/02/msg00020.html",
+     "https://usn.ubuntu.com/3935-1/",
+     "https://git.busybox.net/busybox/commit/?id=8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e",
+     "https://lists.debian.org/debian-lts-announce/2018/07/msg00037.html",
+     "https://lists.debian.org/debian-lts-announce/2021/02/msg00020.html",
      "https://usn.ubuntu.com/3935-1/"
     ],
     "description": "BusyBox project BusyBox wget version prior to commit 8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e contains a Buffer Overflow vulnerability in Busybox wget that can result in heap buffer overflow. This attack appear to be exploitable via network connectivity. This vulnerability appears to have been fixed in after commit 8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e.",
@@ -120,8 +126,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.29.0"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -182,6 +190,9 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
+     "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
      "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
      "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
      "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661"
@@ -276,6 +287,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -376,6 +392,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function",
@@ -468,6 +489,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -568,6 +594,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_s function",
@@ -660,6 +691,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -760,6 +796,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the clrvar function",
@@ -852,6 +893,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -952,6 +998,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_i function",
@@ -1044,6 +1095,12 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "http://packetstormsecurity.com/files/154361/Cisco-Device-Hardcoded-Credentials-GNU-glibc-BusyBox.html",
+     "http://seclists.org/fulldisclosure/2019/Sep/7",
+     "https://bugs.busybox.net/show_bug.cgi?id=11506",
+     "https://git.busybox.net/busybox/commit/?id=74d9f1ba37010face4bd1449df4d60dd84450b06",
+     "https://seclists.org/bugtraq/2019/Sep/7",
+     "https://usn.ubuntu.com/3935-1/",
      "http://packetstormsecurity.com/files/154361/Cisco-Device-Hardcoded-Credentials-GNU-glibc-BusyBox.html",
      "http://seclists.org/fulldisclosure/2019/Sep/7",
      "https://bugs.busybox.net/show_bug.cgi?id=11506",
@@ -1147,6 +1204,13 @@
      "https://busybox.net/news.html",
      "https://git.busybox.net/busybox/commit/?id=6d3b4bb24da9a07c263f3c1acf8df85382ff562c",
      "https://seclists.org/bugtraq/2019/Sep/7",
+     "https://usn.ubuntu.com/3935-1/",
+     "http://packetstormsecurity.com/files/154361/Cisco-Device-Hardcoded-Credentials-GNU-glibc-BusyBox.html",
+     "http://seclists.org/fulldisclosure/2019/Sep/7",
+     "https://bugs.busybox.net/show_bug.cgi?id=11506",
+     "https://busybox.net/news.html",
+     "https://git.busybox.net/busybox/commit/?id=6d3b4bb24da9a07c263f3c1acf8df85382ff562c",
+     "https://seclists.org/bugtraq/2019/Sep/7",
      "https://usn.ubuntu.com/3935-1/"
     ],
     "description": "An issue was discovered in BusyBox before 1.30.0. An out of bounds read in udhcp components (consumed by the DHCP server, client, and relay) allows a remote attacker to leak sensitive information from the stack by sending a crafted DHCP message. This is related to verification in udhcp_get_option() in networking/udhcp/common.c that 4-byte options are indeed 4 bytes.",
@@ -1177,8 +1241,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.30.0"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -1243,6 +1309,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A NULL pointer dereference in Busybox's hush applet leads to denial of service when processing a crafted shell command, due to missing validation after a \\x03 delimiter character. This may be used for DoS under very rare conditions of filtered command input.",
@@ -1273,8 +1344,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.34.0"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -1335,6 +1408,11 @@
     "namespace": "nvd:cpe",
     "severity": "Medium",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -1440,6 +1518,16 @@
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UW27QVY7ERPTSGKS4KAWE5TU7EJWHKVQ/",
      "https://musl.libc.org/releases.html",
      "https://www.oracle.com//security-alerts/cpujul2021.html",
+     "https://www.oracle.com/security-alerts/cpuoct2021.html",
+     "http://www.openwall.com/lists/oss-security/2020/11/20/4",
+     "https://lists.apache.org/thread.html/r2134abfe847bea7795f0e53756d10a47e6643f35ab8169df8b8a9eb1%40%3Cnotifications.apisix.apache.org%3E",
+     "https://lists.apache.org/thread.html/r90b60cf49348e515257b4950900c1bd3ab95a960cf2469d919c7264e%40%3Cnotifications.apisix.apache.org%3E",
+     "https://lists.apache.org/thread.html/ra63e8dc5137d952afc55dbbfa63be83304ecf842d1eab1ff3ebb29e2%40%3Cnotifications.apisix.apache.org%3E",
+     "https://lists.debian.org/debian-lts-announce/2020/11/msg00050.html",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LKQ3RVSMVZNZNO4D65W2CZZ4DMYFZN2Q/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UW27QVY7ERPTSGKS4KAWE5TU7EJWHKVQ/",
+     "https://musl.libc.org/releases.html",
+     "https://www.oracle.com//security-alerts/cpujul2021.html",
      "https://www.oracle.com/security-alerts/cpuoct2021.html"
     ],
     "description": "In musl libc through 1.2.1, wcsnrtombs mishandles particular combinations of destination buffer size and source character limit, as demonstrated by an invalid write access (buffer overflow).",
@@ -1534,7 +1622,9 @@
     "namespace": "nvd:cpe",
     "severity": "Critical",
     "urls": [
-     "https://bugs.busybox.net/show_bug.cgi?id=15216"
+     "https://bugs.busybox.net/show_bug.cgi?id=15216",
+     "https://bugs.busybox.net/show_bug.cgi?id=15216",
+     "https://security.netapp.com/advisory/ntap-20241129-0001/"
     ],
     "description": "There is a stack overflow vulnerability in ash.c:6030 in busybox before 1.35. In the environment of Internet of Vehicles, this vulnerability can be executed from command to arbitrary code execution.",
     "cvss": [
@@ -1574,7 +1664,7 @@
      },
      "found": {
       "vulnerabilityID": "CVE-2022-48174",
-      "versionConstraint": "< 1.35.0 (unknown)",
+      "versionConstraint": "<= 1.35.0 (unknown)",
       "cpes": [
        "cpe:2.3:a:busybox:busybox:*:*:*:*:*:*:*:*"
       ]
@@ -1622,6 +1712,10 @@
      "https://git.busybox.net/busybox/commit/?id=8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e",
      "https://lists.debian.org/debian-lts-announce/2018/07/msg00037.html",
      "https://lists.debian.org/debian-lts-announce/2021/02/msg00020.html",
+     "https://usn.ubuntu.com/3935-1/",
+     "https://git.busybox.net/busybox/commit/?id=8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e",
+     "https://lists.debian.org/debian-lts-announce/2018/07/msg00037.html",
+     "https://lists.debian.org/debian-lts-announce/2021/02/msg00020.html",
      "https://usn.ubuntu.com/3935-1/"
     ],
     "description": "BusyBox project BusyBox wget version prior to commit 8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e contains a Buffer Overflow vulnerability in Busybox wget that can result in heap buffer overflow. This attack appear to be exploitable via network connectivity. This vulnerability appears to have been fixed in after commit 8e2174e9bd836e53c8b9c6e00d1bc6e2a718686e.",
@@ -1652,8 +1746,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.29.0"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -1719,6 +1815,9 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
+     "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
+     "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661",
      "https://git.alpinelinux.org/aports/plain/main/busybox/0001-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
      "https://git.alpinelinux.org/aports/plain/main/busybox/0002-nslookup-sanitize-all-printed-strings-with-printable.patch",
      "https://gitlab.alpinelinux.org/alpine/aports/-/issues/13661"
@@ -1818,6 +1917,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -1923,6 +2027,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function",
@@ -2020,6 +2129,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -2125,6 +2239,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_s function",
@@ -2222,6 +2341,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -2327,6 +2451,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the clrvar function",
@@ -2424,6 +2553,11 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -2529,6 +2663,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_i function",
@@ -2626,6 +2765,12 @@
     "namespace": "nvd:cpe",
     "severity": "High",
     "urls": [
+     "http://packetstormsecurity.com/files/154361/Cisco-Device-Hardcoded-Credentials-GNU-glibc-BusyBox.html",
+     "http://seclists.org/fulldisclosure/2019/Sep/7",
+     "https://bugs.busybox.net/show_bug.cgi?id=11506",
+     "https://git.busybox.net/busybox/commit/?id=74d9f1ba37010face4bd1449df4d60dd84450b06",
+     "https://seclists.org/bugtraq/2019/Sep/7",
+     "https://usn.ubuntu.com/3935-1/",
      "http://packetstormsecurity.com/files/154361/Cisco-Device-Hardcoded-Credentials-GNU-glibc-BusyBox.html",
      "http://seclists.org/fulldisclosure/2019/Sep/7",
      "https://bugs.busybox.net/show_bug.cgi?id=11506",
@@ -2734,6 +2879,13 @@
      "https://busybox.net/news.html",
      "https://git.busybox.net/busybox/commit/?id=6d3b4bb24da9a07c263f3c1acf8df85382ff562c",
      "https://seclists.org/bugtraq/2019/Sep/7",
+     "https://usn.ubuntu.com/3935-1/",
+     "http://packetstormsecurity.com/files/154361/Cisco-Device-Hardcoded-Credentials-GNU-glibc-BusyBox.html",
+     "http://seclists.org/fulldisclosure/2019/Sep/7",
+     "https://bugs.busybox.net/show_bug.cgi?id=11506",
+     "https://busybox.net/news.html",
+     "https://git.busybox.net/busybox/commit/?id=6d3b4bb24da9a07c263f3c1acf8df85382ff562c",
+     "https://seclists.org/bugtraq/2019/Sep/7",
      "https://usn.ubuntu.com/3935-1/"
     ],
     "description": "An issue was discovered in BusyBox before 1.30.0. An out of bounds read in udhcp components (consumed by the DHCP server, client, and relay) allows a remote attacker to leak sensitive information from the stack by sending a crafted DHCP message. This is related to verification in udhcp_get_option() in networking/udhcp/common.c that 4-byte options are indeed 4 bytes.",
@@ -2764,8 +2916,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.30.0"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -2835,6 +2989,11 @@
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
      "https://security.netapp.com/advisory/ntap-20211223-0002/"
     ],
     "description": "A NULL pointer dereference in Busybox's hush applet leads to denial of service when processing a crafted shell command, due to missing validation after a \\x03 delimiter character. This may be used for DoS under very rare conditions of filtered command input.",
@@ -2865,8 +3024,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.34.0"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -2932,6 +3093,11 @@
     "namespace": "nvd:cpe",
     "severity": "Medium",
     "urls": [
+     "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
+     "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQXGOGWBIYWOIVXJVRKHZR34UMEHQBXS/",
+     "https://security.netapp.com/advisory/ntap-20211223-0002/",
      "https://claroty.com/team82/research/unboxing-busybox-14-vulnerabilities-uncovered-by-claroty-jfrog",
      "https://jfrog.com/blog/unboxing-busybox-14-new-vulnerabilities-uncovered-by-claroty-and-jfrog/",
      "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6T2TURBYYJGBMQTTN2DSOAIQGP7WCPGV/",
@@ -3043,6 +3209,17 @@
      "https://pypi.org/project/pyminizip/#history",
      "https://security.gentoo.org/glsa/202401-18",
      "https://security.netapp.com/advisory/ntap-20231130-0009/",
+     "https://www.winimage.com/zLibDll/minizip.html",
+     "http://www.openwall.com/lists/oss-security/2023/10/20/9",
+     "http://www.openwall.com/lists/oss-security/2024/01/24/10",
+     "https://chromium.googlesource.com/chromium/src/+/d709fb23806858847131027da95ef4c548813356",
+     "https://chromium.googlesource.com/chromium/src/+/de29dd6c7151d3cd37cb4cf0036800ddfb1d8b61",
+     "https://github.com/madler/zlib/blob/ac8f12c97d1afd9bafa9c710f827d40a407d3266/contrib/README.contrib#L1-L4",
+     "https://github.com/madler/zlib/pull/843",
+     "https://lists.debian.org/debian-lts-announce/2023/11/msg00026.html",
+     "https://pypi.org/project/pyminizip/#history",
+     "https://security.gentoo.org/glsa/202401-18",
+     "https://security.netapp.com/advisory/ntap-20231130-0009/",
      "https://www.winimage.com/zLibDll/minizip.html"
     ],
     "description": "MiniZip in zlib through 1.3 has an integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_64 via a long filename, comment, or extra field. NOTE: MiniZip is not a supported part of the zlib product. NOTE: pyminizip through 0.2.6 is also vulnerable because it bundles an affected zlib version, and exposes the applicable MiniZip code through its compress API.",
@@ -3058,11 +3235,25 @@
        "impactScore": 5.9
       },
       "vendorMetadata": {}
+     },
+     {
+      "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+      "type": "Secondary",
+      "version": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "metrics": {
+       "baseScore": 8.8,
+       "exploitabilityScore": 2.8,
+       "impactScore": 5.9
+      },
+      "vendorMetadata": {}
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.3.1"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -3083,7 +3274,7 @@
      },
      "found": {
       "vulnerabilityID": "CVE-2023-45853",
-      "versionConstraint": "<= 1.3 (unknown)",
+      "versionConstraint": "< 1.3.1 (unknown)",
       "cpes": [
        "cpe:2.3:a:zlib:zlib:*:*:*:*:*:*:*:*"
       ]
@@ -3123,6 +3314,32 @@
     "namespace": "nvd:cpe",
     "severity": "Critical",
     "urls": [
+     "http://seclists.org/fulldisclosure/2022/Oct/37",
+     "http://seclists.org/fulldisclosure/2022/Oct/38",
+     "http://seclists.org/fulldisclosure/2022/Oct/41",
+     "http://seclists.org/fulldisclosure/2022/Oct/42",
+     "http://www.openwall.com/lists/oss-security/2022/08/05/2",
+     "http://www.openwall.com/lists/oss-security/2022/08/09/1",
+     "https://github.com/curl/curl/issues/9271",
+     "https://github.com/ivd38/zlib_overflow",
+     "https://github.com/madler/zlib/blob/21767c654d31d2dccdde4330529775c6c5fd5389/zlib.h#L1062-L1063",
+     "https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1",
+     "https://github.com/nodejs/node/blob/75b68c6e4db515f76df73af476eccf382bbcb00a/deps/zlib/inflate.c#L762-L764",
+     "https://lists.debian.org/debian-lts-announce/2022/09/msg00012.html",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JWN4VE3JQR4O2SOUS5TXNLANRPMHWV4I/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NMBOJ77A7T7PQCARMDUK75TE6LLESZ3O/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PAVPQNCG3XRLCLNSQRM3KAN5ZFMVXVTY/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/X5U7OTKZSHY2I3ZFJSR2SHFHW72RKGDK/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YRQAI7H4M4RQZ2IWZUEEXECBE5D56BH2/",
+     "https://security.netapp.com/advisory/ntap-20220901-0005/",
+     "https://security.netapp.com/advisory/ntap-20230427-0007/",
+     "https://support.apple.com/kb/HT213488",
+     "https://support.apple.com/kb/HT213489",
+     "https://support.apple.com/kb/HT213490",
+     "https://support.apple.com/kb/HT213491",
+     "https://support.apple.com/kb/HT213493",
+     "https://support.apple.com/kb/HT213494",
+     "https://www.debian.org/security/2022/dsa-5218",
      "http://seclists.org/fulldisclosure/2022/Oct/37",
      "http://seclists.org/fulldisclosure/2022/Oct/38",
      "http://seclists.org/fulldisclosure/2022/Oct/41",
@@ -3256,6 +3473,35 @@
      "https://www.openwall.com/lists/oss-security/2022/03/24/1",
      "https://www.openwall.com/lists/oss-security/2022/03/28/1",
      "https://www.openwall.com/lists/oss-security/2022/03/28/3",
+     "https://www.oracle.com/security-alerts/cpujul2022.html",
+     "http://seclists.org/fulldisclosure/2022/May/33",
+     "http://seclists.org/fulldisclosure/2022/May/35",
+     "http://seclists.org/fulldisclosure/2022/May/38",
+     "http://www.openwall.com/lists/oss-security/2022/03/25/2",
+     "http://www.openwall.com/lists/oss-security/2022/03/26/1",
+     "https://cert-portal.siemens.com/productcert/pdf/ssa-333517.pdf",
+     "https://github.com/madler/zlib/commit/5c44459c3b28a9bd3283aaceab7c615f8020c531",
+     "https://github.com/madler/zlib/compare/v1.2.11...v1.2.12",
+     "https://github.com/madler/zlib/issues/605",
+     "https://lists.debian.org/debian-lts-announce/2022/04/msg00000.html",
+     "https://lists.debian.org/debian-lts-announce/2022/05/msg00008.html",
+     "https://lists.debian.org/debian-lts-announce/2022/09/msg00023.html",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DCZFIJBJTZ7CL5QXBFKTQ22Q26VINRUF/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DF62MVMH3QUGMBDCB3DY2ERQ6EBHTADB/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JZZPTWRYQULAOL3AW7RZJNVZ2UONXCV4/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NS2D2GFPFGOJUL4WQ3DUAY7HF4VWQ77F/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VOKNP2L734AEL47NRYGVZIKEFOUBQY5Y/",
+     "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XOKFMSNQ5D5WGMALBNBXU3GE442V74WU/",
+     "https://security.gentoo.org/glsa/202210-42",
+     "https://security.netapp.com/advisory/ntap-20220526-0009/",
+     "https://security.netapp.com/advisory/ntap-20220729-0004/",
+     "https://support.apple.com/kb/HT213255",
+     "https://support.apple.com/kb/HT213256",
+     "https://support.apple.com/kb/HT213257",
+     "https://www.debian.org/security/2022/dsa-5111",
+     "https://www.openwall.com/lists/oss-security/2022/03/24/1",
+     "https://www.openwall.com/lists/oss-security/2022/03/28/1",
+     "https://www.openwall.com/lists/oss-security/2022/03/28/3",
      "https://www.oracle.com/security-alerts/cpujul2022.html"
     ],
     "description": "zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches.",
@@ -3286,8 +3532,10 @@
      }
     ],
     "fix": {
-     "versions": [],
-     "state": "unknown"
+     "versions": [
+      "1.2.12"
+     ],
+     "state": "fixed"
     },
     "advisories": []
    },
@@ -3355,7 +3603,7 @@
    "imageSize": 4408909,
    "layers": [
     {
-     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "mediaType": "application/vnd.oci.image.layer.v1.tar",
      "digest": "sha256:7444ea29e45e927abea1f923bf24cac20deaddea603c4bb1c7f2f5819773d453",
      "size": 4408909
     }
@@ -3455,12 +3703,12 @@
    "vex-add": []
   },
   "db": {
-   "built": "2024-02-06T16:19:57Z",
+   "built": "2025-04-02T01:31:23Z",
    "schemaVersion": 5,
    "location": "/home/derek/.cache/grype/db/5",
-   "checksum": "sha256:a594a02e3670dc284e49d4c6a7119754c5f0381b491b949bb056aa36992f37ce",
+   "checksum": "sha256:39c1730b896e0cbb8598f24f9121ea8489412755206deb33b836e7f5ddff75a4",
    "error": null
   },
-  "timestamp": "2024-02-06T11:27:04.380850133-07:00"
+  "timestamp": "2025-04-02T09:27:37.90181975-06:00"
  }
 }

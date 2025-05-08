@@ -1,5 +1,6 @@
 {
   "SchemaVersion": 2,
+  "CreatedAt": "2025-04-02T09:45:22.025176477-06:00",
   "ArtifactName": "alpine:3.9.3",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -20,7 +21,6 @@
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "container": "17551f3be084475a267672aa096b8613660da1e59d2d7e897006386e45d3d2de",
       "created": "2019-04-09T23:20:18.391201481Z",
       "docker_version": "18.06.1-ce",
       "history": [
@@ -63,8 +63,13 @@
           "VulnerabilityID": "CVE-2020-1967",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1g-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -75,12 +80,19 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "Segmentation fault in SSL_check_chain causes denial of service",
+          "Title": "openssl: Segmentation fault in SSL_check_chain causes denial of service",
           "Description": "Server or client applications that call the SSL_check_chain() function during or after a TLS 1.3 handshake may crash due to a NULL pointer dereference as a result of incorrect handling of the \"signature_algorithms_cert\" TLS extension. The crash occurs if an invalid or unrecognised signature algorithm is received from the peer. This could be exploited by a malicious peer in a Denial of Service attack. OpenSSL version 1.1.1d, 1.1.1e, and 1.1.1f are affected by this issue. This issue did not affect OpenSSL versions prior to 1.1.1d. Fixed in OpenSSL 1.1.1g (Affected 1.1.1d-1.1.1f).",
           "Severity": "HIGH",
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "photon": 3,
+            "redhat": 3,
+            "ubuntu": 3
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -104,7 +116,6 @@
             "http://seclists.org/fulldisclosure/2020/May/5",
             "http://www.openwall.com/lists/oss-security/2020/04/22/2",
             "https://access.redhat.com/security/cve/CVE-2020-1967",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1967",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=eb563247aef3e83dda7679c43f9649270462e5b1",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=eb563247aef3e83dda7679c43f9649270462e5b1",
             "https://github.com/irsl/CVE-2020-1967",
@@ -118,14 +129,16 @@
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DDHOAATPWJCXRNFMJ2SASDBBNU5RJONY/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EXDDAOWSAIEFQNBHWYE6PPYFV4QXGMCD/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XVEP3LAK4JSPRXFO4QF4GG2IVXADV3SO/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DDHOAATPWJCXRNFMJ2SASDBBNU5RJONY/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EXDDAOWSAIEFQNBHWYE6PPYFV4QXGMCD/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XVEP3LAK4JSPRXFO4QF4GG2IVXADV3SO/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DDHOAATPWJCXRNFMJ2SASDBBNU5RJONY",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EXDDAOWSAIEFQNBHWYE6PPYFV4QXGMCD",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XVEP3LAK4JSPRXFO4QF4GG2IVXADV3SO",
             "https://nvd.nist.gov/vuln/detail/CVE-2020-1967",
             "https://rustsec.org/advisories/RUSTSEC-2020-0015.html",
             "https://security.FreeBSD.org/advisories/FreeBSD-SA-20:11.openssl.asc",
             "https://security.gentoo.org/glsa/202004-10",
+            "https://security.netapp.com/advisory/ntap-20200424-0003",
             "https://security.netapp.com/advisory/ntap-20200424-0003/",
+            "https://security.netapp.com/advisory/ntap-20200717-0004",
             "https://security.netapp.com/advisory/ntap-20200717-0004/",
             "https://www.cve.org/CVERecord?id=CVE-2020-1967",
             "https://www.debian.org/security/2020/dsa-4661",
@@ -144,14 +157,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2020-04-21T14:15:11.287Z",
-          "LastModifiedDate": "2023-11-07T03:19:39.09Z"
+          "LastModifiedDate": "2024-11-21T05:11:45.023Z"
         },
         {
           "VulnerabilityID": "CVE-2021-23840",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1j-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -162,12 +180,23 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "integer overflow in CipherUpdate",
+          "Title": "openssl: integer overflow in CipherUpdate",
           "Description": "Calls to EVP_CipherUpdate, EVP_EncryptUpdate and EVP_DecryptUpdate may overflow the output length argument in some cases where the input length is close to the maximum permissable length for an integer on the platform. In such cases the return value from the function call will be 1 (indicating success), but the output length value will be negative. This could cause applications to behave incorrectly or crash. OpenSSL versions 1.1.1i and below are affected by this issue. Users of these versions should upgrade to OpenSSL 1.1.1j. OpenSSL versions 1.0.2x and below are affected by this issue. However OpenSSL 1.0.2 is out of support and no longer receiving public updates. Premium support customers of OpenSSL 1.0.2 should upgrade to 1.0.2y. Other users should upgrade to 1.1.1j. Fixed in OpenSSL 1.1.1j (Affected 1.1.1-1.1.1i). Fixed in OpenSSL 1.0.2y (Affected 1.0.2-1.0.2x).",
           "Severity": "HIGH",
           "CweIDs": [
             "CWE-190"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "bitnami": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 2,
+            "photon": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -191,7 +220,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-23840",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-23840",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=6a51b9e1d0cf0bf8515f7201b68fb0a3482b3dc1",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=9b1129239f3ebb1d1c98ce9ed41d5c9476c47cb2",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a51b9e1d0cf0bf8515f7201b68fb0a3482b3dc1",
@@ -208,9 +236,12 @@
             "https://nvd.nist.gov/vuln/detail/CVE-2021-23840",
             "https://rustsec.org/advisories/RUSTSEC-2021-0057.html",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210219-0009",
             "https://security.netapp.com/advisory/ntap-20210219-0009/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://ubuntu.com/security/notices/USN-4738-1",
             "https://ubuntu.com/security/notices/USN-5088-1",
+            "https://ubuntu.com/security/notices/USN-7018-1",
             "https://www.cve.org/CVERecord?id=CVE-2021-23840",
             "https://www.debian.org/security/2021/dsa-4855",
             "https://www.openssl.org/news/secadv/20210216.txt",
@@ -224,14 +255,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2021-02-16T17:15:13.3Z",
-          "LastModifiedDate": "2023-11-07T03:30:55.04Z"
+          "LastModifiedDate": "2024-11-21T05:51:55.21Z"
         },
         {
           "VulnerabilityID": "CVE-2021-3450",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1k-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -248,6 +284,15 @@
           "CweIDs": [
             "CWE-295"
           ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "bitnami": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 3,
+            "photon": 3,
+            "redhat": 3
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
@@ -283,13 +328,14 @@
             "https://linux.oracle.com/cve/CVE-2021-3450.html",
             "https://linux.oracle.com/errata/ELSA-2021-9151.html",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP",
             "https://mta.openssl.org/pipermail/openssl-announce/2021-March/000198.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2021-3450",
             "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0013",
             "https://rustsec.org/advisories/RUSTSEC-2021-0056.html",
             "https://security.FreeBSD.org/advisories/FreeBSD-SA-21:07.openssl.asc",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210326-0006",
             "https://security.netapp.com/advisory/ntap-20210326-0006/",
             "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-openssl-2021-GHY28dJd",
             "https://www.cve.org/CVERecord?id=CVE-2021-3450",
@@ -304,14 +350,19 @@
             "https://www.tenable.com/security/tns-2021-09"
           ],
           "PublishedDate": "2021-03-25T15:15:13.56Z",
-          "LastModifiedDate": "2023-11-07T03:38:00.923Z"
+          "LastModifiedDate": "2024-11-21T06:21:33.633Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1547",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -325,6 +376,14 @@
           "Title": "openssl: side-channel weak encryption vulnerability",
           "Description": "Normally in OpenSSL EC groups always have a co-factor present and this is used in side channel resistant code paths. However, in some cases, it is possible to construct a group using explicit parameters (instead of using a named curve). In those cases it is possible that such a group does not have the cofactor present. This can occur even where all the parameters match a known named curve. If such a curve is used then OpenSSL falls back to non-side channel resistant code paths which may result in full key recovery during an ECDSA signature operation. In order to be vulnerable an attacker would have to have the ability to time the creation of a large number of signatures where explicit parameters with no co-factor present are in use by an application using libcrypto. For the avoidance of doubt libssl is not vulnerable because explicit parameters are never used. Fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c). Fixed in OpenSSL 1.1.0l (Affected 1.1.0-1.1.0k). Fixed in OpenSSL 1.0.2t (Affected 1.0.2-1.0.2s).",
           "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 2,
+            "oracle-oval": 2,
+            "photon": 2,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:L/AC:M/Au:N/C:P/I:N/A:N",
@@ -345,7 +404,6 @@
             "http://packetstormsecurity.com/files/154467/Slackware-Security-Advisory-openssl-Updates.html",
             "https://access.redhat.com/security/cve/CVE-2019-1547",
             "https://arxiv.org/abs/1909.01785",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1547",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=21c856b75d81eff61aa63b4f036bb64a85bf6d46",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=30c22fa8b1d840036b8e203585738df62a03cec8",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=7c1709c2da5414f5b6133d00a03fc8c5bf996c7a",
@@ -363,6 +421,7 @@
             "https://security.netapp.com/advisory/ntap-20190919-0002/",
             "https://security.netapp.com/advisory/ntap-20200122-0002/",
             "https://security.netapp.com/advisory/ntap-20200416-0003/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://support.f5.com/csp/article/K73422160?utm_source=f5support\u0026amp%3Butm_medium=RSS",
             "https://ubuntu.com/security/notices/USN-4376-1",
             "https://ubuntu.com/security/notices/USN-4376-2",
@@ -383,14 +442,19 @@
             "https://www.tenable.com/security/tns-2019-09"
           ],
           "PublishedDate": "2019-09-10T17:15:11.75Z",
-          "LastModifiedDate": "2023-11-07T03:08:28.083Z"
+          "LastModifiedDate": "2024-11-21T04:36:48.16Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1549",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -401,12 +465,20 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "information disclosure in fork()",
+          "Title": "openssl: information disclosure in fork()",
           "Description": "OpenSSL 1.1.1 introduced a rewritten random number generator (RNG). This was intended to include protection in the event of a fork() system call in order to ensure that the parent and child processes did not share the same RNG state. However this protection was not being used in the default case. A partial mitigation for this issue is that the output from a high precision timer is mixed into the RNG state so the likelihood of a parent and child process sharing state is significantly reduced. If an application already calls OPENSSL_init_crypto() explicitly using OPENSSL_INIT_ATFORK then this problem does not occur at all. Fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c).",
           "Severity": "MEDIUM",
           "CweIDs": [
             "CWE-330"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 2,
+            "oracle-oval": 2,
+            "photon": 2,
+            "redhat": 1,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N",
@@ -421,7 +493,6 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2019-1549",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1549",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=1b0fe00e2704b5e20334a16d3c9099d1ba2ef1be",
             "https://linux.oracle.com/cve/CVE-2019-1549.html",
             "https://linux.oracle.com/errata/ELSA-2020-1840.html",
@@ -444,14 +515,19 @@
             "https://www.oracle.com/technetwork/security-advisory/cpuoct2019-5072832.html"
           ],
           "PublishedDate": "2019-09-10T17:15:11.813Z",
-          "LastModifiedDate": "2023-11-07T03:08:28.563Z"
+          "LastModifiedDate": "2024-11-21T04:36:48.343Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1551",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r2",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -468,6 +544,14 @@
           "CweIDs": [
             "CWE-190"
           ],
+          "VendorSeverity": {
+            "amazon": 1,
+            "nvd": 2,
+            "oracle-oval": 1,
+            "photon": 2,
+            "redhat": 1,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N",
@@ -484,7 +568,6 @@
             "http://lists.opensuse.org/opensuse-security-announce/2020-01/msg00030.html",
             "http://packetstormsecurity.com/files/155754/Slackware-Security-Advisory-openssl-Updates.html",
             "https://access.redhat.com/security/cve/CVE-2019-1551",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1551",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=419102400a2811582a7a3d4a4e317d72e5ce0a8f",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=f1c5eea8a817075d31e43f5876993c6710238c98",
             "https://github.com/openssl/openssl/pull/10575",
@@ -516,14 +599,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2019-12-06T18:15:12.84Z",
-          "LastModifiedDate": "2023-11-07T03:08:28.98Z"
+          "LastModifiedDate": "2024-11-21T04:36:48.5Z"
         },
         {
           "VulnerabilityID": "CVE-2020-1971",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1i-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -540,6 +628,16 @@
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "bitnami": 2,
+            "cbl-mariner": 2,
+            "nvd": 2,
+            "oracle-oval": 3,
+            "photon": 2,
+            "redhat": 3,
+            "ubuntu": 3
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -560,7 +658,6 @@
             "http://www.openwall.com/lists/oss-security/2021/09/14/2",
             "https://access.redhat.com/security/cve/CVE-2020-1971",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1971",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=2154ab83e14ede338d2ede9bbe5cdfce5d5a6c9e",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=f960d81215ebf3f65e03d4d5d857fb9b666d6920",
             "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA44676",
@@ -577,6 +674,7 @@
             "https://security.gentoo.org/glsa/202012-13",
             "https://security.netapp.com/advisory/ntap-20201218-0005/",
             "https://security.netapp.com/advisory/ntap-20210513-0002/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://ubuntu.com/security/notices/USN-4662-1",
             "https://ubuntu.com/security/notices/USN-4745-1",
             "https://www.cve.org/CVERecord?id=CVE-2020-1971",
@@ -592,14 +690,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2020-12-08T16:15:11.73Z",
-          "LastModifiedDate": "2023-11-07T03:19:39.777Z"
+          "LastModifiedDate": "2024-11-21T05:11:45.673Z"
         },
         {
           "VulnerabilityID": "CVE-2021-23841",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1j-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -616,6 +719,16 @@
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "ghsa": 2,
+            "nvd": 2,
+            "oracle-oval": 2,
+            "photon": 2,
+            "redhat": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -638,7 +751,6 @@
             "http://seclists.org/fulldisclosure/2021/May/70",
             "https://access.redhat.com/security/cve/CVE-2021-23841",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-23841",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=122a19ab48091c657f7cb1fb3af9fc07bd557bbf",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=8252ee4d90f3f2004d3d0aeeed003ad49c9a7807",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=122a19ab48091c657f7cb1fb3af9fc07bd557bbf",
@@ -653,8 +765,11 @@
             "https://rustsec.org/advisories/RUSTSEC-2021-0058",
             "https://rustsec.org/advisories/RUSTSEC-2021-0058.html",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210219-0009",
             "https://security.netapp.com/advisory/ntap-20210219-0009/",
+            "https://security.netapp.com/advisory/ntap-20210513-0002",
             "https://security.netapp.com/advisory/ntap-20210513-0002/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://support.apple.com/kb/HT212528",
             "https://support.apple.com/kb/HT212529",
             "https://support.apple.com/kb/HT212534",
@@ -671,14 +786,19 @@
             "https://www.tenable.com/security/tns-2021-09"
           ],
           "PublishedDate": "2021-02-16T17:15:13.377Z",
-          "LastModifiedDate": "2023-11-07T03:30:55.17Z"
+          "LastModifiedDate": "2024-11-21T05:51:55.46Z"
         },
         {
           "VulnerabilityID": "CVE-2021-3449",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1k-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -695,6 +815,16 @@
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "bitnami": 2,
+            "ghsa": 2,
+            "nvd": 2,
+            "oracle-oval": 3,
+            "photon": 2,
+            "redhat": 3,
+            "ubuntu": 3
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -723,7 +853,6 @@
             "https://access.redhat.com/security/cve/CVE-2021-3449",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-772220.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3449",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=fb9fa6b51defd48157eeb207f52181f735d96148",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fb9fa6b51defd48157eeb207f52181f735d96148",
             "https://github.com/alexcrichton/openssl-src-rs",
@@ -734,15 +863,18 @@
             "https://linux.oracle.com/errata/ELSA-2021-9151.html",
             "https://lists.debian.org/debian-lts-announce/2021/08/msg00029.html",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP",
             "https://nvd.nist.gov/vuln/detail/CVE-2021-3449",
             "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0013",
             "https://rustsec.org/advisories/RUSTSEC-2021-0055",
             "https://rustsec.org/advisories/RUSTSEC-2021-0055.html",
             "https://security.FreeBSD.org/advisories/FreeBSD-SA-21:07.openssl.asc",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210326-0006",
             "https://security.netapp.com/advisory/ntap-20210326-0006/",
+            "https://security.netapp.com/advisory/ntap-20210513-0002",
             "https://security.netapp.com/advisory/ntap-20210513-0002/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-openssl-2021-GHY28dJd",
             "https://ubuntu.com/security/notices/USN-4891-1",
             "https://ubuntu.com/security/notices/USN-5038-1",
@@ -760,14 +892,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2021-03-25T15:15:13.45Z",
-          "LastModifiedDate": "2023-11-07T03:38:00.703Z"
+          "LastModifiedDate": "2024-11-21T06:21:33.05Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1563",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -778,13 +915,21 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "information disclosure in PKCS7_dataDecode and CMS_decrypt_set1_pkey",
+          "Title": "openssl: information disclosure in PKCS7_dataDecode and CMS_decrypt_set1_pkey",
           "Description": "In situations where an attacker receives automated notification of the success or failure of a decryption attempt an attacker, after sending a very large number of messages to be decrypted, can recover a CMS/PKCS7 transported encryption key or decrypt any RSA encrypted message that was encrypted with the public RSA key, using a Bleichenbacher padding oracle attack. Applications are not affected if they use a certificate together with the private RSA key to the CMS_decrypt or PKCS7_decrypt functions to select the correct recipient info to decrypt. Fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c). Fixed in OpenSSL 1.1.0l (Affected 1.1.0-1.1.0k). Fixed in OpenSSL 1.0.2t (Affected 1.0.2-1.0.2s).",
           "Severity": "LOW",
           "CweIDs": [
             "CWE-203",
             "CWE-327"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 1,
+            "oracle-oval": 2,
+            "photon": 1,
+            "redhat": 1,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N",
@@ -804,7 +949,6 @@
             "http://lists.opensuse.org/opensuse-security-announce/2019-10/msg00016.html",
             "http://packetstormsecurity.com/files/154467/Slackware-Security-Advisory-openssl-Updates.html",
             "https://access.redhat.com/security/cve/CVE-2019-1563",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1563",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=08229ad838c50f644d7e928e2eef147b4308ad64",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=631f94db0065c78181ca9ba5546ebc8bb3884b97",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=e21f8cf78a125cd3c8c0d1a1a6c8bb0b901f893f",
@@ -839,14 +983,19 @@
             "https://www.tenable.com/security/tns-2019-09"
           ],
           "PublishedDate": "2019-09-10T17:15:11.89Z",
-          "LastModifiedDate": "2023-11-07T03:08:32.29Z"
+          "LastModifiedDate": "2024-11-21T04:36:49.31Z"
         },
         {
           "VulnerabilityID": "CVE-2021-23839",
           "PkgID": "libcrypto1.1@1.1.1b-r1",
           "PkgName": "libcrypto1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libcrypto1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d2c46e721bca75d3"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1j-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -863,6 +1012,12 @@
           "CweIDs": [
             "CWE-327"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 1,
+            "photon": 1,
+            "redhat": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N",
@@ -882,6 +1037,7 @@
             "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA44846",
             "https://nvd.nist.gov/vuln/detail/CVE-2021-23839",
             "https://security.netapp.com/advisory/ntap-20210219-0009/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://www.cve.org/CVERecord?id=CVE-2021-23839",
             "https://www.openssl.org/news/secadv/20210216.txt",
             "https://www.oracle.com//security-alerts/cpujul2021.html",
@@ -890,14 +1046,19 @@
             "https://www.oracle.com/security-alerts/cpuoct2021.html"
           ],
           "PublishedDate": "2021-02-16T17:15:13.19Z",
-          "LastModifiedDate": "2023-11-07T03:30:54.957Z"
+          "LastModifiedDate": "2024-11-21T05:51:55.003Z"
         },
         {
           "VulnerabilityID": "CVE-2020-1967",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1g-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -908,12 +1069,19 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "Segmentation fault in SSL_check_chain causes denial of service",
+          "Title": "openssl: Segmentation fault in SSL_check_chain causes denial of service",
           "Description": "Server or client applications that call the SSL_check_chain() function during or after a TLS 1.3 handshake may crash due to a NULL pointer dereference as a result of incorrect handling of the \"signature_algorithms_cert\" TLS extension. The crash occurs if an invalid or unrecognised signature algorithm is received from the peer. This could be exploited by a malicious peer in a Denial of Service attack. OpenSSL version 1.1.1d, 1.1.1e, and 1.1.1f are affected by this issue. This issue did not affect OpenSSL versions prior to 1.1.1d. Fixed in OpenSSL 1.1.1g (Affected 1.1.1d-1.1.1f).",
           "Severity": "HIGH",
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "photon": 3,
+            "redhat": 3,
+            "ubuntu": 3
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -937,7 +1105,6 @@
             "http://seclists.org/fulldisclosure/2020/May/5",
             "http://www.openwall.com/lists/oss-security/2020/04/22/2",
             "https://access.redhat.com/security/cve/CVE-2020-1967",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1967",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=eb563247aef3e83dda7679c43f9649270462e5b1",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=eb563247aef3e83dda7679c43f9649270462e5b1",
             "https://github.com/irsl/CVE-2020-1967",
@@ -951,14 +1118,16 @@
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DDHOAATPWJCXRNFMJ2SASDBBNU5RJONY/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EXDDAOWSAIEFQNBHWYE6PPYFV4QXGMCD/",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XVEP3LAK4JSPRXFO4QF4GG2IVXADV3SO/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DDHOAATPWJCXRNFMJ2SASDBBNU5RJONY/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EXDDAOWSAIEFQNBHWYE6PPYFV4QXGMCD/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XVEP3LAK4JSPRXFO4QF4GG2IVXADV3SO/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DDHOAATPWJCXRNFMJ2SASDBBNU5RJONY",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EXDDAOWSAIEFQNBHWYE6PPYFV4QXGMCD",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/XVEP3LAK4JSPRXFO4QF4GG2IVXADV3SO",
             "https://nvd.nist.gov/vuln/detail/CVE-2020-1967",
             "https://rustsec.org/advisories/RUSTSEC-2020-0015.html",
             "https://security.FreeBSD.org/advisories/FreeBSD-SA-20:11.openssl.asc",
             "https://security.gentoo.org/glsa/202004-10",
+            "https://security.netapp.com/advisory/ntap-20200424-0003",
             "https://security.netapp.com/advisory/ntap-20200424-0003/",
+            "https://security.netapp.com/advisory/ntap-20200717-0004",
             "https://security.netapp.com/advisory/ntap-20200717-0004/",
             "https://www.cve.org/CVERecord?id=CVE-2020-1967",
             "https://www.debian.org/security/2020/dsa-4661",
@@ -977,14 +1146,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2020-04-21T14:15:11.287Z",
-          "LastModifiedDate": "2023-11-07T03:19:39.09Z"
+          "LastModifiedDate": "2024-11-21T05:11:45.023Z"
         },
         {
           "VulnerabilityID": "CVE-2021-23840",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1j-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -995,12 +1169,23 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "integer overflow in CipherUpdate",
+          "Title": "openssl: integer overflow in CipherUpdate",
           "Description": "Calls to EVP_CipherUpdate, EVP_EncryptUpdate and EVP_DecryptUpdate may overflow the output length argument in some cases where the input length is close to the maximum permissable length for an integer on the platform. In such cases the return value from the function call will be 1 (indicating success), but the output length value will be negative. This could cause applications to behave incorrectly or crash. OpenSSL versions 1.1.1i and below are affected by this issue. Users of these versions should upgrade to OpenSSL 1.1.1j. OpenSSL versions 1.0.2x and below are affected by this issue. However OpenSSL 1.0.2 is out of support and no longer receiving public updates. Premium support customers of OpenSSL 1.0.2 should upgrade to 1.0.2y. Other users should upgrade to 1.1.1j. Fixed in OpenSSL 1.1.1j (Affected 1.1.1-1.1.1i). Fixed in OpenSSL 1.0.2y (Affected 1.0.2-1.0.2x).",
           "Severity": "HIGH",
           "CweIDs": [
             "CWE-190"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "bitnami": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 2,
+            "photon": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -1024,7 +1209,6 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2021-23840",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-23840",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=6a51b9e1d0cf0bf8515f7201b68fb0a3482b3dc1",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=9b1129239f3ebb1d1c98ce9ed41d5c9476c47cb2",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a51b9e1d0cf0bf8515f7201b68fb0a3482b3dc1",
@@ -1041,9 +1225,12 @@
             "https://nvd.nist.gov/vuln/detail/CVE-2021-23840",
             "https://rustsec.org/advisories/RUSTSEC-2021-0057.html",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210219-0009",
             "https://security.netapp.com/advisory/ntap-20210219-0009/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://ubuntu.com/security/notices/USN-4738-1",
             "https://ubuntu.com/security/notices/USN-5088-1",
+            "https://ubuntu.com/security/notices/USN-7018-1",
             "https://www.cve.org/CVERecord?id=CVE-2021-23840",
             "https://www.debian.org/security/2021/dsa-4855",
             "https://www.openssl.org/news/secadv/20210216.txt",
@@ -1057,14 +1244,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2021-02-16T17:15:13.3Z",
-          "LastModifiedDate": "2023-11-07T03:30:55.04Z"
+          "LastModifiedDate": "2024-11-21T05:51:55.21Z"
         },
         {
           "VulnerabilityID": "CVE-2021-3450",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1k-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1081,6 +1273,15 @@
           "CweIDs": [
             "CWE-295"
           ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "bitnami": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 3,
+            "photon": 3,
+            "redhat": 3
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
@@ -1116,13 +1317,14 @@
             "https://linux.oracle.com/cve/CVE-2021-3450.html",
             "https://linux.oracle.com/errata/ELSA-2021-9151.html",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP",
             "https://mta.openssl.org/pipermail/openssl-announce/2021-March/000198.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2021-3450",
             "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0013",
             "https://rustsec.org/advisories/RUSTSEC-2021-0056.html",
             "https://security.FreeBSD.org/advisories/FreeBSD-SA-21:07.openssl.asc",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210326-0006",
             "https://security.netapp.com/advisory/ntap-20210326-0006/",
             "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-openssl-2021-GHY28dJd",
             "https://www.cve.org/CVERecord?id=CVE-2021-3450",
@@ -1137,14 +1339,19 @@
             "https://www.tenable.com/security/tns-2021-09"
           ],
           "PublishedDate": "2021-03-25T15:15:13.56Z",
-          "LastModifiedDate": "2023-11-07T03:38:00.923Z"
+          "LastModifiedDate": "2024-11-21T06:21:33.633Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1547",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1158,6 +1365,14 @@
           "Title": "openssl: side-channel weak encryption vulnerability",
           "Description": "Normally in OpenSSL EC groups always have a co-factor present and this is used in side channel resistant code paths. However, in some cases, it is possible to construct a group using explicit parameters (instead of using a named curve). In those cases it is possible that such a group does not have the cofactor present. This can occur even where all the parameters match a known named curve. If such a curve is used then OpenSSL falls back to non-side channel resistant code paths which may result in full key recovery during an ECDSA signature operation. In order to be vulnerable an attacker would have to have the ability to time the creation of a large number of signatures where explicit parameters with no co-factor present are in use by an application using libcrypto. For the avoidance of doubt libssl is not vulnerable because explicit parameters are never used. Fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c). Fixed in OpenSSL 1.1.0l (Affected 1.1.0-1.1.0k). Fixed in OpenSSL 1.0.2t (Affected 1.0.2-1.0.2s).",
           "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 2,
+            "oracle-oval": 2,
+            "photon": 2,
+            "redhat": 2,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:L/AC:M/Au:N/C:P/I:N/A:N",
@@ -1178,7 +1393,6 @@
             "http://packetstormsecurity.com/files/154467/Slackware-Security-Advisory-openssl-Updates.html",
             "https://access.redhat.com/security/cve/CVE-2019-1547",
             "https://arxiv.org/abs/1909.01785",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1547",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=21c856b75d81eff61aa63b4f036bb64a85bf6d46",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=30c22fa8b1d840036b8e203585738df62a03cec8",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=7c1709c2da5414f5b6133d00a03fc8c5bf996c7a",
@@ -1196,6 +1410,7 @@
             "https://security.netapp.com/advisory/ntap-20190919-0002/",
             "https://security.netapp.com/advisory/ntap-20200122-0002/",
             "https://security.netapp.com/advisory/ntap-20200416-0003/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://support.f5.com/csp/article/K73422160?utm_source=f5support\u0026amp%3Butm_medium=RSS",
             "https://ubuntu.com/security/notices/USN-4376-1",
             "https://ubuntu.com/security/notices/USN-4376-2",
@@ -1216,14 +1431,19 @@
             "https://www.tenable.com/security/tns-2019-09"
           ],
           "PublishedDate": "2019-09-10T17:15:11.75Z",
-          "LastModifiedDate": "2023-11-07T03:08:28.083Z"
+          "LastModifiedDate": "2024-11-21T04:36:48.16Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1549",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1234,12 +1454,20 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "information disclosure in fork()",
+          "Title": "openssl: information disclosure in fork()",
           "Description": "OpenSSL 1.1.1 introduced a rewritten random number generator (RNG). This was intended to include protection in the event of a fork() system call in order to ensure that the parent and child processes did not share the same RNG state. However this protection was not being used in the default case. A partial mitigation for this issue is that the output from a high precision timer is mixed into the RNG state so the likelihood of a parent and child process sharing state is significantly reduced. If an application already calls OPENSSL_init_crypto() explicitly using OPENSSL_INIT_ATFORK then this problem does not occur at all. Fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c).",
           "Severity": "MEDIUM",
           "CweIDs": [
             "CWE-330"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 2,
+            "oracle-oval": 2,
+            "photon": 2,
+            "redhat": 1,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N",
@@ -1254,7 +1482,6 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2019-1549",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1549",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=1b0fe00e2704b5e20334a16d3c9099d1ba2ef1be",
             "https://linux.oracle.com/cve/CVE-2019-1549.html",
             "https://linux.oracle.com/errata/ELSA-2020-1840.html",
@@ -1277,14 +1504,19 @@
             "https://www.oracle.com/technetwork/security-advisory/cpuoct2019-5072832.html"
           ],
           "PublishedDate": "2019-09-10T17:15:11.813Z",
-          "LastModifiedDate": "2023-11-07T03:08:28.563Z"
+          "LastModifiedDate": "2024-11-21T04:36:48.343Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1551",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r2",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1301,6 +1533,14 @@
           "CweIDs": [
             "CWE-190"
           ],
+          "VendorSeverity": {
+            "amazon": 1,
+            "nvd": 2,
+            "oracle-oval": 1,
+            "photon": 2,
+            "redhat": 1,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:N/C:P/I:N/A:N",
@@ -1317,7 +1557,6 @@
             "http://lists.opensuse.org/opensuse-security-announce/2020-01/msg00030.html",
             "http://packetstormsecurity.com/files/155754/Slackware-Security-Advisory-openssl-Updates.html",
             "https://access.redhat.com/security/cve/CVE-2019-1551",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1551",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=419102400a2811582a7a3d4a4e317d72e5ce0a8f",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=f1c5eea8a817075d31e43f5876993c6710238c98",
             "https://github.com/openssl/openssl/pull/10575",
@@ -1349,14 +1588,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2019-12-06T18:15:12.84Z",
-          "LastModifiedDate": "2023-11-07T03:08:28.98Z"
+          "LastModifiedDate": "2024-11-21T04:36:48.5Z"
         },
         {
           "VulnerabilityID": "CVE-2020-1971",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1i-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1373,6 +1617,16 @@
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "bitnami": 2,
+            "cbl-mariner": 2,
+            "nvd": 2,
+            "oracle-oval": 3,
+            "photon": 2,
+            "redhat": 3,
+            "ubuntu": 3
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -1393,7 +1647,6 @@
             "http://www.openwall.com/lists/oss-security/2021/09/14/2",
             "https://access.redhat.com/security/cve/CVE-2020-1971",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1971",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=2154ab83e14ede338d2ede9bbe5cdfce5d5a6c9e",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=f960d81215ebf3f65e03d4d5d857fb9b666d6920",
             "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA44676",
@@ -1410,6 +1663,7 @@
             "https://security.gentoo.org/glsa/202012-13",
             "https://security.netapp.com/advisory/ntap-20201218-0005/",
             "https://security.netapp.com/advisory/ntap-20210513-0002/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://ubuntu.com/security/notices/USN-4662-1",
             "https://ubuntu.com/security/notices/USN-4745-1",
             "https://www.cve.org/CVERecord?id=CVE-2020-1971",
@@ -1425,14 +1679,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2020-12-08T16:15:11.73Z",
-          "LastModifiedDate": "2023-11-07T03:19:39.777Z"
+          "LastModifiedDate": "2024-11-21T05:11:45.673Z"
         },
         {
           "VulnerabilityID": "CVE-2021-23841",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1j-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1449,6 +1708,16 @@
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "alma": 2,
+            "amazon": 3,
+            "ghsa": 2,
+            "nvd": 2,
+            "oracle-oval": 2,
+            "photon": 2,
+            "redhat": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -1471,7 +1740,6 @@
             "http://seclists.org/fulldisclosure/2021/May/70",
             "https://access.redhat.com/security/cve/CVE-2021-23841",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-23841",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=122a19ab48091c657f7cb1fb3af9fc07bd557bbf",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=8252ee4d90f3f2004d3d0aeeed003ad49c9a7807",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=122a19ab48091c657f7cb1fb3af9fc07bd557bbf",
@@ -1486,8 +1754,11 @@
             "https://rustsec.org/advisories/RUSTSEC-2021-0058",
             "https://rustsec.org/advisories/RUSTSEC-2021-0058.html",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210219-0009",
             "https://security.netapp.com/advisory/ntap-20210219-0009/",
+            "https://security.netapp.com/advisory/ntap-20210513-0002",
             "https://security.netapp.com/advisory/ntap-20210513-0002/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://support.apple.com/kb/HT212528",
             "https://support.apple.com/kb/HT212529",
             "https://support.apple.com/kb/HT212534",
@@ -1504,14 +1775,19 @@
             "https://www.tenable.com/security/tns-2021-09"
           ],
           "PublishedDate": "2021-02-16T17:15:13.377Z",
-          "LastModifiedDate": "2023-11-07T03:30:55.17Z"
+          "LastModifiedDate": "2024-11-21T05:51:55.46Z"
         },
         {
           "VulnerabilityID": "CVE-2021-3449",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1k-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1528,6 +1804,16 @@
           "CweIDs": [
             "CWE-476"
           ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "bitnami": 2,
+            "ghsa": 2,
+            "nvd": 2,
+            "oracle-oval": 3,
+            "photon": 2,
+            "redhat": 3,
+            "ubuntu": 3
+          },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -1556,7 +1842,6 @@
             "https://access.redhat.com/security/cve/CVE-2021-3449",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf",
             "https://cert-portal.siemens.com/productcert/pdf/ssa-772220.pdf",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3449",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=fb9fa6b51defd48157eeb207f52181f735d96148",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fb9fa6b51defd48157eeb207f52181f735d96148",
             "https://github.com/alexcrichton/openssl-src-rs",
@@ -1567,15 +1852,18 @@
             "https://linux.oracle.com/errata/ELSA-2021-9151.html",
             "https://lists.debian.org/debian-lts-announce/2021/08/msg00029.html",
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
-            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/CCBFLLVQVILIVGZMBJL3IXZGKWQISYNP",
             "https://nvd.nist.gov/vuln/detail/CVE-2021-3449",
             "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0013",
             "https://rustsec.org/advisories/RUSTSEC-2021-0055",
             "https://rustsec.org/advisories/RUSTSEC-2021-0055.html",
             "https://security.FreeBSD.org/advisories/FreeBSD-SA-21:07.openssl.asc",
             "https://security.gentoo.org/glsa/202103-03",
+            "https://security.netapp.com/advisory/ntap-20210326-0006",
             "https://security.netapp.com/advisory/ntap-20210326-0006/",
+            "https://security.netapp.com/advisory/ntap-20210513-0002",
             "https://security.netapp.com/advisory/ntap-20210513-0002/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-openssl-2021-GHY28dJd",
             "https://ubuntu.com/security/notices/USN-4891-1",
             "https://ubuntu.com/security/notices/USN-5038-1",
@@ -1593,14 +1881,19 @@
             "https://www.tenable.com/security/tns-2021-10"
           ],
           "PublishedDate": "2021-03-25T15:15:13.45Z",
-          "LastModifiedDate": "2023-11-07T03:38:00.703Z"
+          "LastModifiedDate": "2024-11-21T06:21:33.05Z"
         },
         {
           "VulnerabilityID": "CVE-2019-1563",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1d-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1611,13 +1904,21 @@
             "Name": "Alpine Secdb",
             "URL": "https://secdb.alpinelinux.org/"
           },
-          "Title": "information disclosure in PKCS7_dataDecode and CMS_decrypt_set1_pkey",
+          "Title": "openssl: information disclosure in PKCS7_dataDecode and CMS_decrypt_set1_pkey",
           "Description": "In situations where an attacker receives automated notification of the success or failure of a decryption attempt an attacker, after sending a very large number of messages to be decrypted, can recover a CMS/PKCS7 transported encryption key or decrypt any RSA encrypted message that was encrypted with the public RSA key, using a Bleichenbacher padding oracle attack. Applications are not affected if they use a certificate together with the private RSA key to the CMS_decrypt or PKCS7_decrypt functions to select the correct recipient info to decrypt. Fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c). Fixed in OpenSSL 1.1.0l (Affected 1.1.0-1.1.0k). Fixed in OpenSSL 1.0.2t (Affected 1.0.2-1.0.2s).",
           "Severity": "LOW",
           "CweIDs": [
             "CWE-203",
             "CWE-327"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 1,
+            "oracle-oval": 2,
+            "photon": 1,
+            "redhat": 1,
+            "ubuntu": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:P/I:N/A:N",
@@ -1637,7 +1938,6 @@
             "http://lists.opensuse.org/opensuse-security-announce/2019-10/msg00016.html",
             "http://packetstormsecurity.com/files/154467/Slackware-Security-Advisory-openssl-Updates.html",
             "https://access.redhat.com/security/cve/CVE-2019-1563",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1563",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=08229ad838c50f644d7e928e2eef147b4308ad64",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=631f94db0065c78181ca9ba5546ebc8bb3884b97",
             "https://git.openssl.org/gitweb/?p=openssl.git%3Ba=commitdiff%3Bh=e21f8cf78a125cd3c8c0d1a1a6c8bb0b901f893f",
@@ -1672,14 +1972,19 @@
             "https://www.tenable.com/security/tns-2019-09"
           ],
           "PublishedDate": "2019-09-10T17:15:11.89Z",
-          "LastModifiedDate": "2023-11-07T03:08:32.29Z"
+          "LastModifiedDate": "2024-11-21T04:36:49.31Z"
         },
         {
           "VulnerabilityID": "CVE-2021-23839",
           "PkgID": "libssl1.1@1.1.1b-r1",
           "PkgName": "libssl1.1",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/libssl1.1@1.1.1b-r1?arch=x86_64\u0026distro=3.9.3",
+            "UID": "e39a91b0fefcbb1d"
+          },
           "InstalledVersion": "1.1.1b-r1",
           "FixedVersion": "1.1.1j-r0",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1696,6 +2001,12 @@
           "CweIDs": [
             "CWE-327"
           ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "nvd": 1,
+            "photon": 1,
+            "redhat": 1
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:M/Au:N/C:N/I:P/A:N",
@@ -1715,6 +2026,7 @@
             "https://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA44846",
             "https://nvd.nist.gov/vuln/detail/CVE-2021-23839",
             "https://security.netapp.com/advisory/ntap-20210219-0009/",
+            "https://security.netapp.com/advisory/ntap-20240621-0006/",
             "https://www.cve.org/CVERecord?id=CVE-2021-23839",
             "https://www.openssl.org/news/secadv/20210216.txt",
             "https://www.oracle.com//security-alerts/cpujul2021.html",
@@ -1723,14 +2035,19 @@
             "https://www.oracle.com/security-alerts/cpuoct2021.html"
           ],
           "PublishedDate": "2021-02-16T17:15:13.19Z",
-          "LastModifiedDate": "2023-11-07T03:30:54.957Z"
+          "LastModifiedDate": "2024-11-21T05:51:55.003Z"
         },
         {
           "VulnerabilityID": "CVE-2019-14697",
           "PkgID": "musl@1.1.20-r4",
           "PkgName": "musl",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/musl@1.1.20-r4?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d6abd271e71d3ce2"
+          },
           "InstalledVersion": "1.1.20-r4",
           "FixedVersion": "1.1.20-r5",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1747,6 +2064,10 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "nvd": 4,
+            "ubuntu": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
@@ -1757,23 +2078,28 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2019/08/06/4",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14697",
             "https://git.musl-libc.org/cgit/musl/patch/?id=6818c31c9bc4bbad5357f1de14bedf781e5b349e",
             "https://git.musl-libc.org/cgit/musl/patch/?id=f3ed8bfe8a82af1870ddc8696ed4cc1d5aa6b441",
             "https://security.gentoo.org/glsa/202003-13",
             "https://ubuntu.com/security/notices/USN-5990-1",
+            "https://www.cve.org/CVERecord?id=CVE-2019-14697",
             "https://www.openwall.com/lists/musl/2019/08/06/1",
             "https://www.openwall.com/lists/oss-security/2019/08/06/1"
           ],
           "PublishedDate": "2019-08-06T16:15:11.72Z",
-          "LastModifiedDate": "2023-03-03T17:43:22.227Z"
+          "LastModifiedDate": "2024-11-21T04:27:09.783Z"
         },
         {
           "VulnerabilityID": "CVE-2020-28928",
           "PkgID": "musl@1.1.20-r4",
           "PkgName": "musl",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/musl@1.1.20-r4?arch=x86_64\u0026distro=3.9.3",
+            "UID": "d6abd271e71d3ce2"
+          },
           "InstalledVersion": "1.1.20-r4",
           "FixedVersion": "1.1.20-r6",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1790,6 +2116,10 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "nvd": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P",
@@ -1800,7 +2130,6 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2020/11/20/4",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-28928",
             "https://lists.apache.org/thread.html/r2134abfe847bea7795f0e53756d10a47e6643f35ab8169df8b8a9eb1%40%3Cnotifications.apisix.apache.org%3E",
             "https://lists.apache.org/thread.html/r90b60cf49348e515257b4950900c1bd3ab95a960cf2469d919c7264e%40%3Cnotifications.apisix.apache.org%3E",
             "https://lists.apache.org/thread.html/ra63e8dc5137d952afc55dbbfa63be83304ecf842d1eab1ff3ebb29e2%40%3Cnotifications.apisix.apache.org%3E",
@@ -1809,19 +2138,25 @@
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UW27QVY7ERPTSGKS4KAWE5TU7EJWHKVQ/",
             "https://musl.libc.org/releases.html",
             "https://ubuntu.com/security/notices/USN-5990-1",
+            "https://www.cve.org/CVERecord?id=CVE-2020-28928",
             "https://www.openwall.com/lists/oss-security/2020/11/20/4",
             "https://www.oracle.com//security-alerts/cpujul2021.html",
             "https://www.oracle.com/security-alerts/cpuoct2021.html"
           ],
           "PublishedDate": "2020-11-24T18:15:12.207Z",
-          "LastModifiedDate": "2023-11-07T03:21:24.597Z"
+          "LastModifiedDate": "2024-11-21T05:23:18.907Z"
         },
         {
           "VulnerabilityID": "CVE-2019-14697",
           "PkgID": "musl-utils@1.1.20-r4",
           "PkgName": "musl-utils",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/musl-utils@1.1.20-r4?arch=x86_64\u0026distro=3.9.3",
+            "UID": "a35dd6cab4aabdf1"
+          },
           "InstalledVersion": "1.1.20-r4",
           "FixedVersion": "1.1.20-r5",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1838,6 +2173,10 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "nvd": 4,
+            "ubuntu": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
@@ -1848,23 +2187,28 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2019/08/06/4",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14697",
             "https://git.musl-libc.org/cgit/musl/patch/?id=6818c31c9bc4bbad5357f1de14bedf781e5b349e",
             "https://git.musl-libc.org/cgit/musl/patch/?id=f3ed8bfe8a82af1870ddc8696ed4cc1d5aa6b441",
             "https://security.gentoo.org/glsa/202003-13",
             "https://ubuntu.com/security/notices/USN-5990-1",
+            "https://www.cve.org/CVERecord?id=CVE-2019-14697",
             "https://www.openwall.com/lists/musl/2019/08/06/1",
             "https://www.openwall.com/lists/oss-security/2019/08/06/1"
           ],
           "PublishedDate": "2019-08-06T16:15:11.72Z",
-          "LastModifiedDate": "2023-03-03T17:43:22.227Z"
+          "LastModifiedDate": "2024-11-21T04:27:09.783Z"
         },
         {
           "VulnerabilityID": "CVE-2020-28928",
           "PkgID": "musl-utils@1.1.20-r4",
           "PkgName": "musl-utils",
+          "PkgIdentifier": {
+            "PURL": "pkg:apk/alpine/musl-utils@1.1.20-r4?arch=x86_64\u0026distro=3.9.3",
+            "UID": "a35dd6cab4aabdf1"
+          },
           "InstalledVersion": "1.1.20-r4",
           "FixedVersion": "1.1.20-r6",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a464c54f93a9e88fc1d33df1e0e39cca427d60145a360962e8f19a1dbf900da9"
           },
@@ -1881,6 +2225,10 @@
           "CweIDs": [
             "CWE-787"
           ],
+          "VendorSeverity": {
+            "nvd": 2,
+            "ubuntu": 2
+          },
           "CVSS": {
             "nvd": {
               "V2Vector": "AV:L/AC:L/Au:N/C:N/I:N/A:P",
@@ -1891,7 +2239,6 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2020/11/20/4",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-28928",
             "https://lists.apache.org/thread.html/r2134abfe847bea7795f0e53756d10a47e6643f35ab8169df8b8a9eb1%40%3Cnotifications.apisix.apache.org%3E",
             "https://lists.apache.org/thread.html/r90b60cf49348e515257b4950900c1bd3ab95a960cf2469d919c7264e%40%3Cnotifications.apisix.apache.org%3E",
             "https://lists.apache.org/thread.html/ra63e8dc5137d952afc55dbbfa63be83304ecf842d1eab1ff3ebb29e2%40%3Cnotifications.apisix.apache.org%3E",
@@ -1900,12 +2247,13 @@
             "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UW27QVY7ERPTSGKS4KAWE5TU7EJWHKVQ/",
             "https://musl.libc.org/releases.html",
             "https://ubuntu.com/security/notices/USN-5990-1",
+            "https://www.cve.org/CVERecord?id=CVE-2020-28928",
             "https://www.openwall.com/lists/oss-security/2020/11/20/4",
             "https://www.oracle.com//security-alerts/cpujul2021.html",
             "https://www.oracle.com/security-alerts/cpuoct2021.html"
           ],
           "PublishedDate": "2020-11-24T18:15:12.207Z",
-          "LastModifiedDate": "2023-11-07T03:21:24.597Z"
+          "LastModifiedDate": "2024-11-21T05:23:18.907Z"
         }
       ]
     }
