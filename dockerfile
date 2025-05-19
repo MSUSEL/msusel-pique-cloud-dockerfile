@@ -46,7 +46,7 @@ RUN git clone https://github.com/MSUSEL/msusel-pique-cloud-dockerfile
 WORKDIR "/home/msusel-pique-cloud-dockerfile"
 
 # copy model file to resources
-COPY output/PIQUECloud-dockerfilequalitymodel.json src/main/resources/PIQUECloud-dockerfilequalitymodel.json
+COPY output/PIQUECLOUDDockerfile1000squashed_trimmed.json src/main/resources/PIQUECLOUDDockerfile1000squashed_trimmed.json
 
 # build pique cloud dockerfile
 RUN mvn package -Dmaven.test.skip -Dlicense.skip
