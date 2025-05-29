@@ -1,0 +1,63 @@
+version: "3.8"
+
+services:
+  db_nvd_mirror:
+    image: msusel/nvd-mirror:latest
+    container_name: db_nvd_mirror
+    hostname: db_nvd_mirror
+    networks:
+      nvd_db_connection:
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "nvd_mirror"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+
+  # This service is used to check if the NVD database is hydrated
+  nvd_hydration_check:
+    image: postgres:16
+    depends_on:
+      db_nvd_mirror:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        echo "Waiting for NVD hydration...";
+        until PGPASSWORD=postgres psql -h db_nvd_mirror -U postgres -d nvd_mirror -tAc "SELECT COUNT(*) FROM nvd.cve;" | grep -qE "^[1-9][0-9]*$"; do
+          echo "Still hydrating... sleeping 15s";
+          sleep 15;
+        done
+        echo "Hydration complete!"
+    networks:
+      - nvd_db_connection
+      
+
+  app_pique-cloud:
+    image: msusel/pique-cloud-dockerfile:2.0.3
+    networks:
+      nvd_db_connection:
+    depends_on:
+      db_nvd_mirror:
+        condition: service_healthy
+    environment:
+      - PG_HOSTNAME=db_nvd_mirror
+      - PG_DRIVER=jdbc:postgresql
+      - PG_PORT=5432
+      - PG_DBNAME=nvd_mirror
+      - PG_USERNAME=postgres
+      - PG_PASS=postgres
+    volumes:
+      - "./input:/input"
+      - "./output:/output"
+      - "/var/run/docker.sock:/var/run/docker.sock:rw" #necessary for dive to run
+
+
+networks:
+  nvd_db_connection:
+    driver: bridge
+    internal: true
+
+volumes:
+  input:
+  output:
